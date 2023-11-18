@@ -1,0 +1,43 @@
+@use "../custom";
+@use "../components/mixins";
+@use "../components/functions";
+
+.navbar {
+
+    &__toggler {
+        width: functions.toRem(45);
+        height: functions.toRem(40);
+
+        &--search {
+            font-size: functions.toRem(18);
+            order: 3;
+        }
+
+        &--menu {
+            @include custom.media-breakpoint-up(md) {
+                display: none;
+            }
+        }
+    }
+
+    &__menu {
+        @include custom.media-breakpoint-up(md) {
+            display: block!important;
+            flex-basis: auto !important;
+
+            ul {
+                flex-direction: row;
+            }
+
+            a {
+                @include mixins.lightHoverable;
+            }
+        }
+    }
+
+    &__search-btn {
+        background-color: custom.$white-ish;
+        border-left: functions.toRem(1) solid rgba(custom.$black-ish, 0.3);
+    }
+
+}

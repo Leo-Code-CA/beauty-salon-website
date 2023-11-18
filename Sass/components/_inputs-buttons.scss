@@ -1,0 +1,19 @@
+// SEARCH BAR INPUT AND BUTTON 
+.navbar {
+
+    &__search {
+
+        position: relative;
+
+
+        input {
+            
+        }
+
+        button {
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+    }
+}

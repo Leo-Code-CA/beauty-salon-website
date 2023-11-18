@@ -1,0 +1,19 @@
+@use "../custom";
+
+@mixin lightHoverable {
+    &:link {
+        color: custom.$white-ish;
+    }
+
+    &:visited {
+        color: custom.$white-ish;
+    }
+
+    &:hover {
+        color: rgba(custom.$white-ish, 0.6);
+    }
+
+    &:active {
+        color: custom.$secondary;
+    }
+}
