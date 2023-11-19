@@ -1,9 +1,13 @@
-// document.getElementById('searchbartg').onclick = function() {
-//     let btn = document.getElementById('searchBar');
+// Focus state function
+const focusState = (firstElemID, secondElemID, className) => {
 
-//     if (btn.style.display === 'none') {
-//         btn.style.display = 'block';
-//     } else {
-//         btn.style.display = 'none';
-//     }
-// }
+const focusedElem = document.getElementById(firstElemID);
+const switchClassElem = document.getElementById(secondElemID);
+
+focusedElem.onfocus = () => switchClassElem.classList.add(className);
+
+focusedElem.onblur = () => switchClassElem.classList.remove(className);
+}
+
+// Call the focus state function for the navbar input group (search bar)
+focusState('searchInput', 'searchGroup', 'navbar__input-group--focus');

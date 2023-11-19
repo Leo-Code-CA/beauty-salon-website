@@ -1,12 +1,14 @@
 @use "../custom";
+@use 'functions';
 
+// USELESS FOR NOW
 @mixin lightHoverable {
     &:link {
         color: custom.$white-ish;
     }
 
     &:visited {
-        color: custom.$white-ish;
+        color: initial;
     }
 
     &:hover {
@@ -16,4 +18,9 @@
     &:active {
         color: custom.$secondary;
     }
+}
+
+// FOCUS MIXIN
+@mixin focus {
+    box-shadow: 0 0 functions.toRem(2) functions.toRem(2) custom.$secondary;
 }

@@ -7,10 +7,11 @@
     &__toggler {
         width: functions.toRem(45);
         height: functions.toRem(40);
+        color: custom.$white-ish;
+        border: functions.toRem(1) solid custom.$white-ish-03;
 
         &--search {
             font-size: functions.toRem(18);
-            order: 3;
         }
 
         &--menu {
@@ -21,23 +22,40 @@
     }
 
     &__menu {
+        
         @include custom.media-breakpoint-up(md) {
             display: block!important;
             flex-basis: auto !important;
+        }
+    }
 
-            ul {
-                flex-direction: row;
-            }
+    &__dropdown {
 
-            a {
-                @include mixins.lightHoverable;
-            }
+        @include custom.media-breakpoint-up(md) {
+            position: absolute !important;
+            border-top: none;
+            border-radius: 0 0 functions.toRem(10) functions.toRem(10);
+        }
+
+        h6 {
+            font-size: functions.toRem(15);
         }
     }
 
     &__search-btn {
         background-color: custom.$white-ish;
-        border-left: functions.toRem(1) solid rgba(custom.$black-ish, 0.3);
+        border-radius: functions.toRem(8);
     }
 
+    &__input {
+        border-radius: functions.toRem(8);
+    }
+
+    &__input-group {
+        border-radius: functions.toRem(8);
+
+        &--focus {
+            @include mixins.focus;
+        }
+    }
 }
