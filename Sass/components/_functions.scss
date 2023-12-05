@@ -1,0 +1,14 @@
+// TRANSFORM PIXELS TO REM
+@use "sass:math";
+
+@function toRem($px) {
+   
+    @if (math.is-unitless($px)) {
+        
+        @return math.div($px, 16) + rem;
+    
+    } @else {
+
+        @error "You used a unit, accepts numbers only";
+    }
+};
