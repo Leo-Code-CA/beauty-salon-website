@@ -1,0 +1,12 @@
+@use '../components/functions';
+@use '../custom';
+
+.intro {
+    @include custom.media-breakpoint-up(lg) {
+        padding: functions.toRem(115) !important;
+    }
+}
+
+.intro-img {
+    object-position: 50% 80%;
+}

@@ -19,7 +19,7 @@
 
         <body>
             
-            <main class="vh-100">
+            <main class="vh-100 d-flex flex-column">
 
                 <div class="container-fluid header">
                     <div class="row">
@@ -29,26 +29,30 @@
                     </div>
                 </div>
 
-                <div class="container-xl panel overflow-hidden">
-                    <div class="row h-100 p-4 gap-3 flex-nowrap">
-                        <div class="col-12 col-lg-6 border flex-shrink-1">
+                <div class="container-fluid panel overflow-hidden h-100">
+                    <div class="row h-100 p-4 gap-4 flex-nowrap">
+                        <div class="col-12 col-lg-6 border flex-shrink-1 d-flex flex-column p-3 gap-3">
                             <h2 class="text-center">Modifications</h2>
-                            <h3 class="text-center">Veux-tu changer quelque chose?</h3>
-                            <div>
-                                <button>Clique ici!</button>
+                            <div class="flex-fill p-2 d-flex flex-column">
+                                <h3 class="text-center">Veux-tu changer quelque chose?</h3>
+                                <div class="flex-fill position-relative border">
+                                    <button class="position-absolute top-50 start-50 translate-middle">Clique ici!</button>
+                                </div>
                             </div>
-                            <h3 class="text-center">Veux-tu ajouter quelque chose?</h3>
-                            <div>
-                                <button>Clique ici!</button>
+                            <div class="flex-fill p-2 d-flex flex-column">
+                                <h3 class="text-center">Veux-tu ajouter quelque chose?</h3>
+                                <div class="flex-fill position-relative border">
+                                    <button class="position-absolute top-50 start-50 translate-middle">Clique ici!</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 border flex-shrink-1">
+                        <div class="col-12 col-lg-6 border flex-shrink-1 d-flex flex-column p-3 gap-3">
                             <h3>Commentaires</h3>
-                            <div class="col-12 border">
+                            <div class="col-12 border flex-fill p-2">
 
                             </div>
                             <h3>Visites</h3>
-                            <div class="col-12 border">
+                            <div class="col-12 border flex-fill p-2">
 
                             </div>
                         </div>
@@ -60,7 +64,10 @@
 
         </body>
 
-        <!-- <body id="bodypanel">
+        <!-- REALLY IMPORTANT:
+            // The code to put on the panel page to allow content update 
+            
+        <body id="bodypanel">
 
             <h1 id="title">Welcome Brigitte</h1>
 
@@ -70,6 +77,8 @@
 
             <script type="module" src="Js/panel.js"></script>
       
-        </body> -->
+        </body> 
+    
+        -->
 
     </html>
