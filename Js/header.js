@@ -32,10 +32,12 @@ handleFetchHeader();
 
 function handleMainMargin() {
     const navHeight = document.getElementById('nav').offsetHeight;
-    const main = document.getElementById('mainhome');
+    const introSection = document.getElementById('intro');
+    const body = document.getElementById('bodyhome');
 
-    main.style.marginTop = navHeight + "px";
-    main.style.height = `calc(100vh - ${navHeight}px)`;
+    introSection.style.marginTop = navHeight + "px";
+    introSection.style.height = `calc(100vh - ${navHeight}px)`;
+    body.style.height = '400vh';
 
 }
 

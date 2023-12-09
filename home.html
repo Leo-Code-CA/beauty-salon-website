@@ -15,6 +15,7 @@
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
         <script src="https://kit.fontawesome.com/36dedec49f.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:ital,wght@0,200;0,400;0,700;0,900;1,200;1,400;1,700&display=swap" rel="stylesheet">  
     </head>
     
     <body id="bodyhome">
@@ -22,9 +23,9 @@
         <div id="div"></div>
 
         <!-- START THE WEBSITE MAIN CONTENT  -->
-        <main id="mainhome">
-            <!-- START OF THE SECTION 1 - INTRO  -->
-            <div class="container-fluid h-100">
+        <main id="homemain">
+            <div class="container-fluid" id="intro">
+                <!-- START OF THE SECTION 1 - INTRO  -->
                 <section class="row h-100">
                     <!-- LEFT CONTAINER -->
                     <div class="col-12 col-md-6 flex-fill overflow-hidden p-0 h-100">
@@ -32,22 +33,100 @@
                     </div>
                     <!-- RIGHT CONTAINER -->
                     <div class="col-12 col-md-6 flex-fill p-5 text-center d-flex flex-column justify-content-center gap-3 h-100 intro">
-                        <h1>L'institut où vous êtes traitée comme<br>une reine.</h1>
+                        <h1 class="intro__title">L'institut où vous êtes traitée comme<br>une reine.</h1>
                         <p class="lh-lg m-0">Évadez vous le temps d'un soin entre les mains expertes de Brigitte, votre esthéticienne diplômée, qui vous fera goûter au plaisir de la relaxation d'un niveau supérieur.</p>
                         <p class="lh-lg m-0"> Dans un cadre de détente aux senteurs parfumées, privatisé pour vous le temps de votre rendez-vous, ou le confort et la propreté sont des priorités, vous recevrez toute l'attention et bienveillance que vous méritez.</p>
                         <p class="lh-lg m-0"> Offrez-vous un moment de bien-être, dans le calme et l’intimité de votre institut reservé à la clientele féminine.</p>
+                        <button class="btn btn-primary">Prête à vous faire dorloter?</button>
                     </div>
                 </section>
+
+                <!-- START OF THE SECTION 2 - FEATURES -->
+                <section class="row p-5">
+                    <h2 class="text-center">Les prestations qui n'ont plus à faire leur preuves</h2>
+                    <table class="table table-bordered w-75 mx-auto mt-3">
+                        <thead class="text-center">
+                            <tr>
+                                <th>Kobido Suprême</th>
+                                <th>Massage Californien</th>
+                                <th>1/2 Jambes</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, nihil.</p>
+                                    <button class="mx-auto d-block btn btn-primary">Prendre RDV</button>
+                                </td>
+                                <td>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sunt aliquid laudantium dolores, enim vel.</p>
+                                    <button class="mx-auto d-block btn btn-primary">Prendre RDV</button>
+                                </td>
+                                <td>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium iste nisi totam.</p>
+                                    <button class="mx-auto d-block btn btn-primary">Prendre RDV</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- START OF THE SECTION 3 - GIFT CARD -->
+                <section class="row">
+                    <div class="col-12 vh-100 border">
+                        <h2 class="text-center mt-5">Que pourriez offrir de plus beau que le bien-être?</h2>
+
+                    </div>
+                </section>
+
+                <!-- START OF THE SECTION 4 - BENEFITS -->
+                <section class="row" id="test">
+                    <div class="col-12">
+                        <h2 class="text-center">Title?</h2>
+                        <div class="row">
+                            <div class="col-12 col-md-8 border placeHolder"></div>
+                            <div class="col-12 col-md-4 border placeHolder"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-4 border placeHolder"></div>
+                            <div class="col-12 col-md-8 border placeHolder"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-8 border placeHolder"></div>
+                            <div class="col-12 col-md-4 border placeHolder"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-4 border placeHolder"></div>
+                            <div class="col-12 col-md-8 border placeHolder"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-8 border placeHolder"></div>
+                            <div class="col-12 col-md-4 border placeHolder"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- START OF THE SECTION 5 - TESTIMONIALS -->
+                <section class="row">
+                    <div class="col-12 vh-100 border">
+                        <h2 class="text-center mt-5">Reviews</h2>
+                    </div>
+                    <button class="btn btn-primary w-25 m-auto">Soutenir Brigitte gratuitement</button>
+                </section>
+                
             </div>
 
 
             
 
         </main>
+
+        <div id="footer"></div>
            
 
         <script type="module" src="Js/main.js"></script>
         <script src="Js/header.js" type="module"></script>
+        <!-- <script src="Js/footer.js" type="module"></script> -->
 
     </body>
 

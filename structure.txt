@@ -89,7 +89,7 @@ Offrez-vous un moment de bien-être, dans le calme et l’intimité de votre ins
 
 
 3) CALLS TO ACTION:
- - Button, just after the subheadline: Prête a vous faire dorloter? (-> make scroll the page to the next section)
+ - Button, just after the subheadline: Prête à vous faire dorloter? (-> make scroll the page to the next section)
  - Button, just after the three features : Prendre RDV (-> brings to the form with topic already chosen depending where they clicked)
  - Button, just after the Testimonials: Laissez un avis (-> brings to google review new review)
 
@@ -108,6 +108,9 @@ Offrez-vous un moment de bien-être, dans le calme et l’intimité de votre ins
 
     Votre esthéticienne rien que pour vous: Brigitte vous met en confiance et vous retrouvera a chaque fois aue vous viendrez. 
 
+
+CHAQUE SOIN COMPREND UNE DUREE D'INSTALLATION ET DE DEPART OFFERTES (ENVIRON 10 MNS)
+Parking securise 
 
 6) TESTIMONIALS
 Integrate google reviews
@@ -144,3 +147,25 @@ Je vous reçois sur rendez-vous du Mardi au Samedi pour vous proposer des presta
 Spécialisée dans les soins du visage et les massages, je suis régulièrement en formation afin de vous faire découvrir les meilleures nouveautés.
 Qu'il s'agisse d'épilations ou de soins, je sélectionne rigoureusement mes produits chez des fabricants Français.
 
+
+IDEAS: https://www.jodineufelddesign.com/squarespace-design-day
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+FOOTER : 
+- Name of salon + since ... V
+- Contact details: 
+        - phone number  V 
+        - contact form V
+- Copyright (bottom bottom) V 
+- Legal infos:
+        - SIREN
+        - Reserved rights 
+- Address
+        - with google maps map V 
+- Back to top button
+- Link to gift card 
+- Link to important pages? 
+- appointment only V 
+- opening hours V

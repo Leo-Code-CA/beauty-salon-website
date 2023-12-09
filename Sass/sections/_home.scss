@@ -1,12 +1,27 @@
 @use '../components/functions';
 @use '../custom';
 
+
+
 .intro {
     @include custom.media-breakpoint-up(lg) {
         padding: functions.toRem(115) !important;
+    }
+
+    &__title {
+        font-family: 'Bodoni Moda', serif;
+        font-weight: 700;
     }
 }
 
 .intro-img {
     object-position: 50% 80%;
 }
+
+ .placeHolder {
+     height: 400px;
+ }
+
+ #bodyhome {
+     font-family: 'Raleway', sans-serif;
+ }
