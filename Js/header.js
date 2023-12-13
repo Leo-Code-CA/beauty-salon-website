@@ -37,7 +37,7 @@ function handleMainMargin() {
 
     introSection.style.marginTop = navHeight + "px";
     introSection.style.height = `calc(100vh - ${navHeight}px)`;
-    body.style.height = '400vh';
+    // body.style.height = '400vh';
 
 }
 

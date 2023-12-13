@@ -2,10 +2,10 @@
 
 // COLORS
 $primary: #9a1d71;
-$secondary: hsl(320, 67%, 80%);
+$secondary: #eeaad7;
 $black-ish: hsl(0, 2%, 18%);
 $dark: hsl(0, 2%, 18%);
-$white-ish: hsl(0, 33%, 98%);
+$white-ish: #fcf8f8;
 $white-ish-05: hsla(0, 33%, 98%, 0.5);
 $white-ish-03: hsla(0, 33%, 98%, 0.3);
 
@@ -47,6 +47,8 @@ body {
     width: 100%;
     min-height: 100vh;
     font-size: $body-fs;
+    overflow-y: scroll;
+    background-color: $white-ish !important;
 }
 
 // IMPORT BOOTSTRAP

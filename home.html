@@ -18,15 +18,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:ital,wght@0,200;0,400;0,700;0,900;1,200;1,400;1,700&display=swap" rel="stylesheet">  
     </head>
     
-    <body id="bodyhome">
+    <body id="bodyhome" class="home">
         <!-- START THE WEBSITE MAIN CONTENT  -->
         <div id="div"></div>
 
         <!-- START THE WEBSITE MAIN CONTENT  -->
         <main id="homemain">
-            <div class="container-fluid" id="intro">
+            <div class="container-fluid">
                 <!-- START OF THE SECTION 1 - INTRO  -->
-                <section class="row h-100">
+                <section class="row" id="intro">
                     <!-- LEFT CONTAINER -->
                     <div class="col-12 col-md-6 flex-fill overflow-hidden p-0 h-100">
                         <img class="h-100 w-100 object-fit-cover intro-img" src="images/homepage/institutsupplies.jpg" alt="spa supplies">
@@ -43,75 +43,142 @@
 
                 <!-- START OF THE SECTION 2 - FEATURES -->
                 <section class="row p-5">
-                    <h2 class="text-center">Les prestations qui n'ont plus à faire leur preuves</h2>
-                    <table class="table table-bordered w-75 mx-auto mt-3">
-                        <thead class="text-center">
-                            <tr>
-                                <th>Kobido Suprême</th>
-                                <th>Massage Californien</th>
-                                <th>1/2 Jambes</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, nihil.</p>
-                                    <button class="mx-auto d-block btn btn-primary">Prendre RDV</button>
-                                </td>
-                                <td>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sunt aliquid laudantium dolores, enim vel.</p>
-                                    <button class="mx-auto d-block btn btn-primary">Prendre RDV</button>
-                                </td>
-                                <td>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium iste nisi totam.</p>
-                                    <button class="mx-auto d-block btn btn-primary">Prendre RDV</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-12">
+                        <h2 class="text-center mb-5">Les prestations qui n'ont plus à faire leur preuves</h2>
+                        <table class="table table-bordered w-75 mx-auto mt-3">
+                            <thead class="text-center">
+                                <tr>
+                                    <th class="fs-4">
+                                        Sourcils
+                                        <a href="" class="d-block text-uppercase features__subheading text-decoration-none">épilation</a>
+                                    </th>
+                                    <th class="fs-4">
+                                        Demi-Jambes
+                                        <a href="" class="d-block text-uppercase features__subheading text-decoration-none">épilation</a>
+                                    </th>
+                                    <th class="fs-4">
+                                        Kobido Suprême
+                                        <a href="" class="d-block text-uppercase features__subheading text-decoration-none">massage</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-4">
+                                        <div>
+                                            <img src="images/homepage/eyebrow.avif" alt="" class="img-fluid rounded">
+                                        </div>
+                                        <ul class="mt-3">
+                                            <li>Réalisée de facon professionnelle, l'épilation des sourcils met en valeur votre visage.
+                                            </li>
+                                            <li>Au fil des épilations, la repousse est plus fine et lente.</li>
+                                            <li>Une crème apaisante est utilisée pour réduire le risque de ressentir quelconque désagrément.</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button class="d-block btn btn-primary">Réserver</button>
+                                            <button class="d-block btn btn-primary">Découvrir</button>
+                                        </div>
+                                    </td>
+                                    <td class="col-4">
+                                        <div>
+                                            <img src="images/homepage/legwaxing.jpg" alt="" class="img-fluid rounded">
+                                        </div>
+                                        <ul class="mt-3">
+                                            <li>Avant chaque épilation, votre peau est préparée avec une lotion à base d'eau florale au bleuet.</li>
+                                            <li>Des cires de fabricants français réputés sont utilisées pour vous proccurer une épilation en douceur.</li>
+                                            <li>Après l'épilation, un lait hydratant ou une huile vous sont proposés.</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button class="d-block btn btn-primary">Réserver</button>
+                                            <button class="d-block btn btn-primary">Découvrir</button>
+                                        </div>
+                                    </td>
+                                    <td class="col-4">
+                                        <div>
+                                            <img src="images/homepage/kobido.jpg" alt="" class="img-fluid rounded">
+                                        </div>
+                                        <ul class="mt-3">
+                                            <li>Plus qu'un massage, le kobido est un art traditionnel japonnais.</li>
+                                            <li>Son effet tonnifiant et lissant (sans injection!) lui valent le surnom de lifting naturel.</li>
+                                            <li>La libération des tensions musculaires offre une sensation de relaxation profonde.</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button class="d-block btn btn-primary">Réserver</button>
+                                            <button class="d-block btn btn-primary">Découvrir</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
 
                 <!-- START OF THE SECTION 3 - GIFT CARD -->
-                <section class="row">
-                    <div class="col-12 vh-100 border">
-                        <h2 class="text-center mt-5">Que pourriez offrir de plus beau que le bien-être?</h2>
-
+                <section class="row bg-primary cadeau px-5">
+                    <h2 class="text-center mt-5">Que pourriez offrir de plus beau que le bien-être?</h2>
+                    <div class="col-12 vh-100 d-flex justify-content-between">
+                        <div class="gift__img d-flex justify-content-center flex-column gap-3">
+                            <img src="images/homepage/Spa-pana.svg" alt="" class="img-fluid">
+                            <button class="btn btn-secondary gift__btn">Offrir</button>
+                        </div>
+                        <div class="gift__bg d-flex align-items-center justify-content-center p-5 lh-lg flex-column">
+                            <p class="text-dark px-5">En quête d'une idée cadeau qui fera plaisir à tous les coups? Ne cherchez pas plus loin, le bon cadeau Institut For You, c'est ce qu'il vous faut.
+                            </p>
+                            <p class="text-dark px-5">
+                            Que ce soit pour votre mère, grand-mère, soeur, amie ou qui que ce soit qui vous est cher, faisant partie de la gent féminine, ce cadeau ne tombera jamais à l'eau. 
+                            </p>
+                            <p class="text-dark px-5">
+                            Offrir un moment de calme et de détente à vos proches n'est qu'à un clic près! N'attendez plus.</p>
+                        </div>
                     </div>
                 </section>
 
                 <!-- START OF THE SECTION 4 - BENEFITS -->
-                <section class="row" id="test">
-                    <div class="col-12">
-                        <h2 class="text-center">Title?</h2>
-                        <div class="row">
-                            <div class="col-12 col-md-8 border placeHolder"></div>
-                            <div class="col-12 col-md-4 border placeHolder"></div>
+                <section class="row flex-column gap-5 p-5 benefit" id="test">
+                   <!-- BENEFIT 1 - SUPPORT LOCAL ECONOMY -->
+                    <div class="col-12 d-flex justify-content-evenly align-items-center gap-5 my-5 benefit__container">
+                        <p class="benefit__p benefit__p--right">En choissisant de faire appel à une commercante indépendante pour vos soins esthétiques, vous participez activement à soutenir <span class="big lh-sm">l'économie locale</span> de Tarascon! Lorsque vous achetez des biens ou services locaux, vous encouragez les petites entreprises près de chez vous. De plus, le fait de savoir à qui vous reversez votre argent durement gagné est rassurant.</p>
+                        <div class="benefit__img benefit__img--right">
+                            <img src="images/homepage/doorfrontinstitut.jpg" alt="" class="img-fluid">
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-4 border placeHolder"></div>
-                            <div class="col-12 col-md-8 border placeHolder"></div>
+                    </div>
+                    <!-- BENEFIT 2 - YOU KNOW WHO YOU SEE -->
+                    <div class="col-12 d-flex justify-content-evenly align-items-center gap-5 my-5">
+                        <div class="benefit__img benefit__img--left">
+                            <img src="images/homepage/pexels-andrea-piacquadio-3808845.jpg" alt="" class="img-fluid features__img">
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-8 border placeHolder"></div>
-                            <div class="col-12 col-md-4 border placeHolder"></div>
+                        <p class="benefit__p">La bienveillance de Brigitte, qui vous accueille sans émettre quelconque jugement, exactement <span class="big lh-sm">telle que vous êtes,</span> vous permet de profiter pleinement de votre rendez-vous, sans arrière-pensée. La bonne nouvelle? Vous savez à qui vous avez à faire et êtes certaine de la retrouver à chacune de vos visites puisque qu'elle est l'unique esthéticienne de l'institut.  
+                        </p>
+                    </div>
+                    <!-- BENEFIT 3 - UP TO DATE WITH NEW PRACTICES -->
+                    <div class="col-12 d-flex justify-content-evenly align-items-center gap-5 my-5">
+                        <p class="benefit__p benefit__p--right">Pourquoi être traitée à la chaine, de facon impersonnelle, à la va-vite, quand vous pouvez choisir d'être privilegiée? Brigitte vous recoit sur rdv uniquement et <span class="big lh-sm">privatise l'intitut pour l'occasion.</span> Ses produits sont rigoureusement selectionnés, parmi les meilleurs fournisseurs de France.</p>
+                        <div class="benefit__img benefit__img--right">
+                            <img src="images/homepage/womanspa.jpg" alt="" class="img-fluid features__img">
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-4 border placeHolder"></div>
-                            <div class="col-12 col-md-8 border placeHolder"></div>
+                    </div>
+                    <!-- BENEFIT 4 - SPECIALISED PROFESSIONAL -->
+                    <div class="col-12 d-flex justify-content-evenly align-items-center gap-5 my-5">
+                        <div class="benefit__img benefit__img--left">
+                            <img src="images/homepage/productsandflower.jpg" alt="" class="img-fluid features__img">
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-8 border placeHolder"></div>
-                            <div class="col-12 col-md-4 border placeHolder"></div>
+                        <p class="benefit__p">Oui mesdames, l'institut est réservé à la clientèle féminine! Votre esthéticienne vous offre des prestations qui vous sont adaptées et qui ne perdent pas en qualité avec le temps, à prix abordables! Spécialisée dans les soins du visage et les massages, Brigitte <span class="big lh-sm">privilegie la qualité à la quantité.</span> La cerise sur le gateau ? Chaque soin comprend une durée d'installation et de départ offerte. De cette facon, vous ne perdez pas la moindre minute de votre soin!</p>
+                    </div>
+                    <!-- BENEFIT 5 - ALL THE ATTENTION FOR YOU -->
+                    <div class="col-12 d-flex justify-content-evenly align-items-center gap-5 my-5">
+                        <p class="benefit__p benefit__p--right">Régulièrement en formation, Brigitte s'assure d'être à jour quant aux dernières <span class="big lh-sm">nouveautés dans le domaine du soin et de la beauté</span> afin de pouvoir en faire bénficier ses clientes. En continuelle quête d'amélioration, la carte des prestations de l'institut ne cesse d'évoluer au fil des années.</p>
+                        <div class="benefit__img benefit__img--right">
+                            <img src="images/homepage/facialmassage.jpg" alt="" class="img-fluid features__img">
                         </div>
                     </div>
                 </section>
 
                 <!-- START OF THE SECTION 5 - TESTIMONIALS -->
-                <section class="row">
+                <section class="row mb-5">
                     <div class="col-12 vh-100 border">
                         <h2 class="text-center mt-5">Reviews</h2>
                     </div>
-                    <button class="btn btn-primary w-25 m-auto">Soutenir Brigitte gratuitement</button>
+                    <button class="btn btn-primary w-25 mx-auto mb-5">Button</button>
                 </section>
                 
             </div>
@@ -126,7 +193,7 @@
 
         <script type="module" src="Js/main.js"></script>
         <script src="Js/header.js" type="module"></script>
-        <!-- <script src="Js/footer.js" type="module"></script> -->
+        <script src="Js/footer.js" type="module"></script>
 
     </body>
 

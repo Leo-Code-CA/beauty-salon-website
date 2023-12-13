@@ -1,3 +1,5 @@
+@use '../custom';
+
 .subheader {
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
@@ -10,5 +12,38 @@ h3 .subheader--under {
 h4 {
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+.home {
+
+    h2 {
+        font-family: 'Bodoni Moda', serif;
+        font-weight: 700;
+        font-size: 2.3rem;
+    }
+}
+
+.features__subheading {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+
+.big {
+    font-size: 3rem;
+    // display: block;
+    font-weight: 200;
+    color: custom.$secondary;
+    font-family: 'Bodoni Moda', serif;
+}
+
+.benefit__p {
+    // max-width: 40%;
+    line-height: 3;
+    background-color: custom.$white-ish;
+  }
+
+.benefit__p--right {
+    max-width: 40%;
 }
 
