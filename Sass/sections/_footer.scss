@@ -10,7 +10,7 @@
 
     &__map {
         height: 300px;
-        background-color: rgb(232, 232, 232);
+        // background-color: rgb(232, 232, 232);
     }
 
     &__img {
@@ -33,6 +33,22 @@
         letter-spacing: 2px;
         font-weight: 700;
     }
+
+    &__bubble {
+        color: custom.$black-ish;
+        
+
+        h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.8rem;
+        }
+    }
 }
 
 h3 span {
@@ -41,4 +57,9 @@ h3 span {
 
 small span {
     font-size: 20px;
+}
+
+#change {
+    font-weight: 400;
+    letter-spacing: initial;
 }

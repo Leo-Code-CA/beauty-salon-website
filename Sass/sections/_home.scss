@@ -107,3 +107,36 @@
 .table, .table thead, .table th, .table td, .table tr {
     background-color: custom.$white-ish;
 }
+
+button[class|="carousel-control"] {
+    width: 2rem;
+}
+
+div.carousel-inner {
+    height: 200px;
+    color: custom.$white-ish;
+
+}
+
+ div.carousel-inner p::before {
+    content: url('./../../images/homepage/quote.svg');
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    margin-top: -2rem;
+ }
+
+div.carousel-inner p::after {
+    content: url('./../../images/homepage/quote.svg');
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    transform: rotate(180deg);
+}
+
+.carousel {
+    background: linear-gradient(
+        custom.$primary,
+        custom.$secondary
+    );
+}
