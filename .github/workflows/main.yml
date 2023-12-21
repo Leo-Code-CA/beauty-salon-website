@@ -1,7 +1,0 @@
-name: Run a step if a secret has been set
-on: push
-jobs:
-  my-jobname:
-    runs-on: ubuntu-latest
-    env:
-      DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
