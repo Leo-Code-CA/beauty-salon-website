@@ -5,6 +5,6 @@
     "dotenv": "^16.3.1"
   },
   "scripts": {
-      "build": "node Js/data.js"
+      "build": "node Js/main.js && node Js/footer.js"
   }  
 }
