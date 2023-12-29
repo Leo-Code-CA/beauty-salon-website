@@ -113,7 +113,7 @@ button[class|="carousel-control"] {
 }
 
 div.carousel-inner {
-    height: 200px;
+    height: 300px;
     color: custom.$white-ish;
 
 }
@@ -139,4 +139,23 @@ div.carousel-inner p::after {
         custom.$primary,
         custom.$secondary
     );
+}
+
+.carousel__btn {
+    border-top: none;
+    text-indent: 0 !important;
+    background-color: transparent !important;
+}
+
+.carousel__btn span {
+
+    width: 0;  
+    height: 0;
+    top: -2px;
+    left: 50%;
+    transform: translate(-50%);
+    border-left: 1rem solid transparent; 
+    border-right: 1rem solid transparent; 
+    border-top: 1rem solid custom.$secondary; 
+
 }
