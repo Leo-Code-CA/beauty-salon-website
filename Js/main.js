@@ -20,27 +20,45 @@ const place = new Place({
 await place.fetchFields({ fields: ["reviews"] });
 // Show the result
 const reviews = place.reviews;
-console.log(reviews[0].g);
+// console.log(reviews[0].g);
 const reviewsContainer = document.querySelector('#reviews');
 
 
 reviews.map((review, i) => {
     let revText = review.g;
-    console.log(review)
+    // console.log(review)
     let name = review.h.g;
     // let newRev = document.createElement('p').textContent = revText;
     // reviewsContainer.append(newRev);
-    let carousel = document.querySelector('#reviewCarousel');
+    // console.log(revText);
+    
+    let slide = document.querySelector(`.carousel-item:nth-child(${i + 1}) .blockquote`);
+    // console.log(slide);
+    let bottomName = document.querySelector(`.carousel-item:nth-child(${i + 1}) .figcaption`);
+    let topName = document.querySelector(`.carousel-indicators button:nth-child(${i + 1})`);
+    console.log(topName)
 
-    let slide = document.querySelector(`.carousel-item:nth-child(${i + 1})`);
+    slide.innerHTML = revText;
+    bottomName.innerHTML = name;
+    topName.innerHTML = name;
 
-    let p = document.createElement('p');
-    p.textContent = revText;
-    slide.appendChild(p);
 
-    let h3 = document.createElement('h3');
-    h3.textContent = name;
-    slide.appendChild(h3);
+
+    // let p = document.createElement('p');
+    // p.textContent = revText;
+    // slide.appendChild(p);
+
+    // let h3 = document.createElement('h3');
+    // h3.textContent = name;
+    // slide.appendChild(h3);
+    // let btn = document.querySelector(`.carousel__btn:nth-child(${i + 1})`);
+    
+
+    // btn.textContent = name;
+    // let bold = document.createElement('p');
+    // bold.textContent = name;
+    // btn.appendChild(bold);
+
 
     
 
@@ -50,13 +68,44 @@ reviews.map((review, i) => {
 
 getPlaceDetails();
 
+
+
 // }
 
 ///////////////////////////////////
 
 
 
+// const chose = document.querySelectorAll('.carousel__btn');
+// const span = document.querySelectorAll('.carousel__btn span');
+// const controlright = document.querySelector('.carousel-control-prev');
+// const controlleft = document.querySelector('.carousel-control-next');
 
+// // console.log(controlleft);
+// // console.log(controlright)
+
+
+// controlleft.addEventListener('click', arrow);
+// controlright.addEventListener('click', arrow);
+// chose.forEach(btn => btn.addEventListener('click', arrow));
+
+// function arrow() {
+
+//     chose.forEach(span => {
+
+//         if (span.classList.contains('active')) {
+
+//             span.classList.add('color');
+
+//         } else {
+
+//             span.classList.remove('color');
+
+//         }
+
+//     })
+
+// }
 
 
 

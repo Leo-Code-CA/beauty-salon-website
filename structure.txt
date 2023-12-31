@@ -207,3 +207,61 @@ Que ce soit pour votre mère, grand-mère, soeur, amie ou qui que ce soit qui vo
 Qui n'a jamais ressenti de stress provenant du rythme de vie effrené que nous menons de nos jours? Qui n'apprécie pas qu'on prenne soin d'elle? Probablement peu d'entre nous!
 
 Offrir un moment de calme et de détente à vos proches n'est qu'à un clic près! N'attendez plus.
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////// TETIOMINALS TEST 1
+
+<!-- START OF THE SECTION 5 - TESTIMONIALS -->
+                <section class="row my-5">
+                    <div class="col-12 w-75 vh-75 mx-auto d-flex flex-column align-items-center mb-5">
+                        <h2 class="text-center mb-5">Reviews</h2>
+
+                        <div id="reviewsCarousel" class="carousel slide bg-primary p-5 h-100 w-100 mb-5 rounded-pill">
+
+
+                            <div class="w-100 d-flex carousel-indicators m-0 mt-5 carousel__indicators gap-3">
+                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" aria-label="Slide 1" aria-current="true" class="btn btn-primary rounded-pill carousel__btn m-0 py-3 position-relative active flex-fill">
+                                </button>
+                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="btn btn-primary carousel__btn m-0 py-3 position-relative flex-fill rounded-pill">
+                                </button>
+                                <button type="button" data-bs-target="#reviewsCarousel"data-bs-slide-to="2" aria-label="Slide 3" class="btn btn-primary carousel__btn m-0 py-3 position-relative flex-fill rounded-pill">
+                                </button>
+                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="3" aria-label="Slide 4" class="btn btn-primary carousel__btn m-0 py-3 position-relative flex-fill rounded-pill">
+                                </button>
+                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="4" aria-label="Slide 5" class="btn btn-primary carousel__btn m-0 py-3 position-relative flex-fill rounded-pill">
+                                </button>
+                            </div>
+
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active p-3 h-100"></div>
+                                <div class="carousel-item p-3 h-100"></div>
+                                <div class="carousel-item p-3 h-100"></div>
+                                <div class="carousel-item p-3 h-100"></div>
+                                <div class="carousel-item p-3 h-100"></div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </section>
+                
+            </div>

@@ -108,54 +108,122 @@
     background-color: custom.$white-ish;
 }
 
-button[class|="carousel-control"] {
-    width: 2rem;
+.carousel-indicators [data-bs-target] {
+    text-indent: 0%;
+    opacity: 1;
+    background-color: custom.$white-ish !important;
+
+    &:hover {
+        background-color: custom.$primary !important;
+    }
+
 }
 
-div.carousel-inner {
-    height: 300px;
+.carousel-indicators [data-bs-target].active {
+    background-color: custom.$primary !important;
     color: custom.$white-ish;
+}
+
+.carousel-indicators {
+    position: static;
+    width: 90%;
+    margin: 0 auto 2rem !important;
+    margin: 0;
+    height: 3rem;
+    background-color: custom.$white-ish !important;
+    opacity: 1;
+
+    button {
+        border-radius: 10px 10px 0px 0px;
+        background-color: custom.$white-ish;
+        opacity: 1;
+        text-transform: capitalize;
+    } 
+
 
 }
 
- div.carousel-inner p::before {
-    content: url('./../../images/homepage/quote.svg');
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    margin-top: -2rem;
- }
+// .carousel__indicators {
+//     position: static;
+//     background-color: custom.$primary;
+//     text-indent: initial;
+    
+//     button {
+//         color: custom.$dark !important;
+//         opacity: 1 !important;
+//         background-color: custom.$primary !important;
+//         height: 100% !important;
+//     }
+// }
 
-div.carousel-inner p::after {
-    content: url('./../../images/homepage/quote.svg');
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    transform: rotate(180deg);
+
+.carousel__img {
+    width: 55%;
+    height: 80%;
+
+    div {
+        height: 120%;
+        border-radius: 100%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        // border: 1px solid;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
 }
 
-.carousel {
-    background: linear-gradient(
-        custom.$primary,
-        custom.$secondary
-    );
+.carousel-item:nth-child(1) .carousel__img img {
+    object-position: 45% 50%;
 }
 
-.carousel__btn {
-    border-top: none;
-    text-indent: 0 !important;
-    background-color: transparent !important;
+.carousel-item:nth-child(2) .carousel__img img {
+    object-position: 50% 70%;
 }
 
-.carousel__btn span {
+.carousel-item:nth-child(3) .carousel__img img {
+    object-position: 40% 50%;
+}
 
-    width: 0;  
-    height: 0;
-    top: -2px;
-    left: 50%;
-    transform: translate(-50%);
-    border-left: 1rem solid transparent; 
-    border-right: 1rem solid transparent; 
-    border-top: 1rem solid custom.$secondary; 
+.carousel-item:nth-child(4) .carousel__img img {
+    object-position: 50% 50%;
+}
 
+.carousel-item:nth-child(5) .carousel__img img {
+    object-position: 60% 50%;
+}
+
+.carousel__review {
+    width: 40%;
+    height: 90%;
+    border: 1rem solid custom.$primary;
+    border-radius: 10%;
+    text-align:  center;
+    box-shadow: 3px 7px 15px rgba(custom.$dark, 0.6), -3px 7px 15px rgba(custom.$dark, 0.6);
+
+
+    blockquote {
+        margin-top: -1rem;
+        font-size: 1rem;
+    };
+}
+
+.carousel__decor {
+    width: 5%;
+    height: 80%;
+}
+
+.carousel__stars {
+
+    img {
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+button[class|="carousel-control"] {
+    width: 3rem;
 }
