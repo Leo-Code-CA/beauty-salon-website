@@ -20,7 +20,7 @@ const place = new Place({
 await place.fetchFields({ fields: ["reviews"] });
 // Show the result
 const reviews = place.reviews;
-// console.log(reviews[0].g);
+// console.log(reviews);
 const reviewsContainer = document.querySelector('#reviews');
 
 
@@ -36,7 +36,7 @@ reviews.map((review, i) => {
     // console.log(slide);
     let bottomName = document.querySelector(`.carousel-item:nth-child(${i + 1}) .figcaption`);
     let topName = document.querySelector(`.carousel-indicators button:nth-child(${i + 1})`);
-    console.log(topName)
+    // console.log(topName)
 
     slide.innerHTML = revText;
     bottomName.innerHTML = name;
@@ -106,6 +106,40 @@ getPlaceDetails();
 //     })
 
 // }
+
+const summary = document.querySelectorAll('.carousel__summary dl');
+const svg = document.querySelectorAll('.carousel__summary-img');
+
+
+summary.forEach(function(elem, i) {
+
+    elem.addEventListener('mouseover', function() {
+        elem.classList.add('carousel__summary--hover');
+
+        if (i === 0) {
+            svg[0].classList.remove('d-none');
+        } else if (i === 2) {
+            svg[1].classList.remove('d-none');
+        }
+
+        // let svg = document.querySelector(`${this} .carousel__summary-img`);
+        // svg.classList.remove('d-none');
+    })
+
+    elem.addEventListener('mouseout', function() {
+        elem.classList.remove('carousel__summary--hover');
+
+        if (i === 0) {
+            svg[0].classList.add('d-none');
+        } else if (i === 2) {
+            svg[1].classList.add('d-none');
+        }
+
+        // let svg = document.querySelector(`${this} .carousel__summary-img`);
+        // svg.classList.add('d-none');
+    })
+
+});
 
 
 

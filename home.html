@@ -30,7 +30,7 @@
                     <!-- LEFT CONTAINER -->
                     <div class="col-12 col-md-6 flex-fill overflow-hidden p-0 h-100">
                         <!-- <img class="h-100 w-100 object-fit-cover intro-img" src="images/homepage/institutsupplies.jpg" alt="spa supplies"> -->
-                        <video src="videos/IFY-Video.mov" autoplay="true" muted loop class="h-100 w-100"></video>
+                        <video src="videos/IFY-Video.mov" autoplay="true" muted loop class="h-100"></video>
                     </div>
                     <!-- RIGHT CONTAINER -->
                     <div class="col-12 col-md-6 flex-fill p-5 text-center d-flex flex-column justify-content-center gap-3 h-100 intro">
@@ -176,10 +176,13 @@
 
                 <!-- START OF THE SECTION 5 - TESTIMONIALS -->
                 <section class="row my-5">
-                    <div class="col-12 w-100 vh-100 mx-auto d-flex flex-column align-items-center mb-5 p-0">
-                        <h2 class="text-center mb-5">Reviews</h2>
+                    <div class="col-12 w-100 d-flex flex-column align-items-center mb-5 p-0">
+                        <h2 class="text-center mb-5">
+                            Ce que les clientes pensent de l'institut
+                            <a href="https://www.google.com/maps/place/Institut+For+You/@43.808592,4.662918,17z/data=!4m8!3m7!1s0x12b5dc6051c93bbf:0x9ff64027525dbe22!8m2!3d43.808592!4d4.662918!9m1!1b1!16s%2Fg%2F11bxjj6bq4" target="_blank" class="d-block mt-3 carousel__title text-uppercase text-decoration-none">avis google certifiés</a>
+                        </h2>
 
-                        <div id="reviewsCarousel" class="carousel slide h-75 w-100 mb-5">
+                        <div id="reviewsCarousel" class="carousel slide w-100 mb-5">
 
 
                             <div class="carousel-indicators border-bottom">
@@ -198,24 +201,7 @@
                                 <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="4" aria-label="Slide 5" class="flex-fill h-100 m-0 border-0">
                                     coucou
                                 </button>
-                              </div>
-                            
-
-
-                            <!-- <div class="w-100 d-flex carousel-indicators m-0 carousel__indicators w-100 justify-content-center align-items-center flex-nowrap">
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" aria-label="Slide 1" aria-current="true" class="btn carousel__btn m-0 active flex-fill">hey
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="btn carousel__btn m-0 flex-fill">hey
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel"data-bs-slide-to="2" aria-label="Slide 3" class="btn carousel__btn m-0 flex-fill">hey
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="3" aria-label="Slide 4" class="btn carousel__btn m-0 flex-fill">
-                                    <span>hello</span>
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="4" aria-label="Slide 5" class="btn carousel__btn m-0 flex-fill">hey
-                                </button>
-                            </div> -->
-
+                            </div>
 
                             <div class="carousel-inner h-100">
                                 <div class="carousel-item active h-100">
@@ -358,18 +344,61 @@
                                         <div class="bg-secondary carousel__decor"></div>
                                     </div>
                                 </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                        </div>
+
+                        <h3 class="my-5">Institut For You en quelques mots:</h3>
+                        <div class="col-12 d-flex carousel__summary w-75 mx-auto justify-content-center align-items-center gap-3">
+                            <dl class="position-relative overflow-hidden">
+                                <dt>
+                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto">
+                                        <img src="images/homepage/noun-thanks-4182202.svg" alt="" class="carousel__summary-svg">
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <strong class="d-block text-center text-uppercase">satisfaction</strong>
+                                    Des dizaines de femmes satisfaites depuis 2015.
+                                    <img src="images/homepage/womengroup.svg" alt="" class="position-absolute carousel__summary-img carousel__summary-img--two d-none">
+                                </dd>
+                            </dl>
+                            <dl class="carousel__summary--hover">
+                                <dt>
+                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto">
+                                        <img src="images/homepage/noun-review-1966378.svg" alt="">
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <strong class="d-block text-center text-uppercase">excellence</strong>
+                                    5 / 5 étoiles sur plus de 40 avis Google.
+                                    <hr>
+                                    <p>Vous pouvez soutenir votre esthéticienne <b class="text-uppercase">gratuitement</b> en lui laissant un avis 5 étoiles sur Google. Brigitte est impatiente de vous lire!</p>
+                                    <a role="button" class="btn btn-secondary" href="https://g.page/r/CSK-XVInQPafEBM/review" target="_blank">Laissez votre avis</a>
+                                </dd>
+                            </dl>
+                            <dl class="position-relative overflow-hidden">
+                                <dt>
+                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto">
+                                        <img src="images/homepage/noun-euro-tag-603741.svg" alt="" class="carousel__summary-svg">
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <strong class="d-block text-center text-uppercase">accessibilité</strong>
+                                    Des prix abordables, accessibles à toutes.
+                                    <img src="images/homepage/Bath bomb-pana.svg" alt="" class="position-absolute carousel__summary-img carousel__summary-img--one d-none">
+                                </dd>
+                            </dl>
                         </div>
 
                     </div>
+
                 </section>
                 
             </div>

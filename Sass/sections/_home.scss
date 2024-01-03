@@ -108,6 +108,10 @@
     background-color: custom.$white-ish;
 }
 
+.carousel {
+    max-height: 70vh;
+}
+
 .carousel-indicators [data-bs-target] {
     text-indent: 0%;
     opacity: 1;
@@ -142,19 +146,6 @@
 
 
 }
-
-// .carousel__indicators {
-//     position: static;
-//     background-color: custom.$primary;
-//     text-indent: initial;
-    
-//     button {
-//         color: custom.$dark !important;
-//         opacity: 1 !important;
-//         background-color: custom.$primary !important;
-//         height: 100% !important;
-//     }
-// }
 
 
 .carousel__img {
@@ -226,4 +217,112 @@
 
 button[class|="carousel-control"] {
     width: 3rem;
+}
+
+.carousel__element {
+
+    figcaption {
+        text-transform: capitalize;
+    }
+}
+
+.carousel__title {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: custom.$secondary;
+}
+
+.carousel__summary {
+    // height: 37%;
+
+    dl {
+        padding: 1rem;
+        width: 20%;
+        text-align: center;
+        border: 1px solid custom.$dark;
+        border-radius: 1rem;
+        height: 80%;
+        transition: all .5s ease-in-out;
+        background-color: custom.$secondary;
+
+        // &:hover .carousel__summary-svg {
+        //     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        //     transition: all .5s ease-in-out;
+        // }
+
+        &:hover span {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+            transition: all .5s ease-in-out;
+        }
+
+        button {
+            background-color: custom.$secondary;
+            color: custom.$dark;
+            font-weight: 700;
+        }
+
+        strong {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.2rem;
+        }
+    }
+
+    dl:nth-child(2) {
+        height: 100%;
+        width: 25%;
+        background-color: custom.$primary;
+        box-shadow: 0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6), -0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6);
+        color: custom.$white-ish;
+        border: none;
+
+        span {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+            transition: all .5s ease-in-out;
+        }
+    }
+
+    span {
+        width: 85%;
+        // border: 3px solid;
+        aspect-ratio: 1 / 1;
+        background: url('../../images/homepage/flowerframe.svg');
+        background-size: 115% 115%;
+        background-position: 50% 60%;
+
+        img {
+            width: 40%;
+        }
+    }
+
+    &--hover {
+        background-color: custom.$primary !important;
+        height: 100% !important;
+        width: 25% !important;
+        box-shadow: 0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6), -0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6);
+        color: custom.$white-ish;
+        border: none !important;
+        transition: all .5s ease-in-out;
+    }
+
+    &-img {
+
+        opacity: 0.4;
+
+        &--one {
+            width: 120%;
+            top: 140%;
+            left: -10%;
+            transform: translate(0, -140%);
+        }
+
+        &--two {
+            width: 120%;
+            top: 100%;
+            left: -10%;
+            transform: translate(0, -100%);
+        }
+    }
+
 }
