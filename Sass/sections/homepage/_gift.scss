@@ -1,0 +1,26 @@
+@use '../../custom';
+
+.gift {
+    color: custom.$white-ish;
+    background: url('../../../images/homepage/giftbg2.svg');
+    background-size: cover;
+
+    &__text {
+
+        color: custom.$dark;
+
+
+        &--top {
+            width: 60%;
+        }
+
+        &--middle {
+            width: 80%;
+        }
+
+        &--bottom {
+            width: 70%;
+        }
+
+    }
+ }

@@ -1,4 +1,36 @@
 @use '../custom';
+<<<<<<< HEAD
+=======
+// @use '../components/functions';
+
+
+.homepage {
+    font-family: 'Raleway', sans-serif;
+}
+
+.heading-1 { // h2 for now
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    font-size: 2.3rem;
+}
+
+.subheading { // under a heading
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 946e42d (beginning of code cleanup)
 
 .subheader {
     font-family: 'Bodoni Moda', serif;
@@ -14,6 +46,7 @@ h4 {
     font-weight: 700;
 }
 
+<<<<<<< HEAD
 .home {
 
     h2 {
@@ -28,6 +61,11 @@ h4 {
     letter-spacing: 2px;
     font-weight: 200;
 }
+=======
+
+
+
+>>>>>>> 946e42d (beginning of code cleanup)
 
 .big {
     font-size: 3rem;

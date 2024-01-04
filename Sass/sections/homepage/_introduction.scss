@@ -1,0 +1,13 @@
+@use '../../custom';
+
+.intro {
+
+    &__content {
+
+        width: 100%;
+        
+        @include custom.media-breakpoint-up(lg) {
+            width: 75%;
+        }
+    }
+}

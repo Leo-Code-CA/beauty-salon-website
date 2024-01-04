@@ -1,0 +1,14 @@
+@use '../../custom';
+
+.features {
+
+
+    &__table {
+
+        border-radius: 10%;
+
+        @include custom.media-breakpoint-up(lg) {
+            width: 75%;
+        }
+    }
+}

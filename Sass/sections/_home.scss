@@ -3,6 +3,7 @@
 
 
 
+<<<<<<< HEAD
 .intro {
     @include custom.media-breakpoint-up(lg) {
         padding: functions.toRem(115) !important;
@@ -25,6 +26,34 @@
  .cadeau {
     color: custom.$white-ish;
  }
+=======
+
+.gift__btn {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 946e42d (beginning of code cleanup)
 
  .benefit__img {
     position: relative;
@@ -35,6 +64,7 @@
    border-radius: 10px;
  }
 
+<<<<<<< HEAD
 //  .benefit__img::after {
 //     content: "";
 //     position: absolute;
@@ -55,6 +85,9 @@
 //     left: 4%;
 //     // transform: translate(3%, 3%);
 //  }
+=======
+
+>>>>>>> 946e42d (beginning of code cleanup)
 
  .benefit__img--right {
     max-width: 25%;
@@ -70,6 +103,7 @@
    background-size: 50%, 100%;
 }
 
+<<<<<<< HEAD
 .gift__bg {
     background: url('../../images/homepage/shapeone.svg');
     background-repeat: no-repeat;
@@ -104,6 +138,8 @@
     
 }
 
+=======
+>>>>>>> 946e42d (beginning of code cleanup)
 .table, .table thead, .table th, .table td, .table tr {
     background-color: custom.$white-ish;
 }
