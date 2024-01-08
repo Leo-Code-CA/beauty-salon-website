@@ -4,23 +4,27 @@
     color: custom.$white-ish;
     background: url('../../../images/homepage/giftbg2.svg');
     background-size: cover;
+    height: calc(100vh - 56px);
 
     &__text {
-
         color: custom.$dark;
+        width: 80%;
+    }
 
+    &__btn {
+        font-family: 'Bodoni Moda', serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        width: 80%;
+    }
 
-        &--top {
-            width: 60%;
-        }
+    &__img {
+        max-height: 75%;
+    }
 
-        &--middle {
-            width: 80%;
-        }
-
-        &--bottom {
-            width: 70%;
-        }
-
+    &__icon {
+        max-width: 30%;
     }
  }

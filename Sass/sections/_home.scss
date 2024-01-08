@@ -3,39 +3,6 @@
 
 
 
-<<<<<<< HEAD
-.intro {
-    @include custom.media-breakpoint-up(lg) {
-        padding: functions.toRem(115) !important;
-    }
-
-    &__title {
-        font-family: 'Bodoni Moda', serif;
-        font-weight: 700;
-    }
-}
-
-.intro-img {
-    object-position: 50% 80%;
-}
-
- #bodyhome {
-     font-family: 'Raleway', sans-serif;
- }
-
- .cadeau {
-    color: custom.$white-ish;
- }
-=======
-
-.gift__btn {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    
-}
 
 
 
@@ -52,8 +19,6 @@
 
 
 
-
->>>>>>> 946e42d (beginning of code cleanup)
 
  .benefit__img {
     position: relative;
@@ -64,30 +29,6 @@
    border-radius: 10px;
  }
 
-<<<<<<< HEAD
-//  .benefit__img::after {
-//     content: "";
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     background-color: custom.$primary;
-//     z-index: -1;
-//  }
-
-//  .benefit__img--left::after {
-//     top: -4%;
-//     left: -3%;
-//     // transform: translate(-3%, -3%);
-//  }
-
-//  .benefit__img--right::after {
-//     top: 3%;
-//     left: 4%;
-//     // transform: translate(3%, 3%);
-//  }
-=======
-
->>>>>>> 946e42d (beginning of code cleanup)
 
  .benefit__img--right {
     max-width: 25%;
@@ -103,43 +44,6 @@
    background-size: 50%, 100%;
 }
 
-<<<<<<< HEAD
-.gift__bg {
-    background: url('../../images/homepage/shapeone.svg');
-    background-repeat: no-repeat;
-    background-position: 33% 50%;
-    background-size: 130%;
-    max-width: 60%;
-
-    p {
-        width: 60%;
-        text-align: center;
-    }
-
-    p:nth-of-type(2) {
-        width: 80%;
-    }
-
-    p:nth-of-type(3) {
-        width: 70%;
-    }
-}
-
-.gift__img {
-    width: 90%;
-}
-
-.gift__btn {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    
-}
-
-=======
->>>>>>> 946e42d (beginning of code cleanup)
 .table, .table thead, .table th, .table td, .table tr {
     background-color: custom.$white-ish;
 }
