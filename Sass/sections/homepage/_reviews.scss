@@ -1,0 +1,224 @@
+@use '../../custom';
+@use '../../components/functions';
+
+.carousel {
+
+    // CONTROL BUTTONS ABOVE THE CAROUSEL
+
+    &__controls [data-bs-target] {
+        text-indent: 0%;
+        opacity: 1;
+        background: linear-gradient(
+            180deg,
+            custom.$secondary,
+            custom.$primary
+        );
+        color: custom.$white-ish;
+
+    }
+
+    // LEFT PART OF THE CAROUSEL - ROUNDED IMAGE
+
+    &__img-holder {
+        width: 55%;
+        height: 80%; 
+    }
+
+    &__img {
+        height: 120%;
+        aspect-ratio: 1 / 1;
+
+        &:nth-child(1) img {
+            object-position: 50% 50%;
+        }
+
+        &:nth-child(2) img {
+            object-position: 50% 70%;
+        }
+
+        &:nth-child(3) img {
+            object-position: 40% 50%;
+        }
+
+        &:nth-child(4) img {
+            object-position: 50% 50%;
+        }
+
+        &:nth-child(5) img {
+            object-position: 60% 50%;
+        }
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    // CENTER PART OF THE CAROUSEL - REVIEW
+
+    &__review-holder {
+        width: 40%;
+        height: 90%;
+        border: functions.toRem(16) solid custom.$primary;
+        box-shadow: 3px 7px 15px rgba(custom.$dark, 0.6), -3px 7px 15px rgba(custom.$dark, 0.6);
+    }
+
+    &__icon {
+        width: 20%;
+    }
+
+    &____stars {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    // LEFT PART OF THE CAROUSEL - DECOR
+
+    &__decor-holder {
+        width: 5%;
+        height: 80%;
+    }
+
+    // PREVIOUS AND NEXT BUTTON ON THE SIDES OF THE CAROUSEL
+
+    &__arrows {
+        width: 3rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ONGOING 
+
+
+.summary__box {
+    width: 20%;
+    text-align: center;
+    border: 1px solid custom.$dark;
+    border-radius: 1rem;
+    height: 80%;
+    transition: all .5s ease-in-out;
+    background-color: custom.$secondary;
+
+
+    &:hover .summary__icon {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        transition: all .5s ease-in-out;
+    }
+
+    button {
+        background-color: custom.$secondary;
+        color: custom.$dark;
+        font-weight: 700;
+    }
+
+    strong {
+        font-family: 'Bodoni Moda', serif;
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// NOT DONE YET
+
+
+.carousel__summary {
+
+    width: 75%; // modify that to 100% and change the width of each dl
+    // also change all the dl to figure tags
+
+
+
+    dl:nth-child(2) {
+        height: 100%;
+        width: 25%;
+        background-color: custom.$primary;
+        box-shadow: 0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6), -0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6);
+        color: custom.$white-ish;
+        border: none;
+
+        span {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+            transition: all .5s ease-in-out;
+        }
+    }
+
+    span {
+        width: 85%;
+        // border: 3px solid;
+        aspect-ratio: 1 / 1;
+        background: url('../../../images/homepage/flowerframe.svg');
+        background-size: 115% 115%;
+        background-position: 50% 60%;
+
+        img {
+            width: 40%;
+        }
+    }
+
+    &--hover {
+        background-color: custom.$primary !important;
+        height: 100% !important;
+        width: 25% !important;
+        box-shadow: 0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6), -0.3rem 0.5rem 1rem rgba(custom.$dark, 0.6);
+        color: custom.$white-ish;
+        border: none !important;
+        transition: all .5s ease-in-out;
+    }
+
+    &-img {
+
+        opacity: 0.4;
+
+        &--one {
+            width: 120%;
+            top: 140%;
+            left: -10%;
+            transform: translate(0, -140%);
+        }
+
+        &--two {
+            width: 120%;
+            top: 100%;
+            left: -10%;
+            transform: translate(0, -100%);
+        }
+    }
+
+}

@@ -1,5 +1,5 @@
 @use '../custom';
-// @use '../components/functions';
+@use '../components/functions';
 
 
 .homepage {
@@ -13,10 +13,20 @@
 }
 
 .subheading { // under a heading
-    font-size: 12px;
-    letter-spacing: 2px;
-    font-weight: 200;
+    font-family: 'Raleway', sans-serif;
+    font-size: functions.toRem(12);
+    letter-spacing: functions.toRem(2);
+    font-weight: 400;
+    color: custom.$primary;
 }
+
+.emphasize { // emphasized larger text
+    font-size: 3rem;
+    font-weight: 200;
+    color: custom.$secondary;
+    font-family: 'Bodoni Moda', serif;
+}
+
 
 
 
@@ -47,21 +57,5 @@ h4 {
 
 
 
-.big {
-    font-size: 3rem;
-    // display: block;
-    font-weight: 200;
-    color: custom.$secondary;
-    font-family: 'Bodoni Moda', serif;
-}
 
-.benefit__p {
-    // max-width: 40%;
-    line-height: 3;
-    background-color: custom.$white-ish;
-  }
-
-.benefit__p--right {
-    max-width: 40%;
-}
 
