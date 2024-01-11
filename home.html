@@ -187,26 +187,7 @@
                         </h2>
 
                         <!-- CAROUSEL -->
-                        <div id="reviewsCarousel" class="carousel slide vh-100">
-
-                            <!-- TOP CAROUSEL CONTROLS BUTTONS
-                            <div class="carousel-indicators border-bottom">
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1" class="flex-fill active h-100 m-0 border-0">
-                                    coucou
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="flex-fill h-100 m-0 border-0">
-                                    coucou
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="flex-fill h-100 m-0 border-0">
-                                    coucou
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="3" aria-label="Slide 4" class="flex-fill h-100 m-0 border-0">
-                                    coucou
-                                </button>
-                                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="4" aria-label="Slide 5" class="flex-fill h-100 m-0 border-0">
-                                    coucou
-                                </button>
-                            </div> -->
+                        <div id="reviewsCarousel" class="carousel slide">
 
                             <!-- CONTROL BUTTONS ABOVE THE CAROUSEL -->
                             <div class="carousel__controls carousel-indicators position-static d-flex gap-3 w-75">
@@ -386,45 +367,42 @@
 
                         <!-- SUMMARY AND CALL TO ACTION -->
                         <h3 class="mb-5">Institut For You en quelques mots:</h3>
-                        <div class="col-12 d-flex carousel__summary mx-auto justify-content-center align-items-center gap-3">
-                            <dl class="position-relative overflow-hidden summary__box mb-0 p-3">
-                                <dt>
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto summary__icon">
-                                        <img src="images/homepage/noun-thanks-4182202.svg" alt="">
-                                    </span>
-                                </dt>
-                                <dd>
-                                    <strong class="d-block text-center text-uppercase">satisfaction</strong>
+                        <div class="col-12 d-flex summary justify-content-center align-items-center gap-3">
+                            <!-- LEFT SUMMARY BOX -->
+                            <figure class="position-relative overflow-hidden summary__box text-center bg-secondary mb-0 p-3">
+                                <span class="d-flex justify-content-center align-items-center rounded-circle mx-auto summary__icon">
+                                    <img src="images/homepage/noun-thanks-4182202.svg" alt="">
+                                </span>
+                                <figcaption>
+                                    <strong class="d-block text-center text-uppercase heading-4">satisfaction</strong>
                                     Des dizaines de femmes satisfaites depuis 2015.
-                                    <img src="images/homepage/womengroup.svg" alt="" class="position-absolute carousel__summary-img carousel__summary-img--two d-none">
-                                </dd>
-                            </dl>
-                            <dl class="carousel__summary--hover summary__box mb-0 p-3">
-                                <dt>
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto summary__icon">
-                                        <img src="images/homepage/noun-review-1966378.svg" alt="">
-                                    </span>
-                                </dt>
-                                <dd>
-                                    <strong class="d-block text-center text-uppercase">excellence</strong>
+                                    <img src="images/homepage/womengroup.svg" alt="" class="position-absolute summary__img summary__img--left d-none">
+                                </figcaption>
+                            </figure>
+                            <!-- CENTER SUMMARY BOX -->
+                            <figure class="summary__box summary__box--highlight text-center bg-secondary mb-0 p-3">
+                                <span class="d-flex justify-content-center align-items-center rounded-circle mx-auto summary__icon">
+                                    <img src="images/homepage/noun-review-1966378.svg" alt="">
+                                </span>
+                                <figcaption>
+                                    <strong class="d-block text-center text-uppercase heading-4">excellence</strong>
                                     5 / 5 étoiles sur plus de 40 avis Google.
                                     <hr>
                                     <p>Vous pouvez soutenir votre esthéticienne <b class="text-uppercase">gratuitement</b> en lui laissant un avis 5 étoiles sur Google. Brigitte est impatiente de vous lire!</p>
-                                    <a role="button" class="btn btn-secondary" href="https://g.page/r/CSK-XVInQPafEBM/review" target="_blank">Laissez votre avis</a>
-                                </dd>
-                            </dl>
-                            <dl class="position-relative overflow-hidden summary__box mb-0 p-3">
-                                <dt>
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto summary__icon">
-                                        <img src="images/homepage/noun-euro-tag-603741.svg" alt="">
-                                    </span>
-                                </dt>
-                                <dd>
-                                    <strong class="d-block text-center text-uppercase">accessibilité</strong>
+                                    <a role="button" class="btn btn-secondary" href="https://g.page/r/CSK-XVInQPafEBM/review" target="_blank" class="bg-secondary text-dark fw-bold">Laissez votre avis</a>
+                                </figcaption>
+                            </figure>
+                            <!-- RIGHT SUMMARY BOX -->
+                            <figure class="position-relative overflow-hidden summary__box text-center bg-secondary mb-0 p-3">
+                                <span class="d-flex justify-content-center align-items-center rounded-circle mx-auto summary__icon">
+                                    <img src="images/homepage/noun-euro-tag-603741.svg" alt="">
+                                </span>
+                                <figcaption>
+                                    <strong class="d-block text-center text-uppercase heading-4">accessibilité</strong>
                                     Des prix abordables, accessibles à toutes.
-                                    <img src="images/homepage/Bath bomb-pana.svg" alt="" class="position-absolute carousel__summary-img carousel__summary-img--one d-none">
-                                </dd>
-                            </dl>
+                                    <img src="images/homepage/Bath bomb-pana.svg" alt="" class="position-absolute summary__img summary__img--right d-none">
+                                </figcaption>
+                            </figure>
                         </div>
 
                     </div>

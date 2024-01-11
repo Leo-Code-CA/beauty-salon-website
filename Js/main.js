@@ -76,67 +76,17 @@ getPlaceDetails();
 
 
 
-// const chose = document.querySelectorAll('.carousel__btn');
-// const span = document.querySelectorAll('.carousel__btn span');
-// const controlright = document.querySelector('.carousel-control-prev');
-// const controlleft = document.querySelector('.carousel-control-next');
 
-// // console.log(controlleft);
-// // console.log(controlright)
+const summaryBox = document.querySelectorAll('.summary__box:nth-child(1), .summary__box:nth-child(3)');
 
-
-// controlleft.addEventListener('click', arrow);
-// controlright.addEventListener('click', arrow);
-// chose.forEach(btn => btn.addEventListener('click', arrow));
-
-// function arrow() {
-
-//     chose.forEach(span => {
-
-//         if (span.classList.contains('active')) {
-
-//             span.classList.add('color');
-
-//         } else {
-
-//             span.classList.remove('color');
-
-//         }
-
-//     })
-
-// }
-
-const summary = document.querySelectorAll('.carousel__summary dl');
-const svg = document.querySelectorAll('.carousel__summary-img');
-
-
-summary.forEach(function(elem, i) {
+summaryBox.forEach(function(elem, i) {
 
     elem.addEventListener('mouseover', function() {
-        elem.classList.add('carousel__summary--hover');
-
-        if (i === 0) {
-            svg[0].classList.remove('d-none');
-        } else if (i === 2) {
-            svg[1].classList.remove('d-none');
-        }
-
-        // let svg = document.querySelector(`${this} .carousel__summary-img`);
-        // svg.classList.remove('d-none');
+        elem.classList.add('summary__box--highlight');
     })
 
     elem.addEventListener('mouseout', function() {
-        elem.classList.remove('carousel__summary--hover');
-
-        if (i === 0) {
-            svg[0].classList.add('d-none');
-        } else if (i === 2) {
-            svg[1].classList.add('d-none');
-        }
-
-        // let svg = document.querySelector(`${this} .carousel__summary-img`);
-        // svg.classList.add('d-none');
+        elem.classList.remove('summary__box--highlight');
     })
 
 });
