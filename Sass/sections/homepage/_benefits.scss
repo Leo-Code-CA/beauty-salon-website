@@ -2,12 +2,12 @@
 @use '../../components/functions';
 
 .benefit {
-    background-image: url('../../../images/homepage/blob-scatter-haikei\ \(2\).svg');
+    background-image: url('../../../images/homepage/blob_pink_background.svg');
     background-size: 100% 100%;
 
     &__p {
         line-height: 3;
-        background-color: custom.$white-ish;
+        background-color: custom.$white;
     
         &--left {
             max-width: 40%;
@@ -16,7 +16,7 @@
 
     &__img {
         box-shadow: functions.toRem(15) functions.toRem(15) custom.$primary,
-        25px 25px functions.toRem(25) rgba(custom.$dark, 0.7);
+        functions.toRem(25) functions.toRem(25) functions.toRem(25) rgba(custom.$dark, 0.7);
 
         &--right {
             max-width: 25%;

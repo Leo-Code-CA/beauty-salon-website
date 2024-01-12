@@ -1,7 +1,6 @@
 @use '../custom';
 @use '../components/functions';
 
-
 .homepage {
     font-family: 'Raleway', sans-serif;
 }
@@ -9,13 +8,19 @@
 .heading-1 { // h2 for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    font-size: 2.3rem;
+    font-size: functions.toRem(36.8);
+}
+
+.heading-2 { // h3 for now
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    font-size: functions.toRem(32);
 }
 
 .heading-4 { // strong tag for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: functions.toRem(19.2);
 }
 
 .subheading { // under a heading
@@ -27,36 +32,10 @@
 }
 
 .emphasize { // emphasized larger text
-    font-size: 3rem;
+    font-size: functions.toRem(48);
     font-weight: 200;
     color: custom.$secondary;
     font-family: 'Bodoni Moda', serif;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.subheader {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 700;
-}
-
-h3 .subheader--under {
-    margin-bottom: -60px;
-}
-
-h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
 }
 
 

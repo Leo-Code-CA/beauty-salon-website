@@ -5,16 +5,10 @@
 
     &__table {
 
-        background-color: custom.$white-ish;
-
         border-radius: 10%;
 
         @include custom.media-breakpoint-up(lg) {
             width: 75%;
-        }
-
-        td, th {
-            background-color: custom.$white-ish;
         }
     }
 }

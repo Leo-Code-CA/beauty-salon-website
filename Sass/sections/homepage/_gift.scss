@@ -1,10 +1,11 @@
 @use '../../custom';
+@use '../../components/functions';
 
 .gift {
-    color: custom.$white-ish;
-    background: url('../../../images/homepage/giftbg2.svg');
+    color: custom.$white;
+    background: url('../../../images/homepage/pink_wave_background.svg');
     background-size: cover;
-    height: calc(100vh - 56px);
+    height: calc(100vh - functions.toRem(56));
 
     &__text {
         color: custom.$dark;
@@ -15,8 +16,8 @@
     &__btn {
         font-family: 'Bodoni Moda', serif;
         font-weight: 700;
-        font-size: 1.2rem;
-        letter-spacing: 5px;
+        font-size: functions.toRem(19.2);
+        letter-spacing: functions.toRem(5);
         text-transform: uppercase;
         width: 80%;
     }

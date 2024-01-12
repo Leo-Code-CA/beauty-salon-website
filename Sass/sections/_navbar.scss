@@ -7,8 +7,8 @@
     &__toggler {
         width: functions.toRem(45);
         height: functions.toRem(40);
-        color: custom.$white-ish;
-        border: functions.toRem(1) solid custom.$white-ish-03;
+        color: custom.$white;
+        border: functions.toRem(1) solid custom.$white-03;
 
         &--search {
             font-size: functions.toRem(18);
@@ -43,7 +43,7 @@
     }
 
     &__search-btn {
-        background-color: custom.$white-ish;
+        background-color: custom.$white;
         border-radius: functions.toRem(8);
     }
 

@@ -6,7 +6,7 @@
 .carousel {
 
     max-height: 100vh;
-    margin-bottom: -4rem; // WHY DO I NEED THAT?????????????
+    margin-bottom: functions.toRem(64); // WHY DO I NEED THAT?????????????
 
     // CONTROL BUTTONS ABOVE THE CAROUSEL
 
@@ -18,7 +18,7 @@
             custom.$secondary,
             custom.$primary
         );
-        color: custom.$white-ish;
+        color: custom.$white;
     }
 
     // LEFT PART OF THE CAROUSEL - ROUNDED IMAGE
@@ -112,7 +112,7 @@
             height: 100% !important;
             width: 20% !important;
             box-shadow: functions.toRem(4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6), functions.toRem(-4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6);
-            color: custom.$white-ish;
+            color: custom.$white;
             border: none !important;
             transition: all .5s ease-in-out;
 
@@ -150,7 +150,7 @@
 
         width: 90%;
         aspect-ratio: 1 / 1;
-        background: url('../../../images/homepage/download.svg');
+        background: url('../../../images/homepage/flower_frame_background.svg');
         background-size: 115% 115%;
         background-position: 50% 50%;
 

@@ -1,37 +1,43 @@
 @use '../custom';
+@use '../components/functions';
 
 .footer {
-    color: custom.$white-ish;
-    font-family: 'Raleway', sans-serif;
+    color: custom.$white;
+    background-image: url('../../images/footer/woman_cocktail_illustration.png');
+    background-repeat: no-repeat;
+    background-size: auto 115%;
+    background-position: 115% 0%;
 
-    h3 {
-        font-size: 2rem;
-    }
-
-    &__map {
-        height: 300px;
-        // background-color: rgb(232, 232, 232);
-    }
-
-    &__img {
-        opacity: 0.5;
-        width: 175%;
-        position: absolute;
-        top: 0;
-        left: -15%;
-        transform: translate(-15%, 0%);
-
-    }
-
-    &__hr {
+    &__separator {
         width: 63%;
     }
 
-    a {
-        color: custom.$white-ish;
+    // CONTACT SECTION
+
+    &__btn {
         text-decoration: none;
-        letter-spacing: 2px;
+        letter-spacing: functions.toRem(2);
         font-weight: 700;
+    }
+
+
+    &__contact-icon {
+        height: 110%;
+
+        &--email {
+            left: 5%;
+            top: 10%;
+        }
+
+        &--phone {
+            left: 5%;
+            top: 20%;
+        }
+    }
+
+    // MAP SECTION
+    &__map {
+        height: functions.toRem(300);
     }
 
     &__bubble {
@@ -41,25 +47,15 @@
         h3 {
             font-family: 'Bodoni Moda', serif;
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: functions.toRem(20.8);
         }
 
         p {
             margin: 0;
-            font-size: 0.8rem;
+            font-size: functions.toRem(12.8);
         }
     }
+
 }
 
-h3 span {
-    font-size: 10px;
-}
 
-small span {
-    font-size: 20px;
-}
-
-#change {
-    font-weight: 400;
-    letter-spacing: initial;
-}
