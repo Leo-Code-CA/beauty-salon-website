@@ -23,16 +23,14 @@ async function initMap() {
     map.setCenter({lat: 47.81035232543945, lng: 4.6635764});
 
     // create the marker (pin) and set its animation
+    const icon = google.maps.Icon = {url: '/images/homepage/pin_icon.svg'}
+    
     marker = new Marker({
         map: map,
         position: position,
         clickable: true,
         icon: icon,
     })
-
-    const icon = google.maps.Icon = {
-        url: '/images/homepage/pin_icon.svg'
-    }
 
     marker.setAnimation(Animation.DROP);
 

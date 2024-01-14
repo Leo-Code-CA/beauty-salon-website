@@ -8,14 +8,16 @@
 .heading-1 { // h2 for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    font-size: functions.toRem(36.8);
+    font-size: clamp(functions.toRem(28), calc(functions.toRem(28) + 0.65vw), functions.toRem(37));
 }
 
 .heading-2 { // h3 for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    font-size: functions.toRem(32);
+    font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
 }
+
+// modify those below with clamp function when responsiveness will have progressed
 
 .heading-4 { // strong tag for now
     font-family: 'Bodoni Moda', serif;

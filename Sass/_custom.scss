@@ -10,7 +10,7 @@ $white-03: hsla(0, 33%, 98%, 0.3);
 $white-05: hsla(0, 33%, 98%, 0.5);
 
 // FONTS
-$body-fs: clamp(functions.toRem(14), functions.toRem(14) + 2vw, functions.toRem(18));
+$body-fs: clamp(functions.toRem(14), calc(14px + 0.17vw), functions.toRem(17)) !important;
 
 // NAVBAR
 $navbar-light-color: $white;
@@ -37,6 +37,10 @@ $dropdown-header-color: $white-05;
 $dropdown-item-padding-x: functions.toRem(23);
 $dropdown-header-padding-x: functions.toRem(15);
 
+// BLOCKQUOTE
+$blockquote-footer-color: $dark;
+$blockquote-footer-font-size: $body-fs;
+
 // GLOBAL SETTINGS
 *, *::after, *::before {
     padding: 0;
@@ -46,8 +50,8 @@ $dropdown-header-padding-x: functions.toRem(15);
 body {
     width: 100%;
     min-height: 100vh;
-    font-size: $body-fs;
     overflow-y: scroll;
+    font-size: $body-fs;
 }
 
 // IMPORT BOOTSTRAP

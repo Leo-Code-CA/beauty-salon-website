@@ -2,12 +2,34 @@
 
 .intro {
 
+    
+
     &__content {
 
         width: 100%;
         
         @include custom.media-breakpoint-up(lg) {
             width: 75%;
+        }
+    }
+
+    &__containers {
+
+        height: 50%;
+
+        @include custom.media-breakpoint-up(lg) {
+            height: 100%;
+        }
+
+        video {
+            object-fit: cover;
+        }
+
+        p {
+
+            @include custom.media-breakpoint-up(lg) {
+                line-height: 2;
+            }
         }
     }
 }

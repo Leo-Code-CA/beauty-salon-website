@@ -220,47 +220,7 @@ Offrir un moment de calme et de détente à vos proches n'est qu'à un clic prè
 
 
 
-/////////////////////////// SUMMARY
-
-<!-- SUMMARY AND CALL TO ACTION -->
-                        <h3 class="mb-5">Institut For You en quelques mots:</h3>
-                        <div class="col-12 d-flex carousel__summary mx-auto justify-content-center align-items-center gap-3">
-                            <dl class="position-relative overflow-hidden summary__box mb-0 p-3">
-                                <dt>
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto summary__icon">
-                                        <img src="images/homepage/noun-thanks-4182202.svg" alt="">
-                                    </span>
-                                </dt>
-                                <dd>
-                                    <strong class="d-block text-center text-uppercase">satisfaction</strong>
-                                    Des dizaines de femmes satisfaites depuis 2015.
-                                    <img src="images/homepage/womengroup.svg" alt="" class="position-absolute carousel__summary-img carousel__summary-img--two d-none">
-                                </dd>
-                            </dl>
-                            <dl class="carousel__summary--hover summary__box mb-0 p-3">
-                                <dt>
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto summary__icon">
-                                        <img src="images/homepage/noun-review-1966378.svg" alt="">
-                                    </span>
-                                </dt>
-                                <dd>
-                                    <strong class="d-block text-center text-uppercase">excellence</strong>
-                                    5 / 5 étoiles sur plus de 40 avis Google.
-                                    <hr>
-                                    <p>Vous pouvez soutenir votre esthéticienne <b class="text-uppercase">gratuitement</b> en lui laissant un avis 5 étoiles sur Google. Brigitte est impatiente de vous lire!</p>
-                                    <a role="button" class="btn btn-secondary" href="https://g.page/r/CSK-XVInQPafEBM/review" target="_blank">Laissez votre avis</a>
-                                </dd>
-                            </dl>
-                            <dl class="position-relative overflow-hidden summary__box mb-0 p-3">
-                                <dt>
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mb-3 mx-auto summary__icon">
-                                        <img src="images/homepage/noun-euro-tag-603741.svg" alt="">
-                                    </span>
-                                </dt>
-                                <dd>
-                                    <strong class="d-block text-center text-uppercase">accessibilité</strong>
-                                    Des prix abordables, accessibles à toutes.
-                                    <img src="images/homepage/Bath bomb-pana.svg" alt="" class="position-absolute carousel__summary-img carousel__summary-img--one d-none">
-                                </dd>
-                            </dl>
-                        </div>
+///////////// TO DO //////////////
+- finish to update the font-size
+- finish to fill the alt attribute of img tags
+- change the height of the intro section with js
