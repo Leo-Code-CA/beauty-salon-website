@@ -86,4 +86,3 @@ const videoObserver = new IntersectionObserver(entries => {
 
 videoObserver.observe(targetVideo);
 
-

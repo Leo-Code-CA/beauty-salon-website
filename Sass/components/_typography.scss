@@ -25,6 +25,12 @@
     font-size: functions.toRem(19.2);
 }
 
+.heading-5 {
+    font-family: 'Raleway', sans-serif;
+    font-size: functions.toRem(19.2);
+    font-weight: 700;
+}
+
 .subheading { // under a heading
     font-family: 'Raleway', sans-serif;
     font-size: functions.toRem(12);
@@ -37,6 +43,14 @@
     font-size: functions.toRem(48);
     font-weight: 200;
     color: custom.$secondary;
+    font-family: 'Bodoni Moda', serif;
+}
+
+.cutout {
+    color: custom.$white;
+    background-color: custom.$primary;
+    mix-blend-mode: multiply;
+    font-size: 3rem;
     font-family: 'Bodoni Moda', serif;
 }
 

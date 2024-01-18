@@ -222,5 +222,5 @@ Offrir un moment de calme et de détente à vos proches n'est qu'à un clic prè
 
 ///////////// TO DO //////////////
 - finish to update the font-size
-- finish to fill the alt attribute of img tags
 - change the height of the intro section with js
+- decide if you want to keep the nav in home or the div for navbar

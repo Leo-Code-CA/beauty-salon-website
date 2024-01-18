@@ -2,7 +2,11 @@
 
 .intro {
 
-    
+    // remove later
+
+    strong {
+        width: min-content;
+    }
 
     &__content {
 
@@ -15,21 +19,20 @@
 
     &__containers {
 
-        height: 50%;
+        height: 100%;
 
         @include custom.media-breakpoint-up(lg) {
             height: 100%;
         }
 
-        video {
-            object-fit: cover;
-        }
-
         p {
+
+            line-height: 2;
 
             @include custom.media-breakpoint-up(lg) {
                 line-height: 2;
             }
         }
     }
+
 }
