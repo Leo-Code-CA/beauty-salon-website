@@ -2,10 +2,9 @@
 
 .intro {
 
-    // remove later
-
-    strong {
-        width: min-content;
+    &__title {
+        width: 85%;
+        height: 40%;
     }
 
     &__content {

@@ -47,56 +47,94 @@ handleFetchHeader();
 
 // MOBILE AND TABLET INTRO ANIMATION
 
-
-
 const cutout = document.querySelector(".cutout");
 const cutoutBox = document.querySelector("#cutoutbox");
 
-const compliment = ["patience", "bienveillance", "sérieux", "douceur", "gentillesse", "attention", "soin", "serviabilité", "respect", "considération", "politesse", "sérénité", "tendresse", "calme", "humanité", "finesse", "délicatesse", "amabilité", "tranquillité", "le sourire", "harmonie", "assurance", "professionnalisme"];
+const compliment = ["patience", "sérieux", "douceur", "gentillesse", "attention", "serviabilité", "respect", "considération", "politesse", "tendresse", "finesse", "délicatesse", "amabilité", "harmonie", "assurance", "professionnalisme", "sympathie", "tolérance", "cordialité", "générosité", "prévenance", "bienveillance"];
 
+// total 19 000ms
+// total 20 words
 
-async function titleAnimation() {
-
-    let count = 0;
-
-    while (count < compliment.length) {
-
-        let word = new Promise((resolve) => {
-            setTimeout(() => resolve(compliment[count]), 3000)
-        })
-    
-        cutout.innerHTML = await word;
-        handleFontSize();
-        count++
-        console.log(count);
-
-    }
-
+function delay(sec, count) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(compliment[count])
+        }, sec)
+    })
 }
 
-titleAnimation();
+async function textAnimation() {
+
+    let count = 0;
+    let sec = 0;
+
+    while (count <= compliment.length) {
+
+        if (count === compliment.length) {
+            count = 0;
+            sec = 2500;
+        }
+
+        cutout.textContent = await delay(sec, count);
+        handleFontSize();
+        count++;
+        sec === 0 ? sec = 2500
+        : sec < 400 ? sec = 400
+        : sec < 1000 ? sec -= 100
+        : sec < 2000 ? sec -= 250
+        : sec < 3000 ? sec -= 300
+        : sec -= 100;
+    }
+}
+
+textAnimation();
+
+
+// async function titleAnimation() {
+
+//     let count = 0;
+
+//     while (count < compliment.length) {
+
+//         let word = new Promise((resolve) => {
+//             setTimeout(() => resolve(compliment[count]), 3000)
+//         })
+    
+//         cutout.innerHTML = await word;
+//         handleFontSize();
+//         count++
+//     }
+
+// }
+
+// titleAnimation();
 
 function handleFontSize() {
 
     let cutoutWidth = cutout.clientWidth;
     let cutoutBoxWidth = cutoutBox.clientWidth;
-    const currentFontSize = 48;
+    const currentFontSize = Number(window.getComputedStyle(cutout).fontSize.replaceAll(/p|x/g, ""));
     let nextFontSize = currentFontSize;
 
-    // while (cutoutWidth > cutoutBoxWidth) {
-    //     cutoutWidth = cutout.clientWidth;
-    //     cutoutBoxWidth = cutoutBox.clientWidth;
-    //     nextFontSize -= 10;
-    //     cutout.style.fontSize = `${nextFontSize}px`;
-    //     console.log(nextFontSize);
-    // }
+    if (cutoutWidth > cutoutBoxWidth) {
 
-    while (cutoutWidth > cutoutBoxWidth) {
-        cutoutWidth = cutout.clientWidth;
-        cutoutBoxWidth = cutoutBox.clientWidth;
-        nextFontSize -= 1;
-        cutout.style.fontSize = `${nextFontSize}px`;
-        console.log(nextFontSize);
+        while (cutoutWidth > cutoutBoxWidth) {
+            cutoutWidth = cutout.clientWidth;
+            cutoutBoxWidth = cutoutBox.clientWidth;
+            nextFontSize -= 1;
+            cutout.style.fontSize = `${nextFontSize}px`;
+        }
+
+    } else {
+
+        while (cutoutWidth < cutoutBoxWidth) {
+            cutoutWidth = cutout.clientWidth;
+            cutoutBoxWidth = cutoutBox.clientWidth;
+            nextFontSize += 1;
+            cutout.style.fontSize = `${nextFontSize}px`;
+        }
+
     }
+
 
 }
