@@ -139,3 +139,10 @@ toggler.forEach(arrow => arrow.addEventListener("click", function() {
 })
 )
 
+// MAKE ALL TD's CONTENT FILL THE TD HEIGHT
+
+const tr = document.querySelector('#tr');
+const innerTd = document.querySelectorAll('.features__td');
+const trHeight = tr.clientHeight;
+
+innerTd.forEach(td => td.style.height = trHeight + "px");
