@@ -224,3 +224,109 @@ Offrir un moment de calme et de détente à vos proches n'est qu'à un clic prè
 - finish to update the font-size
 - change the height of the intro section with js
 - decide if you want to keep the nav in home or the div for navbar
+
+
+
+
+
+
+//// three tables 
+
+
+
+
+
+
+
+
+
+
+                        <!-- FEATURES TABLE -->
+                        <!-- TABLE ONE -->
+                        <table class="features__table table table-bordered mx-auto mt-3">
+                            <thead class="text-center">
+                                <tr>
+                                    <th class="fs-4">
+                                        Sourcils
+                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-4">
+                                        <div>
+                                            <img loading="lazy" src="images/homepage/eyebrow_waxing_image.jpg" alt="woman getting her eyebrow waxed - image" class="img-fluid rounded">
+                                        </div>
+                                        <ul class="mt-3">
+                                            <li>Réalisée de facon professionnelle, l'épilation des sourcils met en valeur votre visage.
+                                            </li>
+                                            <li>Au fil des épilations, la repousse est plus fine et lente.</li>
+                                            <li>Une crème apaisante est utilisée pour réduire le risque de ressentir quelconque désagrément.</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button type="button" class="btn btn-primary">Réserver</button>
+                                            <button type="button" class="btn btn-primary">Découvrir</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- TABLE TWO -->
+                        <table class="features__table table table-bordered mx-auto mt-3">
+                            <thead class="text-center">
+                                <tr>
+                                    <th class="fs-4">
+                                        Demi-Jambes
+                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-4">
+                                        <div>
+                                            <img loading="lazy" src="images/homepage/leg_waxing_image.jpg" alt="woman getting her calf waxed - image" class="img-fluid rounded">
+                                        </div>
+                                        <ul class="mt-3">
+                                            <li>Avant chaque épilation, votre peau est préparée avec une lotion à base d'eau florale au bleuet.</li>
+                                            <li>Des cires de fabricants français réputés sont utilisées pour vous proccurer une épilation en douceur.</li>
+                                            <li>Après l'épilation, un lait hydratant ou une huile vous sont proposés.</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button type="button" class="btn btn-primary">Réserver</button>
+                                            <button type="button" class="btn btn-primary">Découvrir</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- TABLE THREE -->
+                        <table class="features__table table table-bordered mx-auto mt-3">
+                            <thead class="text-center">
+                                <tr>
+                                    <th class="fs-4">
+                                        Kobido Suprême
+                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">massage</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-4">
+                                        <div>
+                                            <img loading="lazy" src="images/homepage/forehead_massage_image.jpg" alt="woman getting a forehead massage - image" class="img-fluid rounded">
+                                        </div>
+                                        <ul class="mt-3">
+                                            <li>Plus qu'un massage, le kobido est un art traditionnel japonnais.</li>
+                                            <li>Son effet tonnifiant et lissant (sans injection!) lui valent le surnom de lifting naturel.</li>
+                                            <li>La libération des tensions musculaires offre une sensation de relaxation profonde.</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button type="button" class="btn btn-primary">Réserver</button>
+                                            <button type="button" class="btn btn-primary">Découvrir</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>

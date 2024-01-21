@@ -2,6 +2,27 @@
 
 .features {
 
+    &__toggle {
+
+        background-color: none !important;
+        
+        &::after {
+            content: none !important;
+        }
+    }
+
+    &__arrow {
+        top: 7%;
+        left: 90%;
+        
+        &--up {
+            transform: translate(-90%, -7%) rotate(270deg);
+        } 
+
+        &--down {
+            transform: translate(-90%, -7%) rotate(90deg);
+        }
+    }
 
     &__table {
 

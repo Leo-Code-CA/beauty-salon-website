@@ -1,4 +1,4 @@
- // Focus state function - DESIGN
+// Focus state function - DESIGN
  const focusState = (firstElemID, secondElemID, className) => {
 
     const focusedElem = document.getElementById(firstElemID);
@@ -11,17 +11,20 @@
 
 // Set the dimensions (height and margin) of the intro section
 
-const mqLarge  = window.matchMedia('(min-width: 992px)');
+const mqLarge = window.matchMedia('(min-width: 992px)');
 mqLarge.addEventListener('change', handleMainDimensions);
 
 function handleMainDimensions(e) {
 
     const navHeight = document.getElementById('nav').offsetHeight;
     const introSection = document.getElementById('intro');
+    const videoContainer = document.querySelector('.intro__containers:nth-of-type(1)');
+    console.log(videoContainer); // probably not needed you can remove 
 
     introSection.style.marginTop = navHeight + "px";
 
-    e.matches ? introSection.style.height = `calc(100vh - ${navHeight}px)` : 'auto';
+    e.matches ? introSection.style.height = `calc(100vh - ${navHeight}px)` 
+    : videoContainer.style.height = `calc(100vh - ${navHeight}px)`;
 
 }
 
@@ -45,15 +48,12 @@ function handleFetchHeader() {
 
 handleFetchHeader();
 
-// MOBILE AND TABLET INTRO ANIMATION
+// MOBILE AND TABLET INTRO ANIMATION - MOVE TO HOME.JS - FIND A WAY TO STOP IT (BY THE USER AND WHEN VIDEO IS PAUSED)
 
 const cutout = document.querySelector(".cutout");
 const cutoutBox = document.querySelector("#cutoutbox");
 
 const compliment = ["patience", "sérieux", "douceur", "gentillesse", "attention", "serviabilité", "respect", "considération", "politesse", "tendresse", "finesse", "délicatesse", "amabilité", "harmonie", "assurance", "professionnalisme", "sympathie", "tolérance", "cordialité", "générosité", "prévenance", "bienveillance"];
-
-// total 19 000ms
-// total 20 words
 
 function delay(sec, count) {
     return new Promise(resolve => {
@@ -72,42 +72,23 @@ async function textAnimation() {
 
         if (count === compliment.length) {
             count = 0;
-            sec = 2500;
+            sec = 2300;
         }
 
-        cutout.textContent = await delay(sec, count);
         handleFontSize();
+
+        cutout.textContent = await delay(sec, count);
+        
         count++;
-        sec === 0 ? sec = 2500
+        sec === 0 ? sec = 2300
         : sec < 400 ? sec = 400
         : sec < 1000 ? sec -= 100
         : sec < 2000 ? sec -= 250
         : sec < 3000 ? sec -= 300
         : sec -= 100;
     }
+
 }
-
-textAnimation();
-
-
-// async function titleAnimation() {
-
-//     let count = 0;
-
-//     while (count < compliment.length) {
-
-//         let word = new Promise((resolve) => {
-//             setTimeout(() => resolve(compliment[count]), 3000)
-//         })
-    
-//         cutout.innerHTML = await word;
-//         handleFontSize();
-//         count++
-//     }
-
-// }
-
-// titleAnimation();
 
 function handleFontSize() {
 
@@ -119,18 +100,22 @@ function handleFontSize() {
     if (cutoutWidth > cutoutBoxWidth) {
 
         while (cutoutWidth > cutoutBoxWidth) {
+
             cutoutWidth = cutout.clientWidth;
             cutoutBoxWidth = cutoutBox.clientWidth;
-            nextFontSize -= 1;
+            nextFontSize -= 0.1;
             cutout.style.fontSize = `${nextFontSize}px`;
+
+            // console.log(nextFontSize)
         }
 
     } else {
 
         while (cutoutWidth < cutoutBoxWidth) {
+
             cutoutWidth = cutout.clientWidth;
             cutoutBoxWidth = cutoutBox.clientWidth;
-            nextFontSize += 1;
+            nextFontSize += 0.1;
             cutout.style.fontSize = `${nextFontSize}px`;
         }
 
@@ -138,3 +123,19 @@ function handleFontSize() {
 
 
 }
+
+textAnimation();
+
+// FEATURES ARROW ANIMATION - MOVE TO HOME.JS
+
+const toggler = document.querySelectorAll('.features__toggle');
+
+toggler.forEach(arrow => arrow.addEventListener("click", function() {
+
+    const currentArrow = this.children[3];
+    const classesToToggle = ["features__arrow--up", "features__arrow--down"];
+
+    classesToToggle.map(classToggle => currentArrow.classList.toggle(classToggle));
+})
+)
+
