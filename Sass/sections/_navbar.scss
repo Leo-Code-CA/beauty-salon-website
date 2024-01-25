@@ -5,6 +5,22 @@
 
 .navbar {
 
+    &__logo {
+
+        @media (orientation: portrait) {
+
+            max-width: 50%;
+            
+            @include custom.media-breakpoint-up(sm) {
+                max-width: 20%;
+            }
+        }
+
+        @media (orientation: landscape) {
+            max-width: 15%;
+        }
+    }
+
     &__toggler {
         width: functions.toRem(45);
         height: functions.toRem(40);

@@ -11,6 +11,7 @@ $white-05: hsla(0, 33%, 98%, 0.5);
 
 // FONTS
 $body-fs: clamp(functions.toRem(14), calc(14px + 0.17vw), functions.toRem(17)) !important;
+$body-landscape-fs: clamp(functions.toRem(12), calc(12px + 0.17vw), functions.toRem(15));
 
 // NAVBAR
 $navbar-light-color: $white;
@@ -50,6 +51,17 @@ body {
     min-height: 100vh;
     overflow-y: scroll;
     font-size: $body-fs;
+
+    @media (orientation: landscape) {
+
+        font-size: $body-landscape-fs !important;
+
+
+        @media screen and (min-width: 992px) {
+            font-size: $body-fs;
+        } 
+        
+    }
 }
 
 // IMPORT BOOTSTRAP

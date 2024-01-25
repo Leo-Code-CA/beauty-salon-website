@@ -1,30 +1,189 @@
 @use '../../custom';
+@use '../../components/functions';
+
+// .intro {
+
+//     @media (orientation: landscape) {
+//         flex-direction: row !important;
+//     }
+
+//     &__animatedTitle { // animated title 
+//         width: 85%;
+//         height: 40%;
+
+//         @media (orientation: landscape) {
+//             display: none !important;
+//         }
+
+//         @include custom.media-breakpoint-up(md) {
+//             width: 70%;
+//         }
+
+//         span {
+//             white-space: nowrap;
+//         }
+//     }
+
+//     &__textContent { // paragraphs container
+
+//         width: 100%;
+//         background-color: custom.$secondary;
+        
+//         @include custom.media-breakpoint-up(lg) {
+//             width: 75%;
+//             background-color: transparent;
+//         }
+//     }
+
+//     &__containers { // text and video containers
+
+//         @media (orientation: landscape) {
+//             width: 50%;
+//         }
+//     }
+
+// }
+
+
+
+
+
+///////////////////////////////////////////////
+
 
 .intro {
 
-    &__title {
-        width: 85%;
-        height: 40%;
-    }
+    // ALL BREAKPOINTS 
 
-    &__content {
+    margin-top: functions.toRem(56);
 
-        width: 100%;
-        background-color: custom.$secondary;
-        
-        @include custom.media-breakpoint-up(lg) {
-            width: 75%;
-            background-color: transparent;
+     /////////////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ///////////////////
+    @media (orientation: portrait) {
+
+        height: auto;
+        flex-direction: column;
+
+        &__containers {
+            width: 100%;
+
+            &--video {
+                height: calc(100vh - functions.toRem(56));
+                width: 100%;
+            }
+
+            &--text {
+                padding: functions.toRem(10);
+            }
+        }
+
+        &__animatedTitle {  
+            width: 85%;
+            height: 40%;
+
+            span {
+                white-space: nowrap;
+            }
+        }
+
+        &__textContent {
+            width: 100%;
+            background-color: custom.$secondary;
+            text-align: left;
+            padding: 1rem;
+        }
+
+
+        @include custom.media-breakpoint-up(md) {
+            
+            &__animatedTitle { 
+                width: 70%;
+            }
+
+            &__containers {
+
+                &--text {
+                    padding: 3rem 3rem 0;
+                }
+            }
+
+            &__textContent {
+                padding: 2rem;
+                gap: 2rem !important;
+            }
         }
     }
 
-    &__containers {
 
-        height: 100%;
 
-        @include custom.media-breakpoint-up(lg) {
+    /////////////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ///////////////////
+    @media (orientation: landscape) {
+
+        height: calc(100vh - functions.toRem(56));
+        flex-direction: row;
+
+        &__containers {
+            width: 50%;
             height: 100%;
+
+            &--text {
+                padding: 0 !important;
+            }
         }
+
+        &__animatedTitle {
+            display: none !important;
+        }
+
+        &__textContent {
+            background-color: transparent;
+            text-align: center;
+            padding: functions.toRem(16);
+            min-height: 100%;
+
+            p {
+                line-height: normal !important;
+
+            }
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+            &__textContent {
+
+                padding: functions.toRem(28);
+                
+                p {
+                    line-height: 1.6 !important;
+                }
+
+            }
+        }
+
+
+         /////////////////// LAPTOP AND DESKTOP  ///////////////////
+        @include custom.media-breakpoint-up(lg) {
+
+            &__textContent {
+
+                padding: functions.toRem(35);
+
+                p {
+                    line-height: 2 !important;
+                }
+            }
+
+        }
+
+        @include custom.media-breakpoint-up(xl) {
+
+            &__textContent {
+                width: 80%;
+
+                padding: functions.toRem(80) functions.toRem(45);
+            }
+
+        }
+
     }
 
 }

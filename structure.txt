@@ -209,10 +209,43 @@ Qui n'a jamais ressenti de stress provenant du rythme de vie effrené que nous m
 Offrir un moment de calme et de détente à vos proches n'est qu'à un clic près! N'attendez plus.
 
 
+//////////
+
+height section // 
+height video container
+video src
+animation or not
+size or the animation
+one or two columns 
+
+PORTRAIT :
+height section: auto;
+height video container: 100vh - 56px;
+video src: mobile
+animation or not: yes
+size or the animation: large 
+one or two columns: one
+
+LANDSCAPE:
+height section: 100vh - 56px;
+height video container: 100%;
+video src: standard
+animation or not: no
+size or the animation: / 
+one or two columns: two
+
+DESKTOP: 
+height section: 100vh - 56px;
+height video container: 100%;
+video src: standard
+animation or not: no
+size or the animation: / 
+one or two columns: two
 
 
 
-
+////// TO DO //////
+- cleanup scss, js and html section one 
 
 
 
