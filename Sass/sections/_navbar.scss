@@ -17,7 +17,12 @@
         }
 
         @media (orientation: landscape) {
-            max-width: 15%;
+
+            max-width: 20%;
+
+            @include custom.media-breakpoint-up(lg) {
+                max-width: 10%;
+            }
         }
     }
 
