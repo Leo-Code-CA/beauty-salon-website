@@ -86,3 +86,30 @@ const videoObserver = new IntersectionObserver(entries => {
 
 videoObserver.observe(targetVideo);
 
+
+
+
+
+
+
+// DIMENSIONS (HEIGHT AND MARGIN) //
+
+// export default function handleMainDimensions(e) {
+
+//     const navHeight = document.querySelector('#nav').offsetHeight;
+//     // const introSection = document.getElementById('intro');
+//     const videoContainer = document.querySelector('.intro__containers:nth-of-type(1)');
+
+//     introSection.style.marginTop = `${navHeight}px`;
+
+//     if (mqLandscape.matches || !e.matches) {
+//         videoContainer.style.height = `100%`
+//         introSection.style.height = `calc(100vh - ${navHeight}px)`;
+//     } else {
+//         videoContainer.style.height = `calc(100vh - ${navHeight}px)`;
+//         introSection.style.height = `auto`;
+//     }
+
+// }
+
+// mqLarge.addEventListener('change', handleMainDimensions);

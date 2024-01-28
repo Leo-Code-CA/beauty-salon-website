@@ -17,28 +17,6 @@ const compliment = ["patience", "sérieux", "douceur", "gentillesse", "attention
 // Variables
 let setAnimation = true;
 
-// DIMENSIONS (HEIGHT AND MARGIN) //
-
-// export default function handleMainDimensions(e) {
-
-//     const navHeight = document.querySelector('#nav').offsetHeight;
-//     // const introSection = document.getElementById('intro');
-//     const videoContainer = document.querySelector('.intro__containers:nth-of-type(1)');
-
-//     introSection.style.marginTop = `${navHeight}px`;
-
-//     if (mqLandscape.matches || !e.matches) {
-//         videoContainer.style.height = `100%`
-//         introSection.style.height = `calc(100vh - ${navHeight}px)`;
-//     } else {
-//         videoContainer.style.height = `calc(100vh - ${navHeight}px)`;
-//         introSection.style.height = `auto`;
-//     }
-
-// }
-
-// mqLarge.addEventListener('change', handleMainDimensions);
-
 // ANIMATION (MOBILE AND TABLET ONLY) //
 
 function delay(sec, count) {
@@ -114,18 +92,11 @@ window.addEventListener("load", () => {
     mqLandscape.matches ? setAnimation = false : setAnimation = true;
     textAnimation();
 })
+
 mqLandscape.addEventListener("change", () => {
     
-    // if (mqLandscape.matches) {
-    //     setAnimation = false;
-    // } else {
-    //     e.matches ? setAnimation = false : setAnimation = false;
-    // }
-    // console.log(setAnimation)
-    // textAnimation();
     mqLandscape.matches ? setAnimation = false : setAnimation = true;
     textAnimation();
-
 
 });
 
@@ -136,25 +107,10 @@ function handleVideoSource() {
     const videoContainerHeight = videoContainer.offsetHeight;
     const videoContainerWidth = videoContainer.offsetWidth;
 
-    videoContainerHeight > videoContainerWidth ? introVideo.setAttribute('src', 'videos/IFY_portrait_video.mp4')
-    : introVideo.setAttribute('src', 'videos/IFY-Video.mov');
+    videoContainerHeight > videoContainerWidth ? 
+    introVideo.setAttribute('src', './videos/IFY_portrait_video.mp4')
+    : introVideo.setAttribute('src', './videos/IFY-Video.mov');
 
-    // if (mqLandscape.matches) {
-    //     introVideo.setAttribute('src', 'videos/IFY-Video.mov');
-    // } else {
-    //     e.matches ? introVideo.setAttribute('src', 'videos/IFY_portrait_video.mp4')
-    //     : introVideo.setAttribute('src', 'videos/IFY-Video.mov');
-    // }
-
-    // if (mqLandscape.matches) {
-    //     mqLarge.matches ? introVideo.setAttribute('src', 'videos/IFY-Video.mov') 
-    //     : introVideo.setAttribute('src', 'videos/IFY_portrait_video.mp4');
-    // } else {
-    //     introVideo.setAttribute('src', 'videos/IFY_portrait_video.mp4');
-    // }
-
-    // mqLandscape.matches ? introVideo.setAttribute('src', 'videos/IFY-Video.mov')
-    // : introVideo.setAttribute('src', 'videos/IFY_portrait_video.mp4');
 }
 
 handleVideoSource();

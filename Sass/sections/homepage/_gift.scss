@@ -2,31 +2,131 @@
 @use '../../components/functions';
 
 .gift {
-    color: custom.$white;
-    background: url('../../../images/homepage/pink_wave_background.svg');
-    background-size: cover;
-    height: calc(100vh - functions.toRem(56));
 
-    &__text {
-        color: custom.$dark;
-        width: 80%;
-        font-weight: 700;
-    }
+    // ALL BREAKPOINTS 
+
+    color: custom.$white;
 
     &__btn {
         font-family: 'Bodoni Moda', serif;
         font-weight: 700;
-        font-size: functions.toRem(19.2);
         letter-spacing: functions.toRem(5);
         text-transform: uppercase;
-        width: 80%;
     }
 
-    &__img {
-        max-height: 75%;
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+    @media (orientation: portrait) {
+
+        height: auto;
+
+        &__heading {
+
+            text-align: center;
+        }
+
+        &__icon {
+            display: none;
+        }
+
+        &__wrapper {
+
+            flex-direction: column;
+
+        }
+
+        &__container {
+
+            width: 100%;
+        
+            &--img {
+
+            order: 2;
+
+            }
+
+            &--text {
+
+                order: 1;
+                text-align: left !important;
+    
+            }
+
+        }
+
+        &__btn {
+            width: 100%;
+        }
+
+    
     }
 
-    &__icon {
-        max-width: 30%;
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+    @media (orientation: landscape) {
+
+        background: url('../../../images/homepage/pink_wave_background.svg');
+        background-size: 150% 120%;
+        background-position: 60% 50%;
+        height: calc(100vh - functions.toRem(56));
+
+        // &__heading {
+        //     max-width: 60%;
+        // }
+
+        &__text {
+            color: custom.$dark;
+            width: 80%;
+        }
+
+        &__icon {
+            max-width: 20%;
+            display: block;
+        }
+
+        &__img {
+            max-height: 50%;
+        }
+
+        &__btn {
+            width: 65%;
+        }
+
+        &__container {
+            width: 50%;
+
+            &--text {
+                line-height: normal;
+            }
+        }
+
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+        @include custom.media-breakpoint-up(lg) {
+
+            background-size: cover;
+
+            &__img {
+                max-height: 75%;
+            }
+
+            &__icon {
+                max-width: 30%;
+            }
+
+            &__text {
+                font-weight: 700;
+            }
+
+            &__container {
+
+                &--text {
+                    line-height: 3;
+                }
+            }
+
+        }
     }
+
  }

@@ -2,34 +2,93 @@
 
 .features {
 
-    &__toggle {
+    // ALL BREAKPOINTS 
 
-        background-color: none !important;
-        
-        &::after {
-            content: none !important;
-        }
+    &__accordion, &__table {
+        display: none;
     }
 
-    &__arrow {
-        top: 7%;
-        left: 90%;
-        
-        &--up {
-            transform: translate(-90%, -7%) rotate(270deg);
-        } 
+    ///////////// ACCORDION: MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
-        &--down {
-            transform: translate(-90%, -7%) rotate(90deg);
+    @media (orientation: portrait) {
+
+        &__accordion {
+            display: block;
         }
+
+        &__toggle {
+
+            background-color: none !important;
+            
+            &::after {
+                content: none !important;
+            }
+        }
+
+        &__arrow {
+            top: 7%;
+            left: 90%;
+            
+            &--up {
+                transform: translate(-90%, -7%) rotate(270deg);
+            } 
+
+            &--down {
+                transform: translate(-90%, -7%) rotate(90deg);
+            }
+        }
+
+        @include custom.media-breakpoint-up(sm) {
+
+            &__accordion {
+
+                width: 70%;
+            }
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+            &__accordion {
+                display: none;
+            }
+
+            &__table {
+                display: block;
+            }
+        }
+        
     }
 
-    &__table {
+    ///////////// TABLE: MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
 
-        border-radius: 10%;
+    @media (orientation: landscape) {
+
+        &__table {
+
+            border-radius: 10%;
+            display: block;
+
+            button {
+                font-size: custom.$body-landscape-fs;
+            }
+    
+        }
+
+        /////////////////// TABLE: LAPTOP AND DESKTOP  ///////////////////
 
         @include custom.media-breakpoint-up(lg) {
-            width: 75%;
+
+            &__table {
+
+                width: 75%;
+
+                button {
+                    font-size: custom.$body-fs;
+                }
+                
+            }
+
         }
     }
+
 }
