@@ -2,30 +2,164 @@
 @use '../../components/functions';
 
 .benefit {
+
+    // ALL BREAKPOINTS 
+
     background-image: url('../../../images/homepage/blob_pink_background.svg');
-    background-size: 100% 100%;
+
 
     &__p {
-        line-height: 3;
         background-color: custom.$white;
-    
-        &--left {
-            max-width: 40%;
-        }
     }
 
-    &__img {
-        box-shadow: functions.toRem(15) functions.toRem(15) custom.$primary,
-        functions.toRem(25) functions.toRem(25) functions.toRem(25) rgba(custom.$dark, 0.7);
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+    
+    @media (orientation: portrait) {
 
-        &--right {
-            max-width: 25%;
+        &__content {
+            gap: 2rem !important;
         }
 
-        &--left {
-            max-width: 35%;
+        &__p {
+            order: 2;
         }
 
+        &__img {
+            order: 1;
+            box-shadow: functions.toRem(7) functions.toRem(7) custom.$primary,
+            functions.toRem(17) functions.toRem(17) functions.toRem(17) rgba(custom.$dark, 0.7);
+
+            &--right {
+                max-width: 80%;
+            }
+
+            &--left {
+                max-width: 90%;
+            }
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+            gap: 2rem !important;
+            padding: 1rem;
+            
+            &__content {
+
+                width: 85%;
+            
+                &:nth-child(odd) {
+                    flex-direction: row !important;
+                    justify-content: space-between !important;
+                }
+
+            }
+
+            &__p {
+    
+                &--left {
+                    width: 50%;
+                    order: 1;
+                }
+            }
+
+            &__img {
+    
+                &--right {
+                    width: 40%;
+                    order: 2;
+                }
+
+                &--left {
+                    max-width: 100%;
+                }
+        
+            }
+        }
+
+    }
+
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+    
+    @media (orientation: landscape) {
+
+        background-size: 100% 100%;
+        gap: 2rem !important;
+        padding: 1rem 0;
+
+        &__content {
+            flex-direction: row !important;
+        }
+
+        &__p {
+
+            &--left {
+                width: 50%;
+                line-height: 1.6;
+            }
+
+            &--right {
+                width: 60%;
+            }
+        }
+
+        &__img {
+
+            box-shadow: functions.toRem(7) functions.toRem(7) custom.$primary,
+            functions.toRem(13) functions.toRem(13) functions.toRem(13) rgba(custom.$dark, 0.7);
+
+            &--right {
+                width: 27%;
+            }
+    
+            &--left {
+                max-width: 33%;
+            }
+    
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+            &__p {
+    
+                &--left {
+                    line-height: 2.5;
+                }
+    
+                &--right {
+                    line-height: 2;
+                }
+            }
+
+        }
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+        
+        @include custom.media-breakpoint-up(lg) {
+
+            &__p {
+                line-height: 3;
+            
+                &--left {
+                    max-width: 40%;
+                }
+            }
+
+            &__img {
+
+                box-shadow: functions.toRem(15) functions.toRem(15) custom.$primary,
+                functions.toRem(25) functions.toRem(25) functions.toRem(25) rgba(custom.$dark, 0.7);
+    
+                &--right {
+                    max-width: 25%;
+                }
+        
+                &--left {
+                    max-width: 35%;
+                }
+        
+            }
+
+        }
     }
 
 }
