@@ -12,6 +12,7 @@
         font-weight: 700;
         letter-spacing: functions.toRem(5);
         text-transform: uppercase;
+        font-size: custom.$body-landscape-fs;
     }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
@@ -20,19 +21,13 @@
 
         height: auto;
 
-        &__heading {
-
-            text-align: center;
+        &__wrapper {
+            padding: 1.5rem !important;
+            align-items: center;
         }
 
         &__icon {
             display: none;
-        }
-
-        &__wrapper {
-
-            flex-direction: column;
-
         }
 
         &__container {
@@ -40,22 +35,36 @@
             width: 100%;
         
             &--img {
-
-            order: 2;
-
+                order: 2;
+                align-items: center;
             }
 
             &--text {
-
                 order: 1;
                 text-align: left !important;
-    
+                gap: 1rem;
+                padding: 1rem 0.5rem;
             }
-
         }
 
         &__btn {
-            width: 100%;
+            width: 90%;
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+            &__container {
+
+                &--text {
+                    width: 80%;
+                    line-height: 2;
+                }
+            }
+
+            &__btn {
+                width: 80%;
+                font-size: clamp(functions.toRem(16), calc(16px + 0.2vw), functions.toRem(20));
+            }
         }
 
     
@@ -65,41 +74,48 @@
 
     @media (orientation: landscape) {
 
+        height: calc(100vh - functions.toRem(56));
         background: url('../../../images/homepage/pink_wave_background.svg');
         background-size: 150% 120%;
         background-position: 60% 50%;
-        height: calc(100vh - functions.toRem(56));
 
-        // &__heading {
-        //     max-width: 60%;
-        // }
+        &__heading {
+            text-align: left !important;
+            width: 55%;
+            margin-bottom: 0;
+        }
 
-        &__text {
-            color: custom.$dark;
-            width: 80%;
+        &__wrapper {
+            flex-wrap: wrap;
         }
 
         &__icon {
-            max-width: 20%;
+            max-width: 30%;
             display: block;
         }
 
-        &__img {
-            max-height: 50%;
-        }
-
         &__btn {
-            width: 65%;
+            width: 80%;
+            padding: functions.toRem(5);
+            align-self: center;
         }
 
         &__container {
-            width: 50%;
 
             &--text {
-                line-height: normal;
+                width: 45%;
+                padding: 0 1rem;
+                align-self: flex-end;
+                height: 100%;
+                justify-content: space-evenly;
+                color: custom.$dark;
+            }
+
+            &--img {
+                max-height: 80%;
+                width: 45%;
             }
         }
-
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
 
@@ -107,23 +123,43 @@
 
             background-size: cover;
 
-            &__img {
-                max-height: 75%;
-            }
-
-            &__icon {
-                max-width: 30%;
-            }
-
-            &__text {
-                font-weight: 700;
+            &__wrapper {
+                padding: 1rem !important;
             }
 
             &__container {
 
                 &--text {
-                    line-height: 3;
+                    line-height: 2;
+                    font-weight: 700;
+                    width: 37%;
+                    padding: 3rem 1rem;
                 }
+
+                &--img {
+                    max-height: 85%;
+                    width: 50%;
+                }
+            }
+
+            &__icon {
+                max-width: 40%;
+            }
+
+        }
+
+        @include custom.media-breakpoint-up(xl) {
+
+            &__wrapper {
+                padding: 1.5rem !important;
+            }
+
+            &__icon {
+                max-width: 35%;
+            }
+
+            &__btn {
+                font-size: clamp(functions.toRem(16), calc(16px + 0.2vw), functions.toRem(20));
             }
 
         }
