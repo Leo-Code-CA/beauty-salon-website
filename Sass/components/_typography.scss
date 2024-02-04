@@ -67,7 +67,7 @@
 
 .emphasize { // emphasized larger text
     // font-size: functions.toRem(48);
-    font-size: clamp(functions.toRem(30), calc(functions.toRem(30) + 0.3vw), functions.toRem(50));
+    font-size: clamp(functions.toRem(25), calc(functions.toRem(25) + 0.5vw), functions.toRem(50));
     font-weight: 200;
     color: custom.$secondary;
     font-family: 'Bodoni Moda', serif;
