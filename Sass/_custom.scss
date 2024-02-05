@@ -13,6 +13,9 @@ $white-05: hsla(0, 33%, 98%, 0.5);
 $body-fs: clamp(functions.toRem(14), calc(14px + 0.17vw), functions.toRem(17)) !important;
 $body-landscape-fs: clamp(functions.toRem(12), calc(12px + 0.17vw), functions.toRem(15));
 
+// CAROUSEL
+$carousel-control-color: $dark;
+
 // NAVBAR
 $navbar-light-color: $white;
 $navbar-light-hover-color: $secondary;
