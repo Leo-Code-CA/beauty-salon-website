@@ -257,11 +257,13 @@
 
         @include custom.media-breakpoint-up(md) {
 
+            max-height: 80vh;
+
             &__review-holder {
                 
-                figure {
-                    padding: 1.5rem !important;
-                }
+                // figure {
+                //     padding: 1.5rem !important;
+                // }
 
                 blockquote {
                     line-height: 2;
@@ -273,9 +275,9 @@
                 }
             }
 
-            &__icon {
-                width: 20%;
-            }
+            // &__icon {
+            //     width: 20%;
+            // }
 
         }
 

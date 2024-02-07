@@ -179,6 +179,9 @@
      
     @media (orientation: landscape) {
 
+        background: none;;
+        background-repeat: no-repeat;
+
         &__main {
             margin-bottom: 0 !important;
         }

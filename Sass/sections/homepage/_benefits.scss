@@ -1,5 +1,6 @@
 @use '../../custom';
 @use '../../components/functions';
+@use '../../components/mixins';
 
 .benefit {
 
@@ -7,6 +8,15 @@
 
     background-image: url('../../../images/homepage/blob_pink_background.svg');
 
+    &__img {
+        // transform: translateX(-50%);
+        // opacity: 0;
+        // transition: all .2s linear;
+    }
+
+    .slideAnimate {
+        animation: slide 2s ease-out forwards;
+    }
 
     &__p {
         background-color: custom.$white;

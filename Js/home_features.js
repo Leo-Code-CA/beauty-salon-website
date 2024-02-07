@@ -33,7 +33,7 @@ function tableHeight() {
 
     const trHeight = tr.clientHeight;
 
-    console.log(trHeight)
+    // console.log(trHeight)
 
     innerTd.forEach(td => td.style.minHeight = trHeight + "px");
 

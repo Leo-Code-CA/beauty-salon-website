@@ -22,7 +22,7 @@
             }
 
             &--text {
-                padding: functions.toRem(12);
+                padding: functions.toRem(12) functions.toRem(12) 0;
             }
         }
 
@@ -37,9 +37,9 @@
 
         &__textContent {
             width: 100%;
-            background-color: custom.$secondary;
+            // background-color: custom.$secondary;
             text-align: left;
-            padding: functions.toRem(16);
+            padding: functions.toRem(16) functions.toRem(16) 0;
         }
 
         @include custom.media-breakpoint-up(md) {
