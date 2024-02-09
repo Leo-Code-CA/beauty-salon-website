@@ -35,10 +35,32 @@
 
             &--highlight {
                 box-shadow: functions.toRem(3) functions.toRem(6) functions.toRem(13) rgba(custom.$dark, 0.6), functions.toRem(-3) functions.toRem(6) functions.toRem(13) rgba(custom.$dark, 0.6);
+                height: 60vh;
 
                 .summary__icon {
                     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
                     transition: all .5s ease-in-out;
+                }
+
+                .summary__img {
+                    display: block !important;
+                    opacity: 0.4;
+                    height: 60%;
+                    transition: all 3s ease-out;
+
+                    &--left {
+                        width: 120%;
+                        top: 110%;
+                        left: -10%;
+                        transform: translate(0, -110%);
+                    }
+
+                    &--right {
+                        width: 110%;
+                        top: 140%;
+                        left: -7%;
+                        transform: translate(0, -140%);
+                    }
                 }
             }
         }
