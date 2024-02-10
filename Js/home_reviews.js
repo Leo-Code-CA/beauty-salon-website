@@ -65,7 +65,6 @@
 
 const visisbleScrollBox = document.querySelector('.summary__animationBox');
 const fullScrollBox = document.querySelector('.summary');
-// const elem = document.querySelector('.element');
 
 const elemOne = document.querySelector('.summary__box:nth-child(1)')
 const elemTwo = document.querySelector('.summary__box:nth-child(2)')
@@ -82,10 +81,12 @@ visisbleScrollBox.addEventListener('scroll', () => {
     const fullBoxHeight = visisbleScrollBox.scrollHeight;
     const lengthFromTop = visisbleScrollBox.scrollTop;
     const scrollArea = fullBoxHeight - visibleBoxHeight;
-    const scrollPercentage = lengthFromTop / (fullBoxHeight - visibleBoxHeight) * 100;
+    const scrollPercentage = Math.ceil(lengthFromTop) / (fullBoxHeight - visibleBoxHeight) * 100;
 
-    // increase the speed of the scrool bound animation so one element don't take all the scroll height available
+    // increase the speed of the scroll bound animation so one element don't take all the scroll height available
     const fastScroll = ((scrollPercentage) * 9);
+
+
 
     // reset the elements - hidden
     if (lengthFromTop === 0) {
@@ -103,6 +104,12 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
         elemOne.style.transform = `translate(-100%) translate(${fastScroll}%)`
 
+        const initialTop = 0;
+        let currentTop = (lengthFromTop - initialTop) * (scrollArea / 3);
+
+        console.log(currentTop);
+        console.log(fastScroll)
+
     }
 
     // animate the second element
@@ -110,6 +117,17 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
         elemOne.style.transform = `translate(-100%) translate(300%)`;
         elemTwo.style.transform = `translate(-100%) translate(${fastScroll - 300}%)`;
+
+        const initialTop = (scrollArea / 3); 
+        console.log(initialTop)
+        console.log(lengthFromTop)
+        console.log(scrollArea / 3)
+        let currentTop = (lengthFromTop - initialTop) * (7.34);
+
+        console.log(currentTop);
+        // console.log(fastScroll)
+        // console.log(scrollPercentage)
+        // console.log(scrollPercentage * (10 / 3))
 
     }
 
@@ -127,9 +145,9 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
 window.addEventListener('scroll', () => {
 
-    const difference = window.innerHeight - visisbleScrollBox.offsetHeight;
+    const difference = window.innerHeight - visisbleScrollBox.clientHeight;
     const bottomElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - difference;
-    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top;
+    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - 56;
     const scrollY = window.scrollY;
 
     // check the scroll direction
@@ -146,24 +164,38 @@ window.addEventListener('scroll', () => {
 
     if (scrollDirection === "down") {
 
+
         if (bottomElemToDocTop <= scrollY) {
 
-            const maxScrollHeight = visisbleScrollBox.scrollHeight - visisbleScrollBox.clientHeight;
-            const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
+        const maxScrollHeight = visisbleScrollBox.scrollHeight - visisbleScrollBox.clientHeight;
+        const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
 
-            console.log(maxScrollHeight, lengthFromTop)
+        // ALTERNATIVE WAY - SAME RESULT
+        // const visibleHeight = visisbleScrollBox.clientHeight;
+        // const currentScroll = visisbleScrollBox.scrollHeight - Math.ceil(visisbleScrollBox.scrollTop);
+
+        // HELPFUL TO UNDERSTAND WHAT'S GOING ON
+        //clientHeight: content + padding (no border, no margin, no horizontal scrollbar)
+        //scrollHeight = content + padding (no border, no margin, no horizontal scrollbar)
+        // clientHeight: 467.04px;
+        // windowHeight: 667px;
+        // totalScrollableHeight: 2002px / 2001.6px
+        // totalScrollableHeight - clientHeight = 1534.56px
+        // scrolltop: 1534.4px
+
 
             // if the animation is not 100% done disable the page scroll (forwards)
-            if (maxScrollHeight - 1 !== lengthFromTop) {
-                // figure out why you need the minus 1
-                
+            if (maxScrollHeight !== lengthFromTop) {
+                    
                 window.scrollTo(0, bottomElemToDocTop);
 
             }
     
         }
 
-    } else if (scrollDirection === "up") {
+    } 
+    
+    else if (scrollDirection === "up") {
 
         if (topElemToDocTop >= window.scrollY) {
 
