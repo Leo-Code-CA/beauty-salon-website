@@ -13,15 +13,6 @@
         border-radius: functions.toRem(16);
         transition: all .5s ease-in-out;
 
-        // CLASS ADDED ON HOVER (THE BOX IN THE MIDDLE ALWAYS KEEP IT)
-
-        &--highlight {
-            background-color: custom.$primary !important;
-            color: custom.$white;
-            border: none !important;
-            transition: all .5s ease-in-out;
-        }
-
     }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
@@ -31,39 +22,9 @@
         &__box {
             width: 80%;
             transition: all 1s ease-out;
+            background-color: custom.$secondary;
 
             // CLASS ADDED ON HOVER (THE BOX IN THE MIDDLE ALWAYS KEEP IT)
-
-            &--highlight {
-                box-shadow: functions.toRem(3) functions.toRem(6) functions.toRem(13) rgba(custom.$dark, 0.6), functions.toRem(-3) functions.toRem(6) functions.toRem(13) rgba(custom.$dark, 0.6);
-                height: 60vh;
-
-                .summary__icon {
-                    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
-                    transition: all .5s ease-in-out;
-                }
-
-                .summary__img {
-                    display: block !important;
-                    opacity: 0.4;
-                    height: 60%;
-                    transition: all 3s ease-out;
-
-                    &--left {
-                        width: 120%;
-                        top: 110%;
-                        left: -10%;
-                        transform: translate(0, -110%);
-                    }
-
-                    &--right {
-                        width: 110%;
-                        top: 140%;
-                        left: -7%;
-                        transform: translate(0, -140%);
-                    }
-                }
-            }
         }
 
 
@@ -83,13 +44,20 @@
 
         @media screen and (max-width: 767px) {
 
-            height: 400vh;
+            height: 1000vh;
             width: 100%;
             display: block !important;
 
+            &__img {
+                display: none;
+                opacity: 0;
+            }
+
+
+
 
             &__animationBox {
-                height: 70vh;
+                height: calc(100vh - 56px);
                 width: 100%;
                 overflow-y: scroll;
                 scrollbar-width: none;  /*Firefox*/
@@ -105,6 +73,10 @@
                 top: 10px;
                 position: sticky !important;
                 transform: translate(-100%);
+            }
+
+            &__hidden {
+                display: none;
             }
         }
 
@@ -122,6 +94,11 @@
                 // CLASS ADDED ON HOVER (THE BOX IN THE MIDDLE ALWAYS KEEP IT)
     
                 &--highlight {
+
+                    background-color: custom.$primary !important;
+                    color: custom.$white;
+                    border: none !important;
+                    transition: all .5s ease-in-out;
                     height: 100% !important;
                     width: 30% !important;
                     box-shadow: functions.toRem(4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6), functions.toRem(-4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6);
@@ -317,4 +294,35 @@
 
 
 
+// for mobile before animation
 
+// &--highlight {
+//     box-shadow: functions.toRem(3) functions.toRem(6) functions.toRem(13) rgba(custom.$dark, 0.6), functions.toRem(-3) functions.toRem(6) functions.toRem(13) rgba(custom.$dark, 0.6);
+//     height: 60vh;
+
+//     .summary__icon {
+//         filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+//         transition: all .5s ease-in-out;
+//     }
+
+//     .summary__img {
+//         display: block !important;
+//         opacity: 0.4;
+//         height: 60%;
+//         transition: all 3s ease-out;
+
+//         &--left {
+//             width: 120%;
+//             top: 110%;
+//             left: -10%;
+//             transform: translate(0, -110%);
+//         }
+
+//         &--right {
+//             width: 110%;
+//             top: 140%;
+//             left: -7%;
+//             transform: translate(0, -140%);
+//         }
+//     }
+// }

@@ -4,7 +4,7 @@
 $primary: #9a1d71;
 $secondary: #eeaad7;
 $black-ish: hsl(0, 2%, 18%);
-$dark: #2f2d2d;
+$dark: rgb(47, 45, 45);
 $white: #fcf8f8;
 $white-03: hsla(0, 33%, 98%, 0.3);
 $white-05: hsla(0, 33%, 98%, 0.5);
@@ -49,6 +49,7 @@ $blockquote-footer-font-size: $body-fs;
 $accordion-button-active-bg: $white;
 
 // GLOBAL SETTINGS
+
 body {
     width: 100%;
     min-height: 100vh;

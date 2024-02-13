@@ -3,24 +3,27 @@
 // Media Queries
 
 // HTML Elements
-
+const visisbleScrollBox = document.querySelector('.summary__animationBox');
+const fullScrollBox = document.querySelector('.summary');
+const elemOne = document.querySelector('.summary__box:nth-child(1)');
+const elemTwo = document.querySelector('.summary__box:nth-child(2)');
+const elemThree = document.querySelector('.summary__box:nth-child(3)');
 // Data
 
 // Variables
-
-
-const visisbleScrollBox = document.querySelector('.summary__animationBox');
-const fullScrollBox = document.querySelector('.summary');
-
-const elemOne = document.querySelector('.summary__box:nth-child(1)')
-const elemTwo = document.querySelector('.summary__box:nth-child(2)')
-const elemThree = document.querySelector('.summary__box:nth-child(3)')
-
+let initialHeightOne, initialHeightTwo, initialHeightThree;
 let scrollDirection;
 let lastScroll = 0;
 
-// One screen - scroll bound animation into its container
+// Get inital height of the three boxes
+window.addEventListener("load", () => {
+    initialHeightOne = elemOne.clientHeight;
+    initialHeightTwo = elemTwo.clientHeight;
+    initialHeightThree = elemThree.clientHeight;
+});
 
+
+// One screen - scroll bound animation into its container
 visisbleScrollBox.addEventListener('scroll', () => {
 
     const visibleBoxHeight = visisbleScrollBox.clientHeight;
@@ -56,48 +59,94 @@ visisbleScrollBox.addEventListener('scroll', () => {
     const widthDifference = Math.round((windowWidth - width) / 2);
     const widthDifferencePercentage = windowWidth / widthDifference;
 
-    // let showmeyourTranlaslate;
-
 
     // animate the first element
     if (lengthFromTop <= (scrollArea / 3)) {
 
+        // 580 (400 + 180 of "pause") / 33 = 0.05689
         const translatePercentage = -100 + (scrollPercentage / 0.05689); // max is 300 (from -100 to 300)
 
         if (translatePercentage < widthDifferencePercentage) {
 
             elemOne.style.transform = `translate(${translatePercentage}%)`
-            showmeyourTranlaslate = translatePercentage;
    
 
         } else if (translatePercentage >= widthDifferencePercentage && translatePercentage < widthDifferencePercentage + 180) {
 
+            console.log("Don't move!")
+
+            // GOAL
+            // change: height, color, image, box shadow
+
             const difference = translatePercentage - widthDifferencePercentage;
             const differencePercentage = difference / 180 * 100;
-
-
-            const currentHeight = elemOne.clientHeight;
             const goalHeight = window.innerHeight / 100 * 60;
-            const differenceHeight = goalHeight - currentHeight; // 205
+            // const differenceHeight = goalHeight - 200; // 205
 
+            // console.log(goalHeight, elemOne.clientHeight)
             
+            // UPDATE HEIGHT
+            // 70% de 180 ? 126
+            // 70 / 205 = 0.341
 
-            // find a way to increase depending on the scroll percentage (out of 180);
+            if (translatePercentage <= widthDifferencePercentage + 126) {
+                const updatedHeight = differencePercentage / 0.341 + initialHeightOne;
+                elemOne.style.height = `${updatedHeight}px`;
+            }
 
+            // UPDATE BACKGROUND COLOR
+            const colorPalette = ['#EEAAD7', '#E69DCE', '#DF90C4', '#D784BB', '#CF77B2', '#C86AA9', '#C05D9F', '#B95096', '#B1438D', '#A93784', '#A22A7A', '#9A1D71'];
+
+            const updatedColor = Math.round(differencePercentage / 9);
+            elemOne.style.backgroundColor = colorPalette[updatedColor];
             
+            // UPDATE IMAGE 
+           
+            const updatedOpacity = differencePercentage / 250;
+            const img = document.querySelector('.summary__box:nth-child(1) .summary__img');
+            img.style.display = 'block';
 
+            img.style.opacity = updatedOpacity;
 
+            // UPDATE ICON / TEXT COLOR
+            const colorPalette2 = ['#000000', '#171717', '#2E2E2E', '#464646', '#5D5D5D', '#747474', '#8B8B8B', '#A2A2A2', '#B9B9B9', '#D1D1D1', '#E8E8E8', '#FFFFFF'];
+            elemOne.style.color = colorPalette2[updatedColor] 
 
+            const filters = [
+                [0, 100, 0, 209, 99, 105], 
+                [0, 23, 4874, 25, 94, 82],
+                [9, 1, 325, 314, 93, 78],
+                [25, 15, 28, 314, 86, 82],
+                [39, 0, 2240, 204, 85, 81],
+                [49, 1, 0, 338, 91, 83],
+                [55, 7, 0, 174, 98, 98],
+                [65, 0, 62, 142, 99, 95],
+                [75, 0, 92, 144, 93, 115],
+                [100, 0, 5427, 231, 110, 64],
+                [100, 2,  601, 203, 115, 82],
+                [100, 0, 7487, 213, 101, 107]
+            ]
 
+            const icons = document.querySelector('.summary__box:nth-child(1) .summary__icon');
 
+            const current = filters[Math.round(differencePercentage / 9)];
+            const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`
 
+            icons.style.filter = newFilter;
 
-            showmeyourTranlaslate = widthDifferencePercentage;
+            // UPDATE BOX SHADOW
+            const boxSideUpdate = differencePercentage / 16.6;
+            const boxBottomUpdate = differencePercentage / 8.33;
+            const boxBlurUpdate = differencePercentage / 3.84;
+
+            const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
+
+            elemOne.style.boxShadow = updatedBoxShadow;
+
             
         } else {
 
             elemOne.style.transform = `translate(${translatePercentage - 180}%)`
-            showmeyourTranlaslate = translatePercentage - 180;
 
         }
 
@@ -108,9 +157,6 @@ visisbleScrollBox.addEventListener('scroll', () => {
             elemTwo.style.transform = `translate(300%)`
             elemThree.style.transform = `translate(300%)`
         }
-
-
-        console.log(showmeyourTranlaslate)
 
 
     }
@@ -128,9 +174,24 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
         } else if (translatePercentage >= widthDifferencePercentage && translatePercentage < widthDifferencePercentage + 180) {
 
-            // DO SOMETHING
+            const difference = translatePercentage - widthDifferencePercentage;
+            const differencePercentage = difference / 180 * 100;
+            const goalHeight = window.innerHeight / 100 * 60;
+            const differenceHeight = goalHeight - 200; // 205
+
+            console.log("Don't move!")
+            
+            const updatedHeight = differencePercentage / 0.4878 + initialHeightTwo;
+
+            elemTwo.style.height = `${updatedHeight}px`;
+
+            const hiddenElements = document.querySelectorAll('.summary__hidden');
+            hiddenElements.forEach(elem => elem.style.display = 'block');
+            console.log(hiddenElements)
+
             
         } else {
+
 
             elemTwo.style.transform = `translate(${translatePercentage - 180}%)`
 
@@ -158,7 +219,16 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
         } else if (translatePercentage >= widthDifferencePercentage && translatePercentage < widthDifferencePercentage + 180) {
 
-            // DO SOMETHING
+            const difference = translatePercentage - widthDifferencePercentage;
+            const differencePercentage = difference / 180 * 100;
+            const goalHeight = window.innerHeight / 100 * 60;
+            const differenceHeight = goalHeight - 200; // 205
+
+            console.log("Don't move!")
+            
+            const updatedHeight = differencePercentage / 0.4878 + initialHeightThree;
+
+            elemThree.style.height = `${updatedHeight}px`;
             
         } else {
 
