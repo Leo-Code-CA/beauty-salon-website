@@ -1,6 +1,10 @@
 @use '../../custom';
 @use '../../components/functions';
 
+:root {
+    --length: 0;
+}
+
 //////////////// SUMMARY PART ////////////////
 
 .summary {
@@ -53,8 +57,31 @@
                 opacity: 0;
             }
 
+            &__btnBox {
+                position: relative;
+            }
 
+            &__svg {
 
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+                // z-index: 3;
+
+                rect {
+                
+                    height: 98%;
+                    width: 98%;
+                    stroke-dasharray: var(--length);
+                    stroke-dashoffset: var(--length);
+                    stroke-width: 3;
+                    stroke: custom.$dark;
+                    z-index: 1;
+
+                }
+            }
 
             &__animationBox {
                 height: calc(100vh - 56px);
@@ -77,6 +104,8 @@
 
             &__hidden {
                 display: none;
+                position: relative;
+                z-index: 2;
             }
         }
 

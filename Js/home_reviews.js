@@ -82,8 +82,6 @@ visisbleScrollBox.addEventListener('scroll', () => {
             const differencePercentage = difference / 180 * 100;
             const goalHeight = window.innerHeight / 100 * 60;
             // const differenceHeight = goalHeight - 200; // 205
-
-            // console.log(goalHeight, elemOne.clientHeight)
             
             // UPDATE HEIGHT
             // 70% de 180 ? 126
@@ -174,20 +172,85 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
         } else if (translatePercentage >= widthDifferencePercentage && translatePercentage < widthDifferencePercentage + 180) {
 
+            console.log("Don't move!")
+         
+            // UPDATE HIDDEN ELEMENTS
+            const hiddenElements = document.querySelectorAll('.summary__hidden');
+            hiddenElements.forEach(elem => elem.style.display = 'block');
+
+
             const difference = translatePercentage - widthDifferencePercentage;
             const differencePercentage = difference / 180 * 100;
             const goalHeight = window.innerHeight / 100 * 60;
-            const differenceHeight = goalHeight - 200; // 205
 
-            console.log("Don't move!")
-            
-            const updatedHeight = differencePercentage / 0.4878 + initialHeightTwo;
+            if (translatePercentage <= widthDifferencePercentage + 126) {
+                const updatedHeight = differencePercentage / 0.341 + initialHeightTwo;
+                elemTwo.style.height = `${updatedHeight}px`;
+            }
 
-            elemTwo.style.height = `${updatedHeight}px`;
+            // UPDATE BACKGROUND COLOR
+            const colorPalette = ['#EEAAD7', '#E69DCE', '#DF90C4', '#D784BB', '#CF77B2', '#C86AA9', '#C05D9F', '#B95096', '#B1438D', '#A93784', '#A22A7A', '#9A1D71'];
 
-            const hiddenElements = document.querySelectorAll('.summary__hidden');
-            hiddenElements.forEach(elem => elem.style.display = 'block');
-            console.log(hiddenElements)
+            const updatedColor = Math.round(differencePercentage / 9);
+            elemTwo.style.backgroundColor = colorPalette[updatedColor];
+
+            // UPDATE ICON / TEXT COLOR
+            const colorPalette2 = ['#000000', '#171717', '#2E2E2E', '#464646', '#5D5D5D', '#747474', '#8B8B8B', '#A2A2A2', '#B9B9B9', '#D1D1D1', '#E8E8E8', '#FFFFFF'];
+            elemTwo.style.color = colorPalette2[updatedColor] 
+
+            const filters = [
+                [0, 100, 0, 209, 99, 105], 
+                [0, 23, 4874, 25, 94, 82],
+                [9, 1, 325, 314, 93, 78],
+                [25, 15, 28, 314, 86, 82],
+                [39, 0, 2240, 204, 85, 81],
+                [49, 1, 0, 338, 91, 83],
+                [55, 7, 0, 174, 98, 98],
+                [65, 0, 62, 142, 99, 95],
+                [75, 0, 92, 144, 93, 115],
+                [100, 0, 5427, 231, 110, 64],
+                [100, 2,  601, 203, 115, 82],
+                [100, 0, 7487, 213, 101, 107]
+            ]
+
+            const icons = document.querySelector('.summary__box:nth-child(2) .summary__icon');
+
+            const current = filters[Math.round(differencePercentage / 9)];
+            const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`
+
+            icons.style.filter = newFilter;
+
+            // UPDATE BOX SHADOW
+            const boxSideUpdate = differencePercentage / 16.6;
+            const boxBottomUpdate = differencePercentage / 8.33;
+            const boxBlurUpdate = differencePercentage / 3.84;
+
+            const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
+
+            elemTwo.style.boxShadow = updatedBoxShadow;
+
+            // Fancy Button Svg Animation
+            const rectangle = document.querySelector('.summary__svg rect');
+            const rectangleLength = rectangle.getTotalLength();
+            const html = document.querySelector(':root');
+            html.style.setProperty('--length', rectangleLength);
+            const updateSvg = 20 / rectangleLength;
+
+            let draw = rectangleLength - ((differencePercentage - 60) / updateSvg);
+
+            // console.log(differencePercentage)
+
+            // UPDATE FANCY BTN
+            // 60% de 180 ? 108
+            // 20 / rectanglelength = 0.03
+
+
+            if (translatePercentage >= widthDifferencePercentage + 108) {
+                rectangle.style.strokeDashoffset = draw;
+                console.log(draw)
+            }            
+
+            // FIND A WAY MAKE THE STROKE SHOW UP CORRECTLY :-)
 
             
         } else {
@@ -219,16 +282,64 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
         } else if (translatePercentage >= widthDifferencePercentage && translatePercentage < widthDifferencePercentage + 180) {
 
-            const difference = translatePercentage - widthDifferencePercentage;
-            const differencePercentage = difference / 180 * 100;
-            const goalHeight = window.innerHeight / 100 * 60;
-            const differenceHeight = goalHeight - 200; // 205
-
             console.log("Don't move!")
             
-            const updatedHeight = differencePercentage / 0.4878 + initialHeightThree;
+            const difference = translatePercentage - widthDifferencePercentage;
+            const differencePercentage = difference / 180 * 100;
+            // const goalHeight = window.innerHeight / 100 * 60;
 
-            elemThree.style.height = `${updatedHeight}px`;
+            if (translatePercentage <= widthDifferencePercentage + 126) {
+                const updatedHeight = differencePercentage / 0.341 + initialHeightThree;
+                elemThree.style.height = `${updatedHeight}px`;
+            }
+
+            // UPDATE BACKGROUND COLOR
+            const colorPalette = ['#EEAAD7', '#E69DCE', '#DF90C4', '#D784BB', '#CF77B2', '#C86AA9', '#C05D9F', '#B95096', '#B1438D', '#A93784', '#A22A7A', '#9A1D71'];
+
+            const updatedColor = Math.round(differencePercentage / 9);
+            elemThree.style.backgroundColor = colorPalette[updatedColor];
+
+            // UPDATE IMAGE 
+
+            const updatedOpacity = differencePercentage / 250;
+            const img = document.querySelector('.summary__box:nth-child(3) .summary__img');
+            img.style.display = 'block';
+            img.style.opacity = updatedOpacity;
+
+            // UPDATE ICON / TEXT COLOR
+            const colorPalette2 = ['#000000', '#171717', '#2E2E2E', '#464646', '#5D5D5D', '#747474', '#8B8B8B', '#A2A2A2', '#B9B9B9', '#D1D1D1', '#E8E8E8', '#FFFFFF'];
+            elemThree.style.color = colorPalette2[updatedColor] 
+
+            const filters = [
+                [0, 100, 0, 209, 99, 105], 
+                [0, 23, 4874, 25, 94, 82],
+                [9, 1, 325, 314, 93, 78],
+                [25, 15, 28, 314, 86, 82],
+                [39, 0, 2240, 204, 85, 81],
+                [49, 1, 0, 338, 91, 83],
+                [55, 7, 0, 174, 98, 98],
+                [65, 0, 62, 142, 99, 95],
+                [75, 0, 92, 144, 93, 115],
+                [100, 0, 5427, 231, 110, 64],
+                [100, 2,  601, 203, 115, 82],
+                [100, 0, 7487, 213, 101, 107]
+            ]
+
+            const icons = document.querySelector('.summary__box:nth-child(3) .summary__icon');
+
+            const current = filters[Math.round(differencePercentage / 9)];
+            const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`
+
+            icons.style.filter = newFilter;
+
+            // UPDATE BOX SHADOW
+            const boxSideUpdate = differencePercentage / 16.6;
+            const boxBottomUpdate = differencePercentage / 8.33;
+            const boxBlurUpdate = differencePercentage / 3.84;
+
+            const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
+
+            elemThree.style.boxShadow = updatedBoxShadow;
             
         } else {
 
