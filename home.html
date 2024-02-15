@@ -479,44 +479,51 @@
                         <div class="summary__animationBox">
                             <div class="col-12 d-flex summary justify-content-center align-items-center gap-3 flex-column">
                                 <!-- LEFT SUMMARY BOX -->
-                                <figure class="position-relative overflow-hidden summary__box text-center mb-0 p-2">
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mx-auto summary__icon">
+                                <figure class="position-relative overflow-hidden summary__box d-flex flex-column text-center mb-0 p-2">
+                                    <span class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
                                         <img loading="lazy" src="images/homepage/grateful_icon.svg" alt="grateful icon with hands and heart">
                                     </span>
+                                    <strong class="d-block text-center text-uppercase heading-4">satisfaction</strong>
                                     <figcaption>
-                                        <strong class="d-block text-center text-uppercase heading-4">satisfaction</strong>
                                         Des dizaines de femmes satisfaites depuis 2015.
-                                        <img loading="lazy" src="images/homepage/women_diversity_illustration.svg" alt="four different women illustration" class="position-absolute summary__img summary__img--left">
                                     </figcaption>
+                                    <img loading="lazy" src="images/homepage/women_diversity_illustration.svg" alt="four different women illustration" class="summary__img summary__img--left">
                                 </figure>
                                 <!-- CENTER SUMMARY BOX -->
-                                <figure class="summary__box summary__box--highlight text-center mb-0 p-2 overflow-hidden">
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mx-auto summary__icon">
+                                <figure class="summary__box d-flex flex-column summary__box--highlight text-center mb-0 p-2 overflow-hidden gap-3">
+                                    <span class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
                                         <img loading="lazy" src="images/homepage/review_bubble_icon.svg" alt="review bubble icon">
                                     </span>
-                                    <figcaption>
+                                    <figcaption class="flex-fill w-100 d-flex flex-column justify-content-between mb-3">
                                         <strong class="d-block text-center text-uppercase heading-4">excellence</strong>
                                         5 / 5 étoiles sur plus de 40 avis Google.
                                         <hr class="summary__hidden">
                                         <p class="summary__hidden">Vous pouvez soutenir votre esthéticienne <b class="text-uppercase">gratuitement</b> en lui laissant un avis 5 étoiles sur Google. Brigitte est impatiente de vous lire!</p>
                                         <div class="summary__btnBox">
-                                            <svg viewBox="0 0 290 60" xmlns="http://www.w3.org/2000/svg" class="summary__svg" preserveAspectRatio="none" stoke="#000" stroke-width="2">
-                                                <rect fill="#eeaad7" rx="6"/>
+                                            <svg viewBox="0 0 290 60" xmlns="http://www.w3.org/2000/svg" class="summary__svg" preserveAspectRatio="none">
+                                                background: linear-gradient(45deg, #7319fa, #ff33b4, #ff7e29)
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                      <stop offset="0%" stop-color="#00bc9b" />
+                                                      <stop offset="100%" stop-color="#5eaefd" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <rect fill="#eeaad7" rx="6" x="2.5" y="2.5" stroke="url(#gradient)"/>
                                             </svg>
                                             <a role="button" class="btn summary__hidden" href="https://g.page/r/CSK-XVInQPafEBM/review" target="_blank" class="bg-secondary text-dark fw-bold">Laissez votre avis</a>
                                         </div>
                                     </figcaption>
                                 </figure>
                                 <!-- RIGHT SUMMARY BOX -->
-                                <figure class="position-relative overflow-hidden summary__box text-center mb-0 p-2">
-                                    <span class="d-flex justify-content-center align-items-center rounded-circle mx-auto summary__icon">
+                                <figure class="position-relative overflow-hidden summary__box d-flex flex-column text-center mb-0 p-2">
+                                    <span class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
                                         <img loading="lazy" src="images/homepage/euro_tag_icon.svg" alt="euro price tag icon">
                                     </span>
+                                    <strong class="d-block text-center text-uppercase heading-4">accessibilité</strong>
                                     <figcaption>
-                                        <strong class="d-block text-center text-uppercase heading-4">accessibilité</strong>
                                         Des prix abordables, accessibles à toutes.
-                                        <img loading="lazy" src="images/homepage/bath_bomb_illustration.svg" alt="bath bomb illustration" class="position-absolute summary__img summary__img--right">
                                     </figcaption>
+                                    <img loading="lazy" src="images/homepage/bath_bomb_illustration.svg" alt="bath bomb illustration" class="summary__img summary__img--right">
                                 </figure>
 
                             </div>

@@ -8,18 +8,23 @@ const fullScrollBox = document.querySelector('.summary');
 const elemOne = document.querySelector('.summary__box:nth-child(1)');
 const elemTwo = document.querySelector('.summary__box:nth-child(2)');
 const elemThree = document.querySelector('.summary__box:nth-child(3)');
+const html = document.querySelector(':root');
 // Data
 
 // Variables
 let initialHeightOne, initialHeightTwo, initialHeightThree;
 let scrollDirection;
 let lastScroll = 0;
+const goalHeight = window.innerHeight / 100 * 70;
 
 // Get inital height of the three boxes
 window.addEventListener("load", () => {
     initialHeightOne = elemOne.clientHeight;
     initialHeightTwo = elemTwo.clientHeight;
     initialHeightThree = elemThree.clientHeight;
+
+    const top = ((window.innerHeight - 56) - goalHeight) / 2;
+    html.style.setProperty('--top', `${top}px`);
 });
 
 
@@ -80,15 +85,17 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
             const difference = translatePercentage - widthDifferencePercentage;
             const differencePercentage = difference / 180 * 100;
-            const goalHeight = window.innerHeight / 100 * 60;
-            // const differenceHeight = goalHeight - 200; // 205
+            // NEW GOAL HEIGHT
+            // const goalHeight = window.innerHeight / 100 * 70;
+            // const differenceHeight = goalHeight - 200; // 267
+            
             
             // UPDATE HEIGHT
             // 70% de 180 ? 126
-            // 70 / 205 = 0.341
+            // 70 / 267 = 0.341
 
             if (translatePercentage <= widthDifferencePercentage + 126) {
-                const updatedHeight = differencePercentage / 0.341 + initialHeightOne;
+                const updatedHeight = differencePercentage / 0.262 + initialHeightOne;
                 elemOne.style.height = `${updatedHeight}px`;
             }
 
@@ -100,7 +107,7 @@ visisbleScrollBox.addEventListener('scroll', () => {
             
             // UPDATE IMAGE 
            
-            const updatedOpacity = differencePercentage / 250;
+            const updatedOpacity = differencePercentage / 142.857; // 100 / 0.7
             const img = document.querySelector('.summary__box:nth-child(1) .summary__img');
             img.style.display = 'block';
 
@@ -184,7 +191,7 @@ visisbleScrollBox.addEventListener('scroll', () => {
             const goalHeight = window.innerHeight / 100 * 60;
 
             if (translatePercentage <= widthDifferencePercentage + 126) {
-                const updatedHeight = differencePercentage / 0.341 + initialHeightTwo;
+                const updatedHeight = differencePercentage / 0.262 + initialHeightTwo;
                 elemTwo.style.height = `${updatedHeight}px`;
             }
 
@@ -231,12 +238,16 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
             // Fancy Button Svg Animation
             const rectangle = document.querySelector('.summary__svg rect');
-            const rectangleLength = rectangle.getTotalLength();
+            const rectangleLength = rectangle.getTotalLength(); // 665
             const html = document.querySelector(':root');
             html.style.setProperty('--length', rectangleLength);
-            const updateSvg = 20 / rectangleLength;
+            const updateSvg = 20 / rectangleLength; // 0.03
 
             let draw = rectangleLength - ((differencePercentage - 60) / updateSvg);
+            rectangle.style.strokeDashoffset = rectangleLength;
+    
+
+       
 
             // console.log(differencePercentage)
 
@@ -246,8 +257,11 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
 
             if (translatePercentage >= widthDifferencePercentage + 108) {
-                rectangle.style.strokeDashoffset = draw;
-                console.log(draw)
+                if (draw >= 0) {
+                    rectangle.style.strokeDashoffset = draw;
+                } else {
+                    rectangle.style.strokeDashoffset = 0;
+                }
             }            
 
             // FIND A WAY MAKE THE STROKE SHOW UP CORRECTLY :-)
@@ -289,7 +303,7 @@ visisbleScrollBox.addEventListener('scroll', () => {
             // const goalHeight = window.innerHeight / 100 * 60;
 
             if (translatePercentage <= widthDifferencePercentage + 126) {
-                const updatedHeight = differencePercentage / 0.341 + initialHeightThree;
+                const updatedHeight = differencePercentage / 0.262 + initialHeightThree;
                 elemThree.style.height = `${updatedHeight}px`;
             }
 
@@ -301,7 +315,7 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
             // UPDATE IMAGE 
 
-            const updatedOpacity = differencePercentage / 250;
+            const updatedOpacity = differencePercentage / 142.857;
             const img = document.querySelector('.summary__box:nth-child(3) .summary__img');
             img.style.display = 'block';
             img.style.opacity = updatedOpacity;
