@@ -499,16 +499,19 @@
                                         5 / 5 étoiles sur plus de 40 avis Google.
                                         <hr class="summary__hidden">
                                         <p class="summary__hidden">Vous pouvez soutenir votre esthéticienne <b class="text-uppercase">gratuitement</b> en lui laissant un avis 5 étoiles sur Google. Brigitte est impatiente de vous lire!</p>
-                                        <div class="summary__btnBox">
+                                        <div class="summary__btnBox summary__hidden">
                                             <svg viewBox="0 0 290 60" xmlns="http://www.w3.org/2000/svg" class="summary__svg" preserveAspectRatio="none">
-                                                background: linear-gradient(45deg, #7319fa, #ff33b4, #ff7e29)
                                                 <defs>
-                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                                      <stop offset="0%" stop-color="#00bc9b" />
-                                                      <stop offset="100%" stop-color="#5eaefd" />
+                                                    <linearGradient id="gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                      <stop offset="0%" stop-color="#f52c8a" />
+                                                      <stop offset="50%" stop-color="#dd00ff" />
+                                                      <stop offset="100%" stop-color="#6a00ff" />
                                                     </linearGradient>
                                                 </defs>
-                                                <rect fill="#eeaad7" rx="6" x="2.5" y="2.5" stroke="url(#gradient)"/>
+                                                <filter id="blurMe">
+                                                    <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+                                                  </filter>
+                                                <rect fill="#eeaad7" rx="6" x="2.5" y="2.5" stroke="url(#gradient)" filter="url(#blurMe)"/>
                                             </svg>
                                             <a role="button" class="btn summary__hidden" href="https://g.page/r/CSK-XVInQPafEBM/review" target="_blank" class="bg-secondary text-dark fw-bold">Laissez votre avis</a>
                                         </div>
