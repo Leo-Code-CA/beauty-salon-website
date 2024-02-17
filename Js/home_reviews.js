@@ -2,7 +2,7 @@
 
 // Imports
 import FnScrollDirection from "./utils/scrollDirection.js";
-import { purpleIshPalette, blackNWhitePalette } from "./data/constants.js";
+import { purpleIshPalette, blackNWhitePalette, filters } from "./data/constants.js";
 // Media Queries
 
 // HTML Elements
@@ -34,9 +34,8 @@ window.addEventListener("load", () => {
     html.style.setProperty('--top', `${boxTop}px`);
 });
 
-
 // handle height update
-function handleUpdateHeight(initialHeight, translatePercentage, staticPhasePercentage) {
+function handleUpdateHeight(initialHeight, translatePercentage, staticPhasePercentage, elem) {
 
     const differenceHeight = goalHeight - initialHeight;
     const heightUpdate = 70 / differenceHeight;
@@ -44,15 +43,60 @@ function handleUpdateHeight(initialHeight, translatePercentage, staticPhasePerce
 
     if (translatePercentage <= elemSpacingPercentage + updatePeriod) {
         const updatedHeight = staticPhasePercentage / heightUpdate + initialHeight;
-        return updatedHeight;
+        elem.style.height = `${updatedHeight}px`;
     };
 
 };
 
-// handle background-color update
-function handleBgColorUpdate() {
+// handle color update
+function handleColorUpdate(staticPhasePercentage, elem) {
 
-}
+    const updatedColor = Math.round(staticPhasePercentage / 9);
+    elem.style.backgroundColor = purpleIshPalette[updatedColor];
+    elem.style.color = blackNWhitePalette[updatedColor];
+
+};
+
+// handle opacity update
+function handleOpacityUpdate(staticPhasePercentage, nthChild) {
+
+    const opacityRate = 100 / 0.7; // Goal is to go from 0 to 0.7
+    const updatedOpacity = staticPhasePercentage / opacityRate;
+    const img = document.querySelector(`.summary__box:nth-child(${nthChild}) .summary__img`);
+
+    img.style.display = 'block';
+    img.style.opacity = updatedOpacity;
+
+};
+
+// handle icons update 
+function handleIconsUpdate(staticPhasePercentage, nthChild) {
+
+    const icons = document.querySelector(`.summary__box:nth-child(${nthChild}) .summary__icon`);
+
+    const colorChangeRate = 100 / 12; // 12 colors total 
+    const current = filters[Math.round(staticPhasePercentage / colorChangeRate)];
+    const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`;
+
+    icons.style.filter = newFilter;
+
+};
+
+// handle box-shadow update
+function handleShadowUpdate(staticPhasePercentage, elem) {
+
+    const updateRateSide = 100 / 6; // from 0 to 6px;
+    const boxSideUpdate = staticPhasePercentage / updateRateSide;
+    const updateRateBottom = 100 / 12; // from 0 to 12px;
+    const boxBottomUpdate = staticPhasePercentage / updateRateBottom;
+    const updateRateBlur = 100 / 26; // from 0 to 26px;
+    const boxBlurUpdate = staticPhasePercentage / updateRateBlur;
+
+    const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
+
+    elem.style.boxShadow = updatedBoxShadow;
+
+};
 
 
 // Scroll bound animation
@@ -100,56 +144,19 @@ visisbleScrollBox.addEventListener('scroll', () => {
             const staticPhasePercentage = staticPhase / 180 * 100;
     
             // UPDATE HEIGHT
-            const newHeight = handleUpdateHeight(initialHeightOne, translatePercentage, staticPhasePercentage);
-            elemOne.style.height = `${newHeight}px`;
+            handleUpdateHeight(initialHeightOne, translatePercentage, staticPhasePercentage, elemOne);
 
-            // UPDATE BACKGROUND COLOR
-            const updatedColor = Math.round(staticPhasePercentage / 9);
-            elemOne.style.backgroundColor = purpleIshPalette[updatedColor];
+            // UPDATE COLORS (Background and Text)
+            handleColorUpdate(staticPhasePercentage, elemOne);
             
             // UPDATE IMAGE 
-           
-            const updatedOpacity = staticPhasePercentage / 142.857; // 100 / 0.7
-            const img = document.querySelector('.summary__box:nth-child(1) .summary__img');
-            img.style.display = 'block';
+            handleOpacityUpdate(staticPhasePercentage, 1)
 
-            img.style.opacity = updatedOpacity;
-
-            // UPDATE ICON / TEXT COLOR
-            const colorPalette2 = ['#000000', '#171717', '#2E2E2E', '#464646', '#5D5D5D', '#747474', '#8B8B8B', '#A2A2A2', '#B9B9B9', '#D1D1D1', '#E8E8E8', '#FFFFFF'];
-            elemOne.style.color = colorPalette2[updatedColor] 
-
-            const filters = [
-                [0, 100, 0, 209, 99, 105], 
-                [0, 23, 4874, 25, 94, 82],
-                [9, 1, 325, 314, 93, 78],
-                [25, 15, 28, 314, 86, 82],
-                [39, 0, 2240, 204, 85, 81],
-                [49, 1, 0, 338, 91, 83],
-                [55, 7, 0, 174, 98, 98],
-                [65, 0, 62, 142, 99, 95],
-                [75, 0, 92, 144, 93, 115],
-                [100, 0, 5427, 231, 110, 64],
-                [100, 2,  601, 203, 115, 82],
-                [100, 0, 7487, 213, 101, 107]
-            ]
-
-            const icons = document.querySelector('.summary__box:nth-child(1) .summary__icon');
-
-            const current = filters[Math.round(staticPhasePercentage / 9)];
-            const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`;
-
-            icons.style.filter = newFilter;
+            // UPDATE ICON COLOR
+            handleIconsUpdate(staticPhasePercentage, 1);
 
             // UPDATE BOX SHADOW
-            const boxSideUpdate = staticPhasePercentage / 16.6;
-            const boxBottomUpdate = staticPhasePercentage / 8.33;
-            const boxBlurUpdate = staticPhasePercentage / 3.84;
-
-            const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
-
-            elemOne.style.boxShadow = updatedBoxShadow;
-
+            handleShadowUpdate(staticPhasePercentage, elemOne);
             
         } else {
 
@@ -205,49 +212,17 @@ visisbleScrollBox.addEventListener('scroll', () => {
             // UPDATE HIDDEN ELEMENTS
             hiddenElements.forEach(elem => elem.style.display = 'block');
 
-
             // UPDATE HEIGHT
-            const newHeight = handleUpdateHeight(initialHeightTwo, translatePercentage, staticPhasePercentage);
-            elemTwo.style.height = `${newHeight}px`;
+            handleUpdateHeight(initialHeightTwo, translatePercentage, staticPhasePercentage, elemTwo);
 
-            // UPDATE BACKGROUND COLOR
-            const updatedColor = Math.round(staticPhasePercentage / 9);
-            elemTwo.style.backgroundColor = purpleIshPalette[updatedColor];
+            // UPDATE COLORS (Background and Text)
+            handleColorUpdate(staticPhasePercentage, elemTwo);
 
-            // UPDATE ICON / TEXT COLOR
-            const colorPalette2 = ['#000000', '#171717', '#2E2E2E', '#464646', '#5D5D5D', '#747474', '#8B8B8B', '#A2A2A2', '#B9B9B9', '#D1D1D1', '#E8E8E8', '#FFFFFF'];
-            elemTwo.style.color = colorPalette2[updatedColor] 
-
-            const filters = [
-                [0, 100, 0, 209, 99, 105], 
-                [0, 23, 4874, 25, 94, 82],
-                [9, 1, 325, 314, 93, 78],
-                [25, 15, 28, 314, 86, 82],
-                [39, 0, 2240, 204, 85, 81],
-                [49, 1, 0, 338, 91, 83],
-                [55, 7, 0, 174, 98, 98],
-                [65, 0, 62, 142, 99, 95],
-                [75, 0, 92, 144, 93, 115],
-                [100, 0, 5427, 231, 110, 64],
-                [100, 2,  601, 203, 115, 82],
-                [100, 0, 7487, 213, 101, 107]
-            ]
-
-            const icons = document.querySelector('.summary__box:nth-child(2) .summary__icon');
-
-            const current = filters[Math.round(staticPhasePercentage / 9)];
-            const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`
-
-            icons.style.filter = newFilter;
+            // UPDATE ICON COLOR
+            handleIconsUpdate(staticPhasePercentage, 2);
 
             // UPDATE BOX SHADOW
-            const boxSideUpdate = staticPhasePercentage / 16.6;
-            const boxBottomUpdate = staticPhasePercentage / 8.33;
-            const boxBlurUpdate = staticPhasePercentage / 3.84;
-
-            const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
-
-            elemTwo.style.boxShadow = updatedBoxShadow;
+            handleShadowUpdate(staticPhasePercentage, elemTwo);
 
             // Fancy Button Svg Animation
             const rectangle = document.querySelector('.summary__svg rect');
@@ -328,54 +303,19 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
    
             // UPDATE HEIGHT
-            const newHeight = handleUpdateHeight(initialHeightThree, translatePercentage, staticPhasePercentage);
-            elemThree.style.height = `${newHeight}px`;
+            handleUpdateHeight(initialHeightThree, translatePercentage, staticPhasePercentage, elemThree);
 
-            // UPDATE BACKGROUND COLOR
-            const updatedColor = Math.round(staticPhasePercentage / 9);
-            elemThree.style.backgroundColor = purpleIshPalette[updatedColor];
+            // UPDATE COLORS (Background and Text)
+            handleColorUpdate(staticPhasePercentage, elemThree);
 
             // UPDATE IMAGE 
+            handleOpacityUpdate(staticPhasePercentage, 3);
 
-            const updatedOpacity = staticPhasePercentage / 142.857;
-            const img = document.querySelector('.summary__box:nth-child(3) .summary__img');
-            img.style.display = 'block';
-            img.style.opacity = updatedOpacity;
-
-            // UPDATE ICON / TEXT COLOR
-            const colorPalette2 = ['#000000', '#171717', '#2E2E2E', '#464646', '#5D5D5D', '#747474', '#8B8B8B', '#A2A2A2', '#B9B9B9', '#D1D1D1', '#E8E8E8', '#FFFFFF'];
-            elemThree.style.color = colorPalette2[updatedColor] 
-
-            const filters = [
-                [0, 100, 0, 209, 99, 105], 
-                [0, 23, 4874, 25, 94, 82],
-                [9, 1, 325, 314, 93, 78],
-                [25, 15, 28, 314, 86, 82],
-                [39, 0, 2240, 204, 85, 81],
-                [49, 1, 0, 338, 91, 83],
-                [55, 7, 0, 174, 98, 98],
-                [65, 0, 62, 142, 99, 95],
-                [75, 0, 92, 144, 93, 115],
-                [100, 0, 5427, 231, 110, 64],
-                [100, 2,  601, 203, 115, 82],
-                [100, 0, 7487, 213, 101, 107]
-            ]
-
-            const icons = document.querySelector('.summary__box:nth-child(3) .summary__icon');
-
-            const current = filters[Math.round(staticPhasePercentage / 9)];
-            const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`
-
-            icons.style.filter = newFilter;
+            // UPDATE ICON COLOR
+            handleIconsUpdate(staticPhasePercentage, 3);
 
             // UPDATE BOX SHADOW
-            const boxSideUpdate = staticPhasePercentage / 16.6;
-            const boxBottomUpdate = staticPhasePercentage / 8.33;
-            const boxBlurUpdate = staticPhasePercentage / 3.84;
-
-            const updatedBoxShadow = `${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6), -${boxSideUpdate}px ${boxBottomUpdate}px ${boxBlurUpdate}px rgba(47, 45, 45, 0.6)`
-
-            elemThree.style.boxShadow = updatedBoxShadow;
+            handleShadowUpdate(staticPhasePercentage, elemThree);
             
         } else {
 
