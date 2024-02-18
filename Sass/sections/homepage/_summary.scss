@@ -26,10 +26,7 @@
         
         &__box {
             width: 80%;
-            // transition: all 1s ease-out;
             background-color: custom.$secondary;
-
-            // CLASS ADDED ON HOVER (THE BOX IN THE MIDDLE ALWAYS KEEP IT)
         }
 
 
@@ -133,8 +130,9 @@
     
             &__box {
                 width: 20%;
-                height: 80%;
-                padding: 0.5rem;
+                height: 35vh;
+                padding: 0.5rem !important;
+                gap: 1rem !important;
     
                 // CLASS ADDED ON HOVER (THE BOX IN THE MIDDLE ALWAYS KEEP IT)
     
@@ -144,12 +142,13 @@
                     color: custom.$white;
                     border: none !important;
                     transition: all .5s ease-in-out;
-                    height: 100% !important;
-                    width: 30% !important;
+                    height: 45vh !important;
+                    width: 25% !important;
                     box-shadow: functions.toRem(4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6), functions.toRem(-4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6);
     
                     .summary__img {
                         display: block !important;
+                        position: absolute !important;
                         opacity: 0.4;
     
                         &--left {
@@ -167,10 +166,11 @@
                         }
                     }
     
-                    // a {
-                    //     font-size: custom.$body-landscape-fs;
-                    //     padding: 0.3rem;
-                    // }
+                    a {
+                        font-size: custom.$body-landscape-fs;
+                        padding: 0.3rem;
+                        background-color: custom.$secondary;
+                    }
     
                 }
     
@@ -179,9 +179,11 @@
             // ICONS
     
             &__icon {
-    
-                width: 60%;
-    
+                width: 90%;
+            }
+
+            &__img {
+                display: none;
             }
 
         }

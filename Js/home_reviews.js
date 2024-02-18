@@ -7,39 +7,102 @@ import { purpleIshPalette, blackNWhitePalette, filters } from "./data/constants.
 
 // HTML Elements
 const visisbleScrollBox = document.querySelector('.summary__animationBox');
-const fullScrollBox = document.querySelector('.summary');
+// const fullScrollBox = document.querySelector('.summary');
 const elemOne = document.querySelector('.summary__box:nth-child(1)');
 const elemTwo = document.querySelector('.summary__box:nth-child(2)');
 const elemThree = document.querySelector('.summary__box:nth-child(3)');
 const html = document.querySelector(':root');
 const hiddenElements = document.querySelectorAll('.summary__hidden');
+const rectangle = document.querySelector('.summary__svg rect');
 // Data
 
 // Variables
 let initialHeightOne;
 let initialHeightTwo;
 let initialHeightThree;
+let positiveTranslate;
+let totalTranslate;
+let translateBreakPeriod;
+const visibleBoxHeight = visisbleScrollBox.clientHeight;
+const fullBoxHeight = visisbleScrollBox.scrollHeight;
+const scrollArea = fullBoxHeight - visibleBoxHeight;
 const goalHeight = window.innerHeight / 100 * 70;
 const boxTop = ((window.innerHeight - 56) - goalHeight) / 2;
 const width = elemOne.offsetWidth;
 const windowWidth = window.innerWidth;
-const elemSpacing = (windowWidth - width) / 2; // 37.5
+const elemSpacing = (windowWidth - width) / 2; 
 const elemSpacingPercentage = windowWidth / elemSpacing;
+const rectangleLength = rectangle.getTotalLength();
+// const windowNBoxDifference = window.innerHeight - visisbleScrollBox.clientHeight;
+const horizontalObserverOptions = {
+    root: visisbleScrollBox,
+    rootMargin: "0px",
+    threshold: 0.5
+}
+const horizontalObserver = new IntersectionObserver(handleHorizontalIntersection, horizontalObserverOptions);
 
-// Get inital height of the three boxes and determine the top property depending on the size of the viewport
+// Initial setup
 window.addEventListener("load", () => {
+    // get initial boxes' height
     initialHeightOne = elemOne.clientHeight;
     initialHeightTwo = elemTwo.clientHeight;
     initialHeightThree = elemThree.clientHeight;
+    // define the translate percentages depending on the screen size
+    positiveTranslate = 100 + ((windowWidth - width) / width * 100);
+    totalTranslate = positiveTranslate + 100;
+    translateBreakPeriod = totalTranslate / 2;
+    // set the top property depending on the screen height 
     html.style.setProperty('--top', `${boxTop}px`);
 });
+
+// handle boxes intersecting with the viewport
+function handleHorizontalIntersection(entries) {
+    entries.forEach(entry => {
+
+        const position = entry.boundingClientRect.x;
+        const id = entry.target.id;
+        let target;
+
+        if (id === "summaryLeft") {
+            target = elemOne;
+        } else if (id === "summaryCenter") {
+            target = elemTwo;
+        } else if (id === "summaryRight") {
+            target = elemThree;
+        } else {
+            throw new Error("unknown id");
+        };
+
+        if (position < 0) {
+            target.style.transform = `translate(-100%)`;
+            id === "summaryLeft" || id === "summaryRight" ? target.style.height = `${initialHeightOne}px`
+            : target.style.height = `${initialHeightTwo}px`;
+        } else {
+            target.style.transform = `translate(300%)`;
+            target.style.height = `${goalHeight}px`;
+        }
+
+    });
+};
+
+// handle automatic scroll when animation has started
+function handleAutoScroll() {
+
+    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - 56;
+    const lengthFromTop = visisbleScrollBox.scrollTop;
+
+    if (lengthFromTop !== 0 && lengthFromTop !== scrollArea) {
+        window.scrollTo(0, topElemToDocTop);
+    };
+
+};
 
 // handle height update
 function handleUpdateHeight(initialHeight, translatePercentage, staticPhasePercentage, elem) {
 
     const differenceHeight = goalHeight - initialHeight;
     const heightUpdate = 70 / differenceHeight;
-    const updatePeriod = 70 / 100 * 180; 
+    const updatePeriod = 70 / 100 * translateBreakPeriod; 
 
     if (translatePercentage <= elemSpacingPercentage + updatePeriod) {
         const updatedHeight = staticPhasePercentage / heightUpdate + initialHeight;
@@ -51,7 +114,8 @@ function handleUpdateHeight(initialHeight, translatePercentage, staticPhasePerce
 // handle color update
 function handleColorUpdate(staticPhasePercentage, elem) {
 
-    const updatedColor = Math.round(staticPhasePercentage / 9);
+    const colorRate = 100 / 11; // 12 colors total but array is zero based so 11;
+    const updatedColor = Math.round(staticPhasePercentage / colorRate);
     elem.style.backgroundColor = purpleIshPalette[updatedColor];
     elem.style.color = blackNWhitePalette[updatedColor];
 
@@ -74,7 +138,7 @@ function handleIconsUpdate(staticPhasePercentage, nthChild) {
 
     const icons = document.querySelector(`.summary__box:nth-child(${nthChild}) .summary__icon`);
 
-    const colorChangeRate = 100 / 12; // 12 colors total 
+    const colorChangeRate = 100 / 11; // 12 filters total but array is zero based so 11;
     const current = filters[Math.round(staticPhasePercentage / colorChangeRate)];
     const newFilter = `invert(${current[0]}%) sepia(${current[1]}%) saturate(${current[2]}%) hue-rotate(${current[3]}deg) brightness(${current[4]}%) contrast(${current[5]}%)`;
 
@@ -98,50 +162,57 @@ function handleShadowUpdate(staticPhasePercentage, elem) {
 
 };
 
+// handle fancy button scroll animation
+function handleBtnOutlineAnimation(translatePercentage, staticPhasePercentage, translateBreakPeriod) {
 
-// Scroll bound animation
+    html.style.setProperty('--length', rectangleLength);
+    rectangle.style.strokeDashoffset = rectangleLength;
+
+    const updateSvg = 20 / rectangleLength; // In 20% of the translateBreakPeriod, complete the outline animation
+    const draw = rectangleLength - ((staticPhasePercentage - 60) / updateSvg); // Animation starts only when 60% of the translateBreakPeriod has passed;
+    const sixtyPercent = 60 / 100 * translateBreakPeriod;
+    
+    if (translatePercentage >= elemSpacingPercentage + sixtyPercent) {
+        if (draw >= 0) {
+            rectangle.style.strokeDashoffset = draw;
+        } else {
+            rectangle.style.strokeDashoffset = 0;
+        }
+    } 
+}
+
+// SCROLL BOUND ANIMATION
 visisbleScrollBox.addEventListener('scroll', () => {
 
-    console.log(`ElemOne translate is: ${elemOne.style.transform}`);
-    console.log(`ElemTwo translate is: ${elemTwo.style.transform}`);
-    console.log(`ElemThree translate is: ${elemThree.style.transform}`);
+    // console.log(`ElemOne translate is: ${elemOne.style.transform}`);
+    // console.log(`ElemTwo translate is: ${elemTwo.style.transform}`);
+    // console.log(`ElemThree translate is: ${elemThree.style.transform}`);
 
-
-    const visibleBoxHeight = visisbleScrollBox.clientHeight;
-    const fullBoxHeight = visisbleScrollBox.scrollHeight;
     const lengthFromTop = visisbleScrollBox.scrollTop;
-    const scrollArea = fullBoxHeight - visibleBoxHeight;
-    const scrollPercentage = Math.ceil(lengthFromTop) / (fullBoxHeight - visibleBoxHeight) * 100;
-    // const scrollDirection = FnScrollDirection(visisbleScrollBox.scrollTop);
+    const scrollPercentage = Math.ceil(lengthFromTop) / scrollArea * 100;
+    const translateUpdateRate = 33 / (translateBreakPeriod + totalTranslate);
 
+    handleAutoScroll();
 
-
-
-    // const width = elemOne.offsetWidth;
-    // const windowWidth = window.innerWidth;
-    // const elemSpacing = (windowWidth - width) / 2; // 37.5
-    // const elemSpacingPercentage = windowWidth / elemSpacing;
-
-
-    // animate the first element
+    // ANIMATE FIRST BOX
     if (lengthFromTop <= (scrollArea / 3)) {
 
-        // 580 (400 + 180 of "pause") / 33 = 0.05689
-        const translatePercentage = -100 + (scrollPercentage / 0.05689); // max is 300 (from -100 to 300)
+        horizontalObserver.observe(elemTwo);
+        horizontalObserver.observe(elemThree);
+        horizontalObserver.unobserve(elemOne);
 
+        const translatePercentage = -100 + (scrollPercentage / translateUpdateRate);
 
         if (translatePercentage < elemSpacingPercentage) {
-
             elemOne.style.transform = `translate(${translatePercentage}%)`
-   
-
-        } else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + 180) {
-
+        } 
+        
+        else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
 
             elemOne.style.transform = `translate(${elemSpacing}px)`
 
             const staticPhase = translatePercentage - elemSpacingPercentage;
-            const staticPhasePercentage = staticPhase / 180 * 100;
+            const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
     
             // UPDATE HEIGHT
             handleUpdateHeight(initialHeightOne, translatePercentage, staticPhasePercentage, elemOne);
@@ -159,55 +230,29 @@ visisbleScrollBox.addEventListener('scroll', () => {
             handleShadowUpdate(staticPhasePercentage, elemOne);
             
         } else {
-
-            elemOne.style.transform = `translate(${translatePercentage - 180}%)`
-
+            elemOne.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
         }
-
-        // if (scrollDirection === 'up') {
-        //     elemTwo.style.transform = `translate(-100%)`
-        //     elemThree.style.transform = `translate(-100%)`
-        //     // console.log("I put them left")
-        // } else {
-        //     elemTwo.style.transform = `translate(300%)`
-        //     elemThree.style.transform = `translate(300%)`
-        //     // console.log("I put them right")
-        // }
-
-
-
-        // reset the elements - hidden
-        if (lengthFromTop === 0) {
-            elemOne.style.transform = `translate(-100%)`
-            elemTwo.style.transform = `translate(-100%)`
-            elemThree.style.transform = `translate(-100%)`
-        } else if (lengthFromTop === scrollArea) {
-            elemOne.style.transform = `translate(300%)`
-            elemTwo.style.transform = `translate(300%)`
-            elemThree.style.transform = `translate(300%)`
-        }
-
     }
-
-    // animate the second element
-
+    // ANIMATE SECOND BOX
     else if (lengthFromTop <= (scrollArea / 3) * 2) {
 
-        const translatePercentage = -100 + (scrollPercentage / 0.05689 - 580);
+        horizontalObserver.observe(elemOne);
+        horizontalObserver.observe(elemThree);
+        horizontalObserver.unobserve(elemTwo);
 
+        const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - (translateBreakPeriod + totalTranslate));
 
         if (translatePercentage < elemSpacingPercentage) {
-
             hiddenElements.forEach(elem => elem.style.display = 'none');
-
             elemTwo.style.transform = `translate(${translatePercentage}%)`
-
-        } else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + 180) {
+        } 
+        
+        else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
 
             elemTwo.style.transform = `translate(${elemSpacing}px)`
 
             const staticPhase = translatePercentage - elemSpacingPercentage;
-            const staticPhasePercentage = staticPhase / 180 * 100;
+            const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
          
             // UPDATE HIDDEN ELEMENTS
             hiddenElements.forEach(elem => elem.style.display = 'block');
@@ -224,84 +269,34 @@ visisbleScrollBox.addEventListener('scroll', () => {
             // UPDATE BOX SHADOW
             handleShadowUpdate(staticPhasePercentage, elemTwo);
 
-            // Fancy Button Svg Animation
-            const rectangle = document.querySelector('.summary__svg rect');
-            const rectangleLength = rectangle.getTotalLength(); // 665
-            const html = document.querySelector(':root');
-            html.style.setProperty('--length', rectangleLength);
-            const updateSvg = 20 / rectangleLength; // 0.03
-
-            let draw = rectangleLength - ((staticPhasePercentage - 60) / updateSvg);
-            rectangle.style.strokeDashoffset = rectangleLength;
-    
-
-       
-
-            // console.log(differencePercentage)
-
-            // UPDATE FANCY BTN
-            // 60% de 180 ? 108
-            // 20 / rectanglelength = 0.03
-
-
-            if (translatePercentage >= elemSpacingPercentage + 108) {
-                if (draw >= 0) {
-                    rectangle.style.strokeDashoffset = draw;
-                } else {
-                    rectangle.style.strokeDashoffset = 0;
-                }
-            }            
-
-            // FIND A WAY MAKE THE STROKE SHOW UP CORRECTLY :-)
-
+            // UPDATE BUTTON OUTLINE
+            handleBtnOutlineAnimation(translatePercentage, staticPhasePercentage, translateBreakPeriod);          
             
         } else {
-
-            elemTwo.style.transform = `translate(${translatePercentage - 180}%)`
-
+            elemTwo.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
         }
-
-        // if (scrollDirection === 'up') {
-        //     elemOne.style.transform = `translate(300%)`
-        //     elemThree.style.transform = `translate(-100%)`
-        // } else {
-        //     elemOne.style.transform = `translate(-100%)`
-        //     elemThree.style.transform = `translate(300%)`
-        // }
-
-     
-
-        // reset the elements - hidden
-        if (lengthFromTop === 0) {
-            elemOne.style.transform = `translate(-100%)`
-            elemTwo.style.transform = `translate(-100%)`
-            elemThree.style.transform = `translate(-100%)`
-        } else if (lengthFromTop === scrollArea) {
-            elemOne.style.transform = `translate(300%)`
-            elemTwo.style.transform = `translate(300%)`
-            elemThree.style.transform = `translate(300%)`
-        }
-
     }
 
-    // animate the third element
+    // ANIMATE THIRD BOX
     else if (lengthFromTop < scrollArea) {
 
-        const translatePercentage = -100 + (scrollPercentage / 0.05689 - 1160);
+        horizontalObserver.observe(elemOne);
+        horizontalObserver.observe(elemTwo);
+        horizontalObserver.unobserve(elemThree);
 
+        const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - ((translateBreakPeriod + totalTranslate) * 2));
 
         if (translatePercentage < elemSpacingPercentage) {
-
             elemThree.style.transform = `translate(${translatePercentage}%)`
-
-        } else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + 180) {
+        } 
+        
+        else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
 
             elemThree.style.transform = `translate(${elemSpacing}px)`
 
             const staticPhase = translatePercentage - elemSpacingPercentage;
-            const staticPhasePercentage = staticPhase / 180 * 100;
+            const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
 
-   
             // UPDATE HEIGHT
             handleUpdateHeight(initialHeightThree, translatePercentage, staticPhasePercentage, elemThree);
 
@@ -318,122 +313,53 @@ visisbleScrollBox.addEventListener('scroll', () => {
             handleShadowUpdate(staticPhasePercentage, elemThree);
             
         } else {
-
-            elemThree.style.transform = `translate(${translatePercentage - 180}%)`
-
-        }
-
-        // if (scrollDirection === 'up') {
-        //     elemOne.style.transform = `translate(300%)`
-        //     elemTwo.style.transform = `translate(300%)`
-        // } else {
-        //     elemOne.style.transform = `translate(-100%)`
-        //     elemTwo.style.transform = `translate(-100%)`
-        // }
-
-
-        // reset the elements - hidden
-        if (lengthFromTop === 0) {
-            elemOne.style.transform = `translate(-100%)`
-            elemTwo.style.transform = `translate(-100%)`
-            elemThree.style.transform = `translate(-100%)`
-        } else if (lengthFromTop === scrollArea) {
-            elemOne.style.transform = `translate(300%)`
-            elemTwo.style.transform = `translate(300%)`
-            elemThree.style.transform = `translate(300%)`
+            elemThree.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
         }
 
     }
 
+    // RESET THE BOXES WHEN SCROLL IS NO MORE POSSIBLE (TOP OR BOTTOM)
+    if (lengthFromTop === 0) {
+        elemOne.style.transform = `translate(-100%)`
+        elemTwo.style.transform = `translate(-100%)`
+        elemThree.style.transform = `translate(-100%)`
+    } else if (lengthFromTop === scrollArea) {
+        elemOne.style.transform = `translate(300%)`
+        elemTwo.style.transform = `translate(300%)`
+        elemThree.style.transform = `translate(300%)`
+    }
 
-            // reset the elements - hidden
-            if (lengthFromTop === 0) {
-                elemOne.style.transform = `translate(-100%)`
-                elemTwo.style.transform = `translate(-100%)`
-                elemThree.style.transform = `translate(-100%)`
-            } else if (lengthFromTop === scrollArea) {
-                elemOne.style.transform = `translate(300%)`
-                elemTwo.style.transform = `translate(300%)`
-                elemThree.style.transform = `translate(300%)`
-            }
+});
 
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Take care of the behaviour of the rest of the page
-
+// HANDLE PAGE BEHAVIOUR
 window.addEventListener('scroll', () => {
 
-    const difference = window.innerHeight - visisbleScrollBox.clientHeight;
-    const bottomElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - difference;
     const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - 56;
     const scrollY = window.scrollY;
     const scrollDirection = FnScrollDirection(window.scrollY);
 
     if (scrollDirection === "down") {
 
+        if (topElemToDocTop <= scrollY) {
 
-        if (bottomElemToDocTop <= scrollY) {
-
-        const maxScrollHeight = visisbleScrollBox.scrollHeight - visisbleScrollBox.clientHeight;
-        const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
-
-        // ALTERNATIVE WAY - SAME RESULT
-        // const visibleHeight = visisbleScrollBox.clientHeight;
-        // const currentScroll = visisbleScrollBox.scrollHeight - Math.ceil(visisbleScrollBox.scrollTop);
-
-        // HELPFUL TO UNDERSTAND WHAT'S GOING ON
-        // clientHeight: content + padding (no border, no margin, no horizontal scrollbar)
-        // scrollHeight = content (even the hidden one) + padding (no border, no margin, no horizontal scrollbar)
-        // clientHeight: 467.04px;
-        // windowHeight: 667px;
-        // totalScrollableHeight: 2002px / 2001.6px
-        // totalScrollableHeight - clientHeight = 1534.56px
-        // scrolltop: 1534.4px
-
-
-            // if the animation is not 100% done disable the page scroll (forwards)
-            if (maxScrollHeight !== lengthFromTop) {
-                
-                window.scrollTo(0, bottomElemToDocTop);
-
-            }
-    
-        }
-
+            const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
+                // if the animation is not 100% done disable the page scroll (forwards)
+                if (scrollArea !== lengthFromTop) {
+                    window.scrollTo(0, topElemToDocTop);
+            };
+        };
     } 
     
     else if (scrollDirection === "up") {
 
         if (topElemToDocTop >= window.scrollY) {
-
             const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
-
             // if the animation is not 100% done disable the page scroll (backwards)
             if (lengthFromTop !== 0) {
-
                 window.scrollTo(0, topElemToDocTop);
-
             }
-
         }
-
-
     }
-
 });
 
 
