@@ -111,7 +111,9 @@
                 }
 
                 figcaption {
-                    padding: 1rem;
+                    padding: 0 1.5rem;
+                    font-weight: 400 !important;
+                    font-size: clamp(functions.toRem(16), calc(functions.toRem(1) + 2vh), functions.toRem(25));
                 }
             }
 
@@ -119,6 +121,8 @@
                 display: none;
                 position: relative;
                 z-index: 2;
+                padding: 0.2rem;
+                font-size: clamp(functions.toRem(16), calc(functions.toRem(1) + 2vh), functions.toRem(25));
             }
         }
 

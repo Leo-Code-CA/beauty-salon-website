@@ -32,7 +32,7 @@ const width = elemOne.offsetWidth;
 const windowWidth = window.innerWidth;
 const elemSpacing = (windowWidth - width) / 2; 
 const elemSpacingPercentage = windowWidth / elemSpacing;
-const rectangleLength = rectangle.getTotalLength();
+// const rectangleLength = rectangle.getTotalLength();
 // const windowNBoxDifference = window.innerHeight - visisbleScrollBox.clientHeight;
 const horizontalObserverOptions = {
     root: visisbleScrollBox,
@@ -164,6 +164,8 @@ function handleShadowUpdate(staticPhasePercentage, elem) {
 
 // handle fancy button scroll animation
 function handleBtnOutlineAnimation(translatePercentage, staticPhasePercentage, translateBreakPeriod) {
+
+    let rectangleLength = rectangle.getTotalLength();
 
     html.style.setProperty('--length', rectangleLength);
     rectangle.style.strokeDashoffset = rectangleLength;
