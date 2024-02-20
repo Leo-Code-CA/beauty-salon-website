@@ -17,6 +17,17 @@ const compliment = ["patience", "sérieux", "douceur", "gentillesse", "attention
 // Variables
 let setAnimation = true;
 
+
+// LAZY LOADING INTRO VIDEO
+
+const targetVideo = document.querySelector(".intro__containers video");
+
+const videoObserver = new IntersectionObserver(entries => {
+    entries.map(entry => entry.isIntersecting ? targetVideo.play() : targetVideo.pause());
+})
+
+videoObserver.observe(targetVideo);
+
 // ANIMATION (MOBILE AND TABLET ONLY) //
 
 function delay(sec, count) {

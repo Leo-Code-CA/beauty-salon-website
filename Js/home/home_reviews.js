@@ -1,4 +1,20 @@
-// FETCH GOOGLE PLACE API
+//////////////////////////// REVIEWS SECTION OF THE HOME PAGE ////////////////////////////
+
+// LAZY LOADING REVIEWS CAROUSEL
+
+const targetCarousel = document.querySelector("#reviewsCarousel");
+const carousel = new bootstrap.Carousel(targetCarousel, {interval: 5000, pause: false})
+
+const carouselObserver = new IntersectionObserver(entries => {
+    entries.map(entry => {
+        const intersecting = entry.isIntersecting;
+        intersecting ? carousel.cycle() : carousel.pause();
+    }) 
+});
+
+carouselObserver.observe(targetCarousel);
+
+// FETCH GOOGLE PLACE API - REVIEWS
 
 (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({key: "", v: "beta"});
 
@@ -44,72 +60,3 @@ async function getPlaceDetails() {
 }
 
 getPlaceDetails();
-
-
-// HOVER STATE OF THE SUMMARY BOXES
-
-const summaryBox = document.querySelectorAll('.summary__box:nth-child(1), .summary__box:nth-child(3)');
-
-summaryBox.forEach(function(elem) {
-
-    elem.addEventListener('mouseover', function() {
-        elem.classList.add('summary__box--highlight');
-    })
-
-    elem.addEventListener('mouseout', function() {
-        elem.classList.remove('summary__box--highlight');
-    })
-
-});
-
-// LAZY LOADING REVIEWS CAROUSEL
-
-const targetCarousel = document.querySelector("#reviewsCarousel");
-const carousel = new bootstrap.Carousel(targetCarousel, {interval: 5000, pause: false})
-
-const carouselObserver = new IntersectionObserver(entries => {
-    entries.map(entry => {
-        const intersecting = entry.isIntersecting;
-        intersecting ? carousel.cycle() : carousel.pause();
-    }) 
-});
-
-carouselObserver.observe(targetCarousel);
-
-// LAZY LOADING INTRO VIDEO
-
-const targetVideo = document.querySelector(".intro__containers video");
-
-const videoObserver = new IntersectionObserver(entries => {
-    entries.map(entry => entry.isIntersecting ? targetVideo.play() : targetVideo.pause());
-})
-
-videoObserver.observe(targetVideo);
-
-
-
-
-
-
-
-// DIMENSIONS (HEIGHT AND MARGIN) //
-
-// export default function handleMainDimensions(e) {
-
-//     const navHeight = document.querySelector('#nav').offsetHeight;
-//     // const introSection = document.getElementById('intro');
-//     const videoContainer = document.querySelector('.intro__containers:nth-of-type(1)');
-
-//     introSection.style.marginTop = `${navHeight}px`;
-
-//     if (mqLandscape.matches || !e.matches) {
-//         videoContainer.style.height = `100%`
-//         introSection.style.height = `calc(100vh - ${navHeight}px)`;
-//     } else {
-//         videoContainer.style.height = `calc(100vh - ${navHeight}px)`;
-//         introSection.style.height = `auto`;
-//     }
-
-// }
-
-// mqLarge.addEventListener('change', handleMainDimensions);

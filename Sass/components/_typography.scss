@@ -45,9 +45,7 @@
 .heading-4 { // strong tag for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    // previously just in case I need it 
-    // font-size: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.3vw), functions.toRem(18));
-    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.7vw), functions.toRem(30));
+    font-size: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.3vw), functions.toRem(18));
 }
 
 .heading-5 { // table header so far

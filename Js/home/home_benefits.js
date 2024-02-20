@@ -1,5 +1,7 @@
 //////////////////////////// BENEFITS SECTION OF THE HOME PAGE ////////////////////////////
 
+// Imports
+import FnScrollDirection from "../utils/scrollDirection.js";
 // Media Queries
 
 // HTML Elements
@@ -19,6 +21,8 @@ function handleIntersect(entries, observer) {
 
         if (entry.isIntersecting) {
 
+            const scrollDirection = FnScrollDirection(window.scrollY);
+
             scrollDirection === "down" ? entry.target.classList.add('slideAnimate') : entry.target.classList.remove('slideAnimate');
 
         }
@@ -29,23 +33,6 @@ const observer = new IntersectionObserver(handleIntersect, options);
 
 images.forEach(img => {
     observer.observe(img)
-})
-
-let scrollDirection;
-let lastScroll = 0;
-
-window.addEventListener('scroll', function() {
-
-    let currentScroll = window.scrollY;
-
-    if (currentScroll > 0 && currentScroll >= lastScroll) {
-        scrollDirection = "down";
-        lastScroll = currentScroll;
-    } else {
-        scrollDirection = "up";
-        lastScroll = currentScroll;
-    }
-
-})
+});
 
 
