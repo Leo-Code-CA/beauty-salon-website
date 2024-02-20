@@ -1,0 +1,45 @@
+@use '../../custom';
+@use '../../components/functions';
+
+.services {
+
+    // ALL BREAKPOINTS 
+
+    min-height: 100vh;
+    margin-top: functions.toRem(56);
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+    @media (orientation: portrait) {
+
+        &__overview {
+            width: 40%;
+            aspect-ratio: 1 / 1;
+        }
+
+        &__icon {
+            width: 60%;
+        }
+
+
+        @include custom.media-breakpoint-up(md) {
+
+        }
+        
+    }
+
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+    @media (orientation: landscape) {
+
+
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+        @include custom.media-breakpoint-up(lg) {
+
+
+        }
+    }
+
+}

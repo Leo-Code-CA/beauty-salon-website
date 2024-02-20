@@ -40,7 +40,12 @@
     }
 }
 
-// modify those below with clamp function when responsiveness will have progressed
+.heading-3 { // h3 as well
+
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
+}
 
 .heading-4 { // strong tag for now
     font-family: 'Bodoni Moda', serif;
@@ -52,17 +57,6 @@
     font-family: 'Raleway', sans-serif;
     font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(25));
     font-weight: 700;
-
-    // @media (orientation: landscape) {
-
-    //     font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.3vw), functions.toRem(19));
-
-    //     @include custom.media-breakpoint-up(lg) {
-
-    //         font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(23));
-
-    //     }
-    // }
 }
 
 .subheading { // under a heading
