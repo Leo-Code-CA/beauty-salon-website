@@ -21,6 +21,10 @@
             width: 60%;
         }
 
+        &__blossom {
+            transform: translateX(10%);
+        }
+
 
         @include custom.media-breakpoint-up(md) {
 
@@ -43,3 +47,6 @@
     }
 
 }
+
+
+/// POP UP - FOR PRODUCTS 
