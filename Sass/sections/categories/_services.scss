@@ -25,6 +25,89 @@
             transform: translateX(10%);
         }
 
+        &__price {
+            width: 40%;
+        }
+
+        &__advice {
+
+            span {
+
+                height: 2rem;
+                transform: rotate(15deg) translateY(-20%);
+
+
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+
+            }
+            
+        }
+
+        &__subheading {
+            background: linear-gradient(
+                90deg,
+                custom.$primary,
+                custom.$secondary
+            );
+            background-clip: text;
+            color: transparent;
+            font-family: 'Bodoni Moda', serif;
+
+            span {
+                font-weight: 300;
+                letter-spacing: functions.toRem(2);
+                font-size: clamp(functions.toRem(30), calc(30px + 0.17vw), functions.toRem(35));
+                font-family: 'Raleway', sans-serif;
+            }
+        }
+
+        &__halfWoman {
+            width: 50%;
+            shape-outside: polygon(70% 60%, 50% 80%, 0% 80%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 60% 0, 45% 30%);
+            transform: translateX(20%);
+        }
+
+        &__eyesLashes {
+            width: 35%;
+        }
+
+        &__infos {
+            background: linear-gradient(
+                -45deg,
+                custom.$white,
+                custom.$secondary,
+                custom.$primary
+            );
+        }
+
+        // &__emphasize {
+        //     width: max-content;
+
+        //     &::before {
+        //         content: url('../../../images/homepage/quote_icon.svg');
+        //         width: functions.toRem(30);
+        //         height: functions.toRem(30);
+        //         padding: functions.toRem(2);
+        //         display: inline-block;
+        //         vertical-align: middle;
+        //         height: 100%;
+        //     }
+
+        //     &::after {
+        //         content: url('../../../images/homepage/quote_icon.svg');
+        //         width: functions.toRem(30);
+        //         height: functions.toRem(30);
+        //         padding: functions.toRem(2);
+        //         display: inline-block;
+        //         transform: rotate(180deg);
+        //         vertical-align: middle;
+        //         height: 100%;
+        //     }
+        // }
+
 
         @include custom.media-breakpoint-up(md) {
 
