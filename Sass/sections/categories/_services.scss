@@ -65,9 +65,16 @@
         }
 
         &__halfWoman {
-            width: 50%;
-            shape-outside: polygon(70% 60%, 50% 80%, 0% 80%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 60% 0, 45% 30%);
-            transform: translateX(20%);
+            width: 150%;
+            // shape-outside: polygon(70% 60%, 50% 80%, 0% 80%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 60% 0, 45% 30%);
+            shape-outside: polygon(55% 60%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            transform: translateX(10%);
+
+            img {
+                mask-image: linear-gradient(0deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, transparent 90%);
+                // mask-image: linear-gradient(180deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 0%, transparent 95%);
+            
+            }
         }
 
         &__eyesLashes {
