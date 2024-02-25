@@ -2,4 +2,4 @@
 
 import '../footer.js';
 import '../header.js';
-import './category_page.js';
+import './massages.js';

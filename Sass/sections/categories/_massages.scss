@@ -1,7 +1,7 @@
 @use '../../custom';
 @use '../../components/functions';
 
-.services {
+.massages {
 
     // ALL BREAKPOINTS 
 
@@ -12,9 +12,56 @@
 
     @media (orientation: portrait) {
 
-        &__overview {
-            width: 40%;
+        &__summary {
+            width: 100%;
             aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        &__overview {
+            width: 48%;
+            aspect-ratio: 1 / 1;
+            transition: all 1s ease-out;
+
+            &:nth-child(1) {
+                transform-origin: top left;
+                top: 0;
+                left: 0;
+            }
+
+            &:nth-child(2) {
+                transform-origin: top right;
+                top: 0;
+                right: 0;
+            }
+
+            &:nth-child(3) {
+                transform-origin: bottom left;
+                bottom: 0;
+                left: 0;
+            }
+
+            &:nth-child(4) {
+                transform-origin: bottom right;
+                bottom: 0;
+                right: 0;
+            }
+
+            &--selected {
+                z-index: 1;
+                width: 100%;
+
+                .massages__icon {
+                    width: 40%;
+                }
+            }
+        }
+
+        &__close {
+            position: absolute;
+            top: functions.toRem(10);
+            right: functions.toRem(10);
+            cursor: pointer;
         }
 
         &__icon {
