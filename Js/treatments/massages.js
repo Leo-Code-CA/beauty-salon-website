@@ -1,15 +1,21 @@
 //////////////////////////// MASSAGES PAGE ////////////////////////////
 
 // Imports
-
+import scrollToElem from "../utils/scrollToElem.js";
 // Media Queries
 
 // HTML Elements
 const overview = document.querySelectorAll('.massages__overview');
+const overviewBtn = document.querySelectorAll('.massages__overview button');
+const doorIllustration = document.querySelector('.massages__door');
+const doorImg = document.querySelector('.massages__door img');
+const doorHiddenInfo = document.querySelector('.massages__hiddenInfo');
+
 // Data
 
 // Variables
 
+// HANDLE THE SUMMARY / OVERVIEW ANIMATION BEHAVIOURS
 function handleOverviewTargets(e) {
 
     const clickedTarget = e.target;
@@ -47,3 +53,32 @@ function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) 
 
 window.addEventListener('click', handleOverviewTargets);
 window.addEventListener('touchstart', handleOverviewTargets);
+
+// HANDLE ON CLICK PAGE SCROLL
+overviewBtn.forEach((btn, i) => {
+    const massageDescription = document.querySelector(`.massages__service:nth-child(${i + 1})`)
+    btn.addEventListener('click', () => scrollToElem(massageDescription));
+})
+
+// HANDLE DOOR ILLUSTRATION REVEAL ANIMATION
+function handleDoorReveal() {
+    // console.log(window.getComputedStyle(doorHiddenInfo).zIndex === -1)
+    if (window.getComputedStyle(doorHiddenInfo).zIndex === '0') {
+        // doorHiddenInfo.style.zIndex = '2';
+        // doorImg.style.zIndex = '0';
+        console.log("info hidden")
+        doorHiddenInfo.classList.add('massages__animateShow');
+        doorHiddenInfo.classList.remove('massages__animateHide');
+        doorImg.classList.add('massages__animateHide')
+        doorImg.classList.remove('massages__animateShow')
+    } else if (window.getComputedStyle(doorHiddenInfo).zIndex === '2') {
+        // doorHiddenInfo.style.zIndex = '0';
+        // doorImg.style.zIndex = '2';
+        doorImg.classList.add('massages__animateShow');
+        doorImg.classList.remove('massages__animateHide');
+        doorHiddenInfo.classList.add('massages__animateHide')
+        doorHiddenInfo.classList.remove('massages__animateShow')
+    }
+};
+
+doorIllustration.addEventListener('click', handleDoorReveal);

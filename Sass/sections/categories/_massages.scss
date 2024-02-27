@@ -1,5 +1,6 @@
 @use '../../custom';
 @use '../../components/functions';
+@use '../../components/mixins';
 
 .massages {
 
@@ -50,9 +51,18 @@
             &--selected {
                 z-index: 1;
                 width: 100%;
+                padding: functions.toRem(16) !important;
+
+                dl {
+                    padding: 0 !important;
+                }
 
                 .massages__icon {
                     width: 40%;
+                }
+
+                h3 {
+                    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(26));
                 }
             }
         }
@@ -155,16 +165,21 @@
 
         &__door {
 
+            img {
+                z-index: 2;
+                transition: all 1s ease-out;
+            }
+
             &::after {
-                // content: url('./../../../images/categories/door_shape_illustration.svg');
                 content: url('./../../../images/categories/pink_door_shape_illustration.svg');
                 position: absolute;
                 top: 5%;
                 left: 5%;
                 height: 100%;
                 width: 100%;
-                // z-index: -1;
+                z-index: 1;
             }
+
         }
 
         &__hiddenInfo {
@@ -172,7 +187,16 @@
             left: 10%;
             height: 90%;
             width: 90%;
-            z-index: 1;
+            z-index: 0;
+            transition: all 1s ease-out;
+        }
+
+        &__animateShow {
+            @include mixins.doorReveal(0, 2);
+        }
+
+        &__animateHide {
+            @include mixins.doorReveal(2, 0);
         }
 
         &__scrub {

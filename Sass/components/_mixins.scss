@@ -25,4 +25,27 @@
     } 
 }
 
+// DOOR SHAPE MASSAGES PAGE ANIMATION
+
+@mixin doorReveal($startZIndex, $endZIndex) {
+
+    animation: doorAnimation 3s ease-in-out;
+
+    @keyframes doorAnimation {
+        0% {
+            z-index: $startZIndex;
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            z-index: $endZIndex;
+            opacity: 1;
+        }
+    }
+}
+
 
