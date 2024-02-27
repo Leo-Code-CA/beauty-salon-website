@@ -35,7 +35,7 @@ function handleOpenMassagesOverview(e) {
 
     } else {
 
-        console.log(e.target, activeInfo.children[0].children[0])
+        // console.log(e.target, activeInfo.children[0].children[0])
 
         if (e.target === activeInfo.children[0].children[0]) {
             // Give the three elements that were hidden an opacity of 1
@@ -46,11 +46,91 @@ function handleOpenMassagesOverview(e) {
             activeInfo.classList.add("d-none");
         };
 
+        if (checkIfSelected && !checkIfSelected.contains(clickTarget)) {
+            console.log('outside')
+        }
+
+
+
     };
     
 };
 
 // Call the function to handle the overview on click
-overview.forEach(massage => {
-    massage.addEventListener('click', (e) => handleOpenMassagesOverview(e));
-});
+// overview.forEach(massage => {
+//     massage.addEventListener('click', (e) => handleOpenMassagesOverview(e));
+// });
+
+
+
+window.addEventListener('click', (e) => {
+
+    handleMassageOverview(e);
+
+})
+
+function handleMassageOverview(e) {
+    // 3 cases: click on and open / click on cross and close / click outside and close if open
+    const clickedElem = e.target;
+    let massageOrInside = false;
+    let clickTarget;
+    const massageSelected = document.querySelector('.massages__overview--selected');
+    const closeELem = document.querySelector('.massages__close');
+    
+    overview.forEach(elem => {
+        if (!massageOrInside && elem === clickedElem) {
+            massageOrInside = true;
+            clickTarget = elem;
+            console.log("on massage")
+        }
+    });
+
+    if (!clickTarget && clickedElem.closest('.massages__overview')) {
+        console.log('inside it')
+        clickTarget = clickedElem;
+        massageOrInside = true;
+    }
+
+    if (massageOrInside) {
+        if (!massageSelected) {
+            console.log("open massage");
+        } else if (massageSelected && clickedElem === closeELem) {
+            console.log('close the popup from the cross')
+        }
+    } else {
+        if (massageSelected) {
+            console.log('close popup from outside')
+        }
+    }
+    
+    
+
+    // if (clickedElem.closest('.massages__overview')) return { target: clickedElem, click: 'inside' };
+
+    // return { target: clickedElem, click: 'outside' };
+
+
+
+
+
+    // const closeELem = document.querySelector('.massages__close');
+    // const selectedMassage = document.querySelector('.massages__overview--selected');
+    // const insideMassage = selectedMassage?.contains(e.target);
+
+    // if (insideMassage) {
+
+    //     if (selectedMassage && e.target === closeELem) {
+    //         console.log("close because cross clicked");
+    //     }
+
+    //     if (!selectedMassage) {
+    //         console.log('open the popup because clicked on it')
+    //     }
+
+    // } else if (!insideMassage && selectedMassage) {
+    //     console.log('close because clicked outisde')
+    // }
+
+
+
+}
