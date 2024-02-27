@@ -10,78 +10,40 @@ const overview = document.querySelectorAll('.massages__overview');
 
 // Variables
 
-function handleTargets(e) {
+function handleOverviewTargets(e) {
 
     const clickedTarget = e.target;
-    const clickHandler = e.currentTarget;
-    let currentlyOpen = false;
-    let selectedClose = false;
-    let selectedMassage;
-    let selectedMassageIndex;
-    let notSelectedMassages;
 
     overview.forEach((massageElem, i) => {
 
+        const notSelectedMassages = document.querySelectorAll(`.massages__overview:not(:nth-child(${i + 1}))`);
+        const activeInfo = document.querySelector(`.massages__overview:nth-child(${i + 1}) .massages__active`);
+
+        // handle case where one massage element is already open, so we eventually want to close it
         if (massageElem.classList.contains('massages__overview--selected')) {
-            currentlyOpen = true;
+
+            // close that element if the user clicked outside of it or on the cross icon
+            if (!massageElem.contains(clickedTarget) || clickedTarget.classList.contains('massages__close')) {
+                handleToggleOverview(massageElem, notSelectedMassages, activeInfo);
+            }
+
+        // handle case where no massage element is opened yet, so we want to open it if the user clicked on it
+        } else if (massageElem.contains(clickedTarget)) {
+            handleToggleOverview(massageElem, notSelectedMassages, activeInfo);
         }
 
-        if (massageElem.contains(clickedTarget)) {
-
-            selectedMassage = massageElem;
-            selectedMassageIndex = i + 1;
-            notSelectedMassages = document.querySelectorAll(`.massages__overview:not(:nth-child(${i + 1}))`)
-
-            clickedTarget.classList.contains('massages__close') ? selectedClose = true : null;
-
-        }
     });
 
-    if (!currentlyOpen && selectedMassage) {
+};
 
-        const activeInfo = document.querySelector(`.massages__overview:nth-child(${selectedMassageIndex}) .massages__active`);
-
-        handleOpenOverview(selectedMassage, notSelectedMassages, activeInfo);
-    }
-
-    if (currentlyOpen && selectedClose) {
-
-        const activeInfo = document.querySelector(`.massages__overview:nth-child(${selectedMassageIndex}) .massages__active`);
-
-        handleCloseOverview(selectedMassage, notSelectedMassages, activeInfo);
-    }
-
-    if (currentlyOpen && !selectedMassage) {
-        selectedMassage = document.querySelector('.massages__overview--selected');
-        notSelectedMassages = document.querySelectorAll(".massages__overview:not(.massages__overview--selected)");
-        const activeInfo = document.querySelector(".massages__overview--selected .massages__active");
-        // console.log(selectedMassage, notSelectedMassages, activeInfo)
-        handleCloseOverview(selectedMassage, notSelectedMassages, activeInfo);
-    }
-
-
+function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) {
+    // Toggle not selected massages elements opacity between 0 and 1
+    notSelectedMassages.forEach(massage => massage.classList.toggle('opacity-0'));
+    // Toggle class of the selected element to increase or decrease its size
+    selectedMassage.classList.toggle('massages__overview--selected');
+    // Toggle class of one of the selected element child to show or hide its content
+    activeInfo.classList.toggle("d-none");
 }
 
-function handleOpenOverview(selectedMassage, notSelectedMassages, activeInfo) {
-
-    // Give the three elements not selected an opacity of 0
-    notSelectedMassages.forEach(massage => massage.style.opacity = 0);
-    // Add a class to the active massage element - it increases its size
-    selectedMassage.classList.add('massages__overview--selected');
-    // Show the info that were hidden
-    activeInfo.classList.remove("d-none");
-
-}
-
-function handleCloseOverview(selectedMassage, notSelectedMassages, activeInfo) {
-
-    // Give the three elements that were hidden an opacity of 1
-    notSelectedMassages.forEach(massage => massage.style.opacity = 1);
-    // Remove the class of the massage element that was active - decreases its size
-    selectedMassage.classList.remove('massages__overview--selected');
-    // Hide the info that were showed when the massage element was selected
-    activeInfo.classList.add("d-none");
-
-}
-
-window.addEventListener('click', handleTargets);
+window.addEventListener('click', handleOverviewTargets);
+window.addEventListener('touchstart', handleOverviewTargets);
