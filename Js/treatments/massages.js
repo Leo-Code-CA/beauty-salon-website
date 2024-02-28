@@ -2,14 +2,17 @@
 
 // Imports
 import scrollToElem from "../utils/scrollToElem.js";
+import slideInObserver from "./../utils/slideInObserver.js";
 // Media Queries
 
 // HTML Elements
+const root = document.querySelector(':root');
 const overview = document.querySelectorAll('.massages__overview');
-const overviewBtn = document.querySelectorAll('.massages__overview button');
+const overviewBtn = document.querySelectorAll('.massages__overview .massages__discoverBtn');
 const doorIllustration = document.querySelector('.massages__door');
-const doorImg = document.querySelector('.massages__door img');
-const doorHiddenInfo = document.querySelector('.massages__hiddenInfo');
+const allMassagesDescription = document.querySelectorAll('.massages__service');
+// const doorImg = document.querySelector('.massages__door img');
+// const doorHiddenInfo = document.querySelector('.massages__hiddenInfo');
 
 // Data
 
@@ -49,10 +52,12 @@ function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) 
     selectedMassage.classList.toggle('massages__overview--selected');
     // Toggle class of one of the selected element child to show or hide its content
     activeInfo.classList.toggle("d-none");
+    // Toggle the pulse animation on the first massage element
+    document.querySelector('.massages__overview:nth-child(1)').classList.toggle('massages__animatePulse');
 }
 
 window.addEventListener('click', handleOverviewTargets);
-window.addEventListener('touchstart', handleOverviewTargets);
+// window.addEventListener('touchstart', handleOverviewTargets);
 
 // HANDLE ON CLICK PAGE SCROLL
 overviewBtn.forEach((btn, i) => {
@@ -62,23 +67,25 @@ overviewBtn.forEach((btn, i) => {
 
 // HANDLE DOOR ILLUSTRATION REVEAL ANIMATION
 function handleDoorReveal() {
-    // console.log(window.getComputedStyle(doorHiddenInfo).zIndex === -1)
-    if (window.getComputedStyle(doorHiddenInfo).zIndex === '0') {
-        // doorHiddenInfo.style.zIndex = '2';
-        // doorImg.style.zIndex = '0';
-        console.log("info hidden")
-        doorHiddenInfo.classList.add('massages__animateShow');
-        doorHiddenInfo.classList.remove('massages__animateHide');
-        doorImg.classList.add('massages__animateHide')
-        doorImg.classList.remove('massages__animateShow')
-    } else if (window.getComputedStyle(doorHiddenInfo).zIndex === '2') {
-        // doorHiddenInfo.style.zIndex = '0';
-        // doorImg.style.zIndex = '2';
-        doorImg.classList.add('massages__animateShow');
-        doorImg.classList.remove('massages__animateHide');
-        doorHiddenInfo.classList.add('massages__animateHide')
-        doorHiddenInfo.classList.remove('massages__animateShow')
+
+    const hiddenInfoAnimName = window.getComputedStyle(root).getPropertyValue('--hiddenInfoAnimName');
+
+    if (!hiddenInfoAnimName || hiddenInfoAnimName === 'hideContent') {
+        root.style.setProperty('--hiddenInfoAnimName', 'showContent');
+        root.style.setProperty('--imgAnimName', 'moveTopLeft, hideContent');
+        root.style.setProperty('--imgAnimState', 'paused, running');
+        root.style.setProperty('--doorShapeAnimState', 'paused');
+    } else if (hiddenInfoAnimName === 'showContent') {
+        root.style.setProperty('--hiddenInfoAnimName', 'hideContent');
+        root.style.setProperty('--imgAnimName', 'moveTopLeft, showContent');
+        root.style.setProperty('--imgAnimState', 'running');
+        root.style.setProperty('--doorShapeAnimState', 'running');
     }
+
 };
 
 doorIllustration.addEventListener('click', handleDoorReveal);
+
+// HANDLE MASSAGES SLIDE IN ANIMATION
+// allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'massages__slideInAnimation', { root: null, threshold: 0.3}));
+slideInObserver(document.querySelector('.massages__service'), 'massages__slideInAnimation', { root: null, threshold: [0, 1]});

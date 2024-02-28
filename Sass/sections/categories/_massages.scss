@@ -2,6 +2,22 @@
 @use '../../components/functions';
 @use '../../components/mixins';
 
+@include mixins.pulseAnimation('overviewPulse', functions.toRem(30), custom.$primary);
+@include mixins.slideInAnimation('servicesSlideIn', translateY(200%));
+@include mixins.doorAnimation('hideContent', 2, 0);
+@include mixins.doorAnimation('showContent', 0, 2);
+@include mixins.lookAtMeAnimation('moveTopLeft', -2%, -1%);
+@include mixins.lookAtMeAnimation('moveBottomRight', 2%, 1%);
+
+:root {
+    --hiddenInfoAnimName: ;
+    --hiddenInfoAnimState: running;
+    --doorShapeAnimName: moveBottomRight;
+    --doorShapeAnimState: running;
+    --imgAnimName: moveTopLeft;
+    --imgAnimState: running;
+}
+
 .massages {
 
     // ALL BREAKPOINTS 
@@ -16,7 +32,14 @@
         &__summary {
             width: 100%;
             aspect-ratio: 1 / 1;
-            overflow: hidden;
+        }
+
+        &__animatePulse {
+            animation: overviewPulse 2s infinite 1s;
+        }
+
+        &__slideInAnimation {
+            animation: servicesSlideIn 2s ease-out forwards;
         }
 
         &__overview {
@@ -62,7 +85,7 @@
                 }
 
                 h3 {
-                    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(26));
+                    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.5vw), functions.toRem(28));
                 }
             }
         }
@@ -167,7 +190,14 @@
 
             img {
                 z-index: 2;
-                transition: all 1s ease-out;
+                animation-name: var(--imgAnimName);
+                animation-play-state: var(--imgAnimState);
+                animation-duration: 2s, 1s;
+                animation-iteration-count: infinite, 1;
+                animation-fill-mode: none, forwards;
+                animation-timing-function: ease, ease-in-out;
+                
+                
             }
 
             &::after {
@@ -178,6 +208,12 @@
                 height: 100%;
                 width: 100%;
                 z-index: 1;
+                animation-name: var(--doorShapeAnimName);
+                animation-play-state: var(--doorShapeAnimState);
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-fill-mode: none;
+                animation-timing-function: ease;
             }
 
         }
@@ -188,15 +224,11 @@
             height: 90%;
             width: 90%;
             z-index: 0;
-            transition: all 1s ease-out;
-        }
-
-        &__animateShow {
-            @include mixins.doorReveal(0, 2);
-        }
-
-        &__animateHide {
-            @include mixins.doorReveal(2, 0);
+            animation-name: var(--hiddenInfoAnimName);
+            animation-play-state: var(--hiddenInfoAnimState);
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
         }
 
         &__scrub {

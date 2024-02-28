@@ -1,6 +1,7 @@
 @use '../../custom';
 @use '../../components/functions';
 @use '../../components/mixins';
+@include mixins.slideInAnimation(imgSlide, translateX(-100%));
 
 .benefit {
 
@@ -15,7 +16,7 @@
     }
 
     .slideAnimate {
-        animation: slide 2s ease-out forwards;
+        animation: imgSlide 2s ease-out forwards;
     }
 
     &__p {
