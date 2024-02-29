@@ -1,0 +1,54 @@
+@use './../../../custom';
+
+.massages {
+
+    // ALL BREAKPOINTS 
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+    @media (orientation: portrait) {
+
+        &__halfWoman {
+            width: 150%;
+            shape-outside: polygon(55% 50%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            transform: translateX(10%);
+
+            img {
+                mask-image: linear-gradient(0deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, transparent 97%);
+            }
+        }
+
+        &__eyesLashes {
+            width: 35%;
+        }
+
+        &__infos {
+            background: linear-gradient(
+                180deg,
+                custom.$white,
+                custom.$secondary,
+            );
+        }
+
+
+        @include custom.media-breakpoint-up(md) {
+
+        }
+        
+    }
+
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+    @media (orientation: landscape) {
+
+
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+        @include custom.media-breakpoint-up(lg) {
+
+
+        }
+    }
+
+}

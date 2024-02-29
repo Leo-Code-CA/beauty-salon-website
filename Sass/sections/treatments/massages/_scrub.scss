@@ -1,0 +1,41 @@
+@use './../../../custom';
+
+.massages {
+
+    // ALL BREAKPOINTS 
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+    @media (orientation: portrait) {
+
+        &__scrub {
+            min-width: 50%;
+            max-width: 50%;
+            transform: translate(-10%);
+        }
+
+        &__roundedScrub {
+            aspect-ratio: 1/1;
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+        }
+        
+    }
+
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+    @media (orientation: landscape) {
+
+
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+        @include custom.media-breakpoint-up(lg) {
+
+
+        }
+    }
+
+}

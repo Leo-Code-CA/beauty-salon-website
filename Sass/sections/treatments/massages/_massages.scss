@@ -1,16 +1,16 @@
-@use '../../custom';
-@use '../../components/functions';
-@use '../../components/mixins';
+@use './../../../custom';
+@use './../../../components/functions';
+@use './../../../components/mixins';
 
 @include mixins.pulseAnimation('overviewPulse', functions.toRem(30), custom.$primary);
 @include mixins.slideInAnimation('servicesSlideIn', translateY(200%));
-@include mixins.doorAnimation('hideContent', 2, 0);
-@include mixins.doorAnimation('showContent', 0, 2);
+@include mixins.doorAnimation('hideContent', 2, -1);
+@include mixins.doorAnimation('showContent', -1, 2);
 @include mixins.lookAtMeAnimation('moveTopLeft', -2%, -1%);
 @include mixins.lookAtMeAnimation('moveBottomRight', 2%, 1%);
 
 :root {
-    --hiddenInfoAnimName: ;
+    --hiddenInfoAnimName: moveBottomRight;
     --hiddenInfoAnimState: running;
     --doorShapeAnimName: moveBottomRight;
     --doorShapeAnimState: running;
@@ -39,7 +39,7 @@
         }
 
         &__slideInAnimation {
-            animation: servicesSlideIn 2s ease-out forwards;
+            animation: servicesSlideIn 1.5s ease-out forwards;
         }
 
         &__overview {
@@ -146,14 +146,11 @@
 
         &__halfWoman {
             width: 150%;
-            // shape-outside: polygon(70% 60%, 50% 80%, 0% 80%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 60% 0, 45% 30%);
-            shape-outside: polygon(55% 60%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            shape-outside: polygon(55% 50%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
             transform: translateX(10%);
 
             img {
                 mask-image: linear-gradient(0deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, transparent 97%);
-                // mask-image: linear-gradient(180deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 0%, transparent 95%);
-            
             }
         }
 
@@ -162,12 +159,6 @@
         }
 
         &__infos {
-            // background: linear-gradient(
-            //     -45deg,
-            //     custom.$white,
-            //     custom.$secondary,
-            //     custom.$primary
-            // );
             background: linear-gradient(
                 180deg,
                 custom.$white,
@@ -196,39 +187,41 @@
                 animation-iteration-count: infinite, 1;
                 animation-fill-mode: none, forwards;
                 animation-timing-function: ease, ease-in-out;
-                
-                
+
             }
 
             &::after {
-                content: url('./../../../images/categories/pink_door_shape_illustration.svg');
+                content: url('./../images/categories/pink_door_shape_illustration.svg');
                 position: absolute;
                 top: 5%;
                 left: 5%;
                 height: 100%;
                 width: 100%;
-                z-index: 1;
+                z-index: 0;
                 animation-name: var(--doorShapeAnimName);
                 animation-play-state: var(--doorShapeAnimState);
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
                 animation-fill-mode: none;
                 animation-timing-function: ease;
+
             }
 
         }
 
         &__hiddenInfo {
-            top: 10%;
-            left: 10%;
-            height: 90%;
-            width: 90%;
-            z-index: 0;
+            top: 5%;
+            left: 5%;
+            height: 100%;
+            width: 100%;
+            padding: functions.toRem(35) functions.toRem(45);
+            z-index: 1;
             animation-name: var(--hiddenInfoAnimName);
             animation-play-state: var(--hiddenInfoAnimState);
-            animation-duration: 1s;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-in-out;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-fill-mode: none;
+            animation-timing-function: ease;
         }
 
         &__scrub {

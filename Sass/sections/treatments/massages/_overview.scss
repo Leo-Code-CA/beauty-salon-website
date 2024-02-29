@@ -1,0 +1,94 @@
+@use './../../../custom';
+@use './../../../components/functions';
+@use './../../../components/mixins';
+
+.overview {
+
+    // ALL BREAKPOINTS
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+    @media (orientation: portrait) {
+
+        width: 100%;
+        aspect-ratio: 1 / 1;
+
+        &__card {
+            width: 48%;
+            aspect-ratio: 1 / 1;
+            transition: all 1s ease-out;
+
+            &:nth-child(1) {
+                transform-origin: top left;
+                top: 0;
+                left: 0;
+            }
+
+            &:nth-child(2) {
+                transform-origin: top right;
+                top: 0;
+                right: 0;
+            }
+
+            &:nth-child(3) {
+                transform-origin: bottom left;
+                bottom: 0;
+                left: 0;
+            }
+
+            &:nth-child(4) {
+                transform-origin: bottom right;
+                bottom: 0;
+                right: 0;
+            }
+
+            &--selected {
+                z-index: 1;
+                width: 100%;
+                padding: functions.toRem(16) !important;
+
+                dl {
+                    padding: 0 !important;
+                }
+
+                .massages__icon {
+                    width: 40%;
+                }
+
+                h3 {
+                    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.5vw), functions.toRem(28));
+                }
+            }
+        }
+
+        &__icon {
+            width: 60%;
+        }
+
+        &__closeCard {
+            position: absolute;
+            top: functions.toRem(10);
+            right: functions.toRem(10);
+            cursor: pointer;
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+        }
+        
+    }
+
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+    @media (orientation: landscape) {
+
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+        @include custom.media-breakpoint-up(lg) {
+
+
+        }
+    }
+
+}
