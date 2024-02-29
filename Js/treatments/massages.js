@@ -9,8 +9,8 @@ import slideInObserver from "./../utils/slideInObserver.js";
 const root = document.querySelector(':root');
 const overview = document.querySelectorAll('.overview__card');
 const overviewBtn = document.querySelectorAll('.overview__card .overview__massageBtn');
-const doorIllustration = document.querySelector('.massages__door');
-const allMassagesDescription = document.querySelectorAll('.massages__service:not(:nth-child(1))');
+const doorIllustration = document.querySelector('.californien__infoIllustration');
+const allMassagesDescription = document.querySelectorAll('.massages__massage:not(:nth-child(1))');
 
 // Data
 
@@ -59,7 +59,7 @@ window.addEventListener('click', handleOverviewTargets);
 
 // HANDLE ON CLICK PAGE SCROLL
 overviewBtn.forEach((btn, i) => {
-    const massageDescription = document.querySelector(`.massages__service:nth-child(${i + 1})`)
+    const massageDescription = document.querySelector(`.massages__massage:nth-child(${i + 1})`)
     btn.addEventListener('click', () => scrollToElem(massageDescription));
 })
 

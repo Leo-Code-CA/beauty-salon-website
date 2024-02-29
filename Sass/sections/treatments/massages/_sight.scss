@@ -1,6 +1,6 @@
 @use './../../../custom';
 
-.massages {
+.sight {
 
     // ALL BREAKPOINTS 
 
@@ -8,7 +8,7 @@
 
     @media (orientation: portrait) {
 
-        &__halfWoman {
+        &__halfFaceImg {
             width: 150%;
             shape-outside: polygon(55% 50%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
             transform: translateX(10%);
@@ -18,16 +18,16 @@
             }
         }
 
-        &__eyesLashes {
-            width: 35%;
-        }
-
-        &__infos {
+        &__info {
             background: linear-gradient(
                 180deg,
                 custom.$white,
                 custom.$secondary,
             );
+        }
+
+        &__eyesLashes {
+            width: 35%;
         }
 
 

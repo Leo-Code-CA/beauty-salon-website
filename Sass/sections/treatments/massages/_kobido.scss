@@ -1,7 +1,7 @@
 @use './../../../custom';
 @use './../../../components/functions';
 
-.massages {
+.kobido {
 
     // ALL BREAKPOINTS 
 
@@ -10,15 +10,11 @@
     @media (orientation: portrait) {
 
 
-        &__blossom {
+        &__blossomImg {
             transform: translateX(10%);
         }
 
-        &__price {
-            width: 40%;
-        }
-
-        &__subheading {
+        &__supreme {
             background: linear-gradient(
                 90deg,
                 custom.$primary,
@@ -34,6 +30,10 @@
                 font-size: clamp(functions.toRem(30), calc(30px + 0.17vw), functions.toRem(35));
                 font-family: 'Raleway', sans-serif;
             }
+        }
+
+        &__price {
+            width: 40%;
         }
 
 

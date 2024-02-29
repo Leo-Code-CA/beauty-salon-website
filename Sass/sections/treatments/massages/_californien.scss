@@ -2,7 +2,6 @@
 @use './../../../components/functions';
 @use './../../../components/mixins';
 
-@include mixins.slideInAnimation('servicesSlideIn', translateY(200%));
 @include mixins.doorAnimation('hideContent', 2, -1);
 @include mixins.doorAnimation('showContent', -1, 2);
 @include mixins.lookAtMeAnimation('moveTopLeft', -2%, -1%);
@@ -17,7 +16,7 @@
     --imgAnimState: running;
 }
 
-.massages {
+.californien {
 
     // ALL BREAKPOINTS 
 
@@ -25,17 +24,17 @@
 
     @media (orientation: portrait) {
 
-        &__dropper {
+        &__palmTreeImg {
+            width: 80%;
+        }
+
+        &__oilDropperImg {
             transform: rotateY(180deg) translate(20%);
             width: 70%;
             shape-outside: circle(50%);
         }
 
-        &__palmTree {
-            width: 80%;
-        }
-
-        &__door {
+        &__infoIllustration {
 
             img {
                 z-index: 2;
