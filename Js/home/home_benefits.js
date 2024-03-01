@@ -11,5 +11,5 @@ const images = document.querySelectorAll('.benefit__img');
 // Variables
 
 images.forEach(img => {
-    slideInObserver(img, 'slideAnimate');
+    slideInObserver(img, 'slideAnimation--left');
 });

@@ -33,14 +33,14 @@
 
                         <!-- SERVICES OVERVIEW / SUMMARY -->
                         <div class="overview position-relative">
-                            <div class="overview__card massages__animatePulse bg-secondary border border-dark position-absolute rounded p-2 d-flex flex-column justify-content-evenly align-items-center">
+                            <div class="overview__card pulseAnimation bg-secondary border border-dark position-absolute rounded p-2 d-flex flex-column justify-content-evenly align-items-center">
                                 <h3 class="heading-3 text-center">Kobido(s)</h3>
                                 <div class="overview__icon">
                                     <img src="images/categories/facial_massage_icon.png" alt="facial massage icon" class="img-fluid object-fit-cover">
                                 </div>
                                 <div class="d-none overview__active w-100 d-flex flex-column align-items-center">
+                                    <button type="button" class="btn-close position-absolute overview__closeCard" aria-label="close"></button>
                                     <dl class="w-100 px-3">
-                                        <button type="button" class="btn-close position-absolute overview__closeCard" aria-label="close"></button>
                                         <div class="d-flex flex-nowrap gap-2 align-items-center">
                                             <dt>Tarif</dt>
                                             <span class="border-bottom border-dark flex-fill mt-2"></span>
@@ -127,19 +127,19 @@
 
                     <div class="col d-flex flex-column gap-3">
                         <!-- SERVICE 1 - KOBIDOS MASSAGES -->
-                        <div class="massages__massage massages__slideInAnimation">
+                        <div class="clearfix massages__massage slideAnimation--bottom">
                             <h2 class="heading-2 text-center">Kobido & Kobido Suprême
                                 <span class="d-block subheading text-uppercase text-center mt-1">massage facial</span>
                             </h2>
-                            <img src="images/categories/blossom_illustration.svg" alt="blossom illustration" class="kobido__blossomImg">
+                            <img src="images/categories/blossom_illustration.svg" alt="blossom illustration" class="kobido__blossomImg d-block">
                             <p> Le kobido est un massage ancestral japonais du visage, on retrouve les traces de son origine en plein cœur du XVIème siècle.</p>
                             <p>Il est issu du « Amma » , littéralement « calmer avec les mains », l'ancêtre du Shiatsu.</p>
                             <p>Il permet de tonifier l'ensemble des muscles peauciers (plus de quarante), afin que la peau soit éclatante, fraîche et ferme : elle est instantanément repulpée.</p>
                             <p>Les traits du visage sont comme « défroissés » et la peau retrouve éclat, fraîcheur et fermeté.</p>
-                            <p class="massages__advice border border-dark rounded p-3">
+                            <p class="kobido__advice border border-dark rounded p-3">
                                 <b class="d-block text-primary heading-5 text-center">Conseil de votre 
                                     <span class="text-nowrap">esthéticienne
-                                        <span class="d-inline-block">
+                                        <span class="d-inline-block massages__bulbIcon">
                                             <img src="./images/categories/light_bulb_icon.png" alt="light bulb icon">
                                         </span>
                                     </span>
@@ -161,7 +161,7 @@
                                 </div>
                             </dl>
                             <button class="btn btn-primary w-100">Réservez</button>
-                            <img src="./images/categories/japanese_landscape_illustration.svg" alt="japanese landscape illustration">
+                            <img src="./images/categories/japanese_landscape_illustration.svg" alt="japanese landscape illustration" class="kobido__landscapeImg">
                             <h3 class="fw-bold mt-3 kobido__supreme">Kobido <span class="text-uppercase">Suprême</span></h3>
                             <p>Vous bénéficiez de 20 minutes de soin supplémentaires par rapport au massage original, dédiées à l'application d'un doux gommage exfoliant.</p>
                             <p>Boostez l'efficacité de votre votre massage sans plus attendre! Débarrassée de ses impuretés, la peau est prête à recevoir le soin Kobido.</p>
@@ -182,93 +182,97 @@
                         </div>
 
                         <!-- SERVICE 2 - EYES MASSAGE -->
-                        <div class="massages__massage massages__slideInAnimation">
+                        <div class="massages__massage slideAnimation--bottom sight clearfix">
                             <h2 class="heading-2 text-center mb-4">Beauté du Regard
                                 <span class="d-block subheading text-uppercase text-center mt-1">massage facial</span>
                             </h2>
                             <div class="sight__halfFaceImg float-end">
                                 <img src="./images/categories/woman_eye_image.png" alt="woman half face" class="img-fluid">
                             </div>
-                            <p class="lh-lg">Le soin “Beauté du regard” associe des techniques relaxantes ainsi que des pressions sur les points énergétiques des yeux.</p>
-                            <p class="lh-lg">Effet raffermissant, tenseur et hydratant.</p>
-                            <p class="lh-lg">C'est aussi un massage du visage, un véritable lifting naturel dont le résultat est immédiat.</p>
-                            <p class="lh-lg">La peau est repulpée, le regard est sublimé.</p>
-                            <div class="d-flex flex-nowrap gap-3 sight__info p-2 rounded">
-                                <img src="./images/categories/eyes_lashes_illustration.svg" alt="eyes lashes illustration" class="sight__eyesLashes">
-                                <div class="flex-fill d-flex flex-column justify-content-evenly">
-                                    <dl>
-                                        <div class="d-flex flex-nowrap gap-2 align-items-center">
-                                            <dt>Tarif</dt>
-                                            <span class="border-bottom border-dark flex-fill mt-2"></span>
-                                            <dd class="m-0">40&euro;</dd>
-                                        </div>
-                                        <div class="d-flex flex-nowrap gap-2 align-items-center">
-                                            <dt>Durée</dt>
-                                            <span class="border-bottom border-dark flex-fill mt-2"></span>
-                                            <dd class="m-0">60min</dd>
-                                        </div>
-                                    </dl>
-                                    <button class="btn btn-primary">Prendre rendez-vous</button>
-                                </div>
-                            </div>       
+                            <div class="sight__description">
+                                <p class="lh-lg">Le soin “Beauté du regard” associe des techniques relaxantes ainsi que des pressions sur les points énergétiques des yeux.</p>
+                                <p class="lh-lg">Effet raffermissant, tenseur et hydratant.</p>
+                                <p class="lh-lg">C'est aussi un massage du visage, un véritable lifting naturel dont le résultat est immédiat.</p>
+                                <p class="lh-lg">La peau est repulpée, le regard est sublimé.</p>
+                                <div class="d-flex flex-nowrap gap-3 sight__info p-2 rounded">
+                                    <img src="./images/categories/eyes_lashes_illustration.svg" alt="eyes lashes illustration" class="sight__eyesLashes">
+                                    <div class="flex-fill d-flex flex-column justify-content-evenly">
+                                        <dl>
+                                            <div class="d-flex flex-nowrap gap-2 align-items-center">
+                                                <dt>Tarif</dt>
+                                                <span class="border-bottom border-dark flex-fill mt-2"></span>
+                                                <dd class="m-0">40&euro;</dd>
+                                            </div>
+                                            <div class="d-flex flex-nowrap gap-2 align-items-center">
+                                                <dt>Durée</dt>
+                                                <span class="border-bottom border-dark flex-fill mt-2"></span>
+                                                <dd class="m-0">60min</dd>
+                                            </div>
+                                        </dl>
+                                        <button class="btn btn-primary">Prendre rendez-vous</button>
+                                    </div>
+                                </div> 
+                            </div>      
                         </div>
 
                         <!-- SERVICE 3 - CALIFORNIAN MASSAGE -->
-                        <div class="massages__massage massages__slideInAnimation mt-3">
+                        <div class="massages__massage slideAnimation--bottom mt-3 californien">
                             <h2 class="heading-2 text-center">Massage Californien
                                 <span class="d-block subheading text-uppercase text-center mt-1">massage corporel</span>
                             </h2>
                             <img src="./images/categories/palm_tree_illustration.svg" alt="palm trees illustration" class="img-fluid californien__palmTreeImg mx-auto d-block">
                             <p>Le massage de bien être, Californien, se voue exclusivement à la détente et à la relaxation.</p>
-                            <p class="massages__advice border border-dark rounded p-3">
+                            <p class="border border-dark rounded p-3">
                                 <b class="d-block text-primary heading-5 text-center">Conseil de votre 
                                     <span class="text-nowrap">esthéticienne
-                                        <span class="d-inline-block">
+                                        <span class="d-inline-block massages__bulbIcon">
                                             <img src="./images/categories/light_bulb_icon.png" alt="light bulb icon">
                                         </span>
                                     </span>
                                 </b>
                                 Il faut éviter de se faire masser après un repas.
                             </p>
-                            <p>Il tranquillise et apaise. C'est massage Californien est un massage à huile.</p>
-                            <img src="./images/categories/oil_dropper_image.png" alt="oil dropper image" class="img-fluid californien__oilDropperImg float-start">
-                            <p>L'huile n'est jamais versée directement sur le corps mais déposée dans les mains et réchauffée avant d'être appliquée.</p>
-                            <p>Ce massage convient aux personnes stressées, sur-bookées, tendues, oppressées par un mode de vie à cent à l'heure.</p>
-                            <div class="californien__infoIllustration position-relative">
-                                <img src="./images/categories/california_illustration.svg" alt="califonia illustration" class="img-fluid position-relative">
-                                <div class="d-flex flex-column justify-content-between californien__hiddenInfo position-absolute">
-                                    <img src="./images/categories/woman_flowers_illustration.svg" alt="woman with flowers illustration" class="img-fluid">
-                                    <dl>
-                                        <div class="d-flex flex-nowrap gap-2 align-items-center">
-                                            <dt>Tarif</dt>
-                                            <span class="border-bottom border-dark flex-fill mt-2"></span>
-                                            <dd class="m-0">40&euro;</dd>
-                                        </div>
-                                        <div class="d-flex flex-nowrap gap-2 align-items-center">
-                                            <dt>Durée</dt>
-                                            <span class="border-bottom border-dark flex-fill mt-2"></span>
-                                            <dd class="m-0">60min</dd>
-                                        </div>
-                                    </dl>
-                                    <button class="btn btn-primary">Prendre rendez-vous</button>
+                            <div class="californien__infoContainer">
+                                <p class="">Il tranquillise et apaise. C'est massage Californien est un massage à huile.</p>
+                                <img src="./images/categories/oil_dropper_image.png" alt="oil dropper image" class="img-fluid californien__oilDropperImg float-start">
+                                <p>L'huile n'est jamais versée directement sur le corps mais déposée dans les mains et réchauffée avant d'être appliquée.</p>
+                                <p>Ce massage convient aux personnes stressées, sur-bookées, tendues, oppressées par un mode de vie à cent à l'heure.</p>
+                                <div class="californien__infoIllustration position-relative">
+                                    <img src="./images/categories/california_illustration.svg" alt="califonia illustration" class="img-fluid position-relative">
+                                    <div class="d-flex flex-column justify-content-between californien__hiddenInfo position-absolute">
+                                        <img src="./images/categories/woman_flowers_illustration.svg" alt="woman with flowers illustration" class="img-fluid">
+                                        <dl>
+                                            <div class="d-flex flex-nowrap gap-2 align-items-center">
+                                                <dt>Tarif</dt>
+                                                <span class="border-bottom border-dark flex-fill mt-2"></span>
+                                                <dd class="m-0">40&euro;</dd>
+                                            </div>
+                                            <div class="d-flex flex-nowrap gap-2 align-items-center">
+                                                <dt>Durée</dt>
+                                                <span class="border-bottom border-dark flex-fill mt-2"></span>
+                                                <dd class="m-0">60min</dd>
+                                            </div>
+                                        </dl>
+                                        <button class="btn btn-primary">Prendre rendez-vous</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- SERVICE 4 - SCRUB AND MASSAGE -->
-                        <div class="massages__massage massages__slideInAnimation">
+                        <div class="massages__massage slideAnimation--bottom">
                             <h2 class="heading-2 text-center my-3">Gommage & Massage
                                 <span class="d-block subheading text-uppercase text-center mt-1">soin corporel</span>
                             </h2>
                             <p>Le gomme et massage est un soin complet, permet d'exfolier délicatement les principales zones de votre corps (visage, décolleté, ventre, bras, dos, jambes et pieds).</p>
-                            <img src="./images/categories/scrub_and_flowers_illustration.svg" alt="body scrub and flowers illustration" class="img-fluid w-75 mx-auto d-block">
+                            <img src="./images/categories/scrub_and_flowers_illustration.svg" alt="body scrub and flowers illustration" class="img-fluid w-75 mx-auto d-block scrub__illustration">
                             <p>Vous bénéficierez d'un gommage et d'un massage. Ce soin  permet de purifier la peau, celle-ci redevient douce et lisse.</p>
                             <p>Idéal pour préparer sa peau au soleil et entretenir la luminosité de son bronzage.</p>
                             <p>La prestation d'un SPA, au prix d'un institut!</p>
                             <div class="d-flex">
-                                <img src="./images/categories/happy_woman_scrub.png" alt="body scrub on woman's back image" class="img-fluid massages__scrub d-block">
+                                <img src="./images/categories/happy_woman_scrub.png" alt="body scrub on woman's back image" class="img-fluid scrub__faceScrubImg d-block">
                                 <div class="flex-fill d-flex flex-column justify-content-evenly">
-                                    <!-- <img src="./images/categories/scrub+pink_image.avif" alt="" class="img-fluid rounded-circle massages__roundedScrub"> -->
+                                    <img src="./images/categories/scrub_and_flowers_illustration.svg" alt="body scrub and flowers illustration" class="img-fluid align-self-center d-none scrub__illustrationTwo">
                                     <dl>
                                         <div class="d-flex flex-nowrap gap-2 align-items-center">
                                             <dt>Tarif</dt>

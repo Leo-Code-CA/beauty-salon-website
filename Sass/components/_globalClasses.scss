@@ -1,0 +1,22 @@
+@use 'mixins';
+@use 'functions';
+@use '../custom';
+
+@include mixins.slideInAnimation('slideInBottom', translateY(200%));
+@include mixins.slideInAnimation('slideInLeft', translateX(-100%));
+@include mixins.pulseAnimation('pulse', functions.toRem(30), custom.$primary);
+
+.slideAnimation {
+
+    &--bottom {
+        animation: slideInBottom 1.5s ease-out forwards;
+    }
+
+    &--left {
+        animation: slideInLeft 1.5s ease-out forwards;
+    }
+}
+
+.pulseAnimation {
+    animation: pulse 2s infinite 1s;
+}

@@ -83,7 +83,33 @@
 
 
         @include custom.media-breakpoint-up(md) {
+            margin-top: 0 !important;
 
+            &__palmTreeImg {
+                width: 50%;
+            }
+
+            &__oilDropperImg {
+                display: none;
+            }
+
+            &__infoIllustration {
+                width: 50%;
+            }
+
+            &__infoContainer {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                height: 40vh;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    width: 40%;
+                    line-height: 2;
+                }
+            }
         }
         
     }

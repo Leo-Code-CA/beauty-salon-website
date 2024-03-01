@@ -16,7 +16,7 @@ const allMassagesDescription = document.querySelectorAll('.massages__massage:not
 
 // Variables
 
-// HANDLE THE SUMMARY / OVERVIEW ANIMATION BEHAVIOURS
+// HANDLE THE SUMMARY / OVERVIEW ANIMATION BEHAVIOURS - MOBILE
 function handleOverviewTargets(e) {
 
     const clickedTarget = e.target;
@@ -51,11 +51,24 @@ function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) 
     // Toggle class of one of the selected element child to show or hide its content
     activeInfo.classList.toggle("d-none");
     // Toggle the pulse animation on the first massage element
-    document.querySelector('.overview__card:nth-child(1)').classList.toggle('massages__animatePulse');
+    document.querySelector('.overview__card:nth-child(1)').classList.toggle('pulseAnimation');
 }
 
 window.addEventListener('click', handleOverviewTargets);
 // window.addEventListener('touchstart', handleOverviewTargets);
+
+// HANDLE THE SUMMARY / OVERVIEW ANIMATION BEHAVIOURS - TABLET
+// function handle
+
+
+
+
+
+
+
+
+
+
 
 // HANDLE ON CLICK PAGE SCROLL
 overviewBtn.forEach((btn, i) => {
@@ -87,4 +100,4 @@ function handleDoorReveal() {
 doorIllustration.addEventListener('click', handleDoorReveal);
 
 // HANDLE MASSAGES SLIDE IN ANIMATION
-allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'massages__slideInAnimation', { root: null, threshold: 0}));
+allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'slideAnimation--bottom', { root: null, threshold: 0}));

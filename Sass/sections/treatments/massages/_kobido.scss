@@ -39,6 +39,21 @@
 
         @include custom.media-breakpoint-up(md) {
 
+            &__advice {
+                clear: right !important;
+            }
+
+            &__blossomImg {
+                width: 60%;
+                margin-left: auto;
+                float: right;
+            }
+
+            &__landscapeImg {
+                width: 60%;
+                float: left;
+            }
+
         }
         
     }

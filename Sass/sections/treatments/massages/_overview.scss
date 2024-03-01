@@ -6,6 +6,17 @@
 
     // ALL BREAKPOINTS
 
+    &__card {
+        transition: all 1s ease-out;
+    }
+
+    &__closeCard {
+        position: absolute;
+        top: functions.toRem(10);
+        right: functions.toRem(10);
+        cursor: pointer;
+    }
+
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
     @media (orientation: portrait) {
@@ -16,7 +27,6 @@
         &__card {
             width: 48%;
             aspect-ratio: 1 / 1;
-            transition: all 1s ease-out;
 
             &:nth-child(1) {
                 transform-origin: top left;
@@ -65,14 +75,69 @@
             width: 60%;
         }
 
-        &__closeCard {
-            position: absolute;
-            top: functions.toRem(10);
-            right: functions.toRem(10);
-            cursor: pointer;
-        }
-
         @include custom.media-breakpoint-up(md) {
+
+            aspect-ratio: initial;
+            height: calc(100vw / 4);
+
+            &__icon {
+                width: 60%;
+                max-width: functions.toRem(100);
+            }
+
+            &__card {
+                aspect-ratio: initial;
+                height: calc(100vw / 4.8);
+                width: calc(100vw / 4.8);
+                top: 0;
+    
+                &:nth-child(1) {
+                    left: 0;
+                    transform-origin: left;
+                }
+    
+                &:nth-child(2) {
+                    left: 26%;
+                    transform-origin: left;
+                }
+    
+                &:nth-child(3) {
+                    left: 52%;
+                    transform-origin: right;
+                }
+    
+                &:nth-child(4) {
+                    right: 0;
+                    transform-origin: right;
+                }
+    
+                &--selected {
+                    flex-wrap: wrap;
+                    width: 100%;
+                    padding: functions.toRem(8) functions.toRem(16) !important;
+
+                    &:nth-child(2), &:nth-child(3) {
+                        left: 0;
+                    }
+    
+                    .overview__active {
+                        width: 75% !important;
+                        justify-content: space-evenly;
+                        height: 100%;
+                        margin-top: functions.toRem(22);
+                    }
+    
+                    h3 {
+                        max-width: 20%;
+                        font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
+                    }
+
+                    .overview__icon {
+                        width: 13%;
+                    }
+
+                }
+            }
 
         }
         
@@ -81,6 +146,72 @@
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
 
     @media (orientation: landscape) {
+
+        aspect-ratio: initial;
+        height: calc(100vw / 4);
+
+        &__icon {
+            width: 60%;
+            max-width: functions.toRem(100);
+        }
+
+        &__card {
+            aspect-ratio: initial;
+            height: calc(100vw / 4.8);
+            width: calc(100vw / 4.8);
+            top: 0;
+
+            &:nth-child(1) {
+                left: 0;
+                transform-origin: left;
+            }
+
+            &:nth-child(2) {
+                left: 26%;
+                transform-origin: left;
+            }
+
+            &:nth-child(3) {
+                left: 52%;
+                transform-origin: right;
+            }
+
+            &:nth-child(4) {
+                right: 0;
+                transform-origin: right;
+            }
+
+            &--selected {
+                flex-wrap: wrap;
+                width: 100%;
+                padding: functions.toRem(8) functions.toRem(16) !important;
+
+                &:nth-child(2), &:nth-child(3) {
+                    left: 0;
+                }
+
+                .overview__active {
+                    width: 75% !important;
+                    justify-content: space-evenly;
+                    height: 100%;
+                    margin-top: functions.toRem(22);
+                    
+                    dl {
+                        padding: 0 !important;
+                    }
+                }
+
+                h3 {
+                    max-width: 20%;
+                    font-size: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.3vw), functions.toRem(18));
+                }
+
+                .overview__icon {
+                    width: 12%;
+                }
+
+            }
+        }
 
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////

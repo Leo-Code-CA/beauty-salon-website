@@ -1,6 +1,6 @@
 @use './../../../custom';
 
-.massages {
+.scrub {
 
     // ALL BREAKPOINTS 
 
@@ -8,18 +8,20 @@
 
     @media (orientation: portrait) {
 
-        &__scrub {
-            min-width: 50%;
-            max-width: 50%;
+        &__faceScrubImg {
+            width: 50%;
             transform: translate(-10%);
         }
 
-        &__roundedScrub {
-            aspect-ratio: 1/1;
-        }
-
         @include custom.media-breakpoint-up(md) {
+            &__illustration {
+                display: none !important;
+            }
 
+            &__illustrationTwo {
+                display: block !important;
+                width: 70%;
+            }
         }
         
     }

@@ -1,9 +1,5 @@
 @use './../../../custom';
 @use './../../../components/functions';
-@use './../../../components/mixins';
-
-@include mixins.slideInAnimation('servicesSlideIn', translateY(200%));
-@include mixins.pulseAnimation('overviewPulse', functions.toRem(30), custom.$primary);
 
 .massages {
 
@@ -16,30 +12,14 @@
 
     @media (orientation: portrait) {
 
-        &__slideInAnimation {
-            animation: servicesSlideIn 1.5s ease-out forwards;
+        &__bulbIcon {
+            height: 2rem;
+            transform: rotate(15deg) translateY(-20%);
 
-        }
-
-        &__animatePulse {
-            animation: overviewPulse 2s infinite 1s;
-        }
-
-        &__advice {
-
-            span {
-
-                height: 2rem;
-                transform: rotate(15deg) translateY(-20%);
-
-
-                img {
-                    height: 100%;
-                    width: auto;
-                }
-
+            img {
+                height: 100%;
+                width: auto;
             }
-            
         }
 
         @include custom.media-breakpoint-up(md) {
