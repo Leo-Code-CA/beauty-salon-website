@@ -1,0 +1,38 @@
+@use './../../custom';
+@use './../../components/functions';
+
+.about {
+
+    // ALL BREAKPOINTS 
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+    @media (orientation: portrait) {
+
+        margin-top: functions.toRem(56);
+
+
+        @include custom.media-breakpoint-up(md) {
+   
+        }
+        
+    }
+
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+    @media (orientation: landscape) {
+
+
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+        @include custom.media-breakpoint-up(lg) {
+
+        }
+
+        @include custom.media-breakpoint-up(xl) {
+
+        }
+    }
+
+}
