@@ -1,4 +1,5 @@
 @use './../../../custom';
+@use './../../../components/functions';
 
 .scrub {
 
@@ -30,13 +31,70 @@
 
     @media (orientation: landscape) {
 
+        &__illustration {
+            display: none !important;
+        }
+
+        &__faceScrubImg {
+            width: 35%;
+        }
+
+        &__illustrationTwo {
+            display: block !important;
+            width: 30%;
+        }
+
+        button {
+            font-size: custom.$body-landscape-fs;
+        }
+
+        &__infoContainer {
+            justify-content: space-between;
+        }
+
+        &__info {
+            max-width: 60%;
+        }
 
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
 
         @include custom.media-breakpoint-up(lg) {
+            &__info {
+                max-width: 50%;
+            }
+
+            &__illustrationTwo {
+                width: 40%;
+            }
+        }
+
+        @include custom.media-breakpoint-up(xl) {
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            row-gap: functions.toRem(20);
+            margin-top: functions.toRem(30) !important;
+
+            h2 {
+                width: 100%;
+                margin: functions.toRem(60) 0;
+            }
+
+            &__paragraph {
+                width: 40%;
+            }
+
+            &__infoContainer {
+                width: 50%;
+            }
 
 
+            &__illustrationTwo {
+                width: 50%;
+                margin-top: functions.toRem(-40);
+            }
         }
     }
 

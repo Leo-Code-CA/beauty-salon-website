@@ -57,6 +57,10 @@
     font-family: 'Raleway', sans-serif;
     font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(25));
     font-weight: 700;
+
+    @media (orientation: landscape) {
+        font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.4vw), functions.toRem(20));
+    }
 }
 
 .subheading { // under a heading

@@ -118,13 +118,118 @@
 
     @media (orientation: landscape) {
 
+        &__palmTreeImg {
+            width: 40%;
+        }
 
+        &__oilDropperImg {
+            // transform: rotateY(180deg) translate(20%);
+            // width: 50%;
+            // shape-outside: circle(50%);
+            display: none !important;
+        }
+
+        &__infoIllustration {
+
+            width: 40%;
+
+            img {
+                z-index: 2;
+                animation-name: var(--imgAnimName);
+                animation-play-state: var(--imgAnimState);
+                animation-duration: 2s, 1s;
+                animation-iteration-count: infinite, 1;
+                animation-fill-mode: none, forwards;
+                animation-timing-function: ease, ease-in-out;
+
+            }
+
+            &::after {
+                content: url('./../images/categories/pink_door_shape_illustration.svg');
+                position: absolute;
+                top: 5%;
+                left: 5%;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
+                animation-name: var(--doorShapeAnimName);
+                animation-play-state: var(--doorShapeAnimState);
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-fill-mode: none;
+                animation-timing-function: ease;
+
+            }
+
+        }
+
+        &__hiddenInfo {
+            top: 5%;
+            left: 5%;
+            height: 100%;
+            width: 100%;
+            padding: functions.toRem(35) functions.toRem(45);
+            z-index: 1;
+            animation-name: var(--hiddenInfoAnimName);
+            animation-play-state: var(--hiddenInfoAnimState);
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-fill-mode: none;
+            animation-timing-function: ease;
+
+            button {
+                font-size: custom.$body-landscape-fs !important;
+            }
+        }
+
+        &__infoContainer {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 80vh;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                width: 40%;
+
+                &:first-of-type {
+                    margin-top: functions.toRem(16);
+                }
+            }
+        }
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
 
         @include custom.media-breakpoint-up(lg) {
 
+            &__infoContainer {
+                height: 55vh;
 
+                p {
+                    line-height: 2;
+                }
+            }
+
+        }
+
+        @include custom.media-breakpoint-up(xl) {
+
+            h2 {
+                margin-bottom: functions.toRem(25) !important;
+            }
+
+            &__palmTreeImg {
+                width: 30%;
+                float: left;
+            }
+
+            &__advice {
+                width: 40%;
+                margin: 0 auto !important;
+                text-align: center;
+                padding: functions.toRem(20) 0 !important;
+            }
         }
     }
 

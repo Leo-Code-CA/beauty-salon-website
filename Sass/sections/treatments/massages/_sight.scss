@@ -65,14 +65,86 @@
 
     @media (orientation: landscape) {
 
+        &__halfFaceImg {
+            width: 40%;
+            transform: translate(13%);
+            shape-outside: polygon(55% 50%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+
+            img {
+                mask-image: linear-gradient(0deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, transparent 97%);
+            }
+        }
+
+        &__info {
+            background: linear-gradient(
+                180deg,
+                custom.$white,
+                custom.$secondary,
+            );
+            width: 60%;
+        }
+
+        &__eyesLashes {
+            width: 25%;
+        }
+
+        &__description {
+
+            p {
+                line-height: initial !important;
+            }
+        }
+
 
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
 
         @include custom.media-breakpoint-up(lg) {
 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+
+            h2 {
+                width: 100%;
+            }
+
+
+            &__halfFaceImg {
+                width: 40%;
+                float: none !important;
+                order: 3;
+                transform: translate(10%);
+            }
+
+            &__description {
+                width: 60%;
+
+                p {
+                    line-height: 2 !important;
+                }
+            }
+
+            &__info {
+                width: 80%;
+            }
 
         }
+
+        @include custom.media-breakpoint-up(xl) {
+
+            &__halfFaceImg {
+                width: 30%;
+            }
+
+            &__description {
+                width: 50%;
+                margin-left: functions.toRem(150);
+            }
+        }
     }
+
+
 
 }
