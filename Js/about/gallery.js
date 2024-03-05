@@ -27,8 +27,6 @@ function createImgElem(column, src, alt) {
 // Create the actual gallery layout columns
 function createImgLayout(col, imgCollection) {
 
-    console.log(col, imgCollection)
-
     // cleanup by removing the current html if any
     if (imgContainer.innerHTML) {
         while (imgContainer.firstChild) {
@@ -48,46 +46,20 @@ function createImgLayout(col, imgCollection) {
         i++;
     }
 
-    // depending on the total number of images, determine how many image will be in each column and create them
-    // const totalImg = imgCollection.length; 
-    // const imgPerColumn = Math.round(totalImg / col); 
-    // console.log(imgPerColumn)
-    // let currentLimit = imgPerColumn; 
-    // let currentColumn = 1;
-
-    // for (let i = 0; i < totalImg; i++) {
-    
-    //     if (i === currentLimit) {
-
-    //         currentColumn++;
-    //         currentLimit += imgPerColumn;
-
-    //         if (currentColumn > totalColumns.length) currentColumn = 1;
-
-    //     }
-
-    //     createImgElem(totalColumns[currentColumn - 1], imgCollection[i].src, imgCollection[i].alt)
-    // }
-
     const totalImg = imgCollection.length; 
-    const imgPerColumn = Math.round(totalImg / col); 
-    console.log(imgPerColumn)
-    let currentLimit = imgPerColumn; 
-    let currentColumn = 1;
+    let currentColumn = 0;
 
     for (let i = 0; i < totalImg; i++) {
-    
-        if (i === currentLimit) {
 
-            currentColumn++;
-            currentLimit += imgPerColumn;
+        currentColumn++;
 
-            if (currentColumn > totalColumns.length) currentColumn = 1;
-
+        if (currentColumn === totalColumns.length || i === 0) {
+            currentColumn = 0;
         }
 
-        createImgElem(totalColumns[currentColumn - 1], imgCollection[i].src, imgCollection[i].alt)
+        createImgElem(totalColumns[currentColumn], imgCollection[i].src, imgCollection[i].alt)
     }
+
 }
 
 // Choose the numbers of columns for the gallery layout depending on the viewport width
