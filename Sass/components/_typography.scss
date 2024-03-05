@@ -8,7 +8,9 @@
 .heading-1 { // h2 for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    font-size: clamp(functions.toRem(25), calc(functions.toRem(25) + 0.5vw), functions.toRem(35));
+    // OLD SIZE 
+    // font-size: clamp(functions.toRem(25), calc(functions.toRem(25) + 0.5vw), functions.toRem(35));
+    font-size: clamp(functions.toRem(27), calc(functions.toRem(27) + 0.5vw), functions.toRem(37));
 
     span {
         white-space: nowrap;
@@ -16,11 +18,13 @@
 
     @media (orientation: landscape) {
 
-        font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.65vw), functions.toRem(30));;
+        font-size: clamp(functions.toRem(22), calc(functions.toRem(22) + 0.65vw), functions.toRem(32));;
 
 
         @include custom.media-breakpoint-up(lg) {
-            font-size: clamp(functions.toRem(28), calc(functions.toRem(28) + 0.65vw), functions.toRem(37));
+            // OLD SIZE
+            // font-size: clamp(functions.toRem(28), calc(functions.toRem(28) + 0.65vw), functions.toRem(37));
+            font-size: clamp(functions.toRem(27), calc(functions.toRem(27) + 0.5vw), functions.toRem(37));
         } 
         
     }
@@ -29,13 +33,17 @@
 .heading-2 { // h3 for now
     font-family: 'Bodoni Moda', serif;
     font-weight: 700;
-    font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
+    // OLD SIZE
+    // font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
+    font-size: clamp(functions.toRem(23), calc(functions.toRem(20) + 0.4vw), functions.toRem(33));
 
     @media (orientation: landscape) {
-        font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(32));
+        font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(28));
 
         @include custom.media-breakpoint-up(lg) {
-            font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
+            // OLD SIZE
+            // font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
+            font-size: clamp(functions.toRem(23), calc(functions.toRem(20) + 0.4vw), functions.toRem(33));
         }
     }
 }

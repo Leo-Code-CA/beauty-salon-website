@@ -1,11 +1,9 @@
 @use './../../custom';
 @use './../../components/functions';
 
-.about {
+.faq {
 
     // ALL BREAKPOINTS 
-
-    margin-top: functions.toRem(56);
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
@@ -32,9 +30,7 @@
         }
 
         @include custom.media-breakpoint-up(xl) {
-            width: 75%;
-            margin-left: auto;
-            margin-right: auto;
+
         }
     }
 

@@ -75,3 +75,8 @@ export const images = [
         type: 'products'
     }
 ];
+
+// products = 4
+// massage = 5
+// lobby = 6
+// total = 15
