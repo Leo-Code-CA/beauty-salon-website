@@ -1,0 +1,30 @@
+@use './../../custom';
+@use './../../components/functions';
+
+.contact {
+	// ALL BREAKPOINTS
+
+	margin-top: functions.toRem(56);
+	min-height: calc(100vh - 56px);
+
+	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+
+	@media (orientation: portrait) {
+
+
+		@include custom.media-breakpoint-up(md) {
+		}
+	}
+
+	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+
+	@media (orientation: landscape) {
+		/////////////////// LAPTOP AND DESKTOP  ///////////////////
+
+		@include custom.media-breakpoint-up(lg) {
+		}
+
+		@include custom.media-breakpoint-up(xl) {
+		}
+	}
+}

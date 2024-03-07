@@ -1,13 +1,12 @@
 // USE THE CUSTOM STYLES
-@use "custom";
+@use 'custom';
 
 // USE THE COMPONENTS STYLES
-@use "components";
+@use 'components';
 
 // USE THE WEBSITE SECTIONS STYLES
-@use "sections";
-@use "sections/homepage";
-@use "sections/treatments/massages";
-@use "sections/about";
-
-
+@use 'sections';
+@use 'sections/homepage';
+@use 'sections/treatments/massages';
+@use 'sections/about';
+@use 'sections/contact';
