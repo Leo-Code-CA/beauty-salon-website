@@ -50,15 +50,69 @@
                             </div>
                             <div>
                                 <label for="contactMotive" class="form-label">Quel est le motif de votre message?</label>
-                                <select name="contactMotive" id="contactMotive" class="form-select" required>
+                                <select name="contactMotive" id="contactMotive" class="form-select contact__contactTopic" required>
                                     <option value="" selected disabled>Sélectionner un motif</option>
-                                    <option value="appt">Prendre rendez-vous</option>
-                                    <option value="product">Produits en stock</option>
+                                    <option value="appt">Demande de rendez-vous</option>
+                                    <option value="product">Produits de beauté et accessoires</option>
                                     <option value="info">Demande d'informations</option>
                                     <option value="feedback">Donner son avis</option>
                                     <option value="other">Autre</option>
                                 </select>
                                 <p class="invalid-feedback">Veuillez sélectionner une option dans le menu déroulant.</p>
+                            </div>
+                            <!-- FORM HIDDEN PART - APPT ONLY -->
+                            <div class="d-none contact__apptFormHidden">
+                            
+                                <label for="appointment" class="form-label">Sélectionnez la prestation désirée</label>
+                                <select name="appointment" id="appointment" class="form-select contact__hiddenSelect" required>
+                                    <optgroup label="Soins">
+                                        <option class="text-capitalize" value="sce">Soin Coup d'Éclat</option>
+                                        <option class="text-capitalize" value="shn">soin hydratant & nourrissant</option>
+                                        <option class="text-capitalize" value="st">soin traitant</option>
+                                        <option class="text-capitalize" value="saa">soin anti-age</option>
+                                        <option class="text-capitalize" value="ct">cryothérapie</option>
+                                    </optgroup>
+                                    <optgroup label="Massages">
+                                        <optgroup label="Kobidos">
+                                            <option class="text-capitalize" value="mk">Kobido</option>
+                                            <option class="text-capitalize" value="mks">Kobido Supreme</option>
+                                        </optgroup>
+                                        <option class="text-capitalize" value="mbr">Massage Beauté du Regard</option>
+                                        <option class="text-capitalize" value="mc">massage californien</option>
+                                        <option class="text-capitalize" value="gm">gommage & massage</option>
+                                    </optgroup>
+                                    <optgroup label="Épilations">
+                                        <optgroup label="Visage">
+                                            <option class="text-capitalize" value="evl">lèvres</option>
+                                            <option class="text-capitalize" value="evm">menton</option>
+                                            <option class="text-capitalize" value="evj">joues</option>
+                                            <option class="text-capitalize" value="evc">visage complet</option>
+                                        </optgroup>
+                                        <optgroup label="Sourcils">
+                                            <option class="text-capitalize" value="esl">création ligne sourcils</option>
+                                            <option class="text-capitalize" value="ees">entretien sourcils</option>
+                                        </optgroup>
+                                        <option class="text-capitalize" value="ec">cou</option>
+                                        <option class="text-capitalize" value="ev">ventre</option>
+                                        <optgroup label="Jambes">
+                                            <option class="text-capitalize" value="ejc">cuisses</option>
+                                            <option class="text-capitalize" value="edj">1/2 jambes</option>
+                                            <option class="text-capitalize" value="etqj">3/4 jambes</option>
+                                            <option class="text-capitalize" value="ej">jambes completes</option>
+                                        </optgroup>
+                                        <optgroup label="Maillot">
+                                            <option class="text-capitalize" value="eme">maillot échancré</option>
+                                            <option class="text-capitalize" value="emsi">maillot semi-intégral</option>
+                                            <option class="text-capitalize" value="emi">maillot intégral</option>
+                                        </optgroup>
+                                        <option value="">aisselles</option>
+                                        <optgroup label="Bras">
+                                            <option class="text-capitalize" value="ebd">1/2 bras</option>
+                                            <option class="text-capitalize" value="ebc">bras complets</option>
+                                        </optgroup>
+                                    </optgroup>
+                                </select>
+                                <button type="button" class="btn btn-primary mt-3 contact__addBtn"><i class="fa-solid fa-circle-plus align-middle me-2 fs-5"></i>Ajoutez une prestation</button>
                             </div>
                             <div>
                                 <label for="message" class="form-label">Message</label>
@@ -75,11 +129,11 @@
                         <div class="contact__formSummary text-center d-none flex-column gap-3">
                             <h2 class="heading-2">Merci d'avoir contacté Institut For You!</h2>
                             <p>Brigitte, votre esthéticienne, vous recontactera dans les meilleurs délais, par email ou téléphone.</p>
-                            <h3 class="heading-3">Récapitulatif:</h3>
+                            <h3 class="heading-3">Récapitulatif de votre demande:</h3>
                             <div class="border border-2 border-dark d-flex flex-column gap-2 rounded p-2 text-start bg-secondary">
                                 <strong class="p-2 d-block rounded border border-2 border-dark contact__formTopic">Sujet: </strong>
                                 <div class="rounded border border-2 border-dark p-2">
-                                    <span>Votre message:</span>
+                                    <!-- <span>Votre message:</span> -->
                                     <p class="contact__formMessage mb-0"></p>
                                 </div>
                                 <small class="contact__formTime text-center fst-italic">Envoyé le </small>
@@ -90,6 +144,7 @@
                                 <button class="btn btn-primary">Suggestion 2</button>
                                 <button class="btn btn-primary">Suggestion 3</button>
                             </div>
+                            <a href="/home.html" class="btn btn-primary">Retour à la page d'accueil</a>
                         </div>
 
                     </div>

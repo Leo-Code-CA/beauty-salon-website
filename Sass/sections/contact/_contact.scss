@@ -10,7 +10,34 @@
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
 	@media (orientation: portrait) {
+		&__apptFormWrapper {
+			height: functions.toRem(38);
+			display: flex;
+			flex-wrap: nowrap;
+			gap: functions.toRem(10);
+			justify-content: space-between;
 
+			select {
+				flex-grow: 1;
+			}
+
+			button {
+				display: block;
+				border: functions.toRem(1) solid custom.$dark;
+				border-radius: functions.toRem(5);
+				aspect-ratio: 1 / 1;
+				position: relative;
+				flex-shrink: 0 !important;
+
+				i {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					font-size: functions.toRem(20);
+				}
+			}
+		}
 
 		@include custom.media-breakpoint-up(md) {
 		}

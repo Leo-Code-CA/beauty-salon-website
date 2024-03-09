@@ -1,83 +1,81 @@
-@use "../custom";
-@use "../components/mixins";
-@use "../components/functions";
-
+@use '../custom';
+@use '../components/mixins';
+@use '../components/functions';
 
 .navbar {
+	max-height: 100vh;
+	overflow-y: scroll !important;
 
-    &__logo {
+	&__logo {
+		@media (orientation: portrait) {
+			max-width: 50%;
 
-        @media (orientation: portrait) {
+			@include custom.media-breakpoint-up(sm) {
+				max-width: 20%;
+			}
+		}
 
-            max-width: 50%;
-            
-            @include custom.media-breakpoint-up(sm) {
-                max-width: 20%;
-            }
-        }
+		@media (orientation: landscape) {
+			max-width: 20%;
 
-        @media (orientation: landscape) {
+			@include custom.media-breakpoint-up(lg) {
+				max-width: 10%;
+			}
+		}
+	}
 
-            max-width: 20%;
+	&__toggler {
+		width: functions.toRem(45);
+		height: functions.toRem(40);
+		color: custom.$white;
+		border: functions.toRem(1) solid custom.$white-03;
 
-            @include custom.media-breakpoint-up(lg) {
-                max-width: 10%;
-            }
-        }
-    }
+		&--search {
+			font-size: functions.toRem(18);
+		}
 
-    &__toggler {
-        width: functions.toRem(45);
-        height: functions.toRem(40);
-        color: custom.$white;
-        border: functions.toRem(1) solid custom.$white-03;
+		&--menu {
+			@include custom.media-breakpoint-up(md) {
+				display: none;
+			}
+		}
+	}
 
-        &--search {
-            font-size: functions.toRem(18);
-        }
+	&__menu {
+		.navbar-nav {
+		}
+		@include custom.media-breakpoint-up(md) {
+			display: block !important;
+			flex-basis: auto !important;
+		}
+	}
 
-        &--menu {
-            @include custom.media-breakpoint-up(md) {
-                display: none;
-            }
-        }
-    }
+	&__dropdown {
+		@include custom.media-breakpoint-up(md) {
+			position: absolute !important;
+			border-top: none;
+			border-radius: 0 0 functions.toRem(10) functions.toRem(10);
+		}
 
-    &__menu {
-        
-        @include custom.media-breakpoint-up(md) {
-            display: block!important;
-            flex-basis: auto !important;
-        }
-    }
+		h6 {
+			font-size: functions.toRem(15);
+		}
+	}
 
-    &__dropdown {
+	&__search-btn {
+		background-color: custom.$white;
+		border-radius: functions.toRem(8);
+	}
 
-        @include custom.media-breakpoint-up(md) {
-            position: absolute !important;
-            border-top: none;
-            border-radius: 0 0 functions.toRem(10) functions.toRem(10);
-        }
+	&__input {
+		border-radius: functions.toRem(8);
+	}
 
-        h6 {
-            font-size: functions.toRem(15);
-        }
-    }
+	&__input-group {
+		border-radius: functions.toRem(8);
 
-    &__search-btn {
-        background-color: custom.$white;
-        border-radius: functions.toRem(8);
-    }
-
-    &__input {
-        border-radius: functions.toRem(8);
-    }
-
-    &__input-group {
-        border-radius: functions.toRem(8);
-
-        &--focus {
-            @include mixins.focus;
-        }
-    }
+		&--focus {
+			@include mixins.focus;
+		}
+	}
 }
