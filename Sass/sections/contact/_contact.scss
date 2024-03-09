@@ -39,6 +39,14 @@
 			}
 		}
 
+		&__mainOptionGrp {
+			font-family: 'Bodoni Moda', serif !important;
+			color: aqua !important;
+		}
+
+		&__optionGrp {
+		}
+
 		@include custom.media-breakpoint-up(md) {
 		}
 	}
