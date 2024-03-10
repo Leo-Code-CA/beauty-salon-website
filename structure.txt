@@ -272,94 +272,108 @@ one or two columns: two
 
 
 
+//////////////////////////// HANDLE APPOINTMENT SELECTS ////////////////////////////
+
+// Imports
+import { suggestions } from './data.js';
+// Media Queries
+
+// HTML Elements
+const form = document.querySelector('.contact__form');
+const suggestionsWrapper = document.querySelector('.contact__formSuggestions');
+const contactTopicSelect = document.querySelector('.contact__contactTopic');
+const apptSuggestions = document.querySelector('.contact__apptSuggestions');
+// Data
+
+// Variables
+
+form.addEventListener('submit', handleSuggestions);
+
+function handleSuggestions() {
+
+    const selectedTopic = contactTopicSelect.selectedOptions[0].value;
+
+    if (selectedTopic === 'appt') {
+
+        apptSuggestions.classList.remove('d-none');
+        apptSuggestions.classList.add('d-flex');
+        const hiddenSelect = document.querySelectorAll('.contact__hiddenSelect');
+
+        if (hiddenSelect.length >= 4) {
+
+            hiddenSelect.forEach((select, i) => {
+
+                if (i < 4) {
+
+                    const imgElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) img`);
+                    const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) button`);
+                    btnElem.textContent = select.selectedOptions[0].textContent;
+    
+                    suggestions.map(item => {
+                        if (item.value === select.selectedOptions[0].value) {
+                            imgElem.setAttribute('src', item.img);
+                            imgElem.setAttribute('alt', item.alt);
+                        }
+                    })
+                }
+            })
+
+        } else {
+
+            let suggestionType = [];
+
+            for (let i = 0; i < 4; i++) {
+
+                const hiddenSelect = document.querySelectorAll('.contact__hiddenSelect');
+                const imgElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) img`);
+                const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) button`);
+
+                if (i + 1 <= hiddenSelect.length) {
+    
+                    const select = hiddenSelect[i];
+                    btnElem.textContent = select.selectedOptions[0].textContent;
+                    const optgroup = select.selectedOptions[0].closest('optgroup').label;
+                    suggestionType.includes(optgroup) ? null : suggestionType.push(optgroup);
+    
+                    suggestions.map(item => {
+                        if (item.value === select.selectedOptions[0].value) {
+                            imgElem.setAttribute('src', item.img);
+                            imgElem.setAttribute('alt', item.alt);
+                        }
+                    })
+                    
+                } else {
+
+                    
+                    if (suggestionType.length < 3 - i) {
+                        suggestionType.map(suggestion => suggestionType.push(suggestion));
+                    }
+
+                    const filteredSuggestions = suggestions.filter(suggestion => suggestion.group === suggestionType[3 - i]);
+                    const suggestionPicked = Math.floor(Math.random() * filteredSuggestions.length);
+
+                    imgElem.setAttribute('src', filteredSuggestions[suggestionPicked].img);
+                    imgElem.setAttribute('alt', filteredSuggestions[suggestionPicked].alt);
+                    const suggestionValue = filteredSuggestions[suggestionPicked].value;
+                    btnElem.textContent = document.querySelector(`option[value=${suggestionValue}]`).textContent;
+                    
+
+                }
+
+            }
+        }
+
+    } else if (selectedTopic === 'product' || selectedTopic === 'info' || selectedTopic === 'other') {
+
+        
 
 
-                        <!-- FEATURES TABLE -->
-                        <!-- TABLE ONE -->
-                        <table class="features__table table table-bordered mx-auto mt-3">
-                            <thead class="text-center">
-                                <tr>
-                                    <th class="fs-4">
-                                        Sourcils
-                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="col-4">
-                                        <div>
-                                            <img loading="lazy" src="images/homepage/eyebrow_waxing_image.jpg" alt="woman getting her eyebrow waxed - image" class="img-fluid rounded">
-                                        </div>
-                                        <ul class="mt-3">
-                                            <li>Réalisée de facon professionnelle, l'épilation des sourcils met en valeur votre visage.
-                                            </li>
-                                            <li>Au fil des épilations, la repousse est plus fine et lente.</li>
-                                            <li>Une crème apaisante est utilisée pour réduire le risque de ressentir quelconque désagrément.</li>
-                                        </ul>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <button type="button" class="btn btn-primary">Réserver</button>
-                                            <button type="button" class="btn btn-primary">Découvrir</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- TABLE TWO -->
-                        <table class="features__table table table-bordered mx-auto mt-3">
-                            <thead class="text-center">
-                                <tr>
-                                    <th class="fs-4">
-                                        Demi-Jambes
-                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="col-4">
-                                        <div>
-                                            <img loading="lazy" src="images/homepage/leg_waxing_image.jpg" alt="woman getting her calf waxed - image" class="img-fluid rounded">
-                                        </div>
-                                        <ul class="mt-3">
-                                            <li>Avant chaque épilation, votre peau est préparée avec une lotion à base d'eau florale au bleuet.</li>
-                                            <li>Des cires de fabricants français réputés sont utilisées pour vous proccurer une épilation en douceur.</li>
-                                            <li>Après l'épilation, un lait hydratant ou une huile vous sont proposés.</li>
-                                        </ul>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <button type="button" class="btn btn-primary">Réserver</button>
-                                            <button type="button" class="btn btn-primary">Découvrir</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- TABLE THREE -->
-                        <table class="features__table table table-bordered mx-auto mt-3">
-                            <thead class="text-center">
-                                <tr>
-                                    <th class="fs-4">
-                                        Kobido Suprême
-                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">massage</a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="col-4">
-                                        <div>
-                                            <img loading="lazy" src="images/homepage/forehead_massage_image.jpg" alt="woman getting a forehead massage - image" class="img-fluid rounded">
-                                        </div>
-                                        <ul class="mt-3">
-                                            <li>Plus qu'un massage, le kobido est un art traditionnel japonnais.</li>
-                                            <li>Son effet tonnifiant et lissant (sans injection!) lui valent le surnom de lifting naturel.</li>
-                                            <li>La libération des tensions musculaires offre une sensation de relaxation profonde.</li>
-                                        </ul>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <button type="button" class="btn btn-primary">Réserver</button>
-                                            <button type="button" class="btn btn-primary">Découvrir</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+    } else if (selectedTopic === 'feedback') {
+        console.log("feedback")
+
+    } else {
+        throw new Error("The option is not valid");
+    }
+
+
+}

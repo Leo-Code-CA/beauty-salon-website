@@ -4,12 +4,13 @@
 .contact {
 	// ALL BREAKPOINTS
 
-	margin-top: functions.toRem(56);
+	margin-top: functions.toRem(70);
 	min-height: calc(100vh - 56px);
 
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
 	@media (orientation: portrait) {
+
 		&__apptFormWrapper {
 			height: functions.toRem(38);
 			display: flex;
@@ -39,27 +40,59 @@
 			}
 		}
 
-		&__mainOptionGrp {
-			font-family: 'Bodoni Moda', serif !important;
-			color: aqua !important;
-		}
+		&__apptSuggestions {
 
-		&__optionGrp {
+			div {
+				max-width: 45%;
+			}
 		}
 
 		@include custom.media-breakpoint-up(md) {
+
+			width: 75%;
+			margin-left: auto;
+			margin-right: auto;
+			border: functions.toRem(2) solid custom.$dark;
+			border-radius: functions.toRem(10);
+			margin-bottom: functions.toRem(16);
 		}
 	}
 
 	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
 
 	@media (orientation: landscape) {
+
+		&__img {
+			width: 50% !important;
+		}
+
+
 		/////////////////// LAPTOP AND DESKTOP  ///////////////////
 
 		@include custom.media-breakpoint-up(lg) {
+
+			flex-direction: row !important;
+			flex-wrap: wrap !important;
+
+			h1 {
+				width: 100%;
+			}
+
 		}
 
 		@include custom.media-breakpoint-up(xl) {
+
+			width: 85%;
+			margin-left: auto;
+			margin-right: auto;
+			
+			&__wrapper {
+				width: 60%;
+			}
+
+			&__img {
+				width: 40%;
+			}
 		}
 	}
 }

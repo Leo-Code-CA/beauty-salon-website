@@ -1,4 +1,4 @@
-//////////////////////////// CONTACT PAGE ////////////////////////////
+//////////////////////////// HANDLE APPOINTMENT SELECTS ////////////////////////////
 
 // Imports
 
@@ -22,8 +22,7 @@ const addBtn = document.querySelector('.contact__addBtn');
 
 form.addEventListener(
 	'submit',
-	e => handleValidForm(e)
-	// !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
+	e => !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
 );
 
 // Handle page display after valid form submission
@@ -56,7 +55,7 @@ function handleInvalidForm(e) {
 	form.classList.add('was-validated');
 }
 
-// Handle form display depending on the user selection
+// Handle form display depending on the user selection // CHANGE OR IMPROVE THIS ONE
 function handleFormDisplay() {
 	const currentChoice = select.selectedOptions[0].value;
 
@@ -65,12 +64,16 @@ function handleFormDisplay() {
 			apptFormHidden.classList.remove('d-none');
 			break;
 		case 'info':
+			apptFormHidden.classList.add('d-none');
 			break;
 		case 'product':
+			apptFormHidden.classList.add('d-none');
 			break;
 		case 'feedback':
+			apptFormHidden.classList.add('d-none');
 			break;
 		case 'other':
+			apptFormHidden.classList.add('d-none');
 			break;
 		default:
 			throw new Error('The current Choice is not reconized');
@@ -133,4 +136,11 @@ function handleDisabledOptions(getAllSelects) {
 function handleDeleteService(e) {
 	const elemToDelete = e.currentTarget.parentElement;
 	elemToDelete.remove();
+
+	const allSelects = document.querySelectorAll('.contact__hiddenSelect');
+	handleDisabledOptions(allSelects);
 }
+
+// Check if the main select has is selected option set on 'appt', if so, show the next select
+window.addEventListener('load', handleFormDisplay);
+

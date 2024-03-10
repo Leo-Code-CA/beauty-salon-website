@@ -2,4 +2,8 @@
 
 import '../footer.js';
 import '../header.js';
-import './contact.js';
+import './appointment.js';
+import './suggestions.js';
+
+
+import './../utils/prefillForm.js';
