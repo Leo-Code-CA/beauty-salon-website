@@ -209,171 +209,17 @@ Qui n'a jamais ressenti de stress provenant du rythme de vie effrené que nous m
 Offrir un moment de calme et de détente à vos proches n'est qu'à un clic près! N'attendez plus.
 
 
-//////////
-
-height section // 
-height video container
-video src
-animation or not
-size or the animation
-one or two columns 
-
-PORTRAIT :
-height section: auto;
-height video container: 100vh - 56px;
-video src: mobile
-animation or not: yes
-size or the animation: large 
-one or two columns: one
-
-LANDSCAPE:
-height section: 100vh - 56px;
-height video container: 100%;
-video src: standard
-animation or not: no
-size or the animation: / 
-one or two columns: two
-
-DESKTOP: 
-height section: 100vh - 56px;
-height video container: 100%;
-video src: standard
-animation or not: no
-size or the animation: / 
-one or two columns: two
-
-
-
-////// TO DO //////
-- cleanup scss, js and html section one 
 
 
 
 
 
+Avant d’accéder à la page de commande du Bon Cadeau, vous devez accepter les termes et conditions suivantes :
 
+– Le prix minimum d’un Bon Cadeau est de 30 €
 
-///////////// TO DO //////////////
-- finish to update the font-size
-- change the height of the intro section with js
-- decide if you want to keep the nav in home or the div for navbar
+– La validité d’un Bon Cadeau est de 6 mois à compter de la date d’achat
 
+En cas de non respect des termes et conditions évoqués ci-dessus, Institut For You se réserve le droit de refuser votre Bon Cadeau et de procéder à un remboursement.
 
-
-
-
-
-//// three tables 
-
-
-
-
-
-
-
-
-//////////////////////////// HANDLE APPOINTMENT SELECTS ////////////////////////////
-
-// Imports
-import { suggestions } from './data.js';
-// Media Queries
-
-// HTML Elements
-const form = document.querySelector('.contact__form');
-const suggestionsWrapper = document.querySelector('.contact__formSuggestions');
-const contactTopicSelect = document.querySelector('.contact__contactTopic');
-const apptSuggestions = document.querySelector('.contact__apptSuggestions');
-// Data
-
-// Variables
-
-form.addEventListener('submit', handleSuggestions);
-
-function handleSuggestions() {
-
-    const selectedTopic = contactTopicSelect.selectedOptions[0].value;
-
-    if (selectedTopic === 'appt') {
-
-        apptSuggestions.classList.remove('d-none');
-        apptSuggestions.classList.add('d-flex');
-        const hiddenSelect = document.querySelectorAll('.contact__hiddenSelect');
-
-        if (hiddenSelect.length >= 4) {
-
-            hiddenSelect.forEach((select, i) => {
-
-                if (i < 4) {
-
-                    const imgElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) img`);
-                    const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) button`);
-                    btnElem.textContent = select.selectedOptions[0].textContent;
-    
-                    suggestions.map(item => {
-                        if (item.value === select.selectedOptions[0].value) {
-                            imgElem.setAttribute('src', item.img);
-                            imgElem.setAttribute('alt', item.alt);
-                        }
-                    })
-                }
-            })
-
-        } else {
-
-            let suggestionType = [];
-
-            for (let i = 0; i < 4; i++) {
-
-                const hiddenSelect = document.querySelectorAll('.contact__hiddenSelect');
-                const imgElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) img`);
-                const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) button`);
-
-                if (i + 1 <= hiddenSelect.length) {
-    
-                    const select = hiddenSelect[i];
-                    btnElem.textContent = select.selectedOptions[0].textContent;
-                    const optgroup = select.selectedOptions[0].closest('optgroup').label;
-                    suggestionType.includes(optgroup) ? null : suggestionType.push(optgroup);
-    
-                    suggestions.map(item => {
-                        if (item.value === select.selectedOptions[0].value) {
-                            imgElem.setAttribute('src', item.img);
-                            imgElem.setAttribute('alt', item.alt);
-                        }
-                    })
-                    
-                } else {
-
-                    
-                    if (suggestionType.length < 3 - i) {
-                        suggestionType.map(suggestion => suggestionType.push(suggestion));
-                    }
-
-                    const filteredSuggestions = suggestions.filter(suggestion => suggestion.group === suggestionType[3 - i]);
-                    const suggestionPicked = Math.floor(Math.random() * filteredSuggestions.length);
-
-                    imgElem.setAttribute('src', filteredSuggestions[suggestionPicked].img);
-                    imgElem.setAttribute('alt', filteredSuggestions[suggestionPicked].alt);
-                    const suggestionValue = filteredSuggestions[suggestionPicked].value;
-                    btnElem.textContent = document.querySelector(`option[value=${suggestionValue}]`).textContent;
-                    
-
-                }
-
-            }
-        }
-
-    } else if (selectedTopic === 'product' || selectedTopic === 'info' || selectedTopic === 'other') {
-
-        
-
-
-    } else if (selectedTopic === 'feedback') {
-        console.log("feedback")
-
-    } else {
-        throw new Error("The option is not valid");
-    }
-
-
-}
+En cliquant sur le bouton “J’accepte”, vous confirmez l’acceptation des précédentes conditions.
