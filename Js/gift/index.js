@@ -2,4 +2,5 @@
 
 import '../footer.js';
 import '../header.js';
-import './gift.js';
+import './simulator.js';
+import './order.js';

@@ -6,12 +6,32 @@
 
 	margin-top: functions.toRem(56);
 	min-height: calc(100vh - 56px);
+	padding: functions.toRem(16);
+
+	&__conditions {
+		background-color: rgba(custom.$dark, 0.7);
+	}
+
+	&__closeConditions {
+		width: functions.toRem(5) !important;
+		height: functions.toRem(5) !important;
+		margin: functions.toRem(-7) functions.toRem(-7) functions.toRem(-13) 0;
+	}
+
+	h4 {
+		font-size: custom.$body-fs;
+		font-weight: normal;
+	}
+
+	// &__checkConditions--invalid {
+	// 	outline: 2px solid red;
+	// 	outline-offset: -2px;
+	// }
 
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
 	@media (orientation: portrait) {
 
-		
 
 		@include custom.media-breakpoint-up(md) {
 
@@ -23,13 +43,38 @@
 
 	@media (orientation: landscape) {
 
+		padding: functions.toRem(8) !important;
+
+		&__wrapper {
+			flex-direction: row !important;
+			gap: functions.toRem(10) !important;
+		}
+
+		&__purchase {
+			border: functions.toRem(1) solid custom.$dark;
+			border-radius: functions.toRem(6);
+			padding: functions.toRem(16);
+		}
+
 
 
 		/////////////////// LAPTOP AND DESKTOP  ///////////////////
 
 		@include custom.media-breakpoint-up(lg) {
 
+			padding: functions.toRem(16) !important;
 
+			&__wrapper {
+				gap: functions.toRem(16) !important;
+			}
+
+			&__purchase {
+				flex: 30% !important;
+			}
+
+			&__simulator {
+				flex: 70% !important;
+			}
 		}
 
 		@include custom.media-breakpoint-up(xl) {
