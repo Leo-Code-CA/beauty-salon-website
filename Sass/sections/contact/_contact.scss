@@ -4,8 +4,8 @@
 .contact {
 	// ALL BREAKPOINTS
 
-	margin-top: functions.toRem(70);
-	min-height: calc(100vh - 56px);
+	// margin-top: functions.toRem(70);
+	min-height: calc(100vh - var(--navbarHeight));
 
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 

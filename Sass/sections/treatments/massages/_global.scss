@@ -6,7 +6,11 @@
     // ALL BREAKPOINTS 
 
     min-height: 100vh;
-    margin-top: functions.toRem(56);
+    // margin-top: functions.toRem(56);
+
+    &__massage {
+        padding-top: functions.toRem(14);
+    }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 

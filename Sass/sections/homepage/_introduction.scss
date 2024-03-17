@@ -5,7 +5,7 @@
 
     // ALL BREAKPOINTS 
 
-    margin-top: functions.toRem(56); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
+    // margin-top: functions.toRem(56); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
 
     //////////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ///////////////////
 
@@ -18,7 +18,7 @@
             width: 100%;
 
             &--video {
-                height: calc(100vh - functions.toRem(56)); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
+                height: calc(100vh - var(--navbarHeight)); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
             }
 
             &--text {
@@ -59,7 +59,7 @@
     
     @media (orientation: landscape) {
 
-        height: calc(100vh - functions.toRem(56)); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
+        height: calc(100vh - var(--navbarHeight)); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
         flex-direction: row;
 
         &__containers {

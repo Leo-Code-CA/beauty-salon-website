@@ -1,6 +1,8 @@
 //////////////////////////// NAVBAR ////////////////////////////
 import scrollToElem from './utils/scrollToElem.js';
 
+const root = document.querySelector(':root');
+
 // GLOBAL VARIABLES DECLARATION AND ASSIGNMENT //
 
 const mqLarge = window.matchMedia('(max-width: 992px)');
@@ -42,6 +44,17 @@ function handleFetchNavbar() {
             }
            
             navLinks.forEach(link => link.addEventListener('click', (e) => handleNavLink(link, e)))
+
+
+            // everything on top is good
+
+            handleNavbarHeight() // this should be good
+
+            // test below
+
+            const searchBar = document.querySelector('.navbar__input');
+            searchBar.addEventListener('input', (e) => handleSearchBar(e));
+            
         })
 }
 
@@ -69,3 +82,27 @@ function handleNavLink(navLink, e) {
         return false;
     }
 }
+
+// handle navbar height for styling
+function handleNavbarHeight() {
+
+    const navMenu = document.querySelector('#navMenu');
+    const searchBar = document.querySelector('#searchBar');
+
+    if (!navMenu.classList.contains('show') && !searchBar.classList.contains('show')) {
+        const navbarHeightRem = document.querySelector('.navbar').offsetHeight / 16;
+        root.style.setProperty('--navbarHeight', `${navbarHeightRem}rem`);
+        console.log(`${navbarHeightRem}rem`)
+    }
+}
+
+window.addEventListener('resize', handleNavbarHeight);
+
+// handle search on the website 
+function handleSearchBar(e) {
+    const suggestions = document.querySelectorAll('[data-search]');
+    const searchParam = e.target.value;
+    console.log(suggestions)
+    // you'll probably have to get a list of data with the eventual search options and the path to their linked elem
+}
+

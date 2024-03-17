@@ -50,6 +50,9 @@ $blockquote-footer-font-size: $body-fs;
 $accordion-button-active-bg: $white;
 
 // GLOBAL SETTINGS
+:root {
+    --navbarHeight: 3.5rem;
+}
 
 body {
     width: 100%;
@@ -68,6 +71,10 @@ body {
         } 
         
     }
+}
+
+main {
+    margin-top: var(--navbarHeight);
 }
 
 // IMPORT BOOTSTRAP
