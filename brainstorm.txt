@@ -1,0 +1,10 @@
+// TO DO LIST
+- Create the javascript to make the search bar working
+- Fix the navbar DONE
+- Configure all the links
+- Improve the on scroll effets of the homepage
+- Fix the position of the background of the footer
+
+
+
+ 

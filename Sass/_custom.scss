@@ -56,6 +56,7 @@ body {
     min-height: 100vh;
     overflow-y: scroll;
     font-size: $body-fs;
+    scroll-behavior: smooth;
 
     @media (orientation: landscape) {
 
