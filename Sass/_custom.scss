@@ -49,6 +49,11 @@ $blockquote-footer-font-size: $body-fs;
 // ACCORDION
 $accordion-button-active-bg: $white;
 
+// LISTS
+// $list-group-hover-bg: $secondary;
+$list-group-hover-bg: $secondary;
+$list-group-bg: $white;
+
 // GLOBAL SETTINGS
 :root {
     --navbarHeight: 3.5rem;
