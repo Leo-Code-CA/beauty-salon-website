@@ -1,5 +1,6 @@
 //////////////////////////// NAVBAR ////////////////////////////
 import scrollToElem from './utils/scrollToElem.js';
+import { search_params } from './data/searchData.js';
 
 const root = document.querySelector(':root');
 
@@ -100,9 +101,24 @@ window.addEventListener('resize', handleNavbarHeight);
 
 // handle search on the website 
 function handleSearchBar(e) {
-    const suggestions = document.querySelectorAll('[data-search]');
     const searchParam = e.target.value;
+    const dropdown = document.querySelector('.navbar__search-dropdown ul');
+    console.log(searchParam)
+    const suggestions = search_params.filter(param => {
+        const keyword = param.query.filter(word => word.includes(searchParam) || searchParam.includes(word));
+        console.log(keyword)
+        return keyword.length > 0;
+    })
+
+    dropdown.innerHTML = '';
+
     console.log(suggestions)
-    // you'll probably have to get a list of data with the eventual search options and the path to their linked elem
+    
+    suggestions.map(opt => {
+        const dropdownItem = document.createElement('li');
+        dropdownItem.textContent = opt.sentence;
+        dropdownItem.classList.add('list-group-item')
+        dropdown.appendChild(dropdownItem);
+    })
 }
 

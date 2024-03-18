@@ -73,12 +73,17 @@
     </div>
 
     <!-- Search bar -->
-    <div class="collapse navbar-collapse flex-grow-0 order-md-4" id="searchBar">
+    <div class="collapse navbar-collapse flex-grow-0 order-md-4 position-relative" id="searchBar">
         <div class="input-group d-flex mt-3 mt-lg-0 navbar__input-group" id="searchGroup">
             <input type="text" class="form-control border border-0 z-1 navbar__input shadow-none" placeholder="Que cherchez-vous?" aria-label="Search bar" aria-describedby="searchBar" id="searchInput">
-            <button class="btn btn-outline-secondary navbar__search-btn border border-0 border-start" type="button">
+            <button class="btn btn-outline-secondary navbar__search-btn border border-0 border-start rounded-end" type="button">
                 <i class="fa-solid fa-magnifying-glass d-flex"></i>
             </button>
+            <div class="navbar__search-dropdown position-absolute top-100 start-0 w-100 bg-white">
+                <ul class="list-group">
+                    
+                </ul>
+            </div>
         </div>
     </div>
 
