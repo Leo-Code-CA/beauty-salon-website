@@ -96,7 +96,7 @@
 			list-style-type: none;
 
 			li {
-				cursor: pointer;
+				
 				
 				&:last-child {
 					border-radius: 0 0 functions.toRem(6) functions.toRem(6) !important;
@@ -107,6 +107,7 @@
 					border-left: none !important;
 					border-right: none !important;
 					border-bottom: none !important;
+					cursor: pointer;
 				}
 			}
 		}

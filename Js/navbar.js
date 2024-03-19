@@ -73,8 +73,6 @@ function handleNavLink(navLink, e) {
     dropdownList.innerHTML = '';
     handleToggleDropdown();
 
-    console.log(navLink.href)
-
     const path = new URL(navLink.href)
         .pathname
         .slice(0, -4)
@@ -91,8 +89,7 @@ function handleNavLink(navLink, e) {
 
     if (window.location.href.includes(path)) {
         e.preventDefault();
-        const target = document.getElementById(e.target.dataset.redirect || navLink.href.slice(navLink.href.indexOf('=') + 1))
-        console.log(navLink.href.slice(navLink.href.indexOf('=') + 1))
+        const target = document.getElementById(e.target.dataset.redirect || navLink.href.slice(navLink.href.indexOf('=') + 1));
         scrollToElem(target);
         return false;
     }
@@ -154,13 +151,18 @@ function handleToggleDropdown() {
 // handle search bar submit
 function handleSearchBarSubmit(e) {
     const dropdownList = document.querySelector('.navbar__search-dropdown ul');
-    if (dropdownList.children.length > 0) {
+    const input = document.querySelector('.navbar__input-group');
+   
+    if (dropdownList.children.length > 0 && dropdownList.children[0]?.children.length > 0) {
         handleNavLink(dropdownList.firstElementChild.firstElementChild, e);
     } else {
-        const dropdownItem = document.createElement('li');
-        dropdownItem.textContent = 'Aucun résultat. Veuillez réessayer avec un autre mot clé.';
         dropdownList.innerHTML = '';
+        const dropdownItem = document.createElement('li');
+        dropdownItem.classList.add('list-group-item');
+        dropdownItem.textContent = 'Aucun résultat. Veuillez réessayer avec un autre mot clé.';
         dropdownList.appendChild(dropdownItem);
+        input.classList.add('navbar__input-group--focus');
+        handleToggleDropdown();
     }
 }
 
