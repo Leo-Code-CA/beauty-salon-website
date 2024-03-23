@@ -3,26 +3,76 @@
 @use '../components/functions';
 
 .navbar {
-	// max-height: 100vh;
-	// overflow-y: scroll !important;
 
-	&__logo {
-		@media (orientation: portrait) {
+	// ALL BREAKPOINTS 
+
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+    @media (orientation: portrait) {
+
+		max-height: 100vh;
+		overflow-y: scroll !important;
+
+		&__logo {
 			max-width: 50%;
+		}
 
-			@include custom.media-breakpoint-up(sm) {
+		@include custom.media-breakpoint-up(sm) {
+			max-height: initial;
+			overflow-y: initial !important;
+			
+			&__logo {
 				max-width: 20%;
 			}
 		}
 
-		@media (orientation: landscape) {
-			max-width: 20%;
+      
+		@include custom.media-breakpoint-up(md) {
 
-			@include custom.media-breakpoint-up(lg) {
+	   }
+
+		@include custom.media-breakpoint-up(lg) {
+
+	   }
+   
+	}
+
+	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+	
+   	@media (orientation: landscape) {
+
+		max-height: 100vh;
+		overflow-y: scroll !important;
+
+		&__logo {
+			max-width: 20%;
+		}
+
+		@include custom.media-breakpoint-up(md) {
+			max-height: initial;
+			overflow-y: initial !important;
+		}
+
+	   /////////////////// LAPTOP AND DESKTOP  ///////////////////
+	   @include custom.media-breakpoint-up(lg) {
+
+			&__logo {
 				max-width: 10%;
 			}
-		}
-	}
+
+	   }
+
+	   @include custom.media-breakpoint-up(xl) {
+
+
+		   
+	   }
+
+   }
+
+
+
+
 
 	&__toggler {
 		width: functions.toRem(45);
@@ -45,7 +95,7 @@
 		.navbar-nav {
 		}
 		@include custom.media-breakpoint-up(md) {
-			display: block !important;
+			display: block !important; // flex ?
 			flex-basis: auto !important;
 		}
 	}
