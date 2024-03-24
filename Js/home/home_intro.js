@@ -1,7 +1,5 @@
 //////////////////////////// INTRO SECTION OF THE HOME PAGE ////////////////////////////
 
-// GLOBAL VARIABLES DECLARATION AND ASSIGNMENT //
-
 // Media Queries
 const mqLarge = window.matchMedia('(max-width: 992px)');
 const mqLandscape = window.matchMedia('(orientation: landscape)');
@@ -12,24 +10,36 @@ const cutout = document.querySelector(".cutout");
 const cutoutBox = document.querySelector("#cutoutbox");
 const videoContainer = document.querySelector('.intro__containers--video');
 const introVideo = document.querySelector('video');
+const targetVideo = document.querySelector(".intro__containers video");
 // Data
 const compliment = ["patience", "sérieux", "douceur", "gentillesse", "attention", "serviabilité", "respect", "considération", "politesse", "tendresse", "finesse", "délicatesse", "amabilité", "harmonie", "assurance", "professionnalisme", "sympathie", "tolérance", "cordialité", "générosité", "prévenance", "bienveillance"];
 // Variables
 let setAnimation = true;
 
 
-// LAZY LOADING INTRO VIDEO
-
-const targetVideo = document.querySelector(".intro__containers video");
-
+// Handle video lazy loading
 const videoObserver = new IntersectionObserver(entries => {
     entries.map(entry => entry.isIntersecting ? targetVideo.play() : targetVideo.pause());
 })
 
 videoObserver.observe(targetVideo);
 
-// ANIMATION (MOBILE AND TABLET ONLY) //
+// Handle video source
+function handleVideoSource() {
 
+    const videoContainerHeight = videoContainer.offsetHeight;
+    const videoContainerWidth = videoContainer.offsetWidth;
+
+    videoContainerHeight > videoContainerWidth ? 
+    introVideo.setAttribute('src', '/videos/IFY_portrait_video.mp4')
+    : introVideo.setAttribute('src', '/videos/IFY-Video.mov');
+
+}
+
+handleVideoSource();
+mqLandscape.addEventListener("change", handleVideoSource);
+
+// Handle delay between words in the animation
 function delay(sec, count) {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -38,6 +48,7 @@ function delay(sec, count) {
     })
 }
 
+// Handle font size adjustment depending of the length of the word
 function handleFontSize(element, container) {
 
     let elementWidth = element.clientWidth;
@@ -48,17 +59,14 @@ function handleFontSize(element, container) {
     if (elementWidth > containerWidth) {
 
         while (elementWidth > containerWidth) {
-
             elementWidth = element.clientWidth;
             containerWidth = container.clientWidth;
             nextFontSize -= 0.1;
             element.style.fontSize = `${nextFontSize}px`;
         }
-
     } else {
 
         while (elementWidth < containerWidth) {
-
             elementWidth = element.clientWidth;
             containerWidth = container.clientWidth;
             nextFontSize += 0.1;
@@ -67,6 +75,7 @@ function handleFontSize(element, container) {
     }
 }
 
+// Handle text animation
 async function textAnimation() {
 
     let count = 0;
@@ -74,9 +83,7 @@ async function textAnimation() {
 
     while (count <= compliment.length) {
 
-        if (!setAnimation) {
-            break;
-        }
+        if (!setAnimation) break;
 
         if (count === compliment.length) {
             count = 0;
@@ -105,24 +112,6 @@ window.addEventListener("load", () => {
 })
 
 mqLandscape.addEventListener("change", () => {
-    
     mqLandscape.matches ? setAnimation = false : setAnimation = true;
     textAnimation();
-
 });
-
-// VIDEO SOURCE //
-
-function handleVideoSource() {
-
-    const videoContainerHeight = videoContainer.offsetHeight;
-    const videoContainerWidth = videoContainer.offsetWidth;
-
-    videoContainerHeight > videoContainerWidth ? 
-    introVideo.setAttribute('src', './videos/IFY_portrait_video.mp4')
-    : introVideo.setAttribute('src', './videos/IFY-Video.mov');
-
-}
-
-handleVideoSource();
-mqLandscape.addEventListener("change", handleVideoSource);

@@ -3,12 +3,7 @@
 
 .intro {
 
-    // ALL BREAKPOINTS 
-
-    // margin-top: functions.toRem(56); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
-
     //////////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ///////////////////
-
     @media (orientation: portrait) {
 
         height: auto;
@@ -18,7 +13,7 @@
             width: 100%;
 
             &--video {
-                height: calc(100vh - var(--navbarHeight)); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
+                height: calc(100vh - var(--navbarHeight));
             }
 
             &--text {
@@ -37,7 +32,6 @@
 
         &__textContent {
             width: 100%;
-            // background-color: custom.$secondary;
             text-align: left;
             padding: functions.toRem(16) functions.toRem(16) 0;
         }
@@ -54,12 +48,10 @@
             }
         }
     }
-
     //////////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ///////////////////
-    
     @media (orientation: landscape) {
 
-        height: calc(100vh - var(--navbarHeight)); // NAVBAR HEIGHT, DOUBLE CHECK THAT WHEN YOU HAVE THE LOGO
+        height: calc(100vh - var(--navbarHeight));
         flex-direction: row;
 
         &__containers {
@@ -90,20 +82,16 @@
         @include custom.media-breakpoint-up(md) {
 
             &__textContent {
-                
                 p {
                     line-height: 1.6 !important;
                 }
-
             }
         }
-
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
         
         @include custom.media-breakpoint-up(lg) {
-
+            
             &__textContent {
-
                 width: 80%;
                 height: 90%;
 
@@ -111,20 +99,14 @@
                     line-height: 2 !important;
                 }
             }
-
         }
 
         @include custom.media-breakpoint-up(xl) {
 
             &__textContent {
-
                 width: 75%;
                 height: 85%;
-
             }
-
         }
-
     }
-
 }
