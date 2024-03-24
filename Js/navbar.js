@@ -1,14 +1,16 @@
 //////////////////////////// NAVBAR ////////////////////////////
+// Imports
 import scrollToElem from './utils/scrollToElem.js';
 import { search_params } from './data/searchData.js';
-
+// HTML Elements
 const root = document.querySelector(':root');
 
-function focusState() {
 
+// Handle focus and blur states of the search bar
+function focusState() {
     const focusedElem = document.getElementById('searchInput');
     const toggleClassElem = document.getElementById('searchGroup');
-   
+
     focusedElem.addEventListener('focus', () => {
         toggleClassElem.classList.add('navbar__input-group--focus');
         handleToggleDropdown();
@@ -20,51 +22,19 @@ function focusState() {
     });
 }
 
-// FETCH NAVBAR //
-window.addEventListener('load', handleFetchNavbar);
-
-function handleFetchNavbar() {
-
-    fetch("/components/navbar.html")
-        .then(response => {
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('nav').innerHTML = data;
-        })
-        .then(() => {
-            focusState();
-        })
-        .then(() => {
-            
-            // Mesure the navbar height in order to apply the correct styling to the surrounding elements
-            handleNavbarHeight()
-
-            // When the page loads, if there is param in the url, find the corresponding elem and scroll into view
-            if (window.location.search) {
-                const params = window.location.search;
-                const targetElem = document.getElementById(params.slice(params.indexOf('=') + 1));
-                if (targetElem) scrollToElem(targetElem);
-            }
-
-            // Add click listener to the all the redirect links in the navbar menu
-            const navLinks = document.querySelectorAll('[data-redirect]');
-            navLinks.forEach(link => link.addEventListener('click', (e) => handleNavLink(link, e)));
-
-            // Add input and change listeners to the search bar
-            const searchBar = document.querySelector('.navbar__input');
-            searchBar.addEventListener('input', (e) => {
-                handleSearchBar(e);
-            });
-
-            // Add click listener to the search bar submit buttom
-            const submitBtn = document.querySelector('.navbar__search-btn');
-            submitBtn.addEventListener('click', (e) => handleSearchBarSubmit(e));
-            
-        })
+// Handle navbar height
+function handleNavbarHeight() {
+    const navMenu = document.querySelector('#navMenu');
+    const searchBar = document.querySelector('#searchBar');
+    if (!navMenu.classList.contains('show') && !searchBar.classList.contains('show')) {
+        const navbarHeightRem = document.querySelector('.navbar').offsetHeight / 16;
+        root.style.setProperty('--navbarHeight', `${navbarHeightRem}rem`);
+    }
 }
 
-// handle navbar link click
+window.addEventListener('resize', handleNavbarHeight);
+
+// Handle navbar link click (dropdown menu and search bar)
 function handleNavLink(navLink, e) {
 
     const searchInput = document.querySelector('.navbar__input');
@@ -93,12 +63,12 @@ function handleNavLink(navLink, e) {
         scrollToElem(target);
         return false;
     }
-
     window.location = navLink.href;
 }
 
-// handle search on the website 
+// Handle search bar suggestions
 function handleSearchBar(e) {
+
     const searchParam = e.target.value;
     const dropdownList = document.querySelector('.navbar__search-dropdown ul');
 
@@ -122,15 +92,14 @@ function handleSearchBar(e) {
         dropdownLink.setAttribute('href', opt.path);
         dropdownLink.setAttribute('data-redirect', opt.redirect);
         dropdownLink.classList.add('list-group-item', 'list-group-item-action');
-        dropdownLink.addEventListener('click', (e) => handleNavLink(dropdownLink, e))
+        dropdownLink.addEventListener('click', (e) => handleNavLink(dropdownLink, e));
         dropdownItem.appendChild(dropdownLink);
         dropdownList.appendChild(dropdownItem);
     })
-
     handleToggleDropdown();
 }
 
-// handle dropdown
+// Handle search bar dropdown toggle
 function handleToggleDropdown() {
 
     const dropdown = document.querySelector('.navbar__search-dropdown');
@@ -145,11 +114,11 @@ function handleToggleDropdown() {
         dropdown.classList.add('d-none');
         toggleClassElem.classList.remove('navbar__input-group--dropdown')
     }
-
 }
 
-// handle search bar submit
+// Handle search bar submit
 function handleSearchBarSubmit(e) {
+
     const dropdownList = document.querySelector('.navbar__search-dropdown ul');
     const input = document.querySelector('.navbar__input-group');
    
@@ -166,17 +135,45 @@ function handleSearchBarSubmit(e) {
     }
 }
 
-// handle navbar height for styling
-function handleNavbarHeight() {
+// Handle fetch navbar and call functions to set it up
+function handleFetchNavbar() {
 
-    const navMenu = document.querySelector('#navMenu');
-    const searchBar = document.querySelector('#searchBar');
+    fetch("/components/navbar.html")
+        .then(response => {
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('nav').innerHTML = data;
+        })
+        .then(() => {
+            
+            // Mesure the navbar height in order to apply the correct styling to the surrounding elements
+            handleNavbarHeight()
 
-    if (!navMenu.classList.contains('show') && !searchBar.classList.contains('show')) {
-        const navbarHeightRem = document.querySelector('.navbar').offsetHeight / 16;
-        root.style.setProperty('--navbarHeight', `${navbarHeightRem}rem`);
-    }
+            // Add the focus and blur listeners to adapt the styling
+            focusState();
+
+            // When the page loads, if there is param in the url, find the corresponding elem and scroll it into view
+            if (window.location.search) {
+                const params = window.location.search;
+                const targetElem = document.getElementById(params.slice(params.indexOf('=') + 1));
+                if (targetElem) scrollToElem(targetElem);
+            }
+
+            // Add click listener to all links in the navbar menu to redirect where they have to
+            const navLinks = document.querySelectorAll('[data-redirect]');
+            navLinks.forEach(link => link.addEventListener('click', (e) => handleNavLink(link, e)));
+
+            // Add input and change listeners to the search bar
+            const searchBar = document.querySelector('.navbar__input');
+            searchBar.addEventListener('input', (e) => handleSearchBar(e));
+
+            // Add click listener to the search bar submit buttom
+            const submitBtn = document.querySelector('.navbar__search-btn');
+            submitBtn.addEventListener('click', (e) => handleSearchBarSubmit(e));
+            
+        })
 }
 
-window.addEventListener('resize', handleNavbarHeight);
+window.addEventListener('load', handleFetchNavbar);
 

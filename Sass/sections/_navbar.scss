@@ -5,8 +5,67 @@
 .navbar {
 
 	// ALL BREAKPOINTS 
+	&__toggler {
+		width: functions.toRem(45);
+		height: functions.toRem(40);
+		color: custom.$white;
+		border: functions.toRem(1) solid custom.$white-03;
 
+		&--search {
+			font-size: functions.toRem(18);
+		}
 
+		&--menu {
+			@include custom.media-breakpoint-up(md) {
+				display: none;
+			}
+		}
+	}
+
+	&__search-btn {
+		background-color: custom.$white;
+		border-radius: 0 !important;
+	}
+
+	&__input {
+		border-radius: 0 !important;
+	}
+
+	&__input-group {
+		border-radius: functions.toRem(6) !important;
+		overflow: hidden;
+
+		&--focus {
+			@include mixins.focus;
+		}
+
+		&--dropdown {
+			border-radius: functions.toRem(6) functions.toRem(6) 0 0 !important;
+		}
+	}
+
+	&__search-dropdown {
+		@include mixins.focus;
+
+		ul {
+			list-style-type: none;
+
+			li {
+				
+				&:last-child {
+					border-radius: 0 0 functions.toRem(6) functions.toRem(6) !important;
+					overflow: hidden;
+				}
+
+				a {
+					border-left: none !important;
+					border-right: none !important;
+					border-bottom: none !important;
+					cursor: pointer;
+				}
+			}
+		}
+	}
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
     @media (orientation: portrait) {
 
@@ -26,17 +85,26 @@
 			}
 		}
 
-      
 		@include custom.media-breakpoint-up(md) {
+			&__toggler {
+		
+				&--menu {
+					display: none;
+				}
+			}
 
+			&__menu {
+				display: flex !important; // block ?
+				flex-basis: auto !important;
+			}
+
+			&__dropdown {
+				position: absolute !important;
+				border-top: none;
+				border-radius: 0 0 functions.toRem(10) functions.toRem(10);
+			}
 	   }
-
-		@include custom.media-breakpoint-up(lg) {
-
-	   }
-   
 	}
-
 	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
 	
    	@media (orientation: landscape) {
@@ -51,116 +119,31 @@
 		@include custom.media-breakpoint-up(md) {
 			max-height: initial;
 			overflow-y: initial !important;
-		}
 
+			&__toggler {
+		
+				&--menu {
+					display: none;
+				}
+			}
+
+			&__menu {
+				display: flex !important; // block ?
+				flex-basis: auto !important;
+			}
+
+			&__dropdown {
+				position: absolute !important;
+				border-top: none;
+				border-radius: 0 0 functions.toRem(10) functions.toRem(10);
+			}
+		}
 	   /////////////////// LAPTOP AND DESKTOP  ///////////////////
 	   @include custom.media-breakpoint-up(lg) {
 
 			&__logo {
 				max-width: 10%;
 			}
-
 	   }
-
-	   @include custom.media-breakpoint-up(xl) {
-
-
-		   
-	   }
-
    }
-
-
-
-
-
-	&__toggler {
-		width: functions.toRem(45);
-		height: functions.toRem(40);
-		color: custom.$white;
-		border: functions.toRem(1) solid custom.$white-03;
-
-		&--search {
-			font-size: functions.toRem(18);
-		}
-
-		&--menu {
-			@include custom.media-breakpoint-up(md) {
-				display: none;
-			}
-		}
-	}
-
-	&__menu {
-		.navbar-nav {
-		}
-		@include custom.media-breakpoint-up(md) {
-			display: block !important; // flex ?
-			flex-basis: auto !important;
-		}
-	}
-
-	&__dropdown {
-		@include custom.media-breakpoint-up(md) {
-			position: absolute !important;
-			border-top: none;
-			border-radius: 0 0 functions.toRem(10) functions.toRem(10);
-		}
-
-		h6 {
-			font-size: functions.toRem(15);
-		}
-	}
-
-	&__search-btn {
-		background-color: custom.$white;
-		// border-radius: functions.toRem(8);
-		border-radius: 0 !important;
-	}
-
-	&__input {
-		// border-radius: functions.toRem(8);
-		border-radius: 0 !important;
-	}
-
-	&__input-group {
-		border-radius: functions.toRem(6) !important;
-		overflow: hidden;
-
-		&--focus {
-			@include mixins.focus;
-		}
-
-		&--dropdown {
-			border-radius: functions.toRem(6) functions.toRem(6) 0 0 !important;
-		}
-	}
-
-	// added recently
-
-	&__search-dropdown {
-
-		@include mixins.focus;
-
-		ul {
-			list-style-type: none;
-
-			li {
-				
-				
-				&:last-child {
-					border-radius: 0 0 functions.toRem(6) functions.toRem(6) !important;
-					overflow: hidden;
-				}
-
-				a {
-					border-left: none !important;
-					border-right: none !important;
-					border-bottom: none !important;
-					cursor: pointer;
-				}
-			}
-		}
-	}
-
 }

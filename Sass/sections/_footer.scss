@@ -4,7 +4,6 @@
 .footer {
 
     // ALL BREAKPOINTS 
-
     color: custom.$white;
     background-repeat: no-repeat;
 
@@ -14,36 +13,28 @@
     }
 
     &__bubble {
-        color: custom.$black-ish;
+        color: custom.$dark;
 
         h3 {
             font-family: 'Bodoni Moda', serif;
             font-weight: 700;
-            font-size: functions.toRem(20.8);
+            font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
         }
 
         p {
             margin: 0;
-            font-size: functions.toRem(12.8);
+            font-size: custom.$body-fs;
         }
-    }
-
-    &__btn {
-        text-decoration: none;
-        font-weight: 700;
     }
 
     &__hours {
         h3 {
-
             span {
-                font-size: clamp(functions.toRem(5), calc(5px + 0.17vw), functions.toRem(10));;
+                font-size: clamp(functions.toRem(5), calc(functions.toRem(5) + 0.17vw), functions.toRem(10));;
             }
         }
     }
-
      ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-     
      @media (orientation: portrait) {
 
         &__main {
@@ -60,32 +51,20 @@
         }
 
         &__contact {
-
             gap: 1rem !important;
 
-
             h4 {
-                font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(25));
+                font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.4vw), functions.toRem(23));
             }
         }
 
-        &__localisation {
-            gap: 1rem !important;
-        }
-
-        &__hours {
-            gap: 1rem !important;
-        }
-
-
-        &__gift {
+        &__localisation, &__hours, &__gift {
             gap: 1rem !important;
         }
 
      }
 
      @include custom.media-breakpoint-up(md) {
-
         background-image: url('../../images/footer/woman_cocktail_illustration.png');
         background-size: 60% auto;
         background-position: 120% 15%;
@@ -95,9 +74,17 @@
         }
 
         &__contact {
-
-
             order: 1;
+            width: 33%;
+        }
+
+        &__hours {
+            order: 2;
+            width: 33%;
+        }
+
+        &__gift {
+            order: 3;
             width: 33%;
         }
 
@@ -106,29 +93,15 @@
             order: 4;
         }
 
-        &__hours {
-            order: 2;
-            width: 33%;
-        }
-
-
-        &__gift {
-            order: 3;
-            width: 33%;
-        }
-
         &__separator {
             order: 5;
         }
-
      }
 
      @include custom.media-breakpoint-up(lg) {
-
         background-image: url('../../images/footer/woman_cocktail_illustration.png');
         background-size: auto 90%;
         background-position: 125% 150%;
-
 
         &__contact {
             width: 25% !important;
@@ -142,7 +115,6 @@
         &__hours {
             width: 16.6% !important;
             order: 2;
-
         }
 
         &__localisation {
@@ -159,28 +131,20 @@
             .footer__btn {
                 width: 50%;
             }
-
         }
 
         &__separator {
-            width: 63%;
-            margin-bottom: 12px !important;
-            order: 5;
+            width: 60%;
+            margin: functions.toRem(16) 0 0 functions.toRem(16) !important;
         }
 
         &__btn {
             letter-spacing: functions.toRem(2);
         }
-
     }
-
-
-     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-     
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
     @media (orientation: landscape) {
-
-        background: none;;
-        background-repeat: no-repeat;
+        background: none;
 
         &__main {
             margin-bottom: 0 !important;
@@ -215,7 +179,7 @@
         }
 
         &__separator {
-            width: 63%;
+            width: 90%;
             margin-bottom: 12px !important;
             order: 4;
         }
@@ -224,30 +188,12 @@
             font-size: custom.$body-landscape-fs;
             padding: 0.2rem 0rem !important;
         }
-
-
-        // &__contact-icon {
-        //     height: 110%;
-
-        //     &--email {
-        //         left: 5%;
-        //         top: 10%;
-        //     }
-
-        //     &--phone {
-        //         left: 5%;
-        //         top: 20%;
-        //     }
-        // }
-
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
         @include custom.media-breakpoint-up(lg) {
-
             background-image: url('../../images/footer/woman_cocktail_illustration.png');
             background-size: auto 80%;
             background-position: 105% 100%;
-
+            background-repeat: no-repeat;
 
             &__contact {
                 width: 25% !important;
@@ -256,12 +202,15 @@
                 strong {
                     padding: 1rem !important;
                 }
+
+                h4 {
+                    font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.3vw), functions.toRem(21));
+                }
             }
 
             &__hours {
                 width: 16.6% !important;
                 order: 2;
-    
             }
 
             &__localisation {
@@ -278,39 +227,37 @@
                 .footer__btn {
                     width: 50%;
                 }
-    
             }
 
             &__separator {
-                width: 63%;
-                margin-bottom: 12px !important;
+                width: 60%;
+                margin-bottom: functions.toRem(16) !important;
                 order: 5;
             }
 
             &__btn {
                 letter-spacing: functions.toRem(2);
+                padding: 0.4rem 0rem !important;
             }
-
         }
-
         @include custom.media-breakpoint-up(xl) {
-
             padding: 1rem 1.5rem !important;
             background-size: auto 100%;
-            background-position: 115% 0%;
+            background-position: 105% 100%;
 
             &__localisation {
                 justify-content: space-between !important;
             }
 
             &__btn {
-                padding: 0.3rem 0.5rem !important;
+                padding: 0.4rem 0.5rem !important;
             }
-            
+
+            &__separator {
+                width: 70%;
+            }
         }
-
     }
-
 }
 
 

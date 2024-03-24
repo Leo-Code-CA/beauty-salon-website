@@ -250,7 +250,9 @@
             // CLASS ADDED ON HOVER (THE BOX IN THE MIDDLE ALWAYS KEEP IT)
 
             &--highlight {
-                height: 100vh !important;
+                height: 100vh;
+                // min-height: 100vh !important;
+                // height: auto;
                 width: 30% !important;
                 box-shadow: functions.toRem(4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6), functions.toRem(-4.8) functions.toRem(8) functions.toRem(16) rgba(custom.$dark, 0.6);
                 background-color: custom.$primary;
