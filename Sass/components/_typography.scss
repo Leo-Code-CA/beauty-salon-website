@@ -10,7 +10,7 @@
     font-weight: 700;
     // OLD SIZE 
     // font-size: clamp(functions.toRem(25), calc(functions.toRem(25) + 0.5vw), functions.toRem(35));
-    font-size: clamp(functions.toRem(27), calc(functions.toRem(27) + 0.5vw), functions.toRem(37));
+    font-size: clamp(functions.toRem(24), calc(functions.toRem(24) + 0.5vw), functions.toRem(34));
 
     span {
         white-space: nowrap;
@@ -18,13 +18,13 @@
 
     @media (orientation: landscape) {
 
-        font-size: clamp(functions.toRem(22), calc(functions.toRem(22) + 0.65vw), functions.toRem(32));;
+        font-size: clamp(functions.toRem(22), calc(functions.toRem(20) + 0.4vw), functions.toRem(30));;
 
 
         @include custom.media-breakpoint-up(lg) {
             // OLD SIZE
             // font-size: clamp(functions.toRem(28), calc(functions.toRem(28) + 0.65vw), functions.toRem(37));
-            font-size: clamp(functions.toRem(27), calc(functions.toRem(27) + 0.5vw), functions.toRem(37));
+            font-size: clamp(functions.toRem(24), calc(functions.toRem(24) + 0.5vw), functions.toRem(34));
         } 
         
     }
@@ -35,15 +35,15 @@
     font-weight: 700;
     // OLD SIZE
     // font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
-    font-size: clamp(functions.toRem(23), calc(functions.toRem(20) + 0.4vw), functions.toRem(33));
+    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(30));
 
     @media (orientation: landscape) {
-        font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(28));
+        font-size: clamp(functions.toRem(17), calc(functions.toRem(17) + 0.3vw), functions.toRem(27));
 
         @include custom.media-breakpoint-up(lg) {
             // OLD SIZE
             // font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
-            font-size: clamp(functions.toRem(23), calc(functions.toRem(20) + 0.4vw), functions.toRem(33));
+            font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(30));
         }
     }
 }

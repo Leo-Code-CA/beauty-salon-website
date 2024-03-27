@@ -386,8 +386,14 @@ summaryBox.forEach(elem => {
     elem.addEventListener("mouseover", () => {
         elem.classList.add('summary__box--highlight');
     });
+    elem.addEventListener("touchstart", () => {
+        elem.classList.add('summary__box--highlight');
+    });
 
     elem.addEventListener("mouseleave", () => {
+        elem.classList.remove('summary__box--highlight');
+    });
+    elem.addEventListener("touchend", () => {
         elem.classList.remove('summary__box--highlight');
     });
 

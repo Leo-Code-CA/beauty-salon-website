@@ -36,7 +36,7 @@
                     <!-- TEXT CONTAINER -->
                     <div class="intro__containers intro__containers--text d-flex justify-content-center align-items-center">
                         <div class="intro__textContent d-flex flex-column justify-content-evenly gap-3 mx-auto rounded">
-                            <h1 class="heading-1 d-none d-lg-block">L'institut où vous êtes traitée comme<br>une reine.</h1>
+                            <h1 class="heading-1 text-center d-none d-lg-block">L'institut où vous êtes traitée comme<br>une reine.</h1>
                             <h1 class="heading-1 d-lg-none text-center m-0">Envie de se faire <span>dorloter ?</span></h1>
                             <p class="m-0 lh-lg">Évadez vous le temps d'un soin entre les mains expertes de Brigitte, votre esthéticienne diplômée, qui vous fera goûter au plaisir de la relaxation d'un niveau supérieur.</p>
                             <p class="m-0 lh-lg"> Dans un cadre de détente aux senteurs parfumées, privatisé pour vous le temps de votre rendez-vous, ou le confort et la propreté sont des priorités, vous recevrez toute l'attention et bienveillance que vous méritez.</p>
@@ -49,18 +49,22 @@
                 <!-- START OF THE SECTION 2 - FEATURES -->
                 <section class="row features" id="features">
                     <div class="col-12 p-4">
-                        <h2 id="features" class="heading-1 text-center mb-4 mb-lg-5">Les prestations qui n'ont plus à faire leur preuves</h2>
+                        <h2 class="heading-1 text-center mb-4 mb-lg-5">Les prestations qui n'ont plus à faire leur preuves</h2>
 
-                        <!-- MOBILE PORTRAIT ORIENTATION ONLY - ACCORDION -->
+                        <!-- MOBILE / TABLER - PORTRAIT ORIENTATION ONLY - ACCORDION -->
                         <div class="accordion features__accordion mx-auto" id="home-accordion">
                             <!-- ACCORDION ITEM ONE -->
                             <div class="accordion-item">
                                 <div class="accordion-header">
-                                    <button class="features__toggle accordion-button collapsed flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedOne" aria-expanded="false" aria-controls="collapsedOne">
-                                        <h4 class="mb-0 fw-bold align-self-start heading-5">Sourcils</h4>
-                                        <a href="" class="subheading align-self-start text-uppercase text-decoration-none mb-3">épilation</a>
-                                        <img loading="lazy" src="images/homepage/eyebrow_waxing_image.jpg" alt="woman getting her eyebrow waxed - image" class="img-fluid rounded">
-                                        <img src="./images/homepage/arrow_circle_icon.svg" alt="arrow icon" class="position-absolute features__arrow features__arrow--up" width="45" height="45">
+                                    <button class="features__toggle accordion-button collapsed flex-column gap-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedOne" aria-expanded="false" aria-controls="collapsedOne">
+                                        <div class="d-flex justify-content-between w-100 align-items-center">
+                                            <div>
+                                                <h4 class="mb-0 fw-bold align-self-start heading-5">Sourcils</h4>
+                                                <a href="#" class="subheading align-self-start text-uppercase text-decoration-none mb-3">épilation</a>
+                                            </div>
+                                            <img src="./images/homepage/arrow_circle_icon.svg" alt="arrow icon" class="features__arrow features__arrow--up" width="40" height="40">
+                                        </div>
+                                        <img loading="lazy" src="images/homepage/eyebrow_waxing_image.jpg" alt="woman getting her eyebrow waxed" class="img-fluid rounded" width="626" height="416">
                                     </button>
                                 </div>
                                 <div class="accordion-collapse collapse" data-bs-parent="#home-accordion" id="collapsedOne">
@@ -72,8 +76,8 @@
                                             <li>Une crème apaisante est utilisée pour réduire le risque de ressentir quelconque désagrément.</li>
                                         </ul>
                                         <div class="d-flex justify-content-center gap-2">
-                                            <a data-book="ees" type="button" class="btn btn-primary flex-fill">Réserver</a>
-                                            <button type="button" class="btn btn-primary flex-fill">Découvrir</button>
+                                            <a href="/contact.html" data-book="ees" type="button" role="button" aria-roledescription="button" class="btn btn-primary flex-fill">Réserver</a>
+                                            <a href="#" type="button" role="button" aria-roledescription="button" class="btn btn-primary flex-fill">Découvrir</a>
                                         </div>
                                     </div>
                                 </div>
@@ -81,11 +85,15 @@
                             <!-- ACCORDION ITEM TWO -->
                             <div class="accordion-item">
                                 <div class="accordion-header">
-                                    <button class="features__toggle accordion-button collapsed flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedTwo" aria-expanded="false" aria-controls="collapsedTwo">
-                                        <h4 class="mb-0 fw-bold align-self-start heading-5">Demi-Jambes</h4>
-                                        <a href="" class="subheading align-self-start text-uppercase text-decoration-none mb-3">épilation</a>
-                                        <img loading="lazy" src="images/homepage/leg_waxing_image.jpg" alt="woman getting her calf waxed - image" class="img-fluid rounded">
-                                        <img src="./images/homepage/arrow_circle_icon.svg" alt="arrow icon" class="position-absolute features__arrow features__arrow--up" width="45" height="45">
+                                    <button class="features__toggle accordion-button collapsed flex-column gap-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedTwo" aria-expanded="false" aria-controls="collapsedTwo">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <div>
+                                                <h4 class="mb-0 fw-bold align-self-start heading-5">Demi-Jambes</h4>
+                                                <a href="" class="subheading align-self-start text-uppercase text-decoration-none mb-3">épilation</a>
+                                            </div>
+                                            <img src="./images/homepage/arrow_circle_icon.svg" alt="arrow icon" class="features__arrow features__arrow--up" width="40" height="40">
+                                        </div>
+                                        <img loading="lazy" src="images/homepage/leg_waxing_image.jpg" alt="woman getting her calf waxed - image" class="img-fluid rounded" width="7360" height="4912">
                                     </button>
                                 </div>
                                 <div class="accordion-collapse collapse" data-bs-parent="#home-accordion" id="collapsedTwo">
@@ -96,8 +104,8 @@
                                             <li>Après l'épilation, un lait hydratant ou une huile vous sont proposés.</li>
                                         </ul>
                                         <div class="d-flex justify-content-center gap-2">
-                                            <a href="/contact.html" data-book="edj" type="button" class="btn btn-primary flex-fill">Réserver</a>
-                                            <button type="button" class="btn btn-primary flex-fill">Découvrir</button>
+                                            <a href="/contact.html" role="button" aria-roledescription="button" data-book="edj" type="button" class="btn btn-primary flex-fill">Réserver</a>
+                                            <a href="#" type="button" role="button" aria-roledescription="button" class="btn btn-primary flex-fill">Découvrir</a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,11 +113,15 @@
                             <!-- ACCORDION ITEM THREE -->
                             <div class="accordion-item">
                                 <div class="accordion-header">
-                                    <button class="features__toggle accordion-button collapsed flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedThree" aria-expanded="false" aria-controls="collapsedThree">
-                                        <h4 class="mb-0 fw-bold align-self-start heading-5">Kobido Suprême</h4>
-                                        <a href="" class="subheading align-self-start text-uppercase text-decoration-none mb-3">massage</a>
-                                        <img loading="lazy" src="images/homepage/forehead_massage_image.jpg" alt="woman getting a forehead massage - image" class="img-fluid rounded">
-                                        <img src="./images/homepage/arrow_circle_icon.svg" alt="arrow icon" class="position-absolute features__arrow features__arrow--up" width="45" height="45">
+                                    <button class="features__toggle accordion-button collapsed flex-column gap-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedThree" aria-expanded="false" aria-controls="collapsedThree">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <div>
+                                                <h4 class="mb-0 fw-bold align-self-start heading-5">Kobido Suprême</h4>
+                                                <a href="" class="subheading align-self-start text-uppercase text-decoration-none mb-3">massage</a>
+                                            </div>
+                                            <img src="./images/homepage/arrow_circle_icon.svg" alt="arrow icon" class="features__arrow features__arrow--up" width="40" height="40">
+                                        </div>
+                                        <img loading="lazy" src="images/homepage/forehead_massage_image.jpg" alt="woman getting a forehead massage - image" class="img-fluid rounded" width="6000" height="4000">
                                     </button>
                                 </div>
                                 <div class="accordion-collapse collapse" data-bs-parent="#home-accordion" id="collapsedThree">
@@ -120,29 +132,29 @@
                                             <li>La libération des tensions musculaires offre une sensation de relaxation profonde.</li>
                                         </ul>
                                         <div class="d-flex justify-content-center gap-2">
-                                            <a href="/contact.html" data-book="mks" type="button" class="btn btn-primary flex-fill">Réserver</a>
-                                            <button type="button" class="btn btn-primary flex-fill">Découvrir</button>
+                                            <a href="/contact.html" role="button" aria-roledescription="button" data-book="mks" type="button" class="btn btn-primary flex-fill">Réserver</a>
+                                            <a href="/massages.html?target=mks" data-redirect="mks" type="button" role="button" aria-roledescription="button" class="btn btn-primary flex-fill">Découvrir</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- MOBILE/ TABLET LANDSCAPE ORIENTATION ONLY AND DESKTOP - TABLE -->
+                        <!-- MOBILE / TABLET / DESKTOP - LANDSCAPE ORIENTATION ONLY - TABLE -->
                         <table class="features__table table table-bordered mx-auto mt-3">
                             <thead class="text-center">
                                 <tr>
                                     <th class="heading-5">
                                         Sourcils
-                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
+                                        <a href="#" role="button" type="button" aria-roledescription="button" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
                                     </th>
                                     <th class="heading-5">
                                         Demi-Jambes
-                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
+                                        <a href="#" role="button" type="button" aria-roledescription="button" class="subheading d-block text-uppercase text-decoration-none">épilation</a>
                                     </th>
                                     <th class="heading-5">
                                         Kobido Suprême
-                                        <a href="" class="subheading d-block text-uppercase text-decoration-none">massage</a>
+                                        <a href="/massages.html" role="button" type="button" aria-roledescription="button" class="subheading d-block text-uppercase text-decoration-none">massage</a>
                                     </th>
                                 </tr>
                             </thead>
@@ -151,7 +163,7 @@
                                     <td class="col-4">
                                         <div class="features__td d-flex flex-column justify-content-between">
                                             <div>
-                                                <img loading="lazy" src="images/homepage/eyebrow_waxing_image.jpg" alt="woman getting her eyebrow waxed - image" class="img-fluid rounded">
+                                                <img loading="lazy" src="images/homepage/eyebrow_waxing_image.jpg" alt="woman getting her eyebrow waxed" class="img-fluid rounded" width="626" height="416">
                                             </div>
                                             <ul class="mt-3 flex-fill d-flex flex-column justify-content-between ps-3">
                                                 <li>Réalisée de facon professionnelle, l'épilation des sourcils met en valeur votre visage.
@@ -160,15 +172,15 @@
                                                 <li>Une crème apaisante est utilisée pour réduire le risque de ressentir quelconque désagrément.</li>
                                             </ul>
                                             <div class="d-flex justify-content-center gap-2">
-                                                <button type="button" class="btn btn-primary">Réserver</button>
-                                                <button type="button" class="btn btn-primary">Découvrir</button>
+                                                <a href="/contact.html" data-book="ees" type="button" role="button" aria-roledescription="button" class="btn btn-primary">Réserver</a>
+                                                <a href="#" type="button" role="button" aria-roledescription="button" class="btn btn-primary">Découvrir</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="col-4">
                                         <div class="features__td d-flex flex-column justify-content-between">
                                             <div>
-                                                <img loading="lazy" src="images/homepage/leg_waxing_image.jpg" alt="woman getting her calf waxed - image" class="img-fluid rounded">
+                                                <img loading="lazy" src="images/homepage/leg_waxing_image.jpg" alt="woman getting her calf waxed" class="img-fluid rounded" width="7360" height="4912">
                                             </div>
                                             <ul class="mt-3 flex-fill d-flex flex-column justify-content-between ps-3">
                                                 <li>Avant chaque épilation, votre peau est préparée avec une lotion à base d'eau florale au bleuet.</li>
@@ -176,15 +188,15 @@
                                                 <li>Après l'épilation, un lait hydratant ou une huile vous sont proposés.</li>
                                             </ul>
                                             <div class="d-flex justify-content-center gap-2">
-                                                <button type="button" class="btn btn-primary">Réserver</button>
-                                                <button type="button" class="btn btn-primary">Découvrir</button>
+                                                <a href="/contact.html" data-book="edj" type="button" role="button" aria-roledescription="button" class="btn btn-primary">Réserver</a>
+                                                <a href="#" type="button" role="button" aria-roledescription="button" class="btn btn-primary">Découvrir</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="col-4">
                                         <div class="features__td d-flex flex-column justify-content-between">
                                             <div>
-                                                <img loading="lazy" src="images/homepage/forehead_massage_image.jpg" alt="woman getting a forehead massage - image" class="img-fluid rounded">
+                                                <img loading="lazy" src="images/homepage/forehead_massage_image.jpg" alt="woman getting a forehead massage - image" class="img-fluid rounded" width="6000" height="4000">
                                             </div>
                                             <ul class="mt-3 flex-fill d-flex flex-column justify-content-between ps-3">
                                                 <li>Plus qu'un massage, le kobido est un art traditionnel japonnais.</li>
@@ -192,8 +204,8 @@
                                                 <li>La libération des tensions musculaires offre une sensation de relaxation profonde.</li>
                                             </ul>
                                             <div class="d-flex justify-content-center gap-2">
-                                                <button type="button" class="btn btn-primary">Réserver</button>
-                                                <button type="button" class="btn btn-primary">Découvrir</button>
+                                                <a href="/contact.html" data-book="mks" type="button" role="button" aria-roledescription="button" class="btn btn-primary">Réserver</a>
+                                                <a href="#" type="button" role="button" aria-roledescription="button" class="btn btn-primary">Découvrir</a>
                                             </div>
                                         </div>
                                     </td>
@@ -205,11 +217,11 @@
 
                  <!-- START OF THE SECTION 3 - GIFT CARD -->
                 <section class="gift row bg-primary">
-                    <div class="col-12 d-flex flex-column gift__wrapper p-2 h-100">
-                        <h2 class="heading-1 gift__heading text-center">Que pourriez offrir de plus beau que le bien-être?</h2>
+                    <div class="col-12 d-flex flex-column gift__wrapper p-2">
+                        <h2 class="heading-1 gift__heading text-center text-white">Que pourriez offrir de plus beau que le bien-être?</h2>
                         <div class="gift__container gift__container--img d-flex flex-column gap-2 justify-content-center flex-fill">
-                            <img loading="lazy" src="images/homepage/spa_illustration.svg" alt="woman in a spa illustration" class="gift__img">
-                            <button class="btn btn-secondary gift__btn">Offrir</button>
+                            <img loading="lazy" src="images/homepage/spa_illustration.svg" alt="woman in a spa">
+                            <a href="/gift.html" type="button" role="button" aria-roledescription="button" class="btn btn-secondary gift__btn">Offrir</a>
                         </div>
                         <div class="gift__container gift__container--text d-flex align-items-center flex-column text-center">
                             <img loading="lazy" src="images/homepage/gift_card_icon.svg" alt="gift card icon" class="gift__icon">
@@ -228,70 +240,52 @@
                  <section class="row flex-column benefit gap-3 my-4 align-items-center" id="benefits">
                     <!-- BENEFIT 1 - SUPPORT LOCAL ECONOMY -->
                      <div class="benefit__content flex-column px-3 col-12 d-flex justify-content-evenly align-items-center gap-3">
-                         <p class="mb-0 benefit__p benefit__p--left">En choissisant de faire appel à une commercante indépendante pour vos soins esthétiques, vous participez activement à soutenir <em class="emphasize fst-normal lh-sm">l'économie locale</em> de Tarascon! Lorsque vous achetez des biens ou services locaux, vous encouragez les petites entreprises près de chez vous. De plus, le fait de savoir à qui vous reversez votre argent durement gagné est rassurant.</p>
+                         <p class="mb-0 benefit__p benefit__p--left bg-white">En choissisant de faire appel à une commercante indépendante pour vos soins esthétiques, vous participez activement à soutenir <em class="emphasize fst-normal lh-sm">l'économie locale</em> de Tarascon! Lorsque vous achetez des biens ou services locaux, vous encouragez les petites entreprises près de chez vous. De plus, le fait de savoir à qui vous reversez votre argent durement gagné est rassurant.</p>
                          <div class="benefit__img benefit__img--right rounded overflow-hidden">
-                             <img loading="lazy" src="images/homepage/salon_front_door_image.jpg" alt="salon front door image" class="img-fluid">
+                             <img loading="lazy" src="images/homepage/salon_front_door_image.jpg" alt="salon front door image" class="img-fluid" width="884" height="1186">
                          </div>
                      </div>
                      <!-- BENEFIT 2 - YOU KNOW WHO YOU TAKES CARE OF YOU -->
                      <div class="benefit__content flex-column px-3 col-12 d-flex justify-content-evenly align-items-center gap-3">
                          <div class="benefit__img benefit__img--left rounded overflow-hidden">
-                             <img loading="lazy" src="images/homepage/woman_wawing_image.jpg" alt="woman waving image" class="img-fluid">
+                             <img loading="lazy" src="images/homepage/woman_wawing_image.jpg" alt="woman waving image" class="img-fluid" width="1800" height="1200">
                          </div>
-                         <p class="mb-0 benefit__p benefit__p--right">La bienveillance de Brigitte, qui vous accueille sans émettre quelconque jugement, exactement <em class="emphasize fst-normal lh-sm">telle que vous êtes,</em> vous permet de profiter pleinement de votre rendez-vous, sans arrière-pensée. La bonne nouvelle? Vous savez à qui vous avez à faire et êtes certaine de la retrouver à chacune de vos visites puisque qu'elle est l'unique esthéticienne de l'institut.  
+                         <p class="mb-0 benefit__p benefit__p--right bg-white">La bienveillance de Brigitte, qui vous accueille sans émettre quelconque jugement, exactement <em class="emphasize fst-normal lh-sm">telle que vous êtes,</em> vous permet de profiter pleinement de votre rendez-vous, sans arrière-pensée. La bonne nouvelle? Vous savez à qui vous avez à faire et êtes certaine de la retrouver à chacune de vos visites puisque qu'elle est l'unique esthéticienne de l'institut.  
                          </p>
                      </div>
                      <!-- BENEFIT 3 - ALL THE ATTENTION FOR YOU -->
                      <div class="benefit__content flex-column px-3 col-12 d-flex justify-content-evenly align-items-center gap-3">
-                         <p class="mb-0 benefit__p benefit__p--left">Pourquoi être traitée à la chaine, de facon impersonnelle, à la va-vite, quand vous pouvez choisir d'être privilegiée? Brigitte vous recoit sur rdv uniquement et <em class="emphasize fst-normal lh-sm">privatise l'intitut</em> pour l'occasion. Ses produits sont rigoureusement selectionnés, parmi les meilleurs fournisseurs de France.</p>
+                         <p class="mb-0 benefit__p benefit__p--left bg-white">Pourquoi être traitée à la chaine, de facon impersonnelle, à la va-vite, quand vous pouvez choisir d'être privilegiée? Brigitte vous recoit sur rdv uniquement et <em class="emphasize fst-normal lh-sm">privatise l'intitut</em> pour l'occasion. Ses produits sont rigoureusement selectionnés, parmi les meilleurs fournisseurs de France.</p>
                          <div class="benefit__img benefit__img--right rounded overflow-hidden">
-                             <img loading="lazy" src="images/homepage/coffee_woman_image.jpg" alt="woman drinking a coffee" class="img-fluid">
+                             <img loading="lazy" src="images/homepage/coffee_woman_image.jpg" alt="woman drinking a coffee" class="img-fluid" width="2215" height="3169">
                          </div>
                      </div>
                      <!-- BENEFIT 4 - SPECIALISED AND PROFESSIONAL -->
                      <div class="benefit__content flex-column px-3 col-12 d-flex justify-content-evenly align-items-center gap-3">
                          <div class="benefit__img benefit__img--left rounded overflow-hidden">
-                             <img loading="lazy" src="images/homepage/beauty_products_image.jpg" alt="beauty products details - image" class="img-fluid">
+                             <img loading="lazy" src="images/homepage/beauty_products_image.jpg" alt="beauty products details - image" class="img-fluid" width="3000" height="2000">
                          </div>
-                         <p class="mb-0 benefit__p benefit__p--right">Oui mesdames, l'institut est réservé à la clientèle féminine! Votre esthéticienne vous offre des prestations qui vous sont adaptées et qui ne perdent pas en qualité avec le temps, à prix abordables! Spécialisée dans les soins du visage et les massages, Brigitte privilegie <em class="emphasize fst-normal lh-sm">la qualité à la quantité.</em> La cerise sur le gateau ? Chaque soin comprend une durée d'installation et de départ offerte. De cette facon, vous ne perdez pas la moindre minute de votre soin!</p>
+                         <p class="mb-0 benefit__p benefit__p--right bg-white">Oui mesdames, l'institut est réservé à la clientèle féminine! Votre esthéticienne vous offre des prestations qui vous sont adaptées et qui ne perdent pas en qualité avec le temps, à prix abordables! Spécialisée dans les soins du visage et les massages, Brigitte privilegie <em class="emphasize fst-normal lh-sm">la qualité à la quantité.</em> La cerise sur le gateau ? Chaque soin comprend une durée d'installation et de départ offerte. De cette facon, vous ne perdez pas la moindre minute de votre soin!</p>
                      </div>
                      <!-- BENEFIT 5 - UP TO DATE WITH NEW PRACTICES -->
                      <div class="benefit__content flex-column px-3 col-12 d-flex justify-content-evenly align-items-center gap-3">
-                         <p class="mb-0 benefit__p benefit__p--left">Régulièrement en formation, Brigitte s'assure d'être à jour quant aux dernières nouveautés dans le domaine du soin et de la beauté afin de pouvoir en faire bénficier ses clientes. En continuelle <em class="emphasize fst-normal lh-sm">quête d'amélioration</em>, la carte des prestations de l'institut ne cesse d'évoluer au fil des années.</p>
+                         <p class="mb-0 benefit__p benefit__p--left bg-white">Régulièrement en formation, Brigitte s'assure d'être à jour quant aux dernières nouveautés dans le domaine du soin et de la beauté afin de pouvoir en faire bénficier ses clientes. En continuelle <em class="emphasize fst-normal lh-sm">quête d'amélioration</em>, la carte des prestations de l'institut ne cesse d'évoluer au fil des années.</p>
                          <div class="benefit__img benefit__img--right rounded overflow-hidden">
-                             <img loading="lazy" src="images/homepage/facial_massage_image.jpg" alt="woman getting a facial massage - image" class="img-fluid">
+                             <img loading="lazy" src="images/homepage/facial_massage_image.jpg" alt="woman getting a facial massage - image" class="img-fluid" width="4401" height="6016">
                          </div>
                      </div>
 
                 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <!-- START OF THE SECTION 5 - TESTIMONIALS -->
                 <section class="row mb-3 carousel__section" id="reviews">
                     <div class="col-12 d-flex flex-column align-items-center p-0 gap-3">
-                        <h2 class="heading-1 text-center">
+                        <h2 class="heading-1 text-center px-2">
                             Ce que les clientes pensent de l'institut
                             <a href="https://www.google.com/maps/place/Institut+For+You/@43.808592,4.662918,17z/data=!4m8!3m7!1s0x12b5dc6051c93bbf:0x9ff64027525dbe22!8m2!3d43.808592!4d4.662918!9m1!1b1!16s%2Fg%2F11bxjj6bq4" target="_blank" class="d-block mt-1 subheading text-uppercase text-decoration-none">avis google certifiés</a>
                         </h2>
-
                         <!-- CAROUSEL -->
                         <div id="reviewsCarousel" class="carousel slide">
-                            <!-- add data-bs-ride="carousel" -->
-
                             <!-- CONTROL BUTTONS ABOVE THE CAROUSEL -->
                             <div class="carousel__controls d-none carousel-indicators position-static gap-2 w-100 mx-auto mb-2 px-3">
                                 <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1" class="flex-fill active h-100 m-0 border-0 rounded-pill p-1 text-capitalize">
@@ -310,7 +304,6 @@
                                     reviewer's name
                                 </button>
                             </div>
-
                             <!-- CAROUSEL CONTENT -->
                             <div class="carousel-inner carousel__inner">
                                 <!-- CAROUSEL SLIDE 1 -->
@@ -318,7 +311,7 @@
                                     <div class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
                                         <div class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
                                             <div class="carousel__img overflow-hidden rounded-circle">
-                                                <img loading="lazy" src="images/homepage/calf_massage_image.jpg" alt="woman getting a calf massage - image" class="img-fluid">
+                                                <img loading="lazy" src="images/homepage/calf_massage_image.jpg" alt="woman getting a calf massage" class="img-fluid" width="1800" height="1200">
                                             </div>
                                         </div>
                                         <div class="carousel__review-holder d-flex align-items-center rounded text-center">
@@ -347,7 +340,7 @@
                                     <div class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
                                         <div class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
                                             <div class="carousel__img overflow-hidden rounded-circle">
-                                                <img loading="lazy" src="images/homepage/ribs_massage_image.jpg" alt="woman getting a massage - image" class="img-fluid">
+                                                <img loading="lazy" src="images/homepage/ribs_massage_image.jpg" alt="woman getting a massage - image" class="img-fluid" width="740" height="1113">
                                             </div>
                                         </div>
                                         <div class="carousel__review-holder d-flex align-items-center rounded text-center">
@@ -376,7 +369,7 @@
                                     <div class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
                                         <div class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
                                             <div class="carousel__img overflow-hidden rounded-circle">
-                                                <img loading="lazy" src="images/homepage/towel_woman_image.jpg" alt="woman getting ready for her massage - image" class="img-fluid">
+                                                <img loading="lazy" src="images/homepage/towel_woman_image.jpg" alt="woman getting ready for her massage - image" class="img-fluid" width="1800" height="1200">
                                             </div>
                                         </div>
                                         <div class="carousel__review-holder d-flex align-items-center rounded text-center">
@@ -405,7 +398,7 @@
                                     <div class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
                                         <div class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
                                             <div class="carousel__img overflow-hidden rounded-circle">
-                                                <img loading="lazy" src="images/homepage/cream_zoom_image.jpg" alt="close-up of a cream - image" class="img-fluid">
+                                                <img loading="lazy" src="images/homepage/cream_zoom_image.jpg" alt="close-up of a cream - image" class="img-fluid" width="1800" height="1200">
                                             </div>
                                         </div>
                                         <div class="carousel__review-holder d-flex align-items-center rounded text-center">
@@ -434,7 +427,7 @@
                                     <div class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
                                         <div class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
                                             <div class="carousel__img overflow-hidden rounded-circle">
-                                                <img loading="lazy" src="images/homepage/massage_oil_image.jpg" alt="woman getting some massage oil on her back - image" class="img-fluid">
+                                                <img loading="lazy" src="images/homepage/massage_oil_image.jpg" alt="woman getting some massage oil on her back - image" class="img-fluid" width="1800" height="1201">
                                             </div>
                                         </div>
                                         <div class="carousel__review-holder d-flex align-items-center rounded text-center">
@@ -470,7 +463,6 @@
                             </div>
                         </div>
                         
-
                         <!-- SUMMARY AND CALL TO ACTION -->
                         <h3 class="mb-2 heading-5">Institut For You en quelques mots:</h3>
                         <div class="summary__animationBox">
@@ -478,7 +470,7 @@
                                 <!-- LEFT SUMMARY BOX -->
                                 <figure class="position-relative overflow-hidden summary__box d-flex flex-column text-center mb-0 p-2" id="summaryLeft">
                                     <span class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
-                                        <img loading="lazy" src="images/homepage/grateful_icon.svg" alt="grateful icon with hands and heart">
+                                        <img loading="lazy" src="images/homepage/grateful_icon.svg" alt="icon with hands and heart representing gratitude">
                                     </span>
                                     <strong class="d-block text-center text-uppercase heading-4">satisfaction</strong>
                                     <figcaption>

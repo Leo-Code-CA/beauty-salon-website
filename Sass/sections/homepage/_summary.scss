@@ -6,6 +6,7 @@
     --top: 0;
 }
 
+
 //////////////// SUMMARY PART ////////////////
 
 .summary {
@@ -29,7 +30,7 @@
             background-color: custom.$secondary;
         }
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: functions.toRem(767)) {
 
             height: 1000vh;
             width: 100%;
@@ -71,7 +72,7 @@
             }
 
             &__animationBox {
-                height: calc(100vh - 56px);
+                height: calc(100vh - var(--navbarHeight));
                 width: 100%;
                 overflow-y: scroll;
                 scrollbar-width: none;  /*Firefox*/
@@ -95,12 +96,12 @@
                     font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.7vw), functions.toRem(30)) !important;
                 }
 
-                span {
-                    margin-top: 1rem;
-                }
+                // span {
+                //     margin-top: 1rem;
+                // }
 
                 figcaption {
-                    padding: 0 1.5rem;
+                    padding: 0 1.5rem 0.5rem 1.5rem;
                     font-weight: 400 !important;
                     font-size: clamp(functions.toRem(16), calc(functions.toRem(1) + 2vh), functions.toRem(25));
                 }

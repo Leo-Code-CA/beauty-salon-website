@@ -2,22 +2,18 @@
 
 .features {
 
-    // ALL BREAKPOINTS 
-
-    &__accordion, &__table {
-        display: none;
-    }
-
     ///////////// ACCORDION: MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
     @media (orientation: portrait) {
 
         &__accordion {
             display: block;
         }
 
-        &__toggle {
+        &__table {
+            display: none;
+        }
 
+        &__toggle {
             background-color: none !important;
             
             &::after {
@@ -26,22 +22,20 @@
         }
 
         &__arrow {
-            top: 7%;
-            left: 90%;
+            transition: all .5s ease-in-out;
             
             &--up {
-                transform: translate(-90%, -7%) rotate(270deg);
+                transform: rotate(270deg);
             } 
 
             &--down {
-                transform: translate(-90%, -7%) rotate(90deg);
+                transform: rotate(90deg);
             }
         }
 
         @include custom.media-breakpoint-up(sm) {
 
             &__accordion {
-
                 width: 70%;
             }
         }
@@ -63,9 +57,11 @@
 
     @media (orientation: landscape) {
 
-        &__table {
+        &__accordion {
+            display: none;
+        }
 
-            border-radius: 10%;
+        &__table {
             display: block;
 
             button {
@@ -77,18 +73,13 @@
         /////////////////// TABLE: LAPTOP AND DESKTOP  ///////////////////
 
         @include custom.media-breakpoint-up(lg) {
-
             &__table {
-
                 width: 75%;
 
                 button {
                     font-size: custom.$body-fs;
-                }
-                
+                } 
             }
-
         }
     }
-
 }

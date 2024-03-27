@@ -1,20 +1,14 @@
 @use '../../custom';
 @use '../../components/functions';
 
-//////////////// CAROUSEL PART ////////////////
-
 .carousel {
 
-    // ALL BREAKPOINTS
-
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-    
     @media (orientation: portrait) {
 
         height: auto;
 
         // CENTER PART OF THE CAROUSEL - REVIEW
-
         &__review-holder {
             width: 80%;
             height: 90%;
@@ -32,7 +26,8 @@
         }
 
         &__icon {
-            width: 20%;
+            height: functions.toRem(45);
+            width: functions.toRem(45);
         }
 
         &__stars {
@@ -41,10 +36,9 @@
         }
 
         // PREVIOUS AND NEXT BUTTON ON THE SIDES OF THE CAROUSEL
-
         &__arrows {
             width: functions.toRem(35);
-            color: black;
+            color: custom.$dark !important;
         }
 
         @include custom.media-breakpoint-up(md) {
@@ -54,11 +48,10 @@
             }
 
             &__item {
-                gap: 1rem !important;
+                gap: functions.toRem(16) !important;
             }
     
             // LEFT PART OF THE CAROUSEL - ROUNDED IMAGE
-    
             &__img-holder {
                 width: 45%;
                 height: 80%;
@@ -98,7 +91,6 @@
             }
     
             // CENTER PART OF THE CAROUSEL - REVIEW
-    
             &__review-holder {
                 width: 50%;
                 height: 100%;
@@ -109,13 +101,14 @@
                 }
     
                 figcaption {
-                    font-size: custom.$body-landscape-fs !important;
+                    font-size: custom.$body-landscape-fs;
                 }
     
             }
     
             &__icon {
-                width: 15%;
+                height: functions.toRem(35);
+                width: functions.toRem(35);
             }
     
             &__stars {
@@ -124,7 +117,6 @@
             }
     
             // RIGHT PART OF THE CAROUSEL - DECOR
-    
             &__decor-holder {
                 width: 5%;
                 height: 80%;
@@ -132,43 +124,55 @@
             }
     
             // PREVIOUS AND NEXT BUTTON ON THE SIDES OF THE CAROUSEL
-    
             &__arrows {
                 width: functions.toRem(30);
                 
                 span {
-                    width: 1rem !important;
-                    height: 1rem !important;
+                    width: functions.toRem(16) !important;
+                    height: functions.toRem(16) !important;
                 }
             }
 
         }
 
         @include custom.media-breakpoint-up(lg) {
+
             &__section {
-                margin-bottom: 2rem !important;
+                margin-bottom: functions.toRem(32) !important; // if you have a problem with the spacing beween the carousel and the summary look here!! (section is actually carousel parent)
+            }
+
+            &__review-holder {
+                figure {
+                    justify-content: space-evenly !important;
+                }
+            }
+
+            &__stars {
+                height: functions.toRem(35);
+                width: functions.toRem(35);
+            }
+
+            &__icon {
+                height: functions.toRem(50);
+                width: functions.toRem(50);
             }
         }
-
     }
 
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-    
     @media (orientation: landscape) {
 
         max-height: 100vh;
 
         &__section {
-            margin-bottom: 3rem !important;
+            margin-bottom: functions.toRem(48) !important;
         }
 
         &__inner {
             height: 100%;
         }
 
-
         // LEFT PART OF THE CAROUSEL - ROUNDED IMAGE
-
         &__img-holder {
             width: 40%;
             height: 80%;
@@ -208,7 +212,6 @@
         }
 
         // CENTER PART OF THE CAROUSEL - REVIEW
-
         &__review-holder {
             width: 55%;
             height: 100%;
@@ -221,13 +224,18 @@
             }
 
             figcaption {
-                font-size: custom.$body-landscape-fs !important;
+                font-size: custom.$body-landscape-fs;
+            }
+
+            figure {
+                justify-content: space-evenly !important;
             }
 
         }
 
         &__icon {
-            width: 15%;
+            height: functions.toRem(40);
+            width: functions.toRem(40);
         }
 
         &__stars {
@@ -235,9 +243,7 @@
             width: functions.toRem(20);
         }
 
-
         // RIGHT PART OF THE CAROUSEL - DECOR
-
         &__decor-holder {
             width: 5%;
             height: 80%;
@@ -245,25 +251,70 @@
         }
 
         // PREVIOUS AND NEXT BUTTON ON THE SIDES OF THE CAROUSEL
-
         &__arrows {
             width: functions.toRem(30);
             
             span {
-                width: 1rem !important;
-                height: 1rem !important;
+                width: functions.toRem(16) !important;
+                height: functions.toRem(16) !important;
             }
         }
 
         @include custom.media-breakpoint-up(md) {
-
             max-height: 80vh;
+        }
+
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+        @include custom.media-breakpoint-up(lg) {
+            max-height: 70vh;
+
+            // CONTROL BUTTONS ABOVE THE CAROUSEL
+            &__controls {
+                display: flex !important;
+                width: 100% !important;
+                height: 10%;
+                gap: functions.toRem(16) !important;
+                margin-bottom: functions.toRem(24) !important;
+
+                [data-bs-target] {
+                    text-indent: 0%;
+                    opacity: 1;
+                    background: linear-gradient(
+                        180deg,
+                        custom.$secondary,
+                        custom.$primary
+                    );
+                    color: custom.$white;
+                    padding: 0 !important;
+                }
+
+            }
+
+            &__inner {
+                height: 90%;
+            }
+
+            &__item {
+                gap: functions.toRem(16) !important;
+            }
+
+            &__img-holder {
+                width: 55%;
+            }
+
+            &__img {
+                margin: 0;
+            }
 
             &__review-holder {
-                
-                // figure {
-                //     padding: 1.5rem !important;
-                // }
+                border: functions.toRem(16) solid custom.$primary;
+                width: 40%;
+                height: 90%;
+                box-shadow: functions.toRem(3) functions.toRem(7) functions.toRem(15) rgba(custom.$dark, 0.6), functions.toRem(-3) functions.toRem(7) functions.toRem(15) rgba(custom.$dark, 0.6);
+
+                figure {
+                    padding: functions.toRem(24) functions.toRem(48) !important;
+                }
 
                 blockquote {
                     line-height: 2;
@@ -275,71 +326,9 @@
                 }
             }
 
-            // &__icon {
-            //     width: 20%;
-            // }
-
-        }
-
-
-        /////////////////// LAPTOP AND DESKTOP  ///////////////////
-        
-        @include custom.media-breakpoint-up(lg) {
-
-            max-height: 70vh;
-
-            // CONTROL BUTTONS ABOVE THE CAROUSEL
-
-            &__controls {
-                display: flex !important;
-                width: 100% !important;
-                height: 10%;
-                gap: 1rem !important;
-                margin-bottom: 1.5rem !important;
-
-                [data-bs-target] {
-
-                    text-indent: 0%;
-                    opacity: 1;
-                    background: linear-gradient(
-                        180deg,
-                        custom.$secondary,
-                        custom.$primary
-                    );
-                    color: custom.$white;
-                    padding: 0 !important;
-                    // padding: 0.7rem 0.5rem !important;
-                }
-
-            }
-
-            &__inner {
-                height: 90%;
-            }
-
-            &__item {
-                gap: 1rem !important;
-            }
-
-            &__img-holder {
-                width: 55%;
-            }
-
-            &__img {
-                margin: 0;
-            }
-
-            
-            &__review-holder {
-
-                border: functions.toRem(16) solid custom.$primary;
-                width: 40%;
-                height: 90%;
-                box-shadow: functions.toRem(3) functions.toRem(7) functions.toRem(15) rgba(custom.$dark, 0.6), functions.toRem(-3) functions.toRem(7) functions.toRem(15) rgba(custom.$dark, 0.6);
-
-                figure {
-                    padding: 1.5rem 3rem !important;
-                }
+            &__icon {
+                height: functions.toRem(50);
+                width: functions.toRem(50);
             }
 
             &__stars {
@@ -351,15 +340,14 @@
                 width: functions.toRem(48);
 
                 span {
-                    width: 2rem !important;
-                    height: 2rem !important;
+                    width: functions.toRem(32) !important;
+                    height: functions.toRem(32) !important;
                 }
             }
 
         }
 
         @include custom.media-breakpoint-up(xl) {
-
             max-height: 80vh;
 
             &__img-holder {
@@ -370,8 +358,8 @@
                 width: 45%;
 
                 figure {
-                    padding: 1.5rem 4rem !important;
-                    gap: 1rem !important;
+                    padding: functions.toRem(24) functions.toRem(64) !important;
+                    gap: functions.toRem(16) !important;
                 }
             }
 
@@ -384,11 +372,14 @@
             }
 
             &__stars {
-                height: functions.toRem(48);
-                width: functions.toRem(48);
+                height: functions.toRem(45);
+                width: functions.toRem(45);
+            }
+
+            &__icon {
+                height: functions.toRem(65);
+                width: functions.toRem(65);
             }
         }
-
     }
-
 }

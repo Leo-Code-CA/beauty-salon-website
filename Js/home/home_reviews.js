@@ -3,12 +3,12 @@
 // LAZY LOADING REVIEWS CAROUSEL
 
 const targetCarousel = document.querySelector("#reviewsCarousel");
-const carousel = new bootstrap.Carousel(targetCarousel, {interval: 5000, pause: false})
+const carousel = new bootstrap.Carousel(targetCarousel, {interval: 5000, pause: 'hover', ride: 'carousel'});
 
 const carouselObserver = new IntersectionObserver(entries => {
     entries.map(entry => {
         const intersecting = entry.isIntersecting;
-        intersecting ? carousel.cycle() : carousel.pause();
+        if (!intersecting) carousel.pause();
     }) 
 });
 

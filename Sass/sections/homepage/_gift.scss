@@ -5,21 +5,16 @@
 
     // ALL BREAKPOINTS 
 
-    color: custom.$white;
-
     &__btn {
         font-family: 'Bodoni Moda', serif;
         font-weight: 700;
         letter-spacing: functions.toRem(5);
         text-transform: uppercase;
-        font-size: custom.$body-landscape-fs;
     }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
     @media (orientation: portrait) {
-
-        height: auto;
 
         &__wrapper {
             padding: 1.5rem !important;
@@ -44,38 +39,66 @@
                 text-align: left !important;
                 gap: 1rem;
                 padding: 1rem 0.5rem;
+                color: custom.$white;
             }
         }
 
         &__btn {
             width: 90%;
+            font-size: custom.$body-landscape-fs;
+        }
+
+        @include custom.media-breakpoint-up(sm) {
+            
+            &__wrapper {
+                flex-direction: row !important;
+                flex-wrap: wrap;
+                padding: 1rem !important;
+            }
+
+            &__heading {
+                width: 100%;
+            }
+
+            &__container {
+                width: auto;
+                flex: 1;
+            
+                &--img {
+                    order: 1;
+                    padding: functions.toRem(16);
+                }
+    
+                &--text {
+                    order: 2;
+                }
+            }
         }
 
         @include custom.media-breakpoint-up(md) {
 
+            &__wrapper {
+                column-gap: functions.toRem(16);
+            }
+
             &__container {
 
                 &--text {
-                    width: 80%;
-                    line-height: 2;
+                    line-height: 1.8;
+                }
+
+                &--img {
+                    max-width: 50%;
                 }
             }
-
-            &__btn {
-                width: 80%;
-                font-size: clamp(functions.toRem(16), calc(16px + 0.2vw), functions.toRem(20));
-            }
         }
-
-    
     }
 
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
     @media (orientation: landscape) {
 
-        height: calc(100vh - functions.toRem(56));
-        background: url('../../../images/homepage/pink_wave_background.svg');
+        height: calc(100vh - var(--navbarHeight));
+        background: url('/images/homepage/pink_wave_background.svg');
         background-size: 150% 120%;
         background-position: 60% 50%;
 
@@ -87,6 +110,8 @@
 
         &__wrapper {
             flex-wrap: wrap;
+            height: 100% !important;
+            width: 100% !important;
         }
 
         &__icon {
@@ -98,32 +123,35 @@
             width: 80%;
             padding: functions.toRem(5);
             align-self: center;
+            font-size: custom.$body-landscape-fs;
         }
 
         &__container {
 
             &--text {
-                width: 45%;
-                padding: 0 1rem;
+                max-width: 45%;
+                padding: 0 0 0 functions.toRem(16);
                 align-self: flex-end;
                 height: 100%;
                 justify-content: space-evenly;
-                color: custom.$dark;
             }
 
             &--img {
-                max-height: 75%;
-                width: 45%;
+                max-width: 45%;
             }
         }
 
-        &__img {
-            max-height: 80%;
-            width: auto;
+        @include custom.media-breakpoint-up(md) {
+            &__container {
+
+                &--text {
+                    padding: 0 functions.toRem(16);
+                }
+
+            }
         }
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
         @include custom.media-breakpoint-up(lg) {
 
             background-size: cover;
@@ -166,8 +194,6 @@
                 font-size: clamp(functions.toRem(16), calc(16px + 0.2vw), functions.toRem(20));
                 width: 70%;
             }
-
         }
     }
-
  }
