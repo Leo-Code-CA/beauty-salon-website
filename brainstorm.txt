@@ -3,8 +3,6 @@
 
 // TO DO LIST FOR THE NEXT TIME
 - cleanup sass for the summary part of the homepage
-- move the css variable to custom and change name
-- add the fancy looking button outline to all the versions of the summary
 - try to cleanup / improve the js of the scroll bound animation (but don't spend too much time on it!)
 THEN YOU'LL BE DONE WITH THE HOMEPAGE :D!
 

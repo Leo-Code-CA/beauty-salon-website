@@ -106,12 +106,12 @@ async function textAnimation() {
 
 }
 
-window.addEventListener("load", () => {
-    mqLandscape.matches ? setAnimation = false : setAnimation = true;
-    textAnimation();
-})
+// window.addEventListener("load", () => {
+//     mqLandscape.matches ? setAnimation = false : setAnimation = true;
+//     textAnimation();
+// })
 
-mqLandscape.addEventListener("change", () => {
-    mqLandscape.matches ? setAnimation = false : setAnimation = true;
-    textAnimation();
-});
+// mqLandscape.addEventListener("change", () => {
+//     mqLandscape.matches ? setAnimation = false : setAnimation = true;
+//     textAnimation();
+// });
