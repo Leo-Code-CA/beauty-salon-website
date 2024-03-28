@@ -72,6 +72,8 @@
                 transition: all .5s ease-out;
                 padding: 0 !important;
                 justify-content: space-between;
+                min-height: 30vh;
+                max-height: 70vh;
 
                 strong {
                     font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.7vw), functions.toRem(30)) !important;

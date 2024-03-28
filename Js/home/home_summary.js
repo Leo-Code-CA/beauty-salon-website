@@ -31,14 +31,8 @@ const goalHeight = window.innerHeight / 100 * 70;
 const boxTop = ((window.innerHeight - navBarHeight) - goalHeight) / 2;
 const width = elemOne.offsetWidth;
 const windowWidth = window.innerWidth;
-const elemSpacing = (windowWidth - width) / 2; 
+const elemSpacing = (windowWidth - width) / 2;
 const elemSpacingPercentage = windowWidth / elemSpacing;
-const horizontalObserverOptions = {
-    root: visisbleScrollBox,
-    rootMargin: "0px",
-    threshold: 0.5
-}
-const horizontalObserver = new IntersectionObserver(handleHorizontalIntersection, horizontalObserverOptions);
 
 ////////////////////////// MOBILE ONLY ANIMATION /////////////////////////////
 
@@ -48,11 +42,11 @@ window.addEventListener('resize', () => mediaQueryMatches = mediaQuery.matches);
 // Initial setup
 window.addEventListener("load", () => {
     // get initial boxes' height
-    initialHeightOne = elemOne.clientHeight;
-    initialHeightTwo = elemTwo.clientHeight;
-    initialHeightThree = elemThree.clientHeight;
+    initialHeightOne = elemOne.offsetHeight;
+    initialHeightTwo = elemTwo.offsetHeight;
+    initialHeightThree = elemThree.offsetHeight;
     // define the translate percentages depending on the screen size
-    positiveTranslate = 100 + ((windowWidth - width) / width * 100) + 10; // + 10 just to hide the shadow 
+    positiveTranslate = 100 + ((windowWidth - width) / width * 100);
     totalTranslate = positiveTranslate + 100;
     translateBreakPeriod = totalTranslate / 2;
     // set the top property depending on the screen height 
@@ -61,38 +55,21 @@ window.addEventListener("load", () => {
     mediaQueryMatches = mediaQuery.matches;
 });
 
-// handle boxes intersecting with the viewport
-function handleHorizontalIntersection(entries) {
-    entries.forEach(entry => {
+// Handle inactive elements display
+function handleInactiveElem(elem) {
+ 
+    if (elem.getBoundingClientRect().x < totalTranslate / 2 - 100) {
+        elem.style.transform = `translate(-100%)`;
+        elem.style.height = elem.id === 'summaryCenter' ? `${initialHeightTwo}px`
+        : elem.id === 'summaryLeft' ? `${initialHeightOne}px`
+        : `${initialHeightThree}px`;
+    } else {
+        `translate(${positiveTranslate}%)`;
+        elem.style.height = `${goalHeight}px`
+    }
 
-        const position = entry.boundingClientRect.x;
-        const id = entry.target.id;
-        let target;
-
-        console.log(id)
-
-        if (id === "summaryLeft") {
-            target = elemOne;
-        } else if (id === "summaryCenter") {
-            target = elemTwo;
-        } else if (id === "summaryRight") {
-            target = elemThree;
-        } else {
-            throw new Error("unknown id");
-        };
-
-        if (position < 0) {
-            console.log(`Translating ${id} to -100%`)
-            target.style.transform = `translate(-100%)`;
-            id === "summaryLeft" || id === "summaryRight" ? target.style.height = `${initialHeightOne}px`
-            : target.style.height = `${initialHeightTwo}px`;
-        } else {
-            console.log(`Translating ${id} to ${positiveTranslate}%`)
-            target.style.transform = `translate(${positiveTranslate}%)`;
-            target.style.height = `${goalHeight}px`;
-        }
-    });
-};
+    elem.style.opacity = 0;
+}
 
 // handle automatic scroll when animation has started
 function handleAutoScroll() {
@@ -197,10 +174,6 @@ visisbleScrollBox.addEventListener('scroll', () => {
 
     if (mediaQueryMatches) {
 
-        // console.log(`ElemOne translate is: ${elemOne.style.transform}`);
-        // console.log(`ElemTwo translate is: ${elemTwo.style.transform}`);
-        // console.log(`ElemThree translate is: ${elemThree.style.transform}`);
-
         const lengthFromTop = visisbleScrollBox.scrollTop;
         const scrollPercentage = Math.ceil(lengthFromTop) / scrollArea * 100;
         const translateUpdateRate = 33 / (translateBreakPeriod + totalTranslate);
@@ -210,9 +183,11 @@ visisbleScrollBox.addEventListener('scroll', () => {
         // ANIMATE FIRST BOX
         if (lengthFromTop <= (scrollArea / 3)) {
 
-            horizontalObserver.observe(elemTwo);
-            horizontalObserver.observe(elemThree);
-            horizontalObserver.unobserve(elemOne);
+            elemOne.style.opacity = 1;
+            elemTwo.style.opacity = 0;
+            elemThree.style.opacity = 0;
+            handleInactiveElem(elemTwo);
+            handleInactiveElem(elemThree);
 
             const translatePercentage = -100 + (scrollPercentage / translateUpdateRate);
 
@@ -249,9 +224,11 @@ visisbleScrollBox.addEventListener('scroll', () => {
         // ANIMATE SECOND BOX
         else if (lengthFromTop <= (scrollArea / 3) * 2) {
 
-            horizontalObserver.observe(elemOne);
-            horizontalObserver.observe(elemThree);
-            horizontalObserver.unobserve(elemTwo);
+            elemOne.style.opacity = 0;
+            elemTwo.style.opacity = 1;
+            elemThree.style.opacity = 0;
+            handleInactiveElem(elemOne);
+            handleInactiveElem(elemThree);
 
             const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - (translateBreakPeriod + totalTranslate));
 
@@ -293,9 +270,11 @@ visisbleScrollBox.addEventListener('scroll', () => {
         // ANIMATE THIRD BOX
         else if (lengthFromTop < scrollArea) {
 
-            horizontalObserver.observe(elemOne);
-            horizontalObserver.observe(elemTwo);
-            horizontalObserver.unobserve(elemThree);
+            elemOne.style.opacity = 0;
+            elemTwo.style.opacity = 0;
+            elemThree.style.opacity = 1;
+            handleInactiveElem(elemOne);
+            handleInactiveElem(elemTwo);
 
             const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - ((translateBreakPeriod + totalTranslate) * 2));
 
@@ -332,19 +311,12 @@ visisbleScrollBox.addEventListener('scroll', () => {
         }
 
         // RESET THE BOXES WHEN SCROLL IS NO MORE POSSIBLE (TOP OR BOTTOM)
-        if (lengthFromTop === 0) {
-            elemOne.style.transform = `translate(-100%)`
-            elemTwo.style.transform = `translate(-100%)`
-            elemThree.style.transform = `translate(-100%)`
-            console.log('Transforming all the elem to -100%')
-        } else if (lengthFromTop === scrollArea) {
-            elemOne.style.transform = `translate(${positiveTranslate}%)`
-            elemTwo.style.transform = `translate(${positiveTranslate}%)`
-            elemThree.style.transform = `translate(${positiveTranslate}%)`
-            console.log(`Transforming all the elem to ${positiveTranslate}%`)
+        if (lengthFromTop === 0 || lengthFromTop === scrollArea) {
+            handleInactiveElem(elemOne);
+            handleInactiveElem(elemTwo);
+            handleInactiveElem(elemThree);
         }
     }
-
 });
 
 // HANDLE PAGE BEHAVIOUR
@@ -363,7 +335,6 @@ window.addEventListener('scroll', () => {
                 const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
                     // if the animation is not 100% done disable the page scroll (forwards)
                     if (scrollArea !== lengthFromTop) {
-                        console.log(`Scroll area is ${scrollArea} and lengthFromTop is ${lengthFromTop}`)
                         window.scrollTo(0, topElemToDocTop);
                 };
             };
@@ -376,7 +347,6 @@ window.addEventListener('scroll', () => {
                 // if the animation is not 100% done disable the page scroll (backwards)
                 if (lengthFromTop !== 0) {
                     window.scrollTo(0, topElemToDocTop);
-                    console.log(`LengthFromTop is ${lengthFromTop} !== 0`)
                 }
             }
         }
@@ -401,12 +371,3 @@ summaryBox.forEach(elem => {
     });
 
 });
-
-
-
-
-
-
-
-
-
