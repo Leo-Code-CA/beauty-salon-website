@@ -3,18 +3,24 @@
 
 .scrub {
 
-    // ALL BREAKPOINTS 
-
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
     @media (orientation: portrait) {
 
         &__faceScrubImg {
             width: 50%;
-            transform: translate(-10%);
+        }
+
+        &__infoContainer {
+            gap: functions.toRem(10);
         }
 
         @include custom.media-breakpoint-up(md) {
+
+            &__infoContainer {
+                gap: functions.toRem(32);
+                margin-top: functions.toRem(32);
+            }
+
             &__illustration {
                 display: none !important;
             }
@@ -24,11 +30,8 @@
                 width: 70%;
             }
         }
-        
     }
-
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
     @media (orientation: landscape) {
 
         &__illustration {
@@ -41,7 +44,7 @@
 
         &__illustrationTwo {
             display: block !important;
-            width: 30%;
+            width: 35%;
         }
 
         button {
@@ -50,52 +53,97 @@
 
         &__infoContainer {
             justify-content: space-between;
+            gap: functions.toRem(16);
         }
-
-        &__info {
-            max-width: 60%;
-        }
-
 
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
         @include custom.media-breakpoint-up(lg) {
-            &__info {
-                max-width: 50%;
-            }
 
             &__illustrationTwo {
                 width: 40%;
+            }
+
+            &__infoContainer {
+                gap: functions.toRem(32);
             }
         }
 
         @include custom.media-breakpoint-up(xl) {
 
+            min-height: 60vh;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            row-gap: functions.toRem(20);
-            margin-top: functions.toRem(30) !important;
+            flex-direction: column;
+            gap: functions.toRem(16);
 
-            h2 {
-                width: 100%;
-                margin: functions.toRem(60) 0;
+            &__wrapper {
+                display: flex;
+                flex: 1;
+                gap: functions.toRem(24);
             }
 
             &__paragraph {
-                width: 40%;
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                justify-content: center;
+                gap: functions.toRem(16);
+
+                p {
+                    margin-left: functions.toRem(24);
+                }
+
+                p:first-child {
+                    margin-top: functions.toRem(24);
+                }
+
+                p:last-child {
+                    border: functions.toRem(1) solid custom.$black;
+                    border-radius: functions.toRem(6);
+                    margin-bottom: functions.toRem(24);
+                    padding: functions.toRem(16);
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: bold;
+                    background-color: custom.$primary;
+                    color: custom.$white;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    width: 62.5vw;
+                    box-shadow: 0 0 functions.toRem(3) functions.toRem(5) custom.$primary;
+                    border-radius: functions.toRem(10) functions.toRem(10) 0 0;
+                }
             }
 
             &__infoContainer {
+                gap: functions.toRem(48);
+                background-color: custom.$secondary;
+                border-radius: functions.toRem(10) functions.toRem(10) 0 0;
+                padding: functions.toRem(16) functions.toRem(16) 0;
+                align-items: flex-end;
+            }
+
+            &__illustrationTwo {
+                background-color: custom.$white;
+                border-radius: 50%;
+                box-shadow: 0 0 functions.toRem(3) functions.toRem(5) custom.$primary;
                 width: 50%;
             }
 
+            &__info {
+                align-self: stretch;
+            }
 
-            &__illustrationTwo {
-                width: 50%;
-                margin-top: functions.toRem(-40);
+            &__faceScrubImg {
+                width: 45%;
+                height: auto;
             }
         }
     }
-
 }

@@ -1,6 +1,8 @@
 @use './../../../custom';
 @use './../../../components/functions';
 
+// CHECK AGAIN THE TABLET PORTRAIT VERSION - IF YOU FIND HALF FACE TOO SMALL JUST DO NOT FLOAT THE IMAGE AND ADD DISPLAY FLEX TO THE CONTAINER
+
 .sight {
 
     // ALL BREAKPOINTS 
@@ -16,7 +18,8 @@
 
         &__halfFaceImg {
             width: 150%;
-            shape-outside: polygon(55% 50%, 70% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            // shape-outside: polygon(55% 50%, 70% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%); good on mac
+            shape-outside: polygon(60% 50%, 80% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
             transform: translateX(10%);
 
             img {
@@ -30,11 +33,16 @@
 
         @include custom.media-breakpoint-up(md) {
 
-            height: calc(100vh - var(--navbarHeight));
-
             &__halfFaceImg {
+                width: 35%;
+            }
+
+            &__info {
                 width: 100%;
-                transform: translateX(5%);
+            }
+
+            &__eyesLashes {
+                width: 20%;
             }
 
             &__container {
@@ -44,9 +52,6 @@
             &__description {
                 padding-top: functions.toRem(16);
                 height: 85%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
 
 
                 p:nth-child(even) {
@@ -60,18 +65,14 @@
         }
 
         @include custom.media-breakpoint-up(lg) {
-            
-            height: 60vh;
+    
 
             &__halfFaceImg {
-                margin-left: functions.toRem(32);
-                height: 85%;
-                width: auto;
+                width: 40%;
+            }
 
-                img {
-                    height: 100% !important;
-                    width: auto !important;
-                }
+            &__info {
+                width: auto;
             }
 
             &__description {
@@ -88,9 +89,9 @@
 
         &__halfFaceImg {
             width: 40%;
-            margin-left: functions.toRem(32);
             transform: translate(13%);
-            shape-outside: polygon(55% 50%, 70% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            // shape-outside: polygon(55% 50%, 70% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%); good on mac
+            shape-outside: polygon(60% 50%, 80% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
 
             img {
                 mask-image: linear-gradient(0deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, transparent 97%);
