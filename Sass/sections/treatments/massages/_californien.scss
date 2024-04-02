@@ -36,6 +36,12 @@
 
         &__infoIllustration {
 
+            p {
+                position: absolute;
+                word-wrap: break-word;
+                width: functions.toRem(1);
+            }
+
             img {
                 z-index: 2;
                 animation-name: var(--imgAnimName);

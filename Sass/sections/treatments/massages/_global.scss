@@ -4,20 +4,15 @@
 .massages {
 
     // ALL BREAKPOINTS 
-
-    min-height: 100vh;
-    // margin-top: functions.toRem(56);
-
     &__massage {
         padding-top: functions.toRem(14);
     }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
     @media (orientation: portrait) {
 
         &__bulbIcon {
-            height: 2rem;
+            height: functions.toRem(32);
             transform: rotate(15deg) translateY(-20%);
 
             img {
@@ -25,19 +20,12 @@
                 width: auto;
             }
         }
-
-        @include custom.media-breakpoint-up(md) {
-
-        }
-        
     }
-
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
     @media (orientation: landscape) {
 
         &__bulbIcon {
-            height: 1.5rem;
+            height: functions.toRem(24);
             transform: rotate(15deg) translateY(-20%);
 
             img {
@@ -45,21 +33,12 @@
                 width: auto;
             }
         }
-
-
-
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
         @include custom.media-breakpoint-up(lg) {
 
             &__bulbIcon {
-                height: 2rem;
+                height: functions.toRem(32);
             }
         }
-
-        @include custom.media-breakpoint-up(xl) {
-            
-        }
     }
-
 }

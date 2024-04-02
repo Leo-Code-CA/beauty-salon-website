@@ -3,18 +3,11 @@
 
 .kobido {
 
-    // ALL BREAKPOINTS 
+    // ALL BREAKPOINTS
 
-    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+    &__supreme {
 
-    @media (orientation: portrait) {
-
-
-        &__blossomImg {
-            transform: translateX(10%);
-        }
-
-        &__supreme {
+        h3 {
             background: linear-gradient(
                 90deg,
                 custom.$primary,
@@ -31,110 +24,126 @@
                 font-family: 'Raleway', sans-serif;
             }
         }
+    }
+
+    ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+    @media (orientation: portrait) {
+
+        &__blossomImg {
+            transform: translateX(12%);
+        }
 
         &__price {
             width: 40%;
         }
 
-
         @include custom.media-breakpoint-up(md) {
 
-            &__advice {
-                clear: right !important;
+            &__infoWrapper {
+                display: flex;
+                align-items: center;
             }
 
             &__blossomImg {
-                width: 60%;
-                margin-left: auto;
-                float: right;
+                width: 50%;
+                flex-shrink: 0;
+                transform: translateX(10%);
+                order: 2;
+            }
+
+            &__supreme {
+                display: flex;
+            }
+
+            &__supremeWrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: functions.toRem(10);
             }
 
             &__landscapeImg {
                 width: 60%;
-                float: left;
-            }
-
-        }
-        
-    }
-
-    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
-    @media (orientation: landscape) {
-
-        &__advice {
-            clear: right !important;
-        }
-
-        &__blossomImg {
-            width: 55%;
-            margin-left: auto;
-            float: right;
-            transform: translateX(12%);
-        }
-
-        &__landscapeImg {
-            width: 60%;
-            float: left;
-        }
-
-        &__supreme {
-            background: linear-gradient(
-                90deg,
-                custom.$primary,
-                custom.$secondary
-            );
-            background-clip: text;
-            color: transparent;
-            font-family: 'Bodoni Moda', serif;
-            font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.3vw), functions.toRem(22));
-
-            span {
-                font-weight: 300;
-                letter-spacing: functions.toRem(2);
-                font-size: clamp(functions.toRem(25), calc(25px + 0.17vw), functions.toRem(30));
-                font-family: 'Raleway', sans-serif;
+                flex-shrink: 0;
             }
         }
-
-        p:nth-of-type(1) {
-            margin-top: functions.toRem(20) !important;
-        }
-
-        &__price {
-            width: 40%;
-        }
-
-
-        /////////////////// LAPTOP AND DESKTOP  ///////////////////
 
         @include custom.media-breakpoint-up(lg) {
 
             &__blossomImg {
-                width: 50%;
-                margin-left: initial;
-                float: none;
-                transform: translateX(10%);
-                order: 5;
+                width: 40%;
             }
 
-            &__paragraphContainer {
+            &__landscapeImg {
+                width: 50%;
+            }
+        }
+    }
+    ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
+    @media (orientation: landscape) {
+
+        &__infoWrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        &__blossomImg {
+            width: 45%;
+            flex-shrink: 0;
+            transform: translateX(15%);
+            order: 2;
+        }
+
+        &__landscapeImg {
+            width: 60%;
+            flex-shrink: 0;
+        }
+
+        &__supreme {
+            display: flex;
+        }
+
+        &__supremeWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__price {
+            width: 40%;
+        }
+
+        @include custom.media-breakpoint-up(md) {
+
+            &__landscapeImg {
+                width: 50%;
+            }
+
+        }
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+        @include custom.media-breakpoint-up(lg) {
+
+            &__advice {
+                text-align: center;
+                margin: 0 !important;
                 display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
-                max-height: 50vh;
                 justify-content: center;
+                align-items: center;
+                gap: functions.toRem(16);
 
-                p {
-                    width: 50%;
+                b {
+                    border-right: functions.toRem(1) solid;
+                    padding: functions.toRem(16);
                 }
+            }
 
+            &__priceAndAdviceWrapper {
+                display: flex;
+                gap: functions.toRem(32);
             }
 
             &__landscapeImg {
                 width: 40%;
-                float: left;
-                margin-right: functions.toRem(20);
             }
 
             &__price {
@@ -144,43 +153,34 @@
             &__supreme {
                 margin-top: functions.toRem(25) !important;
             }
-
         }
 
         @include custom.media-breakpoint-up(xl) {
+
+            &__infoWrapper {
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    p {
+                        width: 70%;
+                    }
+                }
+            }
 
             p {
                 line-height: 2 !important;
             }
 
             &__blossomImg {
-                width: 40%;
+                width: 35%;
                 transform: translateX(10%);
-            }
-
-            &__paragraphContainer {
-                max-height: 70vh;
-                align-items: flex-end;
-
-                p {
-                    width: 40%;
-                }
-            }
-
-            &__advice {
-                width: 60%;
-                padding: functions.toRem(25) !important;
-                text-align: center;
-                margin: functions.toRem(25) auto !important;
             }
 
             &__landscapeImg {
                 width: 35%;
-                margin-right: functions.toRem(40);
-            }
-
-            &__supremeText {
-                padding: 0 functions.toRem(20);
             }
 
             &__supremeInfo {
@@ -193,5 +193,4 @@
             }
         }
     }
-
 }

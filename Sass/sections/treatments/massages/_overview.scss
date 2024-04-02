@@ -1,11 +1,9 @@
 @use './../../../custom';
 @use './../../../components/functions';
-@use './../../../components/mixins';
 
 .overview {
 
     // ALL BREAKPOINTS
-
     &__card {
         transition: all 1s ease-out;
     }
@@ -18,7 +16,6 @@
     }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
     @media (orientation: portrait) {
 
         width: 100%;
@@ -89,7 +86,8 @@
                 aspect-ratio: initial;
                 height: calc(100vw / 4.8);
                 width: calc(100vw / 4.8);
-                top: 0;
+                top: 50% !important;
+                transform: translate(0, -50%);
     
                 &:nth-child(1) {
                     left: 0;
@@ -135,16 +133,11 @@
                     .overview__icon {
                         width: 13%;
                     }
-
                 }
             }
-
         }
-        
     }
-
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
     @media (orientation: landscape) {
 
         aspect-ratio: initial;
@@ -159,7 +152,8 @@
             aspect-ratio: initial;
             height: calc(100vw / 4.8);
             width: calc(100vw / 4.8);
-            top: 0;
+            top: 50% !important;
+            transform: translate(0, -50%);
 
             &:nth-child(1) {
                 left: 0;
@@ -185,6 +179,7 @@
                 flex-wrap: wrap;
                 width: 100%;
                 padding: functions.toRem(8) functions.toRem(16) !important;
+                z-index: 1;
 
                 &:nth-child(2), &:nth-child(3) {
                     left: 0;
@@ -209,13 +204,9 @@
                 .overview__icon {
                     width: 12%;
                 }
-
             }
         }
-
-
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
         @include custom.media-breakpoint-up(xl) {
 
             width: 70vw;
@@ -254,11 +245,8 @@
                     .overview__icon {
                         width: 12%;
                     }
-    
                 }
             }
-
         }
     }
-
 }

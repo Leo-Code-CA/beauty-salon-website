@@ -4,14 +4,19 @@
 .sight {
 
     // ALL BREAKPOINTS 
-
+    &__info {
+        background: linear-gradient(
+            180deg,
+            custom.$white,
+            custom.$secondary,
+        );
+    }
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
     @media (orientation: portrait) {
 
         &__halfFaceImg {
             width: 150%;
-            shape-outside: polygon(55% 50%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            shape-outside: polygon(55% 50%, 70% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
             transform: translateX(10%);
 
             img {
@@ -19,25 +24,21 @@
             }
         }
 
-        &__info {
-            background: linear-gradient(
-                180deg,
-                custom.$white,
-                custom.$secondary,
-            );
-        }
-
         &__eyesLashes {
             width: 35%;
         }
 
-
         @include custom.media-breakpoint-up(md) {
 
-            height: calc(100vh - 56px);
+            height: calc(100vh - var(--navbarHeight));
 
             &__halfFaceImg {
                 width: 100%;
+                transform: translateX(5%);
+            }
+
+            &__container {
+                height: 100%;
             }
 
             &__description {
@@ -49,43 +50,55 @@
 
 
                 p:nth-child(even) {
-                    color: purple;
-                    font-size: clamp(functions.toRem(28), calc(functions.toRem(28) + 0.5vw), functions.toRem(50));
+                    color: custom.$primary;
+                    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.5vw), functions.toRem(40));
                     font-weight: 200;
                     color: custom.$primary;
                     font-family: 'Bodoni Moda', serif;
                 }
             }
-
         }
-        
+
+        @include custom.media-breakpoint-up(lg) {
+            
+            height: 60vh;
+
+            &__halfFaceImg {
+                margin-left: functions.toRem(32);
+                height: 85%;
+                width: auto;
+
+                img {
+                    height: 100% !important;
+                    width: auto !important;
+                }
+            }
+
+            &__description {
+                padding: functions.toRem(16);
+            }
+
+            &__eyesLashes {
+                width: 20%;
+            }
+        }
     }
-
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
     @media (orientation: landscape) {
 
         &__halfFaceImg {
             width: 40%;
+            margin-left: functions.toRem(32);
             transform: translate(13%);
-            shape-outside: polygon(55% 50%, 70% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
+            shape-outside: polygon(55% 50%, 70% 80%, 60% 100%, 100% 100%, 100% 100%, 100% 0, 65% 0%, 50% 23%);
 
             img {
                 mask-image: linear-gradient(0deg, transparent 5%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, transparent 97%);
             }
         }
 
-        &__info {
-            background: linear-gradient(
-                180deg,
-                custom.$white,
-                custom.$secondary,
-            );
-            width: 60%;
-        }
-
         &__eyesLashes {
-            width: 25%;
+            width: 20%;
         }
 
         &__description {
@@ -95,56 +108,60 @@
             }
         }
 
-
-
-        /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
-        @include custom.media-breakpoint-up(lg) {
-
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-
-            h2 {
-                width: 100%;
-            }
-
-
-            &__halfFaceImg {
-                width: 40%;
-                float: none !important;
-                order: 3;
-                transform: translate(10%);
-            }
-
-            &__description {
-                width: 60%;
-
-                p {
-                    line-height: 2 !important;
-                }
-            }
-
-            &__info {
-                width: 80%;
-            }
-
-        }
-
-        @include custom.media-breakpoint-up(xl) {
+        @include custom.media-breakpoint-up(md) {
 
             &__halfFaceImg {
                 width: 30%;
             }
 
             &__description {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            &__eyesLashes {
+                width: 15%;
+            }
+        }
+        /////////////////// LAPTOP AND DESKTOP  ///////////////////
+        @include custom.media-breakpoint-up(lg) {
+
+            margin-bottom: functions.toRem(-50);
+
+            h2 {
+                margin-bottom: functions.toRem(-16) !important;
+            }
+
+            &__container {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &__halfFaceImg {
                 width: 50%;
-                margin-left: functions.toRem(150);
+                float: none !important;
+                order: 2;
+                transform: translate(10%);
+                margin-left: functions.toRem(-200);
+            }
+
+            &__description {
+                justify-content: center;
+                padding: functions.toRem(32);
+
+                p {
+                    line-height: 2 !important;
+                }
+            }
+        }
+
+        @include custom.media-breakpoint-up(xl) {
+
+            &__halfFaceImg {
+                width: 35%;
+                transform: translate(8%);
             }
         }
     }
-
-
-
 }
