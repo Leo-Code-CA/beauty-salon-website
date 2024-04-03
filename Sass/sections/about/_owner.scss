@@ -4,11 +4,15 @@
 .owner {
 
     // ALL BREAKPOINTS 
+    box-shadow: 0 0 functions.toRem(5) functions.toRem(5) rgba(custom.$primary, 0.7);
 
-    box-shadow: 0 0 functions.toRem(4) functions.toRem(4) #de93c5;
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
     @media (orientation: portrait) {
 
         &__profileImg {
@@ -18,8 +22,7 @@
                 custom.$secondary 0%,
                 custom.$secondary 70%,
                 transparent 95%
-            )
-            
+            ) 
         }
 
         @include custom.media-breakpoint-up(md) {
@@ -37,13 +40,24 @@
             &__info {
                 padding: functions.toRem(20);
             }
-
         }
-        
+
+        @include custom.media-breakpoint-up(lg) {
+
+            &__profileImg {
+                width: 35%;
+            }
+
+            &__info {
+                padding: functions.toRem(32);
+                
+                p {
+                    line-height: 2;
+                }
+            }
+        } 
     }
-
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
     @media (orientation: landscape) {
 
         display: flex;
@@ -52,7 +66,6 @@
 
         &__profileImg {
             width: 50%;
-            mask-image: none;
             margin-bottom: functions.toRem(-15);
         }
 
@@ -74,11 +87,7 @@
                 line-height: 2;
             }
         }
-
-
-
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
-
         @include custom.media-breakpoint-up(lg) {
 
             &__profileImg {
@@ -90,13 +99,6 @@
                 align-self: center;
                 line-height: 2;
             }
-
-        }
-
-        @include custom.media-breakpoint-up(xl) {
-
-
         }
     }
-
 }

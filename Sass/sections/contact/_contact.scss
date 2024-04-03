@@ -2,14 +2,20 @@
 @use './../../components/functions';
 
 .contact {
-	// ALL BREAKPOINTS
 
-	// margin-top: functions.toRem(70);
-	min-height: calc(100vh - var(--navbarHeight));
+	// ALL BREAKPOINTS
 
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 
 	@media (orientation: portrait) {
+
+		background-image: url('/images/contact/cloud_bg_illustration.svg');
+		background-repeat: repeat-y;
+		background-size: contain;
+
+		&__bikeImg {
+			transform: scale(1.2) translateY(-5%);
+		}
 
 		&__apptFormWrapper {
 			height: functions.toRem(38);
@@ -50,26 +56,59 @@
 		@include custom.media-breakpoint-up(md) {
 
 			width: 75%;
-			margin-left: auto;
-			margin-right: auto;
-			border: functions.toRem(2) solid custom.$dark;
+			margin: functions.toRem(16) auto;
+			box-shadow: 0 0 functions.toRem(5) functions.toRem(5) rgba(custom.$dark, 0.7);
 			border-radius: functions.toRem(10);
 			margin-bottom: functions.toRem(16);
+			background-size: cover;
+
+			&__bikeImg {
+				transform: scaleX(1.5) scaleY(1.4) translateY(-5%);
+				margin-bottom: functions.toRem(16);
+			}
 		}
+
 	}
 
 	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
 
 	@media (orientation: landscape) {
 
-		&__img {
-			width: 50% !important;
+		background-image: url('/images/contact/cloud_bg_landscape_illustration.svg');
+		background-repeat: repeat-y;
+
+		&__bikeImg {
+			transform: scale(1.2) translateY(-5%);
 		}
 
+		@include custom.media-breakpoint-up(md) {
+
+			&__imgAndContent {
+				display: flex;
+			}
+
+			&__bikeImg {
+				flex: 1;
+				display: flex;
+				align-items: flex-end;
+				transform: scale(1.2) translateY(-5%);
+				transform-origin: left;
+				margin-bottom: functions.toRem(16);
+			}
+
+			&__wrapper {
+				flex: 1;
+				position: relative;
+				z-index: 1;
+			}
+
+		}
 
 		/////////////////// LAPTOP AND DESKTOP  ///////////////////
 
 		@include custom.media-breakpoint-up(lg) {
+
+			background-size: 100%;
 
 			flex-direction: row !important;
 			flex-wrap: wrap !important;
@@ -90,9 +129,6 @@
 				width: 60%;
 			}
 
-			&__img {
-				width: 40%;
-			}
 		}
 	}
 }
