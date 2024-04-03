@@ -31,7 +31,7 @@
                 <div class="contact__imgAndContent">
                     <div class="col contact__wrapper">
                         <!-- FORM / NOT SUBMITTED -->
-                        <form action="" class="d-flex flex-column gap-2 contact__form" novalidate>
+                        <form action="" class="d-flex flex-column gap-2 contact__form" novalidate autocomplete="off">
                             <div>
                                 <label for="name" class="form-label fw-bold">Nom</label>
                                 <input type="text" class="form-control" id="name" name="name"
@@ -72,7 +72,6 @@
                             </div>
                             <!-- FORM HIDDEN PART - APPT ONLY -->
                             <div class="d-none contact__apptFormHidden">
-
                                 <label for="appointment" class="form-label fw-bold">Sélectionnez la prestation
                                     désirée</label>
                                 <select name="appointment" id="appointment"
@@ -85,43 +84,31 @@
                                         <option value="ct">Cryothérapie</option>
                                     </optgroup>
                                     <optgroup label="Massages" class="contact__mainOptionGrp">
-                                        <!-- <optgroup label="Kobidos" class="contact__optionGrp"> -->
                                         <option value="mk">Kobido</option>
                                         <option value="mks">Kobido Supreme</option>
-                                        <!-- </optgroup> -->
                                         <option value="mbr">Massage Beauté du Regard</option>
                                         <option value="mc">Massage Californien</option>
                                         <option value="gm">Gommage & Massage</option>
                                     </optgroup>
                                     <optgroup label="Épilations" class="contact__mainOptionGrp">
-                                        <!-- <optgroup label="Visage" class="contact__optionGrp"> -->
                                         <option value="evl">Lèvres</option>
                                         <option value="evm">Menton</option>
                                         <option value="evj">Joues</option>
                                         <option value="evc">Visage Complet</option>
-                                        <!-- </optgroup> -->
-                                        <!-- <optgroup label="Sourcils" class="contact__optionGrp"> -->
                                         <option value="esl">Création Ligne Sourcils</option>
                                         <option value="ees">Entretien Sourcils</option>
-                                        <!-- </optgroup> -->
                                         <option value="ec">Cou</option>
                                         <option value="ev">Ventre</option>
-                                        <!-- <optgroup label="Jambes" class="contact__optionGrp"> -->
                                         <option value="ejc">Cuisses</option>
                                         <option value="edj">1/2 Jambes</option>
                                         <option value="etqj">3/4 Jambes</option>
                                         <option value="ej">Jambes Completes</option>
-                                        <!-- </optgroup> -->
-                                        <!-- <optgroup label="Maillot" class="contact__optionGrp"> -->
                                         <option value="eme">Maillot Echancré</option>
                                         <option value="emsi">Maillot Semi-Intégral</option>
                                         <option value="emi">Maillot Intégral</option>
-                                        <!-- </optgroup> -->
                                         <option value="ea">Aisselles</option>
-                                        <!-- <optgroup label="Bras" class="contact__optionGrp"> -->
                                         <option value="ebd">1/2 Bras</option>
                                         <option value="ebc">Bras Complets</option>
-                                        <!-- </optgroup> -->
                                     </optgroup>
                                 </select>
                                 <button type="button" class="btn btn-primary mt-3 contact__addBtn"><i
@@ -140,7 +127,6 @@
                                 <button type="reset" class="btn btn-dark w-25">Effacer</button>
                             </div>
                         </form>
-
                         <!-- FORM SUBMITTED AND HIDDEN / SUMMARY -->
                         <div class="contact__formSummary text-center d-none flex-column gap-3">
                             <h2 class="heading-2">Merci d'avoir contacté Institut For You!</h2>
@@ -149,9 +135,10 @@
                             <h3 class="heading-3">Récapitulatif de votre demande:</h3>
                             <div
                                 class="border border-2 border-dark d-flex flex-column gap-2 rounded p-2 text-start bg-secondary">
-                                <strong
-                                    class="p-2 d-block rounded border border-2 border-dark contact__formTopic">Sujet:
-                                </strong>
+                                <div class="p-2 rounded border border-2 border-dark">
+                                    <strong class="contact__formTopic">Sujet: </strong>
+                                    <ul class="d-none contact__formServices mb-0"></ul>
+                                </div>
                                 <div class="rounded border border-2 border-dark p-2">
                                     <p class="contact__formMessage mb-0"></p>
                                 </div>
@@ -164,154 +151,23 @@
                                 <div class="contact__apptSuggestions d-none flex-wrap justify-content-center gap-3">
                                     <div class="border p-2 d-flex flex-column gap-2 rounded">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary"></button>
+                                        <button class="btn btn-secondary flex-fill"></button>
                                     </div>
                                     <div class="border p-2 d-flex flex-column gap-2 rounded">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary"></button>
+                                        <button class="btn btn-secondary flex-fill"></button>
                                     </div>
                                     <div class="border p-2 d-flex flex-column gap-2 rounded">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary"></button>
+                                        <button class="btn btn-secondary flex-fill"></button>
                                     </div>
                                     <div class="border p-2 d-flex flex-column gap-2 rounded">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary"></button>
+                                        <button class="btn btn-secondary flex-fill"></button>
                                     </div>
                                 </div>
                                 <!-- OTHER / INFO / PRODUCTS SUGGESTIONS -->
-                                <div class="contact__otherSuggestions d-none">
-                                    <h2 class="mb-3">Foire Aux Questions</h2>
-                                    <div class="accordion" id="faqaccordion">
-
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                    aria-expanded="false" aria-controls="collapseOne">
-                                                    Quelles sont vos horaires d'ouverture?
-                                                </button>
-                                            </h3>
-                                            <div id="collapseOne" class="accordion-collapse collapse"
-                                                data-bs-parent="#faqaccordion">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum soluta
-                                                    ipsa
-                                                    consequatur libero officiis animi corporis quae incidunt assumenda
-                                                    molestias
-                                                    voluptatibus, quas eaque odio cumque. Cumque similique numquam
-                                                    excepturi
-                                                    repellendus
-                                                    quis eos veniam sint ducimus?
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                    aria-expanded="false" aria-controls="collapseTwo">
-                                                    Comment prendre rendez-vous?
-                                                </button>
-                                            </h3>
-                                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                                data-bs-parent="#faqaccordion">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
-                                                    cumque
-                                                    tenetur quam
-                                                    consequuntur asperiores adipisci sequi autem magnam officiis
-                                                    voluptas!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                    aria-expanded="false" aria-controls="collapseThree">
-                                                    Quelles méthodes de paiement acceptez-vous?
-                                                </button>
-                                            </h3>
-                                            <div id="collapseThree" class="accordion-collapse collapse"
-                                                data-bs-parent="#faqaccordion">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis
-                                                    voluptatibus
-                                                    amet voluptas maxime minima nemo. Quis doloribus esse laborum unde
-                                                    fuga
-                                                    necessitatibus quia error ducimus temporibus delectus enim,
-                                                    recusandae
-                                                    eum, modi
-                                                    quidem reiciendis ipsam qui.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                    aria-expanded="false" aria-controls="collapseFour">
-                                                    Est-ce que l'institut propose des services pour les hommes?
-                                                </button>
-                                            </h3>
-                                            <div id="collapseFour" class="accordion-collapse collapse"
-                                                data-bs-parent="#faqaccordion">
-                                                <div class="accordion-body">
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut
-                                                    aliquam
-                                                    commodi
-                                                    dignissimos, ab blanditiis quam eos dolor nulla autem vitae
-                                                    voluptatem
-                                                    alias iste
-                                                    voluptas nam.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseFive"
-                                                    aria-expanded="false" aria-controls="collapseFive">
-                                                    Vendez-vous des produits de beauté?
-                                                </button>
-                                            </h3>
-                                            <div id="collapseFive" class="accordion-collapse collapse"
-                                                data-bs-parent="#faqaccordion">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
-                                                    nobis,
-                                                    dolorem ex
-                                                    illum vero culpa. Consequatur, sit deserunt accusamus illo repellat
-                                                    sequi
-                                                    voluptates, ab ullam mollitia veritatis quis. Voluptatum impedit quo
-                                                    dolor minima
-                                                    tempora perspiciatis optio minus magnam. Rerum, praesentium.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseSix"
-                                                    aria-expanded="false" aria-controls="collapseSix">
-                                                    Avez-vous un parking pour que je gare mon véhicule?
-                                                </button>
-                                            </h3>
-                                            <div id="collapseSix" class="accordion-collapse collapse"
-                                                data-bs-parent="#faqaccordion">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quasi
-                                                    nemo,
-                                                    cupiditate nam nesciunt ducimus doloribus cum, praesentium impedit
-                                                    ab,
-                                                    harum maiores
-                                                    quam aspernatur animi quidem at quo minima recusandae.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="contact__otherSuggestions d-none"></div>
                                 <!-- FEEDBACK SUGGESTIONS -->
                                 <div class="contact__feedbackSuggestions d-none">
                                     <div class="contact__review bg-secondary rounded p-3 mb-3 mx-auto">
@@ -321,333 +177,9 @@
                                             avis 5 etoiles sur Google!</p>
                                         <button class="btn btn-primary w-100">Donner son avis</button>
                                     </div>
-                                    <div id="reviewsCarousel" class="carousel slide">
-                                        <!-- add data-bs-ride="carousel" -->
-
-                                        <!-- CONTROL BUTTONS ABOVE THE CAROUSEL -->
-                                        <div
-                                            class="carousel__controls d-none carousel-indicators position-static gap-2 w-100 mx-auto mb-2 px-3">
-                                            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0"
-                                                aria-current="true" aria-label="Slide 1"
-                                                class="flex-fill active h-100 m-0 border-0 rounded-pill p-1 text-capitalize">
-                                                reviewer's name
-                                            </button>
-                                            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1"
-                                                aria-label="Slide 2"
-                                                class="flex-fill h-100 m-0 border-0 rounded-pill p-1 text-capitalize">
-                                                reviewer's name
-                                            </button>
-                                            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2"
-                                                aria-label="Slide 3"
-                                                class="flex-fill h-100 m-0 border-0 rounded-pill p-1 text-capitalize">
-                                                reviewer's name
-                                            </button>
-                                            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="3"
-                                                aria-label="Slide 4"
-                                                class="flex-fill h-100 m-0 border-0 rounded-pill p-1 text-capitalize">
-                                                reviewer's name
-                                            </button>
-                                            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="4"
-                                                aria-label="Slide 5"
-                                                class="flex-fill h-100 m-0 border-0 rounded-pill p-1 text-capitalize">
-                                                reviewer's name
-                                            </button>
-                                        </div>
-
-                                        <!-- CAROUSEL CONTENT -->
-                                        <div class="carousel-inner carousel__inner">
-                                            <!-- CAROUSEL SLIDE 1 -->
-                                            <div class="carousel-item pb-3 active h-100">
-                                                <div
-                                                    class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
-                                                    <div
-                                                        class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
-                                                        <div class="carousel__img overflow-hidden rounded-circle">
-                                                            <img loading="lazy"
-                                                                src="images/homepage/calf_massage_image.jpg"
-                                                                alt="woman getting a calf massage - image"
-                                                                class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="carousel__review-holder d-flex align-items-center rounded text-center">
-                                                        <figure
-                                                            class="w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center gap-2 mb-0">
-                                                            <img loading="lazy" src="images/homepage/quote_icon.svg"
-                                                                alt="quote icon" class="carousel__icon"
-                                                                class="carousel__icon">
-                                                            <blockquote class="overflow-y-auto blockquote">
-                                                                If you see that text, it means that a problem occured.
-                                                                The
-                                                                review
-                                                                couldn't be loaded on the website. You can access it
-                                                                directly on Google
-                                                                by searching "Institut For You". Sorry for the
-                                                                inconvenience, the issue
-                                                                should be fixed shortly.
-                                                            </blockquote>
-                                                            <div class="d-flex flex-nowrap">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                            </div>
-                                                            <figcaption
-                                                                class="text-capitalize blockquote-footer m-0 fst-italic">
-                                                                reviewer's name
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="bg-secondary carousel__decor-holder d-none"></div>
-                                                </div>
-                                            </div>
-                                            <!-- CAROUSEL SLIDE 2 -->
-                                            <div class="carousel-item pb-3 h-100">
-                                                <div
-                                                    class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
-                                                    <div
-                                                        class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
-                                                        <div class="carousel__img overflow-hidden rounded-circle">
-                                                            <img loading="lazy"
-                                                                src="images/homepage/ribs_massage_image.jpg"
-                                                                alt="woman getting a massage - image" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="carousel__review-holder d-flex align-items-center rounded text-center">
-                                                        <figure
-                                                            class="w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center gap-2 mb-0">
-                                                            <img loading="lazy" src="images/homepage/quote_icon.svg"
-                                                                alt="quote icon" class="carousel__icon">
-                                                            <blockquote class="overflow-y-auto blockquote">
-                                                                If you see that text, it means that a problem occured.
-                                                                The
-                                                                review
-                                                                couldn't be loaded on the website. You can access it
-                                                                directly on Google
-                                                                by searching "Institut For You". Sorry for the
-                                                                inconvenience, the issue
-                                                                should be fixed shortly.
-                                                            </blockquote>
-                                                            <div class="d-flex flex-nowrap">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                            </div>
-                                                            <figcaption
-                                                                class="text-capitalize blockquote-footer m-0 fst-italic">
-                                                                reviewer's name
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="bg-secondary carousel__decor-holder d-none"></div>
-                                                </div>
-                                            </div>
-                                            <!-- CAROUSEL SLIDE 3 -->
-                                            <div class="carousel-item pb-3 h-100">
-                                                <div
-                                                    class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
-                                                    <div
-                                                        class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
-                                                        <div class="carousel__img overflow-hidden rounded-circle">
-                                                            <img loading="lazy"
-                                                                src="images/homepage/towel_woman_image.jpg"
-                                                                alt="woman getting ready for her massage - image"
-                                                                class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="carousel__review-holder d-flex align-items-center rounded text-center">
-                                                        <figure
-                                                            class="w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center gap-2 mb-0">
-                                                            <img loading="lazy" src="images/homepage/quote_icon.svg"
-                                                                alt="quote icon" class="carousel__icon">
-                                                            <blockquote class="overflow-y-auto blockquote">
-                                                                If you see that text, it means that a problem occured.
-                                                                The
-                                                                review
-                                                                couldn't be loaded on the website. You can access it
-                                                                directly on Google
-                                                                by searching "Institut For You". Sorry for the
-                                                                inconvenience, the issue
-                                                                should be fixed shortly.
-                                                            </blockquote>
-                                                            <div class="d-flex flex-nowrap">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                            </div>
-                                                            <figcaption
-                                                                class="text-capitalize blockquote-footer m-0 fst-italic">
-                                                                reviewer's name
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="bg-secondary carousel__decor-holder d-none"></div>
-                                                </div>
-                                            </div>
-                                            <!-- CAROUSEL SLIDE 4 -->
-                                            <div class="carousel-item pb-3 h-100">
-                                                <div
-                                                    class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
-                                                    <div
-                                                        class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
-                                                        <div class="carousel__img overflow-hidden rounded-circle">
-                                                            <img loading="lazy"
-                                                                src="images/homepage/cream_zoom_image.jpg"
-                                                                alt="close-up of a cream - image" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="carousel__review-holder d-flex align-items-center rounded text-center">
-                                                        <figure
-                                                            class="w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center gap-2 mb-0">
-                                                            <img loading="lazy" src="images/homepage/quote_icon.svg"
-                                                                alt="quote icon" class="carousel__icon">
-                                                            <blockquote class="overflow-y-auto blockquote">
-                                                                If you see that text, it means that a problem occured.
-                                                                The
-                                                                review
-                                                                couldn't be loaded on the website. You can access it
-                                                                directly on Google
-                                                                by searching "Institut For You". Sorry for the
-                                                                inconvenience, the issue
-                                                                should be fixed shortly.
-                                                            </blockquote>
-                                                            <div class="d-flex flex-nowrap">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                            </div>
-                                                            <figcaption
-                                                                class="text-capitalize blockquote-footer m-0 fst-italic">
-                                                                reviewer's name
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="bg-secondary carousel__decor-holder d-none"></div>
-                                                </div>
-                                            </div>
-                                            <!-- CAROUSEL SLIDE 5 -->
-                                            <div class="carousel-item pb-3 h-100">
-                                                <div
-                                                    class="carousel__item d-flex align-items-center h-100 w-100 flex-nowrap gap-2 justify-content-center">
-                                                    <div
-                                                        class="carousel__img-holder d-none bg-secondary align-items-center justify-content-center">
-                                                        <div class="carousel__img overflow-hidden rounded-circle">
-                                                            <img loading="lazy"
-                                                                src="images/homepage/massage_oil_image.jpg"
-                                                                alt="woman getting some massage oil on her back - image"
-                                                                class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="carousel__review-holder d-flex align-items-center rounded text-center">
-                                                        <figure
-                                                            class="w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center gap-2 mb-0">
-                                                            <img loading="lazy" src="images/homepage/quote_icon.svg"
-                                                                alt="quote icon" class="carousel__icon">
-                                                            <blockquote class="overflow-y-auto blockquote">
-                                                                If you see that text, it means that a problem occured.
-                                                                The
-                                                                review
-                                                                couldn't be loaded on the website. You can access it
-                                                                directly on Google
-                                                                by searching "Institut For You". Sorry for the
-                                                                inconvenience, the issue
-                                                                should be fixed shortly.
-                                                            </blockquote>
-                                                            <div class="d-flex flex-nowrap">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                                <img loading="lazy"
-                                                                    src="images/homepage/review_star_icon.svg"
-                                                                    alt="review star icon" class="carousel__stars">
-                                                            </div>
-                                                            <figcaption
-                                                                class="text-capitalize blockquote-footer m-0 fst-italic">
-                                                                reviewer's name
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="bg-secondary carousel__decor-holder d-none"></div>
-                                                </div>
-                                            </div>
-                                            <!-- PREVIOUS AND NEXT SLIDE CONTROLS -->
-                                            <button class="carousel-control-prev carousel__arrows" type="button"
-                                                data-bs-target="#reviewsCarousel" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next carousel__arrows" type="button"
-                                                data-bs-target="#reviewsCarousel" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
                                     <a href="/home.html" class="btn btn-primary">Retour à la page d'accueil</a>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                     <div class="contact__bikeImg">
@@ -656,9 +188,7 @@
                     </div>
                 </div>
             </section>
-
         </div>
-
     </main>
 
     <footer id="footer" class="footer bg-primary overflow-hidden py-2"></footer>

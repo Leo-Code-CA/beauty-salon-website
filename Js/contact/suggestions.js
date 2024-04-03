@@ -72,13 +72,8 @@ function handleSuggestions() {
                     
                 } else {
 
-                    console.log(suggestionType);
-
-
                     while (suggestionType.length < 4) {
-
                         suggestionType.map(suggestion => suggestionType.push(suggestion));
-
                     }
 
                     const filteredSuggestions = suggestions.filter(suggestion => {
@@ -86,38 +81,93 @@ function handleSuggestions() {
                         const parentLabel = suggestionType[3 - i].closest('optgroup').label;
                         const currentValue = suggestionType[3 - i].value;
 
-                        console.log(parentLabel, currentValue)
-
                         return suggestion.group === parentLabel && suggestion.value !== currentValue
 
                     });
 
-                    const suggestionPicked = Math.floor(Math.random() * filteredSuggestions.length);
+                    const AllBtn = document.querySelectorAll(`.contact__apptSuggestions div button`);
+                    let currentValues = [];
+                    AllBtn.forEach(btn => currentValues.push(btn.textContent));
+                        
+                    let { index: randomSuggestionIndex, value: randomSuggestionValue } = handleGenerateRandom(filteredSuggestions);
 
-                    imgElem.setAttribute('src', filteredSuggestions[suggestionPicked].img);
-                    imgElem.setAttribute('alt', filteredSuggestions[suggestionPicked].alt);
-                    const suggestionValue = filteredSuggestions[suggestionPicked].value;
-                    btnElem.textContent = document.querySelector(`option[value=${suggestionValue}]`).textContent;
-                    
+                    if (!currentValues.includes(randomSuggestionValue)) {
 
+                        imgElem.setAttribute('src', filteredSuggestions[randomSuggestionIndex].img);
+                        imgElem.setAttribute('alt', filteredSuggestions[randomSuggestionIndex].alt);
+                        btnElem.textContent = randomSuggestionValue;
+
+                    } else {
+
+                        let newRandomSuggestionValue = randomSuggestionValue;
+
+                        while (currentValues.includes(newRandomSuggestionValue)) {
+                            const newData = handleGenerateRandom(filteredSuggestions);
+                            randomSuggestionIndex = newData.index;
+                            newRandomSuggestionValue = newData.value;
+                        }
+
+                        imgElem.setAttribute('src', filteredSuggestions[randomSuggestionIndex].img);
+                        imgElem.setAttribute('alt', filteredSuggestions[randomSuggestionIndex].alt);
+                        btnElem.textContent = newRandomSuggestionValue;
+
+                    }
                 }
-
             }
         }
 
     } else if (selectedTopic === 'product' || selectedTopic === 'info' || selectedTopic === 'other') {
 
-        otherSuggestions.classList.remove('d-none');
-        otherSuggestions.classList.add('d-block')
+        async function handleFetchFaq() {
+            try {
+                const response = await fetch('/components/faq.html');
+                const text = await response.text();
+
+                if (text) {
+                    otherSuggestions.innerHTML = text;
+                    otherSuggestions.classList.remove('d-none');
+                    otherSuggestions.classList.add('d-block')
+                }  
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        handleFetchFaq();
 
     } else if (selectedTopic === 'feedback') {
 
-        feedbackSuggestions.classList.remove('d-none');
-        feedbackSuggestions.classList.add('d-block');
+        async function handleFetchReviews() {
+            try {
+                const response = await fetch('/components/reviews.html');
+                const text = await response.text();
+
+                if (text) {
+                    feedbackSuggestions.innerHTML = text + feedbackSuggestions.innerHTML;
+                    feedbackSuggestions.classList.remove('d-none');
+                    feedbackSuggestions.classList.add('d-block');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        handleFetchReviews();
 
     } else {
         throw new Error("The option is not valid");
     }
+}
 
+// Handle generate random index and get its value in the suggestions array
+function handleGenerateRandom(filteredSuggestions) {
 
+    const randomSuggestionIndex = Math.floor(Math.random() * filteredSuggestions.length);
+    const randomSuggestionId = filteredSuggestions[randomSuggestionIndex].value;
+    const randomSuggestionValue = document.querySelector(`option[value=${randomSuggestionId}]`).textContent;
+
+    return {
+        index: randomSuggestionIndex,
+        value: randomSuggestionValue
+    }
 }

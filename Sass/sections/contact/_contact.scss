@@ -5,8 +5,41 @@
 
 	// ALL BREAKPOINTS
 
-	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
+	&__apptFormWrapper {
+		height: functions.toRem(38);
+		display: flex;
+		flex-wrap: nowrap;
+		gap: functions.toRem(10);
+		justify-content: space-between;
 
+		select {
+			flex-grow: 1;
+		}
+
+		button {
+			display: block;
+			border: functions.toRem(1) solid custom.$dark;
+			border-radius: functions.toRem(5);
+			aspect-ratio: 1 / 1;
+			position: relative;
+			flex-shrink: 0 !important;
+
+			i {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: functions.toRem(20);
+			}
+		}
+	}
+
+	&__wrapper {
+		position: relative;
+		z-index: 1;
+	}
+
+	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 	@media (orientation: portrait) {
 
 		background-image: url('/images/contact/cloud_bg_illustration.svg');
@@ -15,35 +48,6 @@
 
 		&__bikeImg {
 			transform: scale(1.2) translateY(-5%);
-		}
-
-		&__apptFormWrapper {
-			height: functions.toRem(38);
-			display: flex;
-			flex-wrap: nowrap;
-			gap: functions.toRem(10);
-			justify-content: space-between;
-
-			select {
-				flex-grow: 1;
-			}
-
-			button {
-				display: block;
-				border: functions.toRem(1) solid custom.$dark;
-				border-radius: functions.toRem(5);
-				aspect-ratio: 1 / 1;
-				position: relative;
-				flex-shrink: 0 !important;
-
-				i {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					font-size: functions.toRem(20);
-				}
-			}
 		}
 
 		&__apptSuggestions {
@@ -67,18 +71,23 @@
 				margin-bottom: functions.toRem(16);
 			}
 		}
-
 	}
-
 	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
 	@media (orientation: landscape) {
 
 		background-image: url('/images/contact/cloud_bg_landscape_illustration.svg');
 		background-repeat: repeat-y;
+		background-size: 100%;
 
 		&__bikeImg {
 			transform: scale(1.2) translateY(-5%);
+		}
+
+		&__apptSuggestions {
+
+			div {
+				width: 45%;
+			}
 		}
 
 		@include custom.media-breakpoint-up(md) {
@@ -101,34 +110,30 @@
 				position: relative;
 				z-index: 1;
 			}
-
 		}
-
 		/////////////////// LAPTOP AND DESKTOP  ///////////////////
-
-		@include custom.media-breakpoint-up(lg) {
-
-			background-size: 100%;
-
-			flex-direction: row !important;
-			flex-wrap: wrap !important;
-
-			h1 {
-				width: 100%;
-			}
-
-		}
-
 		@include custom.media-breakpoint-up(xl) {
 
 			width: 85%;
-			margin-left: auto;
-			margin-right: auto;
-			
-			&__wrapper {
-				width: 60%;
+			margin: functions.toRem(16) auto 0;
+			box-shadow: 0 0 functions.toRem(5) functions.toRem(5) rgba(custom.$dark, 0.7);
+			border-radius: functions.toRem(10) functions.toRem(10) 0 0;
+			padding-right: 0 !important;
+			padding-bottom: 0 !important;
+
+			&__imgAndContent {
+				padding-right: 0 !important;
+				padding-bottom: 0 !important;
 			}
 
+			&__bikeImg {
+				transform: scale(1) translateY(0);
+				margin-bottom: 0;
+			}
+
+			&__wrapper {
+				padding-bottom: functions.toRem(16);
+			}
 		}
 	}
 }

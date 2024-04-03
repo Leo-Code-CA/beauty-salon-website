@@ -11,6 +11,7 @@ const textarea = document.querySelector('.contact__form textarea');
 const formSummary = document.querySelector('.contact__formSummary');
 const formTopic = document.querySelector('.contact__formTopic');
 const formMessage = document.querySelector('.contact__formMessage');
+const formServices = document.querySelector('.contact__formServices');
 const formSuggestions = document.querySelector('.contact__formSuggestions');
 const formTime = document.querySelector('.contact__formTime');
 const addBtn = document.querySelector('.contact__addBtn');
@@ -22,7 +23,8 @@ const addBtn = document.querySelector('.contact__addBtn');
 
 form.addEventListener(
 	'submit',
-	e => !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
+	// e => !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
+	e => handleValidForm(e)
 );
 
 // Handle page display after valid form submission
@@ -43,6 +45,15 @@ function handleValidForm(e) {
 		day: 'numeric',
 		weekday: 'long',
 	});
+	const apptRequests = document.querySelectorAll('.contact__hiddenSelect');
+	if (apptRequests.length > 0) {
+		formServices.classList.remove('d-none');
+		apptRequests.forEach(select => {
+			const li = document.createElement('li');
+			li.textContent = select.selectedOptions[0].textContent;
+			formServices.appendChild(li);
+		})
+	}
 
 	formTopic.textContent += submittedMessageTopic;
 	formTime.textContent += submittedMessageDate;
