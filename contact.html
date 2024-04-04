@@ -26,12 +26,13 @@
     <!-- START OF THE CONTACT PAGE CONTENT -->
     <main class="overflow-hidden">
         <div class="container-fluid">
-            <section class="row contact p-2 flex-column">
+            <section class="row contact flex-column py-2">
                 <h1 class="text-center heading-1 mb-3">Contact</h1>
-                <div class="contact__imgAndContent">
+                <div class="contact__imgAndContent p-0">
                     <div class="col contact__wrapper">
                         <!-- FORM / NOT SUBMITTED -->
-                        <form action="" class="d-flex flex-column gap-2 contact__form" novalidate autocomplete="off">
+                        <form action="" class="d-flex flex-column gap-2 contact__form p-3" novalidate
+                            autocomplete="off">
                             <div>
                                 <label for="name" class="form-label fw-bold">Nom</label>
                                 <input type="text" class="form-control" id="name" name="name"
@@ -129,55 +130,61 @@
                         </form>
                         <!-- FORM SUBMITTED AND HIDDEN / SUMMARY -->
                         <div class="contact__formSummary text-center d-none flex-column gap-3">
-                            <h2 class="heading-2">Merci d'avoir contacté Institut For You!</h2>
-                            <p>Brigitte, votre esthéticienne, vous recontactera dans les meilleurs délais, par email ou
+                            <h2 class="heading-2 mx-3">Merci d'avoir contacté Institut For You!</h2>
+                            <p class="mx-3">Brigitte, votre esthéticienne, vous recontactera dans les meilleurs délais,
+                                par email ou
                                 téléphone.</p>
-                            <h3 class="heading-3">Récapitulatif de votre demande:</h3>
+                            <h3 class="heading-3 mx-3">Récapitulatif de votre demande:</h3>
                             <div
-                                class="border border-2 border-dark d-flex flex-column gap-2 rounded p-2 text-start bg-secondary">
-                                <div class="p-2 rounded border border-2 border-dark">
+                                class="border border-2 border-dark d-flex flex-column gap-2 rounded p-2 text-start bg-secondary mx-3">
+                                <div class="p-2 rounded border border-1 border-dark">
                                     <strong class="contact__formTopic">Sujet: </strong>
                                     <ul class="d-none contact__formServices mb-0"></ul>
                                 </div>
-                                <div class="rounded border border-2 border-dark p-2">
+                                <div class="rounded border border-1 border-dark p-2">
                                     <p class="contact__formMessage mb-0"></p>
                                 </div>
                                 <small class="contact__formTime text-center fst-italic">Envoyé le </small>
                             </div>
-                            <p>En attendant une réponse, voici certaines pages qui pourraient potentiellement vous
+                            <p class="mx-3">En attendant une réponse, veuillez trouver ci-dessus du contenu qui pourrait
+                                vous
                                 intéresser.</p>
                             <div class="contact__formSuggestions">
                                 <!-- APPT SUGGESTIONS -->
                                 <div class="contact__apptSuggestions d-none flex-wrap justify-content-center gap-3">
-                                    <div class="border p-2 d-flex flex-column gap-2 rounded">
+                                    <div class="border p-2 d-flex flex-column gap-2 rounded bg-white">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary flex-fill"></button>
+                                        <a
+                                            class="btn btn-secondary flex-fill d-flex justify-content-center align-items-center"></a>
                                     </div>
-                                    <div class="border p-2 d-flex flex-column gap-2 rounded">
+                                    <div class="border p-2 d-flex flex-column gap-2 rounded bg-white">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary flex-fill"></button>
+                                        <a
+                                            class="btn btn-secondary flex-fill d-flex justify-content-center align-items-center"></a>
                                     </div>
-                                    <div class="border p-2 d-flex flex-column gap-2 rounded">
+                                    <div class="border p-2 d-flex flex-column gap-2 rounded bg-white">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary flex-fill"></button>
+                                        <a
+                                            class="btn btn-secondary flex-fill d-flex justify-content-center align-items-center"></a>
                                     </div>
-                                    <div class="border p-2 d-flex flex-column gap-2 rounded">
+                                    <div class="border p-2 d-flex flex-column gap-2 rounded bg-white">
                                         <img src="" alt="" class="img-fluid object-fit-cover">
-                                        <button class="btn btn-secondary flex-fill"></button>
+                                        <a
+                                            class="btn btn-secondary flex-fill d-flex justify-content-center align-items-center"></a>
                                     </div>
                                 </div>
                                 <!-- OTHER / INFO / PRODUCTS SUGGESTIONS -->
-                                <div class="contact__otherSuggestions d-none"></div>
+                                <div class="contact__otherSuggestions mx-3 d-none"></div>
                                 <!-- FEEDBACK SUGGESTIONS -->
                                 <div class="contact__feedbackSuggestions d-none">
-                                    <div class="contact__review bg-secondary rounded p-3 mb-3 mx-auto">
+                                    <div class="contact__review bg-secondary rounded p-3 mb-3 mx-3">
                                         <p>Vous aussi, en seulement quelques minutes, vous pouvez soutenir Brigitte en
                                             lui
                                             laissant un
                                             avis 5 etoiles sur Google!</p>
                                         <button class="btn btn-primary w-100">Donner son avis</button>
                                     </div>
-                                    <a href="/home.html" class="btn btn-primary">Retour à la page d'accueil</a>
+                                    <a href="/home.html" class="btn btn-primary mx-3">Retour à la page d'accueil</a>
                                 </div>
                             </div>
                         </div>

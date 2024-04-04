@@ -6,7 +6,8 @@ export const suggestions = [
         value: 'sce',
         name: "Soin Coup d'éclat",
         price: 29.90,
-        duration: 30
+        duration: 30,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -15,7 +16,8 @@ export const suggestions = [
         value: 'shn',
         name: "Soin Hydratant et Nourrissant",
         price: 39,
-        duration: 45
+        duration: 45,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -24,7 +26,8 @@ export const suggestions = [
         value: 'st',
         name: "Soin Traitant",
         price: 59,
-        duration: 90
+        duration: 90,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -33,7 +36,8 @@ export const suggestions = [
         value: 'saa',
         name: "Soin Anti-Age",
         price: 75,
-        duration: 105
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -42,7 +46,8 @@ export const suggestions = [
         value: 'ct',
         name: "Cryothérapie",
         price: 39.90,
-        duration: 60
+        duration: 60,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -51,7 +56,8 @@ export const suggestions = [
         value: 'mk',
         name: "Massage Kobido",
         price: 40,
-        duration: 60
+        duration: 60,
+        path: "/massages.html?target=mk",
     },
     {
         img: 'https://placehold.co/400',
@@ -60,7 +66,8 @@ export const suggestions = [
         value: 'mks',
         name: "Massage Kobido Suprême",
         price: 54,
-        duration: 80
+        duration: 80,
+        path: "/massages.html?target=mks",
     },
     {
         img: 'https://placehold.co/400',
@@ -69,7 +76,8 @@ export const suggestions = [
         value: 'mbr',
         name: "Massage Beauté du Regard",
         price: 40,
-        duration: 60
+        duration: 60,
+        path: "/massages.html?target=mbr",
     },
     {
         img: 'https://placehold.co/400',
@@ -78,7 +86,8 @@ export const suggestions = [
         value: 'mc',
         name: "Massage Californien",
         price: 45,
-        duration: 60
+        duration: 60,
+        path: "/massages.html?target=mc",
     },
     {
         img: 'https://placehold.co/400',
@@ -87,7 +96,8 @@ export const suggestions = [
         value: 'gm',
         name: "Gommage et Massage",
         price: 40,
-        duration: 60
+        duration: 60,
+        path: "/massages.html?target=gm",
     },
     {
         img: 'https://placehold.co/400',
@@ -96,7 +106,8 @@ export const suggestions = [
         value: 'evl',
         name: "Lèvres",
         price: 8.50,
-        duration: 10
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -105,7 +116,8 @@ export const suggestions = [
         value: 'evm',
         name: "Menton",
         price: 8.50,
-        duration: 10
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -114,7 +126,8 @@ export const suggestions = [
         value: 'evj',
         name: "Joues",
         price: 9,
-        duration:10
+        duration: 10,
+        path: "/"
     },
     {
         img: 'https://placehold.co/400',
@@ -123,7 +136,8 @@ export const suggestions = [
         value: 'evc',
         name: "Visage (Sourcils + Lèvres + Menton)",
         price: 21,
-        duration: 45
+        duration: 45,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -132,7 +146,8 @@ export const suggestions = [
         value: 'esl',
         name: "Création ligne sourcils",
         price: 12,
-        duration: 10
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -141,7 +156,8 @@ export const suggestions = [
         value: 'ees',
         name: "Sourcils",
         price: 9,
-        duration: 10
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -150,7 +166,8 @@ export const suggestions = [
         value: 'ec',
         name: 'Cou',
         price: 9,
-        duration: 10
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -159,7 +176,8 @@ export const suggestions = [
         value: 'ev',
         name: 'Ventre',
         price: 9,
-        duration: 10
+        duration: 10,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -168,7 +186,8 @@ export const suggestions = [
         value: 'ejc',
         name: 'Jambes Complètes',
         price: 25,
-        duration: 45 // NOTICED THAT IT SEEMS LONG!!
+        duration: 45,
+        path: "/", // NOTICED THAT IT SEEMS LONG!!
     },
     {
         img: 'https://placehold.co/400',
@@ -177,7 +196,8 @@ export const suggestions = [
         value: 'edj',
         name: '1/2 Jambes',
         price: 18,
-        duration: 20
+        duration: 20,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -186,7 +206,8 @@ export const suggestions = [
         value: 'etqj',
         name: '3/4 Jambes',
         price: 22,
-        duration: 25
+        duration: 25,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -195,7 +216,8 @@ export const suggestions = [
         value: 'ej',
         name: 'Cuisses',
         price: 18,
-        duration: 20
+        duration: 20,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -204,7 +226,8 @@ export const suggestions = [
         value: 'eme',
         name: "Maillot Échancré",
         price: 16,
-        duration: 25
+        duration: 25,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -213,7 +236,8 @@ export const suggestions = [
         value: 'emsi',
         name: 'Maillot Semi-Intégral',
         price: 22,
-        duration: 25
+        duration: 25,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -222,7 +246,8 @@ export const suggestions = [
         value: 'emi',
         name: 'Maillot Intégral',
         price: 27,
-        duration: 60 // NOTICED THAT IT SEENS LONG!!
+        duration: 60,
+        path: "/", // NOTICED THAT IT SEENS LONG!!
     },
     {
         img: 'https://placehold.co/400',
@@ -231,7 +256,8 @@ export const suggestions = [
         value: 'ea',
         name: 'Aisselles',
         price: 11,
-        duration: 15
+        duration: 15,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -242,7 +268,8 @@ export const suggestions = [
         price: 18,
         duration: 20,
         price: 12,
-        duration: 15
+        duration: 15,
+        path: "/",
     },
     {
         img: 'https://placehold.co/400',
@@ -251,7 +278,8 @@ export const suggestions = [
         value: 'ebc',
         name: 'bras',
         price: 18,
-        duration: 25
+        duration: 25,
+        path: "/",
     },
     
 ]

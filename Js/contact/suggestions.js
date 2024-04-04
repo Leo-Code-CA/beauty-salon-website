@@ -34,13 +34,15 @@ function handleSuggestions() {
                 if (i < 4) {
 
                     const imgElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) img`);
-                    const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) button`);
+                    const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) a`);
                     btnElem.textContent = select.selectedOptions[0].textContent;
     
                     suggestions.map(item => {
                         if (item.value === select.selectedOptions[0].value) {
                             imgElem.setAttribute('src', item.img);
                             imgElem.setAttribute('alt', item.alt);
+                            btnElem.setAttribute('href', item.path);
+                            btnElem.setAttribute('data-redirect', item.value);
                         }
                     })
                 }
@@ -54,7 +56,7 @@ function handleSuggestions() {
 
                 const hiddenSelect = document.querySelectorAll('.contact__hiddenSelect');
                 const imgElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) img`);
-                const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) button`);
+                const btnElem = document.querySelector(`.contact__apptSuggestions div:nth-child(${i + 1}) a`);
 
                 if (i + 1 <= hiddenSelect.length) {
     
@@ -67,6 +69,8 @@ function handleSuggestions() {
                         if (item.value === select.selectedOptions[0].value) {
                             imgElem.setAttribute('src', item.img);
                             imgElem.setAttribute('alt', item.alt);
+                            btnElem.setAttribute('href', item.path);
+                            btnElem.setAttribute('data-redirect', item.value);
                         }
                     })
                     
@@ -85,7 +89,7 @@ function handleSuggestions() {
 
                     });
 
-                    const AllBtn = document.querySelectorAll(`.contact__apptSuggestions div button`);
+                    const AllBtn = document.querySelectorAll(`.contact__apptSuggestions div a`);
                     let currentValues = [];
                     AllBtn.forEach(btn => currentValues.push(btn.textContent));
                         
@@ -95,6 +99,8 @@ function handleSuggestions() {
 
                         imgElem.setAttribute('src', filteredSuggestions[randomSuggestionIndex].img);
                         imgElem.setAttribute('alt', filteredSuggestions[randomSuggestionIndex].alt);
+                        btnElem.setAttribute('href', filteredSuggestions[randomSuggestionIndex].path);
+                        btnElem.setAttribute('data-redirect', filteredSuggestions[randomSuggestionIndex].value);
                         btnElem.textContent = randomSuggestionValue;
 
                     } else {
@@ -109,6 +115,8 @@ function handleSuggestions() {
 
                         imgElem.setAttribute('src', filteredSuggestions[randomSuggestionIndex].img);
                         imgElem.setAttribute('alt', filteredSuggestions[randomSuggestionIndex].alt);
+                        btnElem.setAttribute('href', filteredSuggestions[randomSuggestionIndex].path);
+                        btnElem.setAttribute('data-redirect', filteredSuggestions[randomSuggestionIndex].value);
                         btnElem.textContent = newRandomSuggestionValue;
 
                     }

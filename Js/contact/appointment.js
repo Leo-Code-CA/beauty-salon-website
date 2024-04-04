@@ -46,7 +46,7 @@ function handleValidForm(e) {
 		weekday: 'long',
 	});
 	const apptRequests = document.querySelectorAll('.contact__hiddenSelect');
-	if (apptRequests.length > 0) {
+	if (submittedMessageTopic === 'Demande de rendez-vous') {
 		formServices.classList.remove('d-none');
 		apptRequests.forEach(select => {
 			const li = document.createElement('li');
