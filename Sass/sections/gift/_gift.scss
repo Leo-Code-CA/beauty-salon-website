@@ -2,11 +2,11 @@
 @use './../../components/functions';
 
 .giftpage {
-	// ALL BREAKPOINTS
 
-	margin-top: functions.toRem(56);
-	min-height: calc(100vh - 56px);
-	padding: functions.toRem(16);
+	min-height: 50vh;
+
+	// ALL BREAKPOINTS
+	padding: functions.toRem(16) 0;
 
 	&__conditions {
 		background-color: rgba(custom.$dark, 0.7);
@@ -23,27 +23,55 @@
 		font-weight: normal;
 	}
 
-	// &__checkConditions--invalid {
-	// 	outline: 2px solid red;
-	// 	outline-offset: -2px;
-	// }
-
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
-
 	@media (orientation: portrait) {
 
+		&__simulatorImg {
+			display: none;
+		}
 
 		@include custom.media-breakpoint-up(md) {
 
+			&__wrapper {
+				flex-direction: row !important;
+				gap: functions.toRem(10) !important;
+			}
+	
+			&__purchase {
+				border: functions.toRem(1) solid custom.$dark;
+				border-radius: functions.toRem(6);
+				padding: functions.toRem(16);
+				flex: 50% !important;
+			}
+	
+			&__simulator {
+				flex: 50% !important;
+				gap: functions.toRem(16);
+			}
+		}
 
+		@include custom.media-breakpoint-up(lg) {
+
+			&__simulatorImg {
+				display: block;
+			}
+
+			&__simulatorImgWrapper {
+				display: flex;
+				gap: functions.toRem(32);
+				align-items: center;
+				padding: functions.toRem(16) functions.toRem(16) 0 functions.toRem(16);
+				border-bottom: functions.toRem(1) solid;
+			}
 		}
 	}
 
 	///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
-
 	@media (orientation: landscape) {
 
-		padding: functions.toRem(8) !important;
+		&__simulatorImg {
+			display: none;
+		}
 
 		&__wrapper {
 			flex-direction: row !important;
@@ -54,32 +82,57 @@
 			border: functions.toRem(1) solid custom.$dark;
 			border-radius: functions.toRem(6);
 			padding: functions.toRem(16);
+			flex: 50% !important;
 		}
 
-
+		&__simulator {
+			flex: 50% !important;
+			gap: functions.toRem(16);
+		}
 
 		/////////////////// LAPTOP AND DESKTOP  ///////////////////
-
 		@include custom.media-breakpoint-up(lg) {
 
-			padding: functions.toRem(16) !important;
-
-			&__wrapper {
-				gap: functions.toRem(16) !important;
+			&__simulatorImg {
+				display: block;
 			}
 
-			&__purchase {
-				flex: 30% !important;
-			}
-
-			&__simulator {
-				flex: 70% !important;
+			&__simulatorImgWrapper {
+				display: flex;
+				gap: functions.toRem(32);
+				align-items: center;
+				padding: functions.toRem(16) functions.toRem(16) 0 functions.toRem(16);
+				border-bottom: functions.toRem(1) solid;
 			}
 		}
 
 		@include custom.media-breakpoint-up(xl) {
 
+			padding: functions.toRem(20);
 
+			&__wrapper {
+				gap: functions.toRem(20) !important;
+			}
+
+			&__purchase {
+				flex: 40% !important;
+			}
+
+			&__simulator {
+				flex: 60% !important;
+			}
+
+			&__simulatorImgWrapper {
+
+				p {
+					line-height: 2;
+					padding: functions.toRem(16);
+				}
+			}
+
+			&__simulatorResultsWrapper {
+				flex-direction: row !important;
+			}
 		}
 	}
 }
