@@ -38,7 +38,6 @@
         // PREVIOUS AND NEXT BUTTON ON THE SIDES OF THE CAROUSEL
         &__arrows {
             width: functions.toRem(35);
-            color: custom.$dark !important;
         }
 
         @include custom.media-breakpoint-up(md) {
