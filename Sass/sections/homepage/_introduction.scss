@@ -3,6 +3,13 @@
 
 .intro {
 
+    // ALL BREAKPOINTS
+
+    &__altImg {
+        object-fit: cover;
+        object-position: 40% 50%;
+    }
+
     //////////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ///////////////////
     @media (orientation: portrait) {
 

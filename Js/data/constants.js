@@ -16,3 +16,5 @@ export const filters = [
     [100, 2,  601, 203, 115, 82],
     [100, 0, 7487, 213, 101, 107]
 ];
+
+export const compliment = ["patience", "sérieux", "douceur", "gentillesse", "attention", "serviabilité", "respect", "considération", "politesse", "tendresse", "finesse", "délicatesse", "amabilité", "harmonie", "assurance", "professionnalisme", "sympathie", "tolérance", "cordialité", "générosité", "prévenance", "bienveillance"];

@@ -2,7 +2,6 @@
 
 // Imports
 import slideInObserver from "../utils/slideInObserver.js";
-
 // HTML Elements
 const images = document.querySelectorAll('.benefit__img');
 
