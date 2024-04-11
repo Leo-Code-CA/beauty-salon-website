@@ -1,6 +1,10 @@
 //////////////////////////// FEATURES SECTION OF THE HOME PAGE ////////////////////////////
 
+// Imports
+import slideInObserver from "./../utils/slideInObserver.js";
 // HTML Elements
+const table = document.querySelector('.features__table');
+const accordion = document.querySelector('.features__accordion');
 const toggler = document.querySelectorAll('.features__toggle');
 const tr = document.querySelector('#tr');
 const innerTd = document.querySelectorAll('.features__td');
@@ -28,12 +32,20 @@ function handleTableHeight() {
     trHeight ? innerTd.forEach(td => td.style.minHeight = trHeight / 16 + "rem") : null;
 }
 
+// Handle table and accordion slide in animation
+function handleSlideInAnimation() {
+    [table, accordion].map(elem => {
+        if (elem) slideInObserver(elem, 'slideAnimation--bottom');
+    })
+}
+
 // Call the functions and add the event handlers on load of the page
 window.addEventListener("load", () => {
     // handle table height (on load and resize)
     handleTableHeight()
     window.addEventListener("resize", handleTableHeight);
-
     // handle toggle accordion arrow on click
     handleToggleArrow();
+    // handle slide in animation
+    handleSlideInAnimation();
 });

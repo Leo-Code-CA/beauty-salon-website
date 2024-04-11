@@ -2,10 +2,10 @@
 
 // Imports
 import FnScrollDirection from "./../utils/scrollDirection.js";
+import slideInObserver from "../utils/slideInObserver.js";
 import { purpleIshPalette, blackNWhitePalette, filters } from "./../data/constants.js";
 // Media Queries
 const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 767px)");
-let mediaQueryMatches;
 // HTML Elements
 const visisbleScrollBox = document.querySelector('.summary__animationBox');
 const elemOne = document.querySelector('.summary__box:nth-child(1)');
@@ -15,6 +15,9 @@ const html = document.querySelector(':root');
 const hiddenElements = document.querySelectorAll('.summary__hidden');
 const rectangle = document.querySelector('.summary__svg rect');
 const summaryBox = document.querySelectorAll('.summary__box:nth-child(1), .summary__box:nth-child(3)');
+const summaryBoxOne = document.querySelector('.summary__box:nth-child(1)');
+const summaryBoxTwo = document.querySelector('.summary__box:nth-child(2)');
+const summaryBoxThree = document.querySelector('.summary__box:nth-child(3)');
 // Variables
 let initialHeightOne;
 let initialHeightTwo;
@@ -131,189 +134,184 @@ function handleBtnOutlineAnimation(translatePercentage, staticPhasePercentage, t
 // Handle scroll bound animation
 function handleScrollBoundAnimation() {
 
-    if (mediaQueryMatches) {
+    const lengthFromTop = visisbleScrollBox.scrollTop;
+    const scrollPercentage = Math.ceil(lengthFromTop) / scrollArea * 100;
+    const translateUpdateRate = 33 / (translateBreakPeriod + totalTranslate);
 
-        const lengthFromTop = visisbleScrollBox.scrollTop;
-        const scrollPercentage = Math.ceil(lengthFromTop) / scrollArea * 100;
-        const translateUpdateRate = 33 / (translateBreakPeriod + totalTranslate);
+    handleAutoScroll();
 
-        handleAutoScroll();
+    // ANIMATE FIRST BOX
+    if (lengthFromTop <= (scrollArea / 3)) {
 
-        // ANIMATE FIRST BOX
-        if (lengthFromTop <= (scrollArea / 3)) {
+        elemOne.style.opacity = 1;
+        elemTwo.style.opacity = 0;
+        elemThree.style.opacity = 0;
+        handleInactiveElem(elemTwo);
+        handleInactiveElem(elemThree);
 
-            elemOne.style.opacity = 1;
-            elemTwo.style.opacity = 0;
-            elemThree.style.opacity = 0;
-            handleInactiveElem(elemTwo);
-            handleInactiveElem(elemThree);
+        const translatePercentage = -100 + (scrollPercentage / translateUpdateRate);
 
-            const translatePercentage = -100 + (scrollPercentage / translateUpdateRate);
-
-            if (translatePercentage < elemSpacingPercentage) {
-                elemOne.style.transform = `translate(${translatePercentage}%)`
-            } 
-            
-            else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
-
-                elemOne.style.transform = `translate(${elemSpacing}px)`
-
-                const staticPhase = translatePercentage - elemSpacingPercentage;
-                const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
+        if (translatePercentage < elemSpacingPercentage) {
+            elemOne.style.transform = `translate(${translatePercentage}%)`
+        } 
         
-                // UPDATE HEIGHT
-                handleHeightUpdate(initialHeightOne, translatePercentage, staticPhasePercentage, elemOne);
+        else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
 
-                // UPDATE COLORS (Background and Text)
-                handleColorUpdate(staticPhasePercentage, elemOne);
-                
-                // UPDATE IMAGE 
-                handleOpacityUpdate(staticPhasePercentage, 1)
+            elemOne.style.transform = `translate(${elemSpacing}px)`
 
-                // UPDATE ICON COLOR
-                handleIconsUpdate(staticPhasePercentage, 1);
+            const staticPhase = translatePercentage - elemSpacingPercentage;
+            const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
+    
+            // UPDATE HEIGHT
+            handleHeightUpdate(initialHeightOne, translatePercentage, staticPhasePercentage, elemOne);
 
-                // UPDATE BOX SHADOW
-                handleShadowUpdate(staticPhasePercentage, elemOne);
-                
-            } else {
-                elemOne.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
-            }
-        }
-        // ANIMATE SECOND BOX
-        else if (lengthFromTop <= (scrollArea / 3) * 2) {
-
-            elemOne.style.opacity = 0;
-            elemTwo.style.opacity = 1;
-            elemThree.style.opacity = 0;
-            handleInactiveElem(elemOne);
-            handleInactiveElem(elemThree);
-
-            const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - (translateBreakPeriod + totalTranslate));
-
-            if (translatePercentage < elemSpacingPercentage) {
-                hiddenElements.forEach(elem => elem.style.display = 'none');
-                elemTwo.style.transform = `translate(${translatePercentage}%)`
-            } 
+            // UPDATE COLORS (Background and Text)
+            handleColorUpdate(staticPhasePercentage, elemOne);
             
-            else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
+            // UPDATE IMAGE 
+            handleOpacityUpdate(staticPhasePercentage, 1)
 
-                elemTwo.style.transform = `translate(${elemSpacing}px)`
+            // UPDATE ICON COLOR
+            handleIconsUpdate(staticPhasePercentage, 1);
 
-                const staticPhase = translatePercentage - elemSpacingPercentage;
-                const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
+            // UPDATE BOX SHADOW
+            handleShadowUpdate(staticPhasePercentage, elemOne);
             
-                // UPDATE HIDDEN ELEMENTS
-                hiddenElements.forEach(elem => elem.style.display = 'block');
-
-                // UPDATE HEIGHT
-                handleHeightUpdate(initialHeightTwo, translatePercentage, staticPhasePercentage, elemTwo);
-
-                // UPDATE COLORS (Background and Text)
-                handleColorUpdate(staticPhasePercentage, elemTwo);
-
-                // UPDATE ICON COLOR
-                handleIconsUpdate(staticPhasePercentage, 2);
-
-                // UPDATE BOX SHADOW
-                handleShadowUpdate(staticPhasePercentage, elemTwo);
-
-                // UPDATE BUTTON OUTLINE
-                handleBtnOutlineAnimation(translatePercentage, staticPhasePercentage, translateBreakPeriod);          
-                
-            } else {
-                elemTwo.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
-            }
+        } else {
+            elemOne.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
         }
+    }
+    // ANIMATE SECOND BOX
+    else if (lengthFromTop <= (scrollArea / 3) * 2) {
 
-        // ANIMATE THIRD BOX
-        else if (lengthFromTop < scrollArea) {
+        elemOne.style.opacity = 0;
+        elemTwo.style.opacity = 1;
+        elemThree.style.opacity = 0;
+        handleInactiveElem(elemOne);
+        handleInactiveElem(elemThree);
 
-            elemOne.style.opacity = 0;
-            elemTwo.style.opacity = 0;
-            elemThree.style.opacity = 1;
-            handleInactiveElem(elemOne);
-            handleInactiveElem(elemTwo);
+        const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - (translateBreakPeriod + totalTranslate));
 
-            const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - ((translateBreakPeriod + totalTranslate) * 2));
+        if (translatePercentage < elemSpacingPercentage) {
+            hiddenElements.forEach(elem => elem.style.display = 'none');
+            elemTwo.style.transform = `translate(${translatePercentage}%)`
+        } 
+        
+        else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
 
-            if (translatePercentage < elemSpacingPercentage) {
-                elemThree.style.transform = `translate(${translatePercentage}%)`
-            } 
+            elemTwo.style.transform = `translate(${elemSpacing}px)`
+
+            const staticPhase = translatePercentage - elemSpacingPercentage;
+            const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
+        
+            // UPDATE HIDDEN ELEMENTS
+            hiddenElements.forEach(elem => elem.style.display = 'block');
+
+            // UPDATE HEIGHT
+            handleHeightUpdate(initialHeightTwo, translatePercentage, staticPhasePercentage, elemTwo);
+
+            // UPDATE COLORS (Background and Text)
+            handleColorUpdate(staticPhasePercentage, elemTwo);
+
+            // UPDATE ICON COLOR
+            handleIconsUpdate(staticPhasePercentage, 2);
+
+            // UPDATE BOX SHADOW
+            handleShadowUpdate(staticPhasePercentage, elemTwo);
+
+            // UPDATE BUTTON OUTLINE
+            handleBtnOutlineAnimation(translatePercentage, staticPhasePercentage, translateBreakPeriod);          
             
-            else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
+        } else {
+            elemTwo.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
+        }
+    }
 
-                elemThree.style.transform = `translate(${elemSpacing}px)`
+    // ANIMATE THIRD BOX
+    else if (lengthFromTop < scrollArea) {
 
-                const staticPhase = translatePercentage - elemSpacingPercentage;
-                const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
+        elemOne.style.opacity = 0;
+        elemTwo.style.opacity = 0;
+        elemThree.style.opacity = 1;
+        handleInactiveElem(elemOne);
+        handleInactiveElem(elemTwo);
 
-                // UPDATE HEIGHT
-                handleHeightUpdate(initialHeightThree, translatePercentage, staticPhasePercentage, elemThree);
+        const translatePercentage = -100 + (scrollPercentage / translateUpdateRate - ((translateBreakPeriod + totalTranslate) * 2));
 
-                // UPDATE COLORS (Background and Text)
-                handleColorUpdate(staticPhasePercentage, elemThree);
+        if (translatePercentage < elemSpacingPercentage) {
+            elemThree.style.transform = `translate(${translatePercentage}%)`
+        } 
+        
+        else if (translatePercentage >= elemSpacingPercentage && translatePercentage < elemSpacingPercentage + translateBreakPeriod) {
 
-                // UPDATE IMAGE 
-                handleOpacityUpdate(staticPhasePercentage, 3);
+            elemThree.style.transform = `translate(${elemSpacing}px)`
 
-                // UPDATE ICON COLOR
-                handleIconsUpdate(staticPhasePercentage, 3);
+            const staticPhase = translatePercentage - elemSpacingPercentage;
+            const staticPhasePercentage = staticPhase / translateBreakPeriod * 100;
 
-                // UPDATE BOX SHADOW
-                handleShadowUpdate(staticPhasePercentage, elemThree);
-                
-            } else {
-                elemThree.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
-            }
+            // UPDATE HEIGHT
+            handleHeightUpdate(initialHeightThree, translatePercentage, staticPhasePercentage, elemThree);
 
+            // UPDATE COLORS (Background and Text)
+            handleColorUpdate(staticPhasePercentage, elemThree);
+
+            // UPDATE IMAGE 
+            handleOpacityUpdate(staticPhasePercentage, 3);
+
+            // UPDATE ICON COLOR
+            handleIconsUpdate(staticPhasePercentage, 3);
+
+            // UPDATE BOX SHADOW
+            handleShadowUpdate(staticPhasePercentage, elemThree);
+            
+        } else {
+            elemThree.style.transform = `translate(${translatePercentage - translateBreakPeriod}%)`
         }
 
-        // RESET THE BOXES WHEN SCROLL IS NO MORE POSSIBLE (TOP OR BOTTOM)
-        if (lengthFromTop === 0 || lengthFromTop === scrollArea) {
-            handleInactiveElem(elemOne);
-            handleInactiveElem(elemTwo);
-            handleInactiveElem(elemThree);
-        }
+    }
+
+    // RESET THE BOXES WHEN SCROLL IS NO MORE POSSIBLE (TOP OR BOTTOM)
+    if (lengthFromTop === 0 || lengthFromTop === scrollArea) {
+        handleInactiveElem(elemOne);
+        handleInactiveElem(elemTwo);
+        handleInactiveElem(elemThree);
     }
 };
 
 // Handle page behavior when the animation runs
 function handlePageScrollBehaviour() {
 
-    if (mediaQueryMatches) {
+    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
+    const scrollY = window.scrollY;
+    const scrollDirection = FnScrollDirection(scrollY);
 
-        const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
-        const scrollY = window.scrollY;
-        const scrollDirection = FnScrollDirection(scrollY);
+    if (scrollDirection === "down") {
 
-        if (scrollDirection === "down") {
+        if (topElemToDocTop <= scrollY) {
 
-            if (topElemToDocTop <= scrollY) {
-
-                const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
-                    // if the animation is not 100% done disable the page scroll (forwards)
-                    if (scrollArea !== lengthFromTop) {
-                        window.scrollTo(0, topElemToDocTop);
-                };
-            };
-        } 
-        
-        else if (scrollDirection === "up") {
-
-            if (topElemToDocTop >= window.scrollY) {
-                const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
-                // if the animation is not 100% done disable the page scroll (backwards)
-                if (lengthFromTop !== 0) {
+            const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
+                // if the animation is not 100% done disable the page scroll (forwards)
+                if (scrollArea !== lengthFromTop) {
                     window.scrollTo(0, topElemToDocTop);
-                }
+            };
+        };
+    } 
+    
+    else if (scrollDirection === "up") {
+
+        if (topElemToDocTop >= window.scrollY) {
+            const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
+            // if the animation is not 100% done disable the page scroll (backwards)
+            if (lengthFromTop !== 0) {
+                window.scrollTo(0, topElemToDocTop);
             }
         }
     }
 };
 
-//////////////////////////// HOVER STATE FOR ALL THE OTHER MEDIA QUERIES ////////////////////////////
+//////////////////////////// SUMMARY BOX FOR ALL THE OTHER MEDIA QUERIES ////////////////////////////
 
+// Handle hover state of the summary box
 function handleSummaryHover() {
     if (summaryBox && summaryBox.length > 0) {
         summaryBox.forEach(elem => {
@@ -333,22 +331,29 @@ function handleSummaryHover() {
     }
 }
 
+// Handle slide in animation of the summary box
+function handleSummarySlideInAnimation() {
+    slideInObserver(summaryBoxOne, 'slideAnimation--left');
+    slideInObserver(summaryBoxTwo, 'slideAnimation--bottom');
+    slideInObserver(summaryBoxThree, 'slideAnimation--right');
+}
+
 //////////////////////////// GLOBAL FUNCTIONS CALL ////////////////////////////
 
-// Call the functions and add the event handlers on load of the page
-window.addEventListener('load', () => {
-
-    // check media query and decide if the animation should run
-    mediaQueryMatches = mediaQuery.matches;
-
-    // Media Query => determine if the animation should run or not when the window is resized
-    window.addEventListener('resize', () => mediaQueryMatches = mediaQuery.matches);
-
-    // Handle summary hover
-    if (!mediaQuery.matches) {
+// Check the size and orientation of the screen and decide if th animation should run or not
+function handleMediaQuerySetup() {
+     // Mobile landscape orientation, tablets and desktop - animation shouldn't run
+     if (!mediaQuery.matches) {
+        // Handle summary hover
         handleSummaryHover();
+        // Handle summary slide in animation
+        handleSummarySlideInAnimation();
+        // Remove animation event listeners
+        window.removeEventListener('scroll', handlePageScrollBehaviour);
+        visisbleScrollBox.removeEventListener('scroll', handleScrollBoundAnimation);
     }
 
+    // Mobile portrait orientation - animation should run
     if (mediaQuery.matches) {
         // INITIAL ANIMATION SETUP
         // get initial boxes' height
@@ -366,6 +371,11 @@ window.addEventListener('load', () => {
         // Handle scroll bound animation
         visisbleScrollBox.addEventListener('scroll', handleScrollBoundAnimation);
     }
+}
 
-    // on resize check if media query matches and call functions => delete the mediaQuery variable and call the functions only it the media query match
+// Call the function and add the event handlers on load of the page
+window.addEventListener('load', () => {
+    // check media query and decide if the animation should run - on page load and on resize
+    handleMediaQuerySetup();
+    window.addEventListener('resize', handleMediaQuerySetup);
 });

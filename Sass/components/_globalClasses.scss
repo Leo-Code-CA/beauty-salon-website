@@ -4,7 +4,12 @@
 
 @include mixins.slideInAnimation('slideInBottom', translateY(200%));
 @include mixins.slideInAnimation('slideInLeft', translateX(-100%));
+@include mixins.slideInAnimation('slideInRight', translateX(100%));
 @include mixins.pulseAnimation('pulse', functions.toRem(30), custom.$primary);
+
+.slideInAnimatedElem {
+    opacity: 0;
+}
 
 .slideAnimation {
 
@@ -14,6 +19,10 @@
 
     &--left {
         animation: slideInLeft 1.5s ease-out forwards;
+    }
+
+    &--right {
+        animation: slideInRight 1.5s ease-out forwards;
     }
 }
 

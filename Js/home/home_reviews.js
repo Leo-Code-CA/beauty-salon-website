@@ -2,8 +2,6 @@
 
 // Imports
 import './../external-code/gm_placeapi.js';
-// Media Queries
-
 // HTML Elements
 const targetCarousel = document.querySelector("#reviewsCarousel");
 
@@ -11,7 +9,6 @@ const targetCarousel = document.querySelector("#reviewsCarousel");
 
 // Handle carousel lazy loading
 function handleCarouselLazyLoading() {
-    console.log(targetCarousel)
     if (targetCarousel) {
         const carousel = new bootstrap.Carousel(targetCarousel, {interval: 5000, pause: 'hover', ride: 'carousel'});
         const carouselObserver = new IntersectionObserver(entries => {
@@ -82,7 +79,6 @@ async function getPlaceDetails() {
 window.addEventListener('load', () => {
     // handle carousel lazy loading
     handleCarouselLazyLoading();
-
     // handle reviews fetching
     getPlaceDetails();
 })

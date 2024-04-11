@@ -1,9 +1,8 @@
 //////////////////////////// MASSAGES PAGE ////////////////////////////
 
 // Imports
-import scrollToElem from "../utils/scrollToElem.js";
+import scrollToElem from "./../utils/scrollToElem.js";
 import slideInObserver from "./../utils/slideInObserver.js";
-// Media Queries
 
 // HTML Elements
 const root = document.querySelector(':root');
@@ -12,11 +11,9 @@ const overviewBtn = document.querySelectorAll('.overview__card .overview__massag
 const doorIllustration = document.querySelector('.californien__infoIllustration');
 const allMassagesDescription = document.querySelectorAll('.massages__massage:not(:nth-child(1))');
 
-// Data
+///////// START OF THE JS ////////
 
-// Variables
-
-// HANDLE THE SUMMARY / OVERVIEW ANIMATION BEHAVIOURS - MOBILE
+// Handle overview / summary animation targets
 function handleOverviewTargets(e) {
 
     const clickedTarget = e.target;
@@ -33,8 +30,7 @@ function handleOverviewTargets(e) {
             if (!massageElem.contains(clickedTarget) || clickedTarget.classList.contains('overview__closeCard')) {
                 handleToggleOverview(massageElem, notSelectedMassages, activeInfo);
             }
-
-        // handle case where no massage element is opened yet, so we want to open it if the user clicked on it
+        // handle case where no massage element is opened yet, so we want to open it on click
         } else if (massageElem.contains(clickedTarget)) {
             handleToggleOverview(massageElem, notSelectedMassages, activeInfo);
         }
@@ -43,6 +39,7 @@ function handleOverviewTargets(e) {
 
 };
 
+// Handle overview / summary animation modifications
 function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) {
     // Toggle not selected massages elements opacity between 0 and 1
     notSelectedMassages.forEach(massage => massage.classList.toggle('opacity-0'));
@@ -54,29 +51,15 @@ function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) 
     document.querySelector('.overview__card:nth-child(1)').classList.toggle('pulseAnimation');
 }
 
-window.addEventListener('click', handleOverviewTargets);
-// window.addEventListener('touchstart', handleOverviewTargets);
+// Handle scroll to elem on click
+function handleScrollOnClick() {
+    overviewBtn.forEach((btn, i) => {
+        const massageDescription = document.querySelector(`.massages__massage:nth-child(${i + 1})`)
+        btn.addEventListener('click', () => scrollToElem(massageDescription));
+    })
+}
 
-// HANDLE THE SUMMARY / OVERVIEW ANIMATION BEHAVIOURS - TABLET
-// function handle
-
-
-
-
-
-
-
-
-
-
-
-// HANDLE ON CLICK PAGE SCROLL
-overviewBtn.forEach((btn, i) => {
-    const massageDescription = document.querySelector(`.massages__massage:nth-child(${i + 1})`)
-    btn.addEventListener('click', () => scrollToElem(massageDescription));
-})
-
-// HANDLE DOOR ILLUSTRATION REVEAL ANIMATION
+// Handle "door" info reveal animation
 function handleDoorReveal() {
 
     const imgAnimName = window.getComputedStyle(root).getPropertyValue('--imgAnimName');
@@ -94,10 +77,21 @@ function handleDoorReveal() {
         root.style.setProperty('--imgAnimState', 'running');
         root.style.setProperty('--doorShapeAnimState', 'running');
     }
-
 };
 
-doorIllustration.addEventListener('click', handleDoorReveal);
+// Handle massages descriptions slide in animation
+function handleMassageSlideIn() {
+    allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'slideAnimation--bottom', { root: null, threshold: 0}));
+}
 
-// HANDLE MASSAGES SLIDE IN ANIMATION
-allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'slideAnimation--bottom', { root: null, threshold: 0}));
+// Call the functions and add the event handlers on load of the page
+window.addEventListener("load", () => {
+    // Handle overview click 
+    window.addEventListener('click', handleOverviewTargets);
+    // Handle scroll to elem
+    handleScrollOnClick();
+    // Handle "door reveal" animation 
+    doorIllustration.addEventListener('click', handleDoorReveal);
+    // Handle massages slide in animation
+    handleMassageSlideIn();
+})

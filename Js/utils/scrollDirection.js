@@ -11,5 +11,4 @@ export default function FnScrollDirection(scrollY) {
         prevScroll = currentScroll;
         return "up";
     };
-
 };

@@ -109,7 +109,6 @@ window.addEventListener("load", () => {
     // decide if the animation should show up or not (on load and resize)
     mqLandscape.matches ? null : textAnimation();
     mqLandscape.addEventListener("change", () => mqLandscape.matches ? null : textAnimation());
-
     // handle video settings: lazy loading / source (on load and resize) / error
     handleVideoLazyLoading();
     handleVideoSource();
