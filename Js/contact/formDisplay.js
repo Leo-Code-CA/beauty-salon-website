@@ -142,11 +142,11 @@ window.addEventListener("load", () => {
 	handleApptFormDisplay();
 	select ? select.addEventListener('change', handleApptFormDisplay) : null;
 	// handle form submit and creation of the request summary page
-	form.addEventListener(
+	 form ? form.addEventListener(
 		'submit',
 		// e => !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
 		e => handleValidForm(e) // just for dev purpose - remove later on 
-	);
+	) : null;
 	// handle request to book more than one service
 	addBtn ? addBtn.addEventListener('click', handleBookMoreServices) : null;
 })

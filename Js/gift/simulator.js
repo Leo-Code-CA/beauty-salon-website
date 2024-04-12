@@ -2,8 +2,6 @@
 
 // Imports
 import { suggestions } from '../contact/data.js';
-// Media Queries
-
 // HTML Elements
 const simulatorForm = document.querySelector('.giftpage__simulatorForm');
 const simulatorSelect = document.querySelector('.giftpage__simulatorSelect');
@@ -13,9 +11,8 @@ const hr = document.querySelector('hr');
 const simulatorAmount = document.querySelector('.giftpage__simulatorAmount');
 const simulatorResultBest = document.querySelector('.giftpage__simulatorResultsBest');
 const simulatorResultCombo = document.querySelectorAll('.giftpage__simulatorResultsCombo div div');
-// Data
 
-// Variables
+///////// START OF THE JS ///////
 
 // Handle gift suggestions
 function handleGiftSuggestions(maxPrice, optionsPrice) {

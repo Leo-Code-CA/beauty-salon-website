@@ -37,7 +37,7 @@
                                 <label for="name" class="form-label fw-bold">Nom</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     placeholder="Entrez votre nom..." required>
-                                <p class="invalid-feedback">Veuillez entrer votre nom ci-dessus avant de soumettre le
+                                <p class="invalid-feedback">Veuillez entrer votre nom ci-dessous avant de soumettre le
                                     formulaire.</p>
                             </div>
                             <div>
@@ -177,9 +177,11 @@
                                     </div>
                                 </div>
                                 <!-- OTHER / INFO / PRODUCTS SUGGESTIONS -->
-                                <div class="contact__otherSuggestions contact__margin d-none"></div>
+                                <!-- <div class="contact__otherSuggestions contact__margin d-none"></div> -->
+                                <div class="col faq d-flex flex-column gap-3 d-none contact__margin" id="faq"></div>
                                 <!-- FEEDBACK SUGGESTIONS -->
                                 <div class="contact__feedbackSuggestions d-none">
+                                    <div id="reviewsCarousel" class="carousel slide"></div>
                                     <div class="contact__review bg-secondary rounded p-3 mb-3 contact__margin">
                                         <p>Vous aussi, en seulement quelques minutes, vous pouvez soutenir Brigitte en
                                             lui

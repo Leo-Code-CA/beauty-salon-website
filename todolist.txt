@@ -1,2 +1,3 @@
 // figure out how to merge all the data about the salon in one place (later database);
 // modify every part of the website which fetches components to use the reusable component directly (and add the container of the component in the html directly)
+// figure out how to redirect properly when people click links throughout the website
