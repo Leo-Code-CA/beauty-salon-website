@@ -2,7 +2,7 @@
 
 import '../footer.js';
 import '../navbar.js';
-import './appointment.js';
+import './formDisplay.js';
 import './suggestions.js';
 
 

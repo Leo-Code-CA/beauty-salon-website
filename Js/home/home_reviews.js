@@ -2,6 +2,7 @@
 
 // Imports
 import './../external-code/gm_placeapi.js';
+import handleFetchComponent from  './../utils/fetchComponent.js';
 // HTML Elements
 const targetCarousel = document.querySelector("#reviewsCarousel");
 
@@ -77,6 +78,8 @@ async function getPlaceDetails() {
 
 // Call the functions and add the event handlers on load of the page
 window.addEventListener('load', () => {
+    // fetch carousel
+    handleFetchComponent('/components/reviews.html', targetCarousel);
     // handle carousel lazy loading
     handleCarouselLazyLoading();
     // handle reviews fetching

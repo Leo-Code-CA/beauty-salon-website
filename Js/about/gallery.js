@@ -2,33 +2,30 @@
 
 // Imports
 import { images } from './data.js';
-// Media Queries
-
+import slideInObserver from './../utils/slideInObserver.js';
 // HTML Elements
 const imgContainer = document.querySelector('.gallery__imgContainer');
 const filterBtn = document.querySelectorAll('.gallery__filter');
-// Data
+const gallery = document.querySelector('.gallery');
 
-// Variables
+///////// START OF THE JS ////////
 
-// create the img elements
+// handle creation of image elements
 function createImgElem(column, src, alt) {
-
     const imgWrapper = document.createElement('span');
     const img = document.createElement('img');
     img.setAttribute('src', src);
     img.setAttribute('alt', alt);
     imgWrapper.appendChild(img);
-    column.appendChild(imgWrapper);
+    column ? column.appendChild(imgWrapper) : null;
     img.addEventListener('click', (e) => handleImgZoom(e));
-
 }
 
-// Create the actual gallery layout columns
+// handle gallery column layout
 function createImgLayout(col, imgCollection) {
 
     // cleanup by removing the current html if any
-    if (imgContainer.innerHTML) {
+    if (imgContainer && imgContainer.innerHTML) {
         while (imgContainer.firstChild) {
             imgContainer.removeChild(imgContainer.firstChild);
         }
@@ -50,36 +47,27 @@ function createImgLayout(col, imgCollection) {
     let currentColumn = 0;
 
     for (let i = 0; i < totalImg; i++) {
-
         currentColumn++;
-
         if (currentColumn === totalColumns.length || i === 0) {
             currentColumn = 0;
         }
-
         createImgElem(totalColumns[currentColumn], imgCollection[i].src, imgCollection[i].alt)
     }
-
 }
 
-// Choose the numbers of columns for the gallery layout depending on the viewport width
+// handle columns number depending on the viewport width
 function handleWindowSize(imgCollection) {
-
     const vw = window.innerWidth;
-
-    return vw <= 768 ? createImgLayout(2, imgCollection)
-    : vw <= 1200 ? createImgLayout(3, imgCollection)
-    : vw > 1200 ? createImgLayout(4, imgCollection)
-    : new Error("vw mush be a number and must be defined");
-
+    if (vw) {
+        return vw <= 768 ? createImgLayout(2, imgCollection)
+        : vw <= 1200 ? createImgLayout(3, imgCollection)
+        : vw > 1200 ? createImgLayout(4, imgCollection)
+        : new Error("vw must be a number");
+    }
 }
-
-window.addEventListener('load', () => handleWindowSize(images));
-window.addEventListener('resize', () => handleWindowSize(images));
 
 // Handle gallery filtering 
 function handleGalleryFilter(filter) {
-
     switch (filter) {
         case "all":
             handleWindowSize(images);
@@ -96,29 +84,35 @@ function handleGalleryFilter(filter) {
         default:
             throw new Error('filter not reconized!')
     }
-
-
 }
 
-filterBtn.forEach(btn => btn.addEventListener('click', (e) => handleGalleryFilter(e.target.id)));
-
-// Handle img zoom and background change on click
+// Handle img foreground view
 function handleImgZoom(e) {
-
     const selectedImg = e.target;
-    const selectedImgBox = selectedImg.parentElement;
+    const selectedImgBox = selectedImg ? selectedImg?.parentElement : null;
 
-    selectedImg.classList.add('gallery--imgPopup');
-    selectedImgBox.classList.add('gallery--bgPopup');
-    selectedImgBox.addEventListener('click', (e) => {
-
-        if (e.target === selectedImgBox) {
-            selectedImg.classList.remove('gallery--imgPopup');
-            selectedImgBox.classList.remove('gallery--bgPopup');
-        }
-    })
-
+    if (selectedImg && selectedImgBox) {
+        selectedImg.classList.add('gallery--imgPopup');
+        selectedImgBox.classList.add('gallery--bgPopup');
+        selectedImgBox.addEventListener('click', (e) => {
+    
+            if (e.target === selectedImgBox) {
+                selectedImg.classList.remove('gallery--imgPopup');
+                selectedImgBox.classList.remove('gallery--bgPopup');
+            }
+        })
+    }
 };
 
+// Call the functions and add the event handlers on load of the page
+window.addEventListener("load", () => {
+    // handle gallery photo creation on load and resize
+    handleWindowSize(images);
+    window.addEventListener('resize', () => handleWindowSize(images));
+    // handle image filtering
+    filterBtn.forEach(btn => btn.addEventListener('click', (e) => handleGalleryFilter(e.target.id)));
+    // handle slide in animation
+    slideInObserver(gallery, 'slideAnimation--bottom');
+})
 
 

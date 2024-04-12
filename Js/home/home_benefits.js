@@ -5,6 +5,8 @@ import slideInObserver from "./../utils/slideInObserver.js";
 // HTML Elements
 const images = document.querySelectorAll('.benefit__img');
 
+///////// START OF THE JS ////////
+
 // Handle slide in animation
 function handleBenefitsSlideInImages() {
     images && images.length > 0 ? images.forEach((img, i) => {
