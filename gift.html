@@ -39,6 +39,7 @@
                             </div>
                             <p>Découvrez ce dont la personne qui vous est chère pourrait bénéficier grâce à vous.</p>
                         </div>
+                        <!-- GIFT SIMULATOR FORM -->
                         <form class="d-flex flex-column justify-content-between flex-fill gap-2 giftpage__simulatorForm"
                             novalidate autocomplete="off">
                             <div>
@@ -66,7 +67,9 @@
                                 d'achat.</small>
                         </form>
                         <hr class="d-none">
-                        <div class="d-none giftpage__simulatorResults d-flex flex-column gap-3">
+                        <!-- GIFT SIMULATOR RESULTS -->
+                        <!-- d-none -->
+                        <div class="giftpage__simulatorResults d-flex flex-column gap-3">
                             <h2 class="heading-2 text-center mb-0">Résultats</h2>
                             <p class="mb-0 text-center">Avec un bon cadeau de <span
                                     class="giftpage__simulatorAmount"></span>, un monde de possibilités s'ouvre à la
@@ -80,7 +83,7 @@
                                     <strong></strong>
                                 </div>
                                 <div
-                                    class="giftpage__simulatorResultsCombo border border-dark rounded d-flex flex-column gap-2 p-2">
+                                    class="giftpage__simulatorResultsDuo border border-dark rounded d-flex flex-column gap-2 p-2">
                                     <h3 class="heading-3 text-center w-100">Pourquoi pas un combo?</h3>
                                     <div class="d-flex gap-2 flex-fill">
                                         <div class="flex-fill d-flex flex-column align-items-center gap-2">
@@ -97,6 +100,38 @@
                                             </h4>
                                             <img src="" alt="" class="img-fluid">
                                             <strong></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="giftpage__simulatorResultsCombo">
+                                    <!-- CAROUSEL ONE -->
+                                    <div id="giftSimulatorOne" class="carousel slide">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#giftSimulator" data-bs-slide-to="0"
+                                                class="active" aria-current="true" aria-label="Slide 1">
+                                            </button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="giftpage__comboSlide">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- CAROUSEL TWO -->
+                                    <div id="giftSimulatorTwo" class="carousel slide">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#giftSimulator" data-bs-slide-to="0"
+                                                class="active" aria-current="true" aria-label="Slide 1">
+                                            </button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="giftpage__comboSlide">
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
