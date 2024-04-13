@@ -14,42 +14,79 @@ const simulatorResultCombo = document.querySelectorAll('.giftpage__simulatorResu
 
 ///////// START OF THE JS ///////
 
+// Handle finding the closest service price from the gift card amount
+function handleFindHighestPrice(filteredServicePrices) {
+    return filteredServicePrices.reduce((mostExpensiveService, currentService)=>
+    currentService.price > mostExpensiveService.price ? currentService : mostExpensiveService
+  , { price: 0 });
+}
+
+// Handle finding all the service price duos that sum up to the target price
+function handleFindBestServiceDuo(maximumServicePrice, filteredServicePrices) {
+  
+      let maxAmount = maximumServicePrice;
+      const suggestions = [];
+
+      filteredServicePrices.map((opt, index) => {
+          const i = filteredServicePrices.findIndex((elem, i) => i > index && Math.round(elem.price) === (Math.floor(maximumServicePrice) - Math.round(opt.price)));
+          if (i > -1) {
+            suggestions.push([opt, filteredServicePrices[i]])
+            return suggestions;
+          }
+      });
+
+      if (suggestions.length > 0) return suggestions;
+      if (maxAmount <= 0) return [];
+      maxAmount--;
+      handleFindBestServiceDuo(maxAmount);
+
+}
+
+// Handle finding all the prices combinaisons that sum up to the price target
+function handleFindServicesCombinaisons(servicesPrices, targetGiftPrice) {
+  let result = []
+  // search all the possible combinaisons inside of the "solution" tree
+  function deepFirstSearch(index, targetGiftPrice, temporaryArray) {
+      // if the sum of the prices in the array is bigger than the desired gift price, return because it means we won't find any solution in that branch
+      if (targetGiftPrice < 0) return;
+      // if the sum of the prices in the array is equal to the desired gift price, copy this array and push it into the result array
+      if (targetGiftPrice === 0) {
+          result.push([...temporaryArray])
+          return;
+      }
+      // recursion (start at index to avoid duplications)
+      for (let i = index; i < servicesPrices.length; i++) {
+          temporaryArray.push(servicesPrices[i])
+          console.log(servicesPrices[i]);
+          deepFirstSearch(i, targetGiftPrice - servicesPrices[i], temporaryArray)
+          // backtrack (get back up one tree node)
+          temporaryArray.pop()
+      }
+  }
+  // initial function call
+  deepFirstSearch(0, targetGiftPrice, [])
+  // return final result array with all combinaisons
+  return result;
+};
+
 // Handle gift suggestions
-function handleGiftSuggestions(maxPrice, optionsPrice) {
-    let maxAmount = maxPrice;
+function handleGiftSuggestions(targetPrice, servicesList) {
     // remove all the services that are more expensive than the gift total amount
-    const filteredOptionsPrices = optionsPrice.filter(opt => opt.price <= maxPrice);
+    const filteredServicesList = servicesList.filter(opt => opt.price <= targetPrice);
     // find out what is the most expensive service the person could get for that amount
-    const mostExpensiveOpt = filteredOptionsPrices.reduce((max, opt)=>
-      opt.price > max.price ? opt : max
-    , { price: 0 })
+    const best_service = handleFindHighestPrice(filteredServicesList);
     // find out what combos of two services the person could get for that amount
-    const bestCombo = (mPrice) => {
-        const suggestions = [];
+    const best_duo = handleFindBestServiceDuo(targetPrice, filteredServicesList);
+    // find out all the possible combiaisons of prices summing up to the gift card amount
+    const filteredServicesPrices = filteredServicesList.map(service => service.price);
+    const best_combos = handleFindServicesCombinaisons(filteredServicesPrices, targetPrice);
 
-        filteredOptionsPrices.map((opt, index) => {
-            const i = filteredOptionsPrices.findIndex((elem, i) => i > index && Math.round(elem.price) === (Math.floor(mPrice) - Math.round(opt.price)));
-            if (i > -1) {
-              suggestions.push([opt, filteredOptionsPrices[i]])
-              return suggestions;
-            }
-        });
-
-        if (suggestions.length > 0) return suggestions;
-        if (maxAmount <= 0) return [];
-        maxAmount--;
-        bestCombo(maxAmount);
-
-    }
-
-    console.log({
-      best_service: mostExpensiveOpt,
-      best_combo: bestCombo(maxAmount)
-    })
+    console.log(best_service, best_duo, best_combos)
 
     return {
-      best_service: mostExpensiveOpt,
-      best_combo: bestCombo(maxAmount)
+      best_service,
+      best_duo,
+      best_combos
     }
 
 }
@@ -79,7 +116,7 @@ simulatorForm.addEventListener('submit', (e) => {
 })
 
 // handle display potential gifts
-function handleGiftsDisplay({ best_service, best_combo }, amount) {
+function handleGiftsDisplay({ best_service, best_duo }, amount) {
 
   // Fill the amount in the first paragraph
   simulatorAmount.innerHTML = `${amount}&euro;`;
@@ -94,8 +131,8 @@ function handleGiftsDisplay({ best_service, best_combo }, amount) {
 
     // Fill the second part of the result section
     let chosenCombo;
-    const filteredCombos = best_combo.filter(combo => combo[0]?.group !== combo[1]?.group);
-    filteredCombos.length === 0 ? chosenCombo = best_combo[0] : chosenCombo = filteredCombos[0];
+    const filteredCombos = best_duo.filter(combo => combo[0]?.group !== combo[1]?.group);
+    filteredCombos.length === 0 ? chosenCombo = best_duo[0] : chosenCombo = filteredCombos[0];
 
     simulatorResultCombo.forEach((div, i) => {
         const children = div.children;
@@ -111,3 +148,5 @@ function handleGiftsDisplay({ best_service, best_combo }, amount) {
 
 
 
+
+//// Find out how to avoid duplicate in your result array
