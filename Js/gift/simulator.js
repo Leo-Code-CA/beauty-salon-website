@@ -1,8 +1,13 @@
-//////////////////////////// GIFTS SIMULATOR ////////////////////////////
+//////////////////////////// GIFT SIMULATOR OF THE GIFT PAGE ////////////////////////////
 
 // Imports
 import { suggestions } from './../contact/data.js';
+import handleCarouselLazyLoading from './../utils/lazyCarousel.js';
+import slideInObserver from './../utils/slideInObserver.js';
+// Media Queries
+const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 576px)");
 // HTML Elements
+const simulatorContainer = document.querySelector('.giftpage__simulator');
 const simulatorForm = document.querySelector('.giftpage__simulatorForm');
 const simulatorSelect = document.querySelector('.giftpage__simulatorSelect');
 const simulatorInput = document.querySelector('.giftpage__simulatorInput');
@@ -10,13 +15,9 @@ const simulationResultWrapper = document.querySelector('.giftpage__simulatorResu
 const hr = document.querySelector('hr');
 const simulatorAmount = document.querySelector('.giftpage__simulatorAmount');
 const simulatorResultBest = document.querySelector('.giftpage__simulatorResultsBest');
+const simulatorResultDuoWrapper = document.querySelector('.giftpage__simulatorResultsDuo');
 const simulatorResultDuo = document.querySelectorAll('.giftpage__simulatorResultsDuo div div');
 const simulationResultCombo = document.querySelector('.giftpage__simulatorResultsCombo');
-const carouselIndicators = document.querySelector('#giftSimulatorOne .carousel-indicators');
-const carouselContent =  document.querySelector('#giftSimulatorOne .carousel-inner');
-// don't do that but select them directly in the for each
-const carouselIndicators = document.querySelector('#giftSimulatorTwo .carousel-indicators');
-const carouselContent =  document.querySelector('#giftSimulatorTwo .carousel-inner');
 
 ///////// START OF THE JS ///////
 
@@ -109,7 +110,7 @@ function handleGiftSuggestions(targetPrice, servicesList) {
                 // CASE 1: two combos - expensive gift
                 // find out all the possible combiaisons of unique prices summing up to the gift card amount
                 const best_combo = handleFindServicesCombinaisons(servicesWithUniquePrice, targetPrice);
-
+                // select both combos (the shortest and the longest one)
                 if (best_combo && best_combo.length >= 2) {
 
                     let shortestCombo = { comboLength: null, combo: [] };
@@ -138,7 +139,7 @@ function handleGiftSuggestions(targetPrice, servicesList) {
 
                   return {
                     duo: selectedDuo,
-                    combo: selectedCombo
+                    combo: [selectedCombo]
                   }
             } else {
                 // CASE 3: one single service (best) and one duo - cheaper gift
@@ -156,17 +157,18 @@ function handleGiftSuggestions(targetPrice, servicesList) {
     throw new Error('Something went wrong in your function. It did not return.');
 }
 
-// handle submission of the gift suggestion simulator
-simulatorForm.addEventListener('submit', (e) => {
-
+// handle submission of the gift simulator form
+function handlegiftSimulatorSubmission(e) {
     // check if the form is valid
     e.preventDefault();
     simulatorForm.classList.add('was-validated');
     if (!simulatorForm.reportValidity()) return;
-
+    // reset the classes
+    const comboOne = document.querySelector(`.giftpage__combo:nth-child(1)`);
+    const comboTwo = document.querySelector(`.giftpage__combo:nth-child(2)`);
+    [simulatorResultBest, simulatorResultDuoWrapper, simulationResultCombo, comboOne, comboTwo].map(elem => elem.classList.add('d-none'));
     // configure and display the simulation
     let simulationResult;
-
     if (simulatorInput.value === '') {
       simulationResult = handleGiftSuggestions(Number(simulatorSelect.selectedOptions[0].value), suggestions);
       handleGiftsDisplay(simulationResult, simulatorSelect.selectedOptions[0].value);
@@ -174,23 +176,23 @@ simulatorForm.addEventListener('submit', (e) => {
       simulationResult = handleGiftSuggestions(Number(simulatorInput.value), suggestions);
       handleGiftsDisplay(simulationResult, simulatorInput.value);
     }
-
-    console.log(simulationResult)
-
     simulatorInput.value = '';
     simulationResultWrapper.classList.remove('d-none');
     hr.classList.remove('d-none');
-})
+}
 
 // handle display potential gifts
 function handleGiftsDisplay(simulationOutput, amount) {
 
-  // Fill the amount in the first paragraph
+  // Fill the gift amount in the first paragraph
   if (amount) simulatorAmount.innerHTML = `${amount}&euro;`;
 
   // Fill the single result section
   if (simulationOutput && simulationOutput?.best) {
     const { best } = simulationOutput;
+    simulatorResultBest.classList.remove('d-none');
+    // add the slide in animation
+    slideInObserver(simulatorResultBest, mediaQuery.matches ? 'slideAnimation--left' : 'slideAnimation--bottom');
     Array.from(simulatorResultBest.children).map(elem => {
       elem.tagName === 'H4' ? elem.textContent = best?.name
       : elem.tagName === 'IMG' ? elem.setAttribute('src', best?.img) && elem.setAttribute('alt', best?.alt)
@@ -202,6 +204,9 @@ function handleGiftsDisplay(simulationOutput, amount) {
   // Fill the duo section
   if (simulationOutput && simulationOutput?.duo) {
       const { duo } = simulationOutput;
+      simulatorResultDuoWrapper.classList.remove('d-none');
+      // add the slide in animation
+      slideInObserver(simulatorResultDuoWrapper, !simulationOutput?.best && mediaQuery.matches && simulationOutput?.combo && simulationOutput?.combo?.length > 0 ? 'slideAnimation--left' : simulationOutput?.best && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
       simulatorResultDuo.forEach((div, i) => {
         const children = div.children;
         return Array.from(children).map(elem => {
@@ -215,21 +220,74 @@ function handleGiftsDisplay(simulationOutput, amount) {
 
   // Fill the combo carousel
   if (simulationOutput && simulationOutput?.combo) {
-      simulationOutput.combo
-  }
+      simulationResultCombo.classList.remove('d-none');
+      // add the slide in animation
+      console.log(simulationOutput.duo)
+      slideInObserver(simulationResultCombo, simulationOutput?.duo && simulationOutput?.duo?.length > 0 && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
+      simulationOutput.combo.map((combo, i) => {
+        const carouselWrapper = document.querySelector(`.giftpage__combo:nth-child(${i + 1})`);
+        const carousel = document.querySelector(`.giftpage__combo:nth-child(${i + 1}) .carousel`);
+        const carouselIndicators = document.querySelector(`.giftpage__combo:nth-child(${i + 1}) .carousel .carousel-indicators`);
+        const carouselContent =  document.querySelector(`.giftpage__combo:nth-child(${i + 1}) .carousel .carousel-inner`);
 
+        if (carouselWrapper && carousel && carouselIndicators && carouselContent) {
+          // clean the html
+          carouselIndicators.innerHTML = '';
+          carouselContent.innerHTML = '';
+          carouselWrapper.classList.remove('d-none');
+          // handle lazy loading
+          handleCarouselLazyLoading(carousel);
+          combo.map((service, j) => {
+              // create the indicators
+              const btn = document.createElement('button');
+              j === 0 ? btn.classList.add('active') : null;
+              const attributes = {
+                type: "button",
+                ['data-bs-target']: `#giftSimulator${i + 1}`,
+                ['data-bs-slide-to']: j,
+                ['aria-current']: j === 0 ? true : false,
+                ['aria-label']: `Slide ${j + 1}`
+              }
+              for (const attr in attributes) {
+                btn.setAttribute(attr, attributes[attr]);
+              }
+              carouselIndicators ? carouselIndicators.appendChild(btn) : null;
+              // create the slide content
+              const slideWrapper = document.createElement('div');
+              const slide = document.createElement('div');
+              const img = document.createElement('img');
+              const caption = document.createElement('div');
+              const strong = document.createElement('strong');
+              const serviceTitle = document.createElement('h4'); 
+              slideWrapper.classList.add('carousel-item');
+              j === 0 ? slideWrapper.classList.add('active') : null;
+              slide.classList.add('giftpage__comboSlide');
+              caption.classList.add('carousel-caption');
+              img.setAttribute('src', service?.img);
+              img.classList.add('img-fluid');
+              strong.innerHTML = `${service?.price} &euro;`
+              serviceTitle.textContent = service?.name;
+              // add all the elements to the dom
+              caption.appendChild(serviceTitle);
+              caption.appendChild(strong);
+              slide.appendChild(img);
+              slide.appendChild(caption);
+              slideWrapper.appendChild(slide);
+              carouselContent ? carouselContent.appendChild(slideWrapper) : null;
+          })
+        }
+      })
+  }
 }
 
+// Call the functions and add the event handlers on load of the page
+window.addEventListener('load', () => {
+  // handle gift simulation form submission
+  simulatorForm.addEventListener('submit', (e) => handlegiftSimulatorSubmission(e));
+  // handle slide in animation of the simulator container
+  slideInObserver(simulatorContainer, 'slideAnimation--bottom');
+})
 
-{/* <div class="carousel-indicators">
-<button type="button" data-bs-target="#giftSimulator" data-bs-slide-to="0"
-    class="active" aria-current="true" aria-label="Slide 1">
-</button>
-</div>
-<div class="carousel-inner">
-<div class="carousel-item active">
-    <div class="giftpage__comboSlide">
 
-    </div>
-</div>
-</div> */}
+
+// figure out a way to observe and unobserve before observing again an elem to avoid the animations to conteract themselves! Good luck :-)

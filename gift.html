@@ -68,23 +68,25 @@
                         </form>
                         <hr class="d-none">
                         <!-- GIFT SIMULATOR RESULTS -->
-                        <!-- d-none -->
-                        <div class="giftpage__simulatorResults d-flex flex-column gap-3">
+                        <div class="giftpage__simulatorResults d-flex flex-column gap-3 d-none">
                             <h2 class="heading-2 text-center mb-0">Résultats</h2>
                             <p class="mb-0 text-center">Avec un bon cadeau de <span
                                     class="giftpage__simulatorAmount"></span>, un monde de possibilités s'ouvre à la
                                 personne que vous choisissez de gâter!</p>
                             <div class="giftpage__simulatorResultsWrapper d-flex flex-column gap-3">
+                                <!-- BEST RESULT - SINGLE SERVICE -->
                                 <div
-                                    class="giftpage__simulatorResultsBest border border-dark rounded d-flex flex-column gap-2 p-2 align-items-center">
+                                    class="giftpage__simulatorResultsBest border border-dark rounded d-flex flex-column gap-2 p-2 align-items-center d-none">
                                     <h3 class="heading-3 text-center">Le meilleur de votre argent.</h3>
                                     <h4 class="text-center"></h4>
                                     <img src="" alt="" class="img-fluid">
                                     <strong></strong>
                                 </div>
+                                <!-- BEST DUO -->
                                 <div
-                                    class="giftpage__simulatorResultsDuo border border-dark rounded d-flex flex-column gap-2 p-2">
-                                    <h3 class="heading-3 text-center w-100">Pourquoi pas un combo?</h3>
+                                    class="giftpage__simulatorResultsDuo border border-dark rounded d-flex flex-column gap-2 p-2 d-none">
+                                    <h3 class="heading-3 text-center w-100">Pourquoi se contenter d'une prestation quand
+                                        on peut en avoir deux?!</h3>
                                     <div class="d-flex gap-2 flex-fill">
                                         <div class="flex-fill d-flex flex-column align-items-center gap-2">
                                             <h4
@@ -103,35 +105,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="giftpage__simulatorResultsCombo">
+                                <!-- BEST COMBOS -->
+                                <div
+                                    class="giftpage__simulatorResultsCombo d-none border border-dark rounded d-flex flex-column gap-3 p-2 align-items-center">
                                     <!-- CAROUSEL ONE -->
-                                    <div id="giftSimulatorOne" class="carousel slide">
-                                        <div class="carousel-indicators">
-                                            <button type="button" data-bs-target="#giftSimulator" data-bs-slide-to="0"
-                                                class="active" aria-current="true" aria-label="Slide 1">
-                                            </button>
-                                        </div>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div class="giftpage__comboSlide">
-
-                                                </div>
-                                            </div>
+                                    <div class="giftpage__combo d-none">
+                                        <h3 class="heading-3 text-center">Pourquoi pas un combo? Rien de mieux pour
+                                            faire durer le plaisir!</h3>
+                                        <div id="giftSimulator1" class="carousel slide">
+                                            <div class="carousel-indicators"></div>
+                                            <div class="carousel-inner"></div>
                                         </div>
                                     </div>
                                     <!-- CAROUSEL TWO -->
-                                    <div id="giftSimulatorTwo" class="carousel slide">
-                                        <div class="carousel-indicators">
-                                            <button type="button" data-bs-target="#giftSimulator" data-bs-slide-to="0"
-                                                class="active" aria-current="true" aria-label="Slide 1">
-                                            </button>
-                                        </div>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div class="giftpage__comboSlide">
-
-                                                </div>
-                                            </div>
+                                    <div class="giftpage__combo d-none">
+                                        <h3 class="heading-3 text-center">Trop dur de choisir ? J'ai la solution: ne
+                                            choisissez pas.
+                                        </h3>
+                                        <div id="giftSimulator2" class="carousel slide">
+                                            <div class="carousel-indicators"></div>
+                                            <div class="carousel-inner"></div>
                                         </div>
                                     </div>
                                 </div>

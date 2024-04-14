@@ -23,6 +23,31 @@
 		font-weight: normal;
 	}
 
+	.carousel-indicators [data-bs-target] {
+		background-color: custom.$dark;
+	}
+
+	.carousel-caption {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: functions.toRem(8);
+		
+		strong {
+			background-color: custom.$primary;
+			padding: functions.toRem(5) functions.toRem(13);
+			border-radius: functions.toRem(13) functions.toRem(10) functions.toRem(15) functions.toRem(11);
+			font-size: custom.$body-fs;
+			vertical-align: middle;
+			white-space: nowrap;
+		}
+
+		h4 {
+			color: custom.$dark;
+			font-weight: bold;
+		}
+	}
+
 	///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
 	@media (orientation: portrait) {
 

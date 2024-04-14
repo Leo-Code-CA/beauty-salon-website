@@ -1,49 +1,51 @@
-//////////////////////////// GIFTS ORDER ////////////////////////////
+//////////////////////////// STEPS OF GIFT CARD PURCHASE  ////////////////////////////
 
 // Imports
-
-// Media Queries
-
+import slideInObserver from './../utils/slideInObserver.js';
 // HTML Elements
+const purchaseSection = document.querySelector('.giftpage__purchase');
 const closeBtn = document.querySelector('.giftpage__closeConditions');
 const orderBtn = document.querySelector('.giftpage__orderBtn');
 const conditions = document.querySelector('.giftpage__conditions');
 const checkbox = document.querySelector('.giftpage__checkConditions');
 const confirmBtn = document.querySelector('.giftpage__acceptConditions');
-// Data
 
-// Variables
+///////// START OF THE JS ///////
 
-// handle access to the sale conditions
-orderBtn.addEventListener('click', handlePurchaseStepOne);
-
+// handle access to the terms of sale
 function handlePurchaseStepOne() {
-    conditions.classList.remove('d-none');
+    conditions ? conditions.classList.remove('d-none') : null;
 }
 
-// handle dismiss sale conditions and cancel
-closeBtn.addEventListener('click', handleCancelPurchase)
-
+// handle dismiss terms of sale and cancel
 function handleCancelPurchase() {
-    conditions.classList.add('d-none');
+    conditions ? conditions.classList.add('d-none') : null;
 }
 
 // handle checkbox and submit button states
-checkbox.addEventListener('change', handleToggleBtnState)
-
 function handleToggleBtnState() {
-    if (checkbox.checked) {
+    if (checkbox && checkbox.checked && confirmBtn) {
         confirmBtn.removeAttribute('disabled');
-    } else {
+    } else if (confirmBtn) {
         confirmBtn.setAttribute('disabled', true);
     }
 }
-// handle accept sale conditions and proceed
-confirmBtn.addEventListener('click', handlePurchaseStepTwo);
-
+// handle accept terms of sale and proceed
 function handlePurchaseStepTwo(e) {
     e.preventDefault();
-    if (checkbox.checked) alert('Redirection to the order endpoint managed by a third party.');
+    if (checkbox && checkbox.checked) alert('Redirection to the order endpoint managed by a third party.');
 }
 
-
+// Call the functions and add the event handlers on load of the page
+window.addEventListener('load', () => {
+    // handle accept terms of sale
+    orderBtn ? orderBtn.addEventListener('click', handlePurchaseStepOne) : null;
+    // handle cancel / dismiss terms of sale
+    closeBtn ? closeBtn.addEventListener('click', handleCancelPurchase) : null;
+    // handle button disabled state
+    checkbox ? checkbox.addEventListener('change', handleToggleBtnState) : null;
+    // handle redirect to the third party for the payment
+    confirmBtn ? confirmBtn.addEventListener('click', handlePurchaseStepTwo) : null;
+    // handle slide in animation
+    purchaseSection ? slideInObserver(purchaseSection, 'slideAnimation--bottom') : null;
+  })

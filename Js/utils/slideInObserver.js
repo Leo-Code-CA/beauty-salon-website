@@ -11,4 +11,6 @@ export default function slideInObserver(elem, className, options = {root: null, 
         });
     };
     observer.observe(elem);
+
+    return observer;
 };

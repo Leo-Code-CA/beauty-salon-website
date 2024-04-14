@@ -3,24 +3,11 @@
 // Imports
 import './../external-code/gm_placeapi.js';
 import handleFetchComponent from  './../utils/fetchComponent.js';
+import handleCarouselLazyLoading from './../utils/lazyCarousel.js';
 // HTML Elements
 const targetCarousel = document.querySelector("#reviewsCarousel");
 
 ///////// START OF THE JS ////////
-
-// Handle carousel lazy loading
-function handleCarouselLazyLoading() {
-    if (targetCarousel) {
-        const carousel = new bootstrap.Carousel(targetCarousel, {interval: 5000, pause: 'hover', ride: 'carousel'});
-        const carouselObserver = new IntersectionObserver(entries => {
-            entries.map(entry => {
-                const intersecting = entry.isIntersecting;
-                if (!intersecting) carousel.pause();
-            }) 
-        });
-        carouselObserver.observe(targetCarousel);
-    }
-}
 
 // Fetch reviews from google maps place api
 async function getPlaceDetails() {
@@ -81,7 +68,7 @@ window.addEventListener('load', () => {
     // fetch carousel
     handleFetchComponent('/components/reviews.html', targetCarousel);
     // handle carousel lazy loading
-    handleCarouselLazyLoading();
+    handleCarouselLazyLoading(targetCarousel);
     // handle reviews fetching
     getPlaceDetails();
 })
