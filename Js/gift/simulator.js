@@ -18,6 +18,12 @@ const simulatorResultBest = document.querySelector('.giftpage__simulatorResultsB
 const simulatorResultDuoWrapper = document.querySelector('.giftpage__simulatorResultsDuo');
 const simulatorResultDuo = document.querySelectorAll('.giftpage__simulatorResultsDuo div div');
 const simulationResultCombo = document.querySelector('.giftpage__simulatorResultsCombo');
+const quote = document.querySelector('.giftpage__quote');
+const sticky = document.querySelector('.giftpage__sticky');
+// Variables
+let bestResultObserver;
+let duoResultObserver;
+let comboResultObserver;
 
 ///////// START OF THE JS ///////
 
@@ -179,6 +185,8 @@ function handlegiftSimulatorSubmission(e) {
     simulatorInput.value = '';
     simulationResultWrapper.classList.remove('d-none');
     hr.classList.remove('d-none');
+    quote.classList.add('giftpage__quote--active');
+    sticky.classList.add('giftpage__sticky--fullHeight');
 }
 
 // handle display potential gifts
@@ -191,10 +199,11 @@ function handleGiftsDisplay(simulationOutput, amount) {
   if (simulationOutput && simulationOutput?.best) {
     const { best } = simulationOutput;
     simulatorResultBest.classList.remove('d-none');
-    // add the slide in animation
-    slideInObserver(simulatorResultBest, mediaQuery.matches ? 'slideAnimation--left' : 'slideAnimation--bottom');
+    // unobserve the element if it was observed and add the slide in animation with the appropriate class
+    if (bestResultObserver) bestResultObserver.unobserve(simulatorResultBest);
+    bestResultObserver = slideInObserver(simulatorResultBest, mediaQuery.matches ? 'slideAnimation--left' : 'slideAnimation--bottom');
     Array.from(simulatorResultBest.children).map(elem => {
-      elem.tagName === 'H4' ? elem.textContent = best?.name
+      elem.tagName === 'H4' ? elem.innerHTML = `<a href=${best?.path}>${best?.name}</a>`
       : elem.tagName === 'IMG' ? elem.setAttribute('src', best?.img) && elem.setAttribute('alt', best?.alt)
       : elem.tagName === 'STRONG' ? elem.innerHTML = `${best?.price}&euro;`
       : null;
@@ -205,12 +214,13 @@ function handleGiftsDisplay(simulationOutput, amount) {
   if (simulationOutput && simulationOutput?.duo) {
       const { duo } = simulationOutput;
       simulatorResultDuoWrapper.classList.remove('d-none');
-      // add the slide in animation
-      slideInObserver(simulatorResultDuoWrapper, !simulationOutput?.best && mediaQuery.matches && simulationOutput?.combo && simulationOutput?.combo?.length > 0 ? 'slideAnimation--left' : simulationOutput?.best && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
+      // unobserve the element if it was observed and add the slide in animation with the appropriate class
+      if (duoResultObserver) duoResultObserver.unobserve(simulatorResultDuoWrapper);
+      duoResultObserver = slideInObserver(simulatorResultDuoWrapper, !simulationOutput?.best && mediaQuery.matches && simulationOutput?.combo && simulationOutput?.combo?.length > 0 ? 'slideAnimation--left' : simulationOutput?.best && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
       simulatorResultDuo.forEach((div, i) => {
         const children = div.children;
         return Array.from(children).map(elem => {
-          return elem.tagName === 'H4' ? elem.textContent = duo[i]?.name
+          return elem.tagName === 'H4' ? elem.innerHTML = `<a href=${duo[i]?.path}>${duo[i]?.name}</a>`
           : elem.tagName === 'IMG' ? elem.setAttribute('src', duo[i]?.img) && elem.setAttribute('alt', duo[i]?.alt)
           : elem.tagName === 'STRONG' ? elem.innerHTML = `${duo[i]?.price}&euro;`
           : null;
@@ -221,9 +231,9 @@ function handleGiftsDisplay(simulationOutput, amount) {
   // Fill the combo carousel
   if (simulationOutput && simulationOutput?.combo) {
       simulationResultCombo.classList.remove('d-none');
-      // add the slide in animation
-      console.log(simulationOutput.duo)
-      slideInObserver(simulationResultCombo, simulationOutput?.duo && simulationOutput?.duo?.length > 0 && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
+      // unobserve the element if it was observed and add the slide in animation with the appropriate class
+      if (comboResultObserver) comboResultObserver.unobserve(simulationResultCombo);
+      comboResultObserver = slideInObserver(simulationResultCombo, simulationOutput?.duo && simulationOutput?.duo?.length > 0 && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
       simulationOutput.combo.map((combo, i) => {
         const carouselWrapper = document.querySelector(`.giftpage__combo:nth-child(${i + 1})`);
         const carousel = document.querySelector(`.giftpage__combo:nth-child(${i + 1}) .carousel`);
@@ -264,9 +274,10 @@ function handleGiftsDisplay(simulationOutput, amount) {
               slide.classList.add('giftpage__comboSlide');
               caption.classList.add('carousel-caption');
               img.setAttribute('src', service?.img);
-              img.classList.add('img-fluid');
+              img.setAttribute('alt', service?.alt);
+              img.classList.add('img-fluid', 'w-100');
               strong.innerHTML = `${service?.price} &euro;`
-              serviceTitle.textContent = service?.name;
+              serviceTitle.innerHTML = `<a href=${service?.path}>${service?.name}</a>`;
               // add all the elements to the dom
               caption.appendChild(serviceTitle);
               caption.appendChild(strong);
@@ -287,7 +298,3 @@ window.addEventListener('load', () => {
   // handle slide in animation of the simulator container
   slideInObserver(simulatorContainer, 'slideAnimation--bottom');
 })
-
-
-
-// figure out a way to observe and unobserve before observing again an elem to avoid the animations to conteract themselves! Good luck :-)

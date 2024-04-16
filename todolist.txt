@@ -1,3 +1,8 @@
 // figure out how to merge all the data about the salon in one place (later database);
 // modify every part of the website which fetches components to use the reusable component directly (and add the container of the component in the html directly)
 // figure out how to redirect properly when people click links throughout the website
+
+
+
+// double check for massage beaute du regard for the booking into contact because I've been many times confused with the id "mbr" or "mbdr" or "bdr"
+// find a way to avoid the "blink" when page loads before the slide in animation starts

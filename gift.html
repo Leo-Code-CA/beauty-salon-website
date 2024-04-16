@@ -109,20 +109,23 @@
                                 <div
                                     class="giftpage__simulatorResultsCombo d-none border border-dark rounded d-flex flex-column gap-3 p-2 align-items-center">
                                     <!-- CAROUSEL ONE -->
-                                    <div class="giftpage__combo d-none">
-                                        <h3 class="heading-3 text-center">Pourquoi pas un combo? Rien de mieux pour
+                                    <div class="giftpage__combo d-none d-flex flex-column">
+                                        <h3 class="heading-3 text-center mb-3">Pourquoi pas un combo? Rien de mieux pour
                                             faire durer le plaisir!</h3>
-                                        <div id="giftSimulator1" class="carousel slide">
+                                        <div id="giftSimulator1"
+                                            class="carousel slide flex-fill d-flex flex-column justify-content-end">
                                             <div class="carousel-indicators"></div>
                                             <div class="carousel-inner"></div>
                                         </div>
                                     </div>
                                     <!-- CAROUSEL TWO -->
-                                    <div class="giftpage__combo d-none">
-                                        <h3 class="heading-3 text-center">Trop dur de choisir ? J'ai la solution: ne
+                                    <div class="giftpage__combo d-none d-flex flex-column">
+                                        <h3 class="heading-3 text-center mb-3">Trop dur de choisir ? J'ai la solution:
+                                            ne
                                             choisissez pas.
                                         </h3>
-                                        <div id="giftSimulator2" class="carousel slide">
+                                        <div id="giftSimulator2"
+                                            class="carousel slide flex-fill d-flex flex-column justify-content-end">
                                             <div class="carousel-indicators"></div>
                                             <div class="carousel-inner"></div>
                                         </div>
@@ -132,16 +135,27 @@
                         </div>
                     </div>
                     <!-- START OF THE PURCHASE SECTION -->
-                    <div class="giftpage__purchase d-flex flex-column gap-3 justify-content-evenly">
-                        <h2 class="heading-2 text-center">Achetez votre bon cadeau</h2>
-                        <img src="/images/gift/gift_card_illustration.svg" alt="gift card illustration"
-                            class="img-fluid">
-                        <button type="button" class="btn btn-primary w-100 giftpage__orderBtn">Commander</button>
+                    <div class="giftpage__purchase">
+                        <div class="giftpage__sticky d-flex flex-column gap-3 justify-content-evenly">
+                            <h2 class="heading-2 text-center">Achetez votre bon cadeau</h2>
+                            <img src="/images/gift/gift_card_illustration.svg" alt="gift card illustration"
+                                class="img-fluid">
+                            <button type="button" class="btn btn-primary w-100 giftpage__orderBtn">Commander</button>
+                            <div class="giftpage__quote d-none">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p class="mb-0 heading-2">Les plus beaux yeux sont ceux d'une femme qui reçoit un
+                                    cadeau.</p>
+                            </div>
+                        </div>
                     </div>
                     <!-- HIDDEN GIFT CARD TERMS OF SALE -->
                     <div
                         class="d-none giftpage__conditions position-fixed top-0 start-0 w-100 h-100 z-3 d-flex flex-column justify-content-center align-items-center">
-                        <div class="w-75 d-flex flex-column gap-3 p-3 rounded bg-secondary">
+                        <div
+                            class="giftpage__innerConditions overflow-y-auto d-flex flex-column gap-3 p-3 rounded bg-secondary">
                             <button type="button" class="btn-close align-self-end giftpage__closeConditions"
                                 aria-label="Close"></button>
                             <h3 class="heading-2 text-center">Termes et Conditions de Vente</h3>
