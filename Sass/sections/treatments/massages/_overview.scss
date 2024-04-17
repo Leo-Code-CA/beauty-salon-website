@@ -75,7 +75,7 @@
         @include custom.media-breakpoint-up(md) {
 
             aspect-ratio: initial;
-            height: calc(100vw / 4);
+            height: calc(100vw / 4.8);
 
             &__icon {
                 width: 60%;
@@ -86,8 +86,7 @@
                 aspect-ratio: initial;
                 height: calc(100vw / 4.8);
                 width: calc(100vw / 4.8);
-                top: 50% !important;
-                transform: translate(0, -50%);
+                top: 0 !important;
     
                 &:nth-child(1) {
                     left: 0;
@@ -141,7 +140,7 @@
     @media (orientation: landscape) {
 
         aspect-ratio: initial;
-        height: calc(100vw / 4);
+        height: calc(100vw / 4.8);
 
         &__icon {
             width: 60%;
@@ -152,8 +151,7 @@
             aspect-ratio: initial;
             height: calc(100vw / 4.8);
             width: calc(100vw / 4.8);
-            top: 50% !important;
-            transform: translate(0, -50%);
+            top: 0 !important;
 
             &:nth-child(1) {
                 left: 0;
@@ -210,7 +208,7 @@
         @include custom.media-breakpoint-up(xl) {
 
             width: 70vw;
-            height: calc(70vw / 4);
+            height: calc(70vw / 4.5);
             margin: 0 auto;
 
             &__card {

@@ -19,14 +19,9 @@
             transform: $translate;
         }
     
-        // 30% {
-        //     opacity: 0;
-        //     transform: $translate;
-        // }
-    
         100% {
             opacity: 1;
-            transform: initial;
+            transform: translate(none);
         } 
     }
 }

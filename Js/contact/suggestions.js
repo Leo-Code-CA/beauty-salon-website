@@ -1,7 +1,7 @@
 //////////////////////////// HANDLE SUGGESTIONS AFTER CONTACT FORM SUBMISSION ////////////////////////////
 
 // Imports
-import { suggestions } from './data.js';
+import { services_data } from './../data/servicesData.js';
 import handleFetchComponent from './../utils/fetchComponent.js';
 // HTML Elements
 const form = document.querySelector('.contact__form');
@@ -17,7 +17,7 @@ function handleSuggestions() {
 
     const selectedTopic = contactTopicSelect?.selectedOptions[0]?.value;
 
-    if (selectedTopic && suggestions && suggestions.length > 0) {
+    if (selectedTopic && services_data && services_data.length > 0) {
 
         if (selectedTopic === 'appt' && apptSuggestions) {
 
@@ -37,7 +37,7 @@ function handleSuggestions() {
                         if (btnElem && imgElem) {
                             btnElem.textContent = select.selectedOptions[0].textContent;
         
-                            suggestions.map(item => {
+                            services_data.map(item => {
                                 if (item.value === select?.selectedOptions[0]?.value) {
                                     imgElem.setAttribute('src', item?.img);
                                     imgElem.setAttribute('alt', item?.alt);
@@ -68,7 +68,7 @@ function handleSuggestions() {
                             const optgroup = select ? select?.selectedOptions[0]?.closest('optgroup')?.label : null;
                             suggestionType.includes(optgroup) ? null : suggestionType.push(select?.selectedOptions[0]);
             
-                            suggestions.map(item => {
+                            services_data.map(item => {
                                 if (item.value === select?.selectedOptions[0]?.value) {
                                     imgElem.setAttribute('src', item?.img);
                                     imgElem.setAttribute('alt', item?.alt);
@@ -83,7 +83,7 @@ function handleSuggestions() {
                                 suggestionType.map(suggestion => suggestionType.push(suggestion));
                             }
     
-                            const filteredSuggestions = suggestions.filter(suggestion => {
+                            const filteredSuggestions = services_data.filter(suggestion => {
     
                                 const parentLabel = suggestionType[3 - i]?.closest('optgroup')?.label;
                                 const currentValue = suggestionType[3 - i]?.value;

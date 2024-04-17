@@ -4,6 +4,7 @@
 import scrollToElem from './utils/scrollToElem.js';
 import { search_params } from './data/searchData.js';
 import handleFetchComponent from './utils/fetchComponent.js';
+import handleInactiveLinks from './utils/inactiveLinks.js';
 // HTML Elements
 const root = document.querySelector(':root');
 const navbarWrapper = document.querySelector('#nav');
@@ -19,6 +20,7 @@ function focusState() {
         focusedElem.addEventListener('focus', () => {
             toggleClassElem.classList.add('navbar__input-group--focus');
             handleToggleDropdown();
+            handleNavbarHeight();
         });
         focusedElem.addEventListener('blur', (e) => {
             // if the target is a dropdown link return (do not loose the focus) if not it won't redirect
@@ -36,6 +38,46 @@ function handleNavbarHeight() {
     if (navMenu && searchBar && !navMenu.classList.contains('show') && !searchBar.classList.contains('show')) {
         const navbarHeightRem = document.querySelector('.navbar')?.offsetHeight / 16;
         navbarHeightRem && navbarHeightRem !== 0 ? root.style.setProperty('--navbarHeight', `${navbarHeightRem}rem`) : null;
+    }
+}
+
+// Handle dropdown and navbar overflow
+function handleOverflow() {
+    // the elements that can possibly overflow
+    const searchBarDropdown = document.querySelector('.navbar__search-dropdown');
+    const navbarMenu = document.querySelector('.navbar__menu');
+    // the elements that can possibly trigger an overflow
+    const navLinks = document.querySelectorAll('.navbar__menu .dropdown');
+    const navbarInput = document.querySelector('.navbar__input');
+
+    if (searchBarDropdown && navbarMenu && navLinks && navLinks.length > 0 && navbarInput) {
+        navLinks.forEach(a => a.addEventListener('click', () => {
+            checkViewportOverflow(navbarMenu);
+            checkViewportOverflow(searchBarDropdown);
+        }));
+        navbarInput.addEventListener('change', () => {
+            checkViewportOverflow(searchBarDropdown);
+            checkViewportOverflow(navbarMenu);
+        });
+        window.addEventListener('resize', () => {
+            checkViewportOverflow(searchBarDropdown);
+            checkViewportOverflow(navbarMenu);
+        });
+    }
+
+    function checkViewportOverflow(elem) {
+        if (elem) {
+            const distanceFromTopViewport = elem?.getBoundingClientRect().top;
+            const elemCurrentHeight = elem?.getBoundingClientRect().height;
+            const elemMaxHeight = window?.innerHeight - distanceFromTopViewport;
+            if (elemCurrentHeight > elemMaxHeight) {
+                elem.style.maxHeight = `${elemMaxHeight}px`;
+                elem.style.overflowY = 'auto';
+            } else {
+                elem.style.maxHeight = 'none';
+                elem.style.overflowY = 'initial';
+            }
+        }
     }
 }
 
@@ -84,23 +126,25 @@ function handleLinkClick(link, e) {
 // Handle search bar suggestions
 function handleSearchBar(e) {
 
-    const searchParam = e?.target?.value;
+    const userInput = e?.target?.value;
+    const sanitizedInput = userInput ? encodeURIComponent(userInput.trim().toLowerCase()) : null;
+    console.log(sanitizedInput);
     const dropdownList = document.querySelector('.navbar__search-dropdown ul');
 
-    if (searchParam && dropdownList) {
+    // if there is no search parameter ...
+    if (sanitizedInput === '' && dropdownList) {
+        dropdownList.innerHTML = '';
+        handleToggleDropdown();
+        return;
+    }
 
-        // if there is no search parameter ...
-        if (searchParam === '') {
-            dropdownList.innerHTML = '';
-            handleToggleDropdown();
-            return;
-        }
-    
+    if (sanitizedInput && dropdownList) {
         // if the search parameter is not null search for corresponding keywords in the list
-        const suggestions = searchParam && searchParam.length > 0 && search_params.filter(param => {
-            const keyword = param.query.filter(word => word.includes(searchParam) || searchParam.includes(word));
-            return keyword.length > 0;
-        })
+        const suggestions = search_params.filter(param => {
+            const { query } = param;
+            const keywordIndex = query.findIndex(word => word.toLowerCase().includes(sanitizedInput) || sanitizedInput.includes(word.toLowerCase()));
+            return keywordIndex !== -1;
+        });
     
         // clear the dropdown
         dropdownList.innerHTML = '';
@@ -175,18 +219,21 @@ function handleQueryParamsParsing() {
     }
 }      
 
+// Call the function and add the event handlers on load of the page
 window.addEventListener('load', async () => {
     if (navbarWrapper) {
         // fetch the navbar
         await handleFetchComponent('/components/navbar.html', navbarWrapper);
-        // get navbar height in order to apply the correct styling to the surrounding elements on load and resize
+        // get navbar height in order to apply the correct styling to the surrounding elements on load and resize and on click
         handleNavbarHeight();
         window.addEventListener('resize', handleNavbarHeight);
+        // handle overflow of the dropdown and the navmenu
+        handleOverflow();
         // add the focus and blur event listeners
         focusState();
         // add redirect click listener to all links in the navbar
-        const navLinks = document.querySelectorAll('[data-redirect]');
-        navLinks && navLinks.length > 0 ? navLinks.forEach(link => link.addEventListener('click', (e) => handleLinkClick(link, e))) : null;
+        const links = document.querySelectorAll('[data-redirect]');
+        links && links.length > 0 ? links.forEach(link => link.addEventListener('click', (e) => handleLinkClick(link, e))) : null;
         // add input and change listeners to the search bar
         const searchBar = document.querySelector('.navbar__input');
         searchBar ? searchBar.addEventListener('input', (e) => handleSearchBar(e)) : null;
@@ -195,5 +242,7 @@ window.addEventListener('load', async () => {
         submitBtn ? submitBtn.addEventListener('click', (e) => handleSearchBarSubmit(e)) : null;
         // scroll to elem if url contains query params
         handleQueryParamsParsing();
+        // handle inactive links on every page - dev purpose only - remove for production
+        handleInactiveLinks();
     }
 });

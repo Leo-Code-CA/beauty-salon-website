@@ -3,13 +3,17 @@
 // Imports
 import scrollToElem from "./../utils/scrollToElem.js";
 import slideInObserver from "./../utils/slideInObserver.js";
-
+// Media Queries
+const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 767px)");
 // HTML Elements
 const root = document.querySelector(':root');
 const overview = document.querySelectorAll('.overview__card');
 const overviewBtn = document.querySelectorAll('.overview__card .overview__massageBtn');
 const doorIllustration = document.querySelector('.californien__infoIllustration');
-const allMassagesDescription = document.querySelectorAll('.massages__massage:not(:nth-child(1))');
+const allMassagesDescription = document.querySelectorAll('.massages__massage');
+// Variables
+let overviewCardTwoObserver;
+let overviewCardThreeObserver;
 
 ///////// START OF THE JS ////////
 
@@ -57,7 +61,7 @@ function handleScrollOnClick() {
         const massageDescription = document.querySelector(`.massages__massage:nth-child(${i + 1})`)
         btn.addEventListener('click', () => scrollToElem(massageDescription));
     })
-}
+};
 
 // Handle "door" info reveal animation
 function handleDoorReveal() {
@@ -79,10 +83,21 @@ function handleDoorReveal() {
     }
 };
 
-// Handle massages descriptions slide in animation
-function handleMassageSlideIn() {
-    allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'slideAnimation--bottom', { root: null, threshold: 0}));
-}
+// Handle overview cards slide in animation
+function handleOverviewCardsAnimation() {
+    overview && overview.length > 0 ? overview.forEach((summary, i) => {
+        if (i === 0) slideInObserver(summary, 'slideAnimation--left');
+        if (i === 1) {
+            if (overviewCardTwoObserver) overviewCardTwoObserver.unobserve(summary);
+            overviewCardTwoObserver = slideInObserver(summary, mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--left');
+        }
+        if (i === 2) {
+            if (overviewCardThreeObserver) overviewCardThreeObserver.unobserve(summary);
+            overviewCardThreeObserver = slideInObserver(summary, mediaQuery.matches ? 'slideAnimation--left' : 'slideAnimation--right');
+        }
+        if (i === 3) slideInObserver(summary, 'slideAnimation--right');
+    }) : null
+};
 
 // Call the functions and add the event handlers on load of the page
 window.addEventListener("load", () => {
@@ -91,7 +106,9 @@ window.addEventListener("load", () => {
     // Handle scroll to elem
     handleScrollOnClick();
     // Handle "door reveal" animation 
-    doorIllustration.addEventListener('click', handleDoorReveal);
-    // Handle massages slide in animation
-    handleMassageSlideIn();
-})
+    doorIllustration ? doorIllustration.addEventListener('click', handleDoorReveal) : null;
+    // Handle massages description slide in animation
+    allMassagesDescription && allMassagesDescription.length > 0 ? allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'slideAnimation--bottom')) : null;
+    // Handle massages summary / overview slide in animation
+    handleOverviewCardsAnimation();
+});

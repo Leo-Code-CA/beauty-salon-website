@@ -1,7 +1,7 @@
 //////////////////////////// GIFT SIMULATOR OF THE GIFT PAGE ////////////////////////////
 
 // Imports
-import { suggestions } from './../contact/data.js';
+import { services_data } from './../data/servicesData.js';
 import handleCarouselLazyLoading from './../utils/lazyCarousel.js';
 import slideInObserver from './../utils/slideInObserver.js';
 // Media Queries
@@ -176,10 +176,10 @@ function handlegiftSimulatorSubmission(e) {
     // configure and display the simulation
     let simulationResult;
     if (simulatorInput.value === '') {
-      simulationResult = handleGiftSuggestions(Number(simulatorSelect.selectedOptions[0].value), suggestions);
+      simulationResult = handleGiftSuggestions(Number(simulatorSelect.selectedOptions[0].value), services_data);
       handleGiftsDisplay(simulationResult, simulatorSelect.selectedOptions[0].value);
     } else {
-      simulationResult = handleGiftSuggestions(Number(simulatorInput.value), suggestions);
+      simulationResult = handleGiftSuggestions(Number(simulatorInput.value), services_data);
       handleGiftsDisplay(simulationResult, simulatorInput.value);
     }
     simulatorInput.value = '';

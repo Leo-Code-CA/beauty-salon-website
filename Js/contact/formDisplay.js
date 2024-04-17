@@ -1,8 +1,10 @@
 //////////////////////////// HANDLE APPOINTMENT SELECTS ////////////////////////////
 
 // Imports
-
+import handlePrefillForm from './../utils/prefillForm.js';
+import slideInObserver from './../utils/slideInObserver.js';
 // HTML Elements
+const contactSection = document.querySelector('.contact');
 const form = document.querySelector('.contact__form');
 const select = document.querySelector('.contact__contactTopic');
 const hiddenSelect = document.querySelector('.contact__hiddenSelect');
@@ -66,6 +68,7 @@ function handleInvalidForm(e) {
 // Handle form display depending on the user selection // CHANGE OR IMPROVE THIS ONE
 function handleApptFormDisplay() {
 	const currentSelection = select?.selectedOptions[0]?.value;
+	console.log(select?.selectedOptions[0]);
 	if (currentSelection && apptFormHidden) {
 		currentSelection === 'appt' ? apptFormHidden.classList.remove('d-none') : apptFormHidden.classList.add('d-none');
 	}
@@ -138,6 +141,8 @@ function handleDeleteService(e) {
 
 // Call the functions and add the event handlers on load of the page
 window.addEventListener("load", () => {
+	// handle prefill form
+	handlePrefillForm(window?.location?.search);
     // handle form display depending on the select selected option on load and change
 	handleApptFormDisplay();
 	select ? select.addEventListener('change', handleApptFormDisplay) : null;
@@ -149,5 +154,7 @@ window.addEventListener("load", () => {
 	) : null;
 	// handle request to book more than one service
 	addBtn ? addBtn.addEventListener('click', handleBookMoreServices) : null;
+	// handle slide in animation
+	slideInObserver(contactSection, 'slideAnimation--bottom');
 })
 

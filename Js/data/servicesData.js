@@ -1,4 +1,4 @@
-export const suggestions = [
+export const services_data = [
     {
         img: 'https://placehold.co/400',
         alt: 'placeholder image',
@@ -283,7 +283,3 @@ export const suggestions = [
     },
     
 ]
-
-
-
-

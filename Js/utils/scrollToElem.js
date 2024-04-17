@@ -1,3 +1,4 @@
+// Handle scroll to elem by taking into account the navbar height
 export default function scrollToElem(elem) {
     if (elem) {
         const navbarHeight = document.querySelector('.navbar')?.clientHeight;

@@ -337,7 +337,8 @@
 
 			width: 85%;
 			margin: functions.toRem(16) auto 0;
-			box-shadow: 0 0 functions.toRem(5) functions.toRem(5) rgba(custom.$dark, 0.7);
+			// box-shadow: 0 0 functions.toRem(5) functions.toRem(5) rgba(custom.$dark, 0.7);
+			box-shadow: 0 0 functions.toRem(5) functions.toRem(5) rgba(custom.$primary, 0.7);
 			border-radius: functions.toRem(10) functions.toRem(10) 0 0;
 			padding-right: 0 !important;
 			padding-bottom: 0 !important;

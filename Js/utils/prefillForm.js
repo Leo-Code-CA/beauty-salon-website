@@ -1,34 +1,17 @@
-// Handle prefill of the form select when the user clicked "book" somewhere on the website - on a specific service
-const bookBtn = document.querySelectorAll('[data-book]');
-
-if (bookBtn.length > 0) {
-
-    bookBtn.forEach(btn => btn.addEventListener('click', (e) => handlePrefillForm(e)));
-
-    function handlePrefillForm(e) {
-
-        // e.preventDefault()
-        const selectedValue = e.target.dataset.book;
-        localStorage.setItem('book', selectedValue);
-    
-    }
-
-} else {
-
-    const select = document.querySelector('.contact__contactTopic option[value="appt"]');
-    const hiddenSelect = document.querySelectorAll('.contact__hiddenSelect option');
-    const bookRequest = localStorage.getItem('book');
-
-    if (bookRequest) {
-        select.setAttribute("selected", true);
-        hiddenSelect.forEach(opt => opt.value === bookRequest ? opt.setAttribute("selected", true) : null);
-    }
-
-
-
+// Handle prefill contact form with requested service 
+export default function handlePrefillForm(params) {
+    const apptOption = document.querySelector('.contact__contactTopic option[value="appt"]');
+    const hiddenSelectOptions = document.querySelectorAll('.contact__hiddenSelect option');
+    const currentlySelectedOption = document.querySelector('.contact__contactTopic option[selected]');
+    if (params && apptOption && hiddenSelectOptions && hiddenSelectOptions.length > 0) {
+        const serviceId = params.slice(params.indexOf('=') + 1);
+        if (serviceId) {
+            currentlySelectedOption ? currentlySelectedOption.removeAttribute('selected') : null;
+            apptOption.setAttribute("selected", "");
+            hiddenSelectOptions.forEach(opt => opt.value === serviceId ? opt.setAttribute("selected", true) : null);
+        }
+    } 
 }
-
-
 
 
 

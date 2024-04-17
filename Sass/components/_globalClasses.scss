@@ -12,17 +12,23 @@
 }
 
 .slideAnimation {
+    // not sure about that
+    perspective: 1000;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    
 
     &--bottom {
-        animation: slideInBottom 1.5s ease-out forwards;
+        animation: slideInBottom 1.5s ease-out forwards !important;
     }
 
     &--left {
-        animation: slideInLeft 1.5s ease-out forwards;
+        animation: slideInLeft 1.5s ease-out forwards !important;
     }
 
     &--right {
-        animation: slideInRight 1.5s ease-out forwards;
+        animation: slideInRight 1.5s ease-out forwards !important;
     }
 }
 
