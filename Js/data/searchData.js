@@ -67,9 +67,9 @@ export const search_params = [
     }, 
     {
         query: ['massage', 'facial', 'beauté', 'regard', 'yeux', 'lifting', 'anti-age', 'jeunesse'],
-        path: '/massages.html?target=bdr',
+        path: '/massages.html?target=mbr',
         sentence: "Massage facial beauté du regard",
-        redirect: 'bdr'
+        redirect: 'mbr'
     }, 
     {
         query: ['massage', 'corps', 'californien', 'détente', 'relaxation'],
