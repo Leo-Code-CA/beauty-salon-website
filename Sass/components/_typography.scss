@@ -1,95 +1,69 @@
 @use '../custom';
 @use '../components/functions';
 
-.homepage {
-    font-family: 'Raleway', sans-serif;
-}
-
-.heading-1 { // h2 for now
-    font-family: 'Bodoni Moda', serif;
+.heading-1 {
+    font-family: custom.$secondary-ff;
     font-weight: 700;
-    // OLD SIZE 
-    // font-size: clamp(functions.toRem(25), calc(functions.toRem(25) + 0.5vw), functions.toRem(35));
-    font-size: clamp(functions.toRem(24), calc(functions.toRem(24) + 0.5vw), functions.toRem(34));
+    font-size: clamp(functions.toRem(22), calc(functions.toRem(22) + 0.5vw), functions.toRem(34));
 
     span {
         white-space: nowrap;
     }
 
     @media (orientation: landscape) {
-
-        font-size: clamp(functions.toRem(22), calc(functions.toRem(20) + 0.4vw), functions.toRem(30));;
-
-
-        @include custom.media-breakpoint-up(lg) {
-            // OLD SIZE
-            // font-size: clamp(functions.toRem(28), calc(functions.toRem(28) + 0.65vw), functions.toRem(37));
-            font-size: clamp(functions.toRem(24), calc(functions.toRem(24) + 0.5vw), functions.toRem(34));
-        } 
-        
+        font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.8vw), functions.toRem(34));;
     }
 }
 
-.heading-2 { // h3 for now
-    font-family: 'Bodoni Moda', serif;
+.heading-2 {
+    font-family: custom.$secondary-ff;
     font-weight: 700;
-    // OLD SIZE
-    // font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
-    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(30));
+    font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(28));
 
     @media (orientation: landscape) {
-        font-size: clamp(functions.toRem(17), calc(functions.toRem(17) + 0.3vw), functions.toRem(27));
-
-        @include custom.media-breakpoint-up(lg) {
-            // OLD SIZE
-            // font-size: clamp(functions.toRem(26), calc(functions.toRem(26) + 0.4vw), functions.toRem(32));
-            font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.4vw), functions.toRem(30));
-        }
+        font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.6vw), functions.toRem(28));
     }
 }
 
-.heading-3 { // h3 as well
-
-    font-family: 'Bodoni Moda', serif;
+.heading-3 {
+    font-family: custom.$secondary-ff;
     font-weight: 700;
-    font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
-}
-
-.heading-4 { // strong tag for now
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 700;
-    font-size: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.3vw), functions.toRem(18));
-}
-
-.heading-5 { // table header so far
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(functions.toRem(18), calc(functions.toRem(18) + 0.4vw), functions.toRem(25));
-    font-weight: 700;
+    font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(24));
 
     @media (orientation: landscape) {
-        font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.4vw), functions.toRem(20));
+        font-size: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.5vw), functions.toRem(24));
     }
 }
 
-.subheading { // under a heading
-    font-family: 'Raleway', sans-serif;
+.heading-4 {
+    font-family: custom.$secondary-ff;
+    font-weight: 700;
+    font-size: clamp(functions.toRem(13), calc(functions.toRem(13) + 0.4vw), functions.toRem(23));
+}
+
+.heading-5 {
+    font-family: custom.$main-ff;
+    font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.4vw), functions.toRem(25));
+    font-weight: 700;
+}
+
+.subheading {
+    font-family: custom.$main-ff;
     font-size: clamp(functions.toRem(10), calc(functions.toRem(8) + 0.3vw), functions.toRem(12));
     letter-spacing: functions.toRem(2);
-    font-weight: 400;
+    font-weight: 300;
     color: custom.$primary;
 }
 
-.emphasize { // emphasized larger text
-    // font-size: functions.toRem(48);
+.emphasize {
     font-size: clamp(functions.toRem(25), calc(functions.toRem(25) + 0.5vw), functions.toRem(50));
-    font-weight: 200;
     color: custom.$secondary;
-    font-family: 'Bodoni Moda', serif;
+    font-family: custom.$secondary-ff;
 
     @media (orientation: portrait) {
         display: block;
         text-align: center;
-        margin: 1rem 0;
+        margin: functions.toRem(16) 0;
     }
 
     @media (orientation: landscape) {
@@ -101,7 +75,7 @@
     color: custom.$white;
     background-color: custom.$primary;
     mix-blend-mode: multiply;
-    font-family: 'Bodoni Moda', serif;
+    font-family: custom.$secondary-ff;
 }
 
 

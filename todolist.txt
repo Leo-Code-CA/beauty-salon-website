@@ -1,8 +1,5 @@
-// clean and improve all the services data
 // find a way to avoid the "blink" / 'flicker' when page loads before the slide in animation starts and even after..
 // reactivate form validation where it has been desactivated for dev purpose
-// remove the data-book attributes if not used
 // back to top btn?
-// check the fonts (style and size)
 
 

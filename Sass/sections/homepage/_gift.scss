@@ -6,7 +6,7 @@
     // ALL BREAKPOINTS 
 
     &__btn {
-        font-family: 'Bodoni Moda', serif;
+        font-family: custom.$secondary-ff;
         font-weight: 700;
         letter-spacing: functions.toRem(5);
         text-transform: uppercase;

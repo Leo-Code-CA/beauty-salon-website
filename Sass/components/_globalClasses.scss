@@ -7,16 +7,28 @@
 @include mixins.slideInAnimation('slideInRight', translateX(100%));
 @include mixins.pulseAnimation('pulse', functions.toRem(30), custom.$primary);
 
-.slideInAnimatedElem {
-    opacity: 0;
+.scrollTop {
+    top: 97%;
+    left: 95%;
+    transform: translate(-95%, -97%);
+    z-index: 10;
+    height: functions.toRem(32);
+    width: functions.toRem(32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+        font-size: functions.toRem(24);
+    }
 }
 
 .slideAnimation {
     // not sure about that
-    perspective: 1000;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    -webkit-backface-visibility: hidden;
+    // perspective: 1000;
+    // backface-visibility: hidden;
+    // -webkit-perspective: 1000;
+    // -webkit-backface-visibility: hidden;
     
 
     &--bottom {

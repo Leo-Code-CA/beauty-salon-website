@@ -16,7 +16,7 @@
         color: custom.$dark;
 
         h3 {
-            font-family: 'Bodoni Moda', serif;
+            font-family: custom.$secondary-ff;
             font-weight: 700;
             font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
         }

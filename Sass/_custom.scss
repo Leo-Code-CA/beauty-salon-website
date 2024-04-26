@@ -9,9 +9,11 @@ $white-03: hsla(0, 33%, 98%, 0.3);
 $white-05: hsla(0, 33%, 98%, 0.5);
 
 // FONTS
-$body-fs: clamp(functions.toRem(14), calc(14px + 0.17vw), functions.toRem(17)) !important;
-$body-landscape-fs: clamp(functions.toRem(12), calc(12px + 0.17vw), functions.toRem(15));
+$body-fs: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.2vw), functions.toRem(17));
+$body-landscape-fs: clamp(functions.toRem(12), calc(functions.toRem(12) + 0.3vw), functions.toRem(17));
 $btn-font-size: $body-fs;
+$main-ff: "Libre Franklin", sans-serif;
+$secondary-ff: 'Bodoni Moda', serif;
 
 // CAROUSEL
 $carousel-control-color: $dark;
@@ -49,9 +51,12 @@ $blockquote-footer-font-size: $body-fs;
 $accordion-button-active-bg: $white;
 
 // LISTS
-// $list-group-hover-bg: $secondary;
 $list-group-hover-bg: $secondary;
 $list-group-bg: $white;
+
+// BUTTONS
+$btn-font-size: $body-fs;
+// add maybe link underline bootstrap
 
 // GLOBAL SETTINGS
 :root {
@@ -63,19 +68,12 @@ $list-group-bg: $white;
 body {
     width: 100%;
     min-height: 100vh;
-    overflow-y: scroll;
-    font-size: $body-fs;
+    font-size: $body-fs !important;
     scroll-behavior: smooth;
+    font-family: $main-ff;
 
     @media (orientation: landscape) {
-
         font-size: $body-landscape-fs !important;
-
-
-        @media screen and (min-width: 992px) {
-            font-size: $body-fs;
-        } 
-        
     }
 }
 

@@ -13,7 +13,7 @@
     <title>Institut For You</title>
     <link rel="stylesheet" href="CSS/main-min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:ital,wght@0,200;0,400;0,700;0,900;1,200;1,400;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/placeholder_favicon.svg" sizes="32x32">
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,12 +26,16 @@
     <!-- START THE WEBSITE MAIN CONTENT  -->
     <main>
         <div class="container-fluid">
+            <!-- BACK TO TOP STICKY BUTTON -->
+            <button class="btn btn-primary opacity-75 position-fixed scrollTop">
+                <i class="fa-solid fa-angles-up"></i>
+            </button>
             <!-- START OF THE SECTION 1 - INTRO  -->
             <section class="row intro" id="intro">
                 <!-- VIDEO CONTAINER -->
                 <div
                     class="p-0 intro__containers intro__containers--video position-relative d-flex justify-content-center">
-                    <h1 class="intro__animatedTitle fw-bold heading-5 position-absolute d-flex flex-column justify-content-center align-items-center"
+                    <h1 class="intro__animatedTitle fw-bold position-absolute d-flex flex-column justify-content-center align-items-center"
                         id="cutoutbox">
                         <span>L'institut où vous êtes traitée avec</span>
                         <strong class="cutout d-block rounded text-uppercase p-2">patience</strong>
@@ -45,8 +49,9 @@
                 <!-- TEXT CONTAINER -->
                 <div class="intro__containers intro__containers--text d-flex justify-content-center align-items-center">
                     <div class="intro__textContent d-flex flex-column justify-content-evenly gap-3 mx-auto rounded">
-                        <h1 class="heading-1 text-center d-none d-lg-block">L'institut où vous êtes traitée comme<br>une
-                            reine.</h1>
+                        <h1 class="heading-1 text-center d-none d-lg-block">L'institut où vous êtes traitée
+                            comme <span>une
+                                reine.</span></h1>
                         <h1 class="heading-1 d-lg-none text-center m-0">Envie de se faire <span>dorloter ?</span></h1>
                         <p class="m-0 lh-lg">Évadez vous le temps d'un soin entre les mains expertes de Brigitte, votre
                             esthéticienne diplômée, qui vous fera goûter au plaisir de la relaxation d'un niveau
@@ -80,7 +85,7 @@
                                     <div class="d-flex justify-content-between w-100 align-items-center">
                                         <div>
                                             <h4 class="mb-0 fw-bold align-self-start heading-5">Sourcils</h4>
-                                            <a href="/home.html" data-inactive
+                                            <a href="/home.html"
                                                 class="subheading align-self-start text-uppercase text-decoration-none mb-3">épilation</a>
                                         </div>
                                         <img src="/images/homepage/arrow_circle_icon.svg" alt="arrow icon"
@@ -102,10 +107,10 @@
                                             quelconque désagrément.</li>
                                     </ul>
                                     <div class="d-flex gap-2">
-                                        <a href="/contact.html?book=ess" data-book="ees" type="button" role="button"
+                                        <a href="/contact.html?book=ees" type="button" role="button"
                                             aria-roledescription="button" class="btn btn-primary flex-fill">Réserver</a>
                                         <a href="/home.html" type="button" role="button" aria-roledescription="button"
-                                            class="btn btn-primary flex-fill" data-inactive>Découvrir</a>
+                                            class="btn btn-primary flex-fill">Découvrir</a>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +124,7 @@
                                     <div class="d-flex w-100 align-items-center justify-content-between">
                                         <div>
                                             <h4 class="mb-0 fw-bold align-self-start heading-5">Demi-Jambes</h4>
-                                            <a href="/home.html" data-inactive
+                                            <a href="/home.html"
                                                 class="subheading align-self-start text-uppercase text-decoration-none mb-3">épilation</a>
                                         </div>
                                         <img src="/images/homepage/arrow_circle_icon.svg" alt="arrow icon"
@@ -141,9 +146,9 @@
                                     </ul>
                                     <div class="d-flex gap-2">
                                         <a href="/contact.html?book=edj" role="button" aria-roledescription="button"
-                                            data-book="edj" type="button" class="btn btn-primary flex-fill">Réserver</a>
+                                            type="button" class="btn btn-primary flex-fill">Réserver</a>
                                         <a href="/home.html" type="button" role="button" aria-roledescription="button"
-                                            class="btn btn-primary flex-fill" data-inactive>Découvrir</a>
+                                            class="btn btn-primary flex-fill">Découvrir</a>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +186,7 @@
                                     </ul>
                                     <div class="d-flex gap-2">
                                         <a href="/contact.html?book=mks" role="button" aria-roledescription="button"
-                                            data-book="mks" type="button" class="btn btn-primary flex-fill">Réserver</a>
+                                            type="button" class="btn btn-primary flex-fill">Réserver</a>
                                         <a href="/massages.html?target=mks" data-redirect="mks" type="button"
                                             role="button" aria-roledescription="button"
                                             class="btn btn-primary flex-fill">Découvrir</a>
@@ -197,15 +202,13 @@
                             <tr>
                                 <th class="heading-5">
                                     Sourcils
-                                    <a href="/home.html" role="button" type="button" aria-roledescription="button"
-                                        class="subheading d-block text-uppercase text-decoration-none"
-                                        data-inactive>épilation</a>
+                                    <a href="#" role="button" type="button" aria-roledescription="button"
+                                        class="subheading d-block text-uppercase text-decoration-none">épilation</a>
                                 </th>
                                 <th class="heading-5">
                                     Demi-Jambes
-                                    <a href="/home.html" role="button" type="button" aria-roledescription="button"
-                                        class="subheading d-block text-uppercase text-decoration-none"
-                                        data-inactive>épilation</a>
+                                    <a href="#" role="button" type="button" aria-roledescription="button"
+                                        class="subheading d-block text-uppercase text-decoration-none">épilation</a>
                                 </th>
                                 <th class="heading-5">
                                     Kobido Suprême
@@ -233,13 +236,12 @@
                                                 quelconque désagrément.</li>
                                         </ul>
                                         <div class="d-flex gap-2">
-                                            <a href="/contact.html?book=ees" data-book="ees" type="button" role="button"
+                                            <a href="/contact.html?book=ees" type="button" role="button"
                                                 aria-roledescription="button"
                                                 class="btn btn-primary facial_massage_image flex-fill">Réserver</a>
                                             <a href="/home.html" type="button" role="button"
                                                 aria-roledescription="button"
-                                                class="btn btn-primary facial_massage_image flex-fill"
-                                                data-inactive>Découvrir</a>
+                                                class="btn btn-primary facial_massage_image flex-fill">Découvrir</a>
                                         </div>
                                     </div>
                                 </td>
@@ -259,12 +261,12 @@
                                             </li>
                                         </ul>
                                         <div class="d-flex gap-2">
-                                            <a href="/contact.html?book=edj" data-book="edj" type="button" role="button"
+                                            <a href="/contact.html?book=edj" type="button" role="button"
                                                 aria-roledescription="button"
                                                 class="btn btn-primary flex-fill">Réserver</a>
                                             <a href="/home.html" type="button" role="button"
-                                                aria-roledescription="button" class="btn btn-primary flex-fill"
-                                                data-inactive>Découvrir</a>
+                                                aria-roledescription="button"
+                                                class="btn btn-primary flex-fill">Découvrir</a>
                                         </div>
                                     </div>
                                 </td>
@@ -283,7 +285,7 @@
                                                 profonde.</li>
                                         </ul>
                                         <div class="d-flex gap-2">
-                                            <a href="/contact.html?book=mks" data-book="mks" type="button" role="button"
+                                            <a href="/contact.html?book=mks" type="button" role="button"
                                                 aria-roledescription="button"
                                                 class="btn btn-primary flex-fill">Réserver</a>
                                             <a href="/massages.html?target=mks" type="button" role="button"
@@ -307,7 +309,7 @@
                         class="gift__container gift__container--img d-flex flex-column gap-2 justify-content-center flex-fill">
                         <img loading="lazy" src="/images/homepage/spa_illustration.svg" alt="woman in a spa">
                         <a href="/gift.html" type="button" role="button" aria-roledescription="button"
-                            class="btn btn-secondary gift__btn" data-redirect="null">Offrir</a>
+                            class="btn btn-secondary gift__btn">Offrir</a>
                     </div>
                     <div
                         class="gift__container gift__container--text d-flex align-items-center flex-column text-center">
@@ -421,7 +423,7 @@
                                 id="summaryLeft">
                                 <span
                                     class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
-                                    <img src="/images/homepage/grateful_icon.svg"
+                                    <img loading="lazy" src="/images/homepage/grateful_icon.svg"
                                         alt="icon with hands and heart representing gratitude">
                                 </span>
                                 <strong class="d-block text-center text-uppercase heading-4">satisfaction</strong>
@@ -437,7 +439,8 @@
                                 id="summaryCenter">
                                 <span
                                     class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
-                                    <img src="/images/homepage/review_bubble_icon.svg" alt="review bubble icon">
+                                    <img loading="lazy" src="/images/homepage/review_bubble_icon.svg"
+                                        alt="review bubble icon">
                                 </span>
                                 <figcaption class="flex-fill w-100 d-flex flex-column justify-content-between mb-3">
                                     <strong class="d-block text-center text-uppercase heading-4">excellence</strong>
@@ -474,7 +477,8 @@
                                 id="summaryRight">
                                 <span
                                     class="d-flex justify-content-center flex-shrink-0 align-items-center rounded-circle mx-auto summary__icon">
-                                    <img src="/images/homepage/euro_tag_icon.svg" alt="euro price tag icon">
+                                    <img loading="lazy" src="/images/homepage/euro_tag_icon.svg"
+                                        alt="euro price tag icon">
                                 </span>
                                 <strong class="d-block text-center text-uppercase heading-4">accessibilité</strong>
                                 <figcaption>

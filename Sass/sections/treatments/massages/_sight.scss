@@ -59,7 +59,7 @@
                     font-size: clamp(functions.toRem(20), calc(functions.toRem(20) + 0.5vw), functions.toRem(40));
                     font-weight: 200;
                     color: custom.$primary;
-                    font-family: 'Bodoni Moda', serif;
+                    font-family: custom.$secondary-ff;
                 }
             }
         }

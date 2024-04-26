@@ -85,15 +85,6 @@
 
             }
         }
-
-        @include custom.media-breakpoint-up(md) {
-
-            &__textContent {
-                p {
-                    line-height: 1.6 !important;
-                }
-            }
-        }
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
         
         @include custom.media-breakpoint-up(lg) {

@@ -7,3 +7,5 @@ import './home_features.js';
 import './home_intro.js';
 import './home_reviews.js';
 import './home_summary.js';
+
+import './../backToTop.js';
