@@ -8,18 +8,22 @@
 @include mixins.pulseAnimation('pulse', functions.toRem(30), custom.$primary);
 
 .scrollTop {
-    top: 97%;
-    left: 95%;
-    transform: translate(-95%, -97%);
+    top: 99%;
+    left: 97%;
+    transform: translate(-97%, -99%);
     z-index: 10;
-    height: functions.toRem(32);
-    width: functions.toRem(32);
+    height: functions.toRem(40);
+    width: functions.toRem(40);
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: custom.$primary;
+    border: functions.toRem(1) solid;
+    border-radius: 50% !important;
+    cursor: pointer;
 
     i {
-        font-size: functions.toRem(24);
+        font-size: functions.toRem(25);
     }
 }
 
