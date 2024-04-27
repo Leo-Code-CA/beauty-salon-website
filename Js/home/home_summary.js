@@ -2,7 +2,7 @@
 
 // Imports
 import FnScrollDirection from "./../utils/scrollDirection.js";
-import slideInObserver from "../utils/slideInObserver.js";
+import { setUpSlideInAnimation } from "../utils/slideInObserver.js";
 import { purpleIshPalette, blackNWhitePalette, filters } from "./../data/constants.js";
 // Media Queries
 const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 767px)");
@@ -333,9 +333,9 @@ function handleSummaryHover() {
 
 // Handle slide in animation of the summary box
 function handleSummarySlideInAnimation() {
-    slideInObserver(summaryBoxOne, 'slideAnimation--left');
-    slideInObserver(summaryBoxTwo, 'slideAnimation--bottom');
-    slideInObserver(summaryBoxThree, 'slideAnimation--right');
+    setUpSlideInAnimation(summaryBoxOne, 'translateX(-100%)', 'translateX(0)');
+    setUpSlideInAnimation(summaryBoxTwo, 'translateY(200%)', 'translateY(0)');
+    setUpSlideInAnimation(summaryBoxThree, 'translateX(100%)', 'translateX(0)');
 }
 
 //////////////////////////// GLOBAL FUNCTIONS CALL ////////////////////////////

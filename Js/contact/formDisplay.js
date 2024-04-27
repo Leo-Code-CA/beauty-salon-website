@@ -149,8 +149,7 @@ window.addEventListener("load", () => {
 	// handle form submit and creation of the request summary page
 	 form ? form.addEventListener(
 		'submit',
-		// e => !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
-		e => handleValidForm(e) // just for dev purpose - remove later on 
+		e => !form.reportValidity() ? handleInvalidForm(e) : handleValidForm(e)
 	) : null;
 	// handle request to book more than one service
 	addBtn ? addBtn.addEventListener('click', handleBookMoreServices) : null;

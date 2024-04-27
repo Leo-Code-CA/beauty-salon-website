@@ -1,5 +1,31 @@
 // find a way to avoid the "blink" / 'flicker' when page loads before the slide in animation starts and even after..
-// reactivate form validation where it has been desactivated for dev purpose
-// back to top btn?
 
 
+option 2 for slide in:
+
+window.addEventListener('scroll', handleOpacity)
+
+function handleOpacity() {
+
+    const allSlideInElems = document.querySelectorAll('.slideInElement');
+    let inOrbelowViewport = [];
+    let aboveViewPort = [];
+    allSlideInElems.forEach(elem => {
+        const findInOrBelow = inOrbelowViewport.findIndex(el => el === elem);
+        const findAboveViewport = aboveViewPort.findIndex(el => el === elem);
+        console.log(findInOrBelow, findAboveViewport)
+        if (elem.getBoundingClientRect().top >= 0) {
+            if (findAboveViewport === -1) aboveViewPort.push(elem);
+            if (findInOrBelow !== -1) inOrbelowViewport.splice(findInOrBelow, 1);
+        } else {
+            if (findAboveViewport !== -1) aboveViewPort.splice(findAboveViewport, 1);
+            if (findInOrBelow === -1) inOrbelowViewport.push(elem);
+        }
+    })
+
+    aboveViewPort.map(aboveVpElem => aboveVpElem.style.opacity = 0);
+
+    console.log(inOrbelowViewport)
+    console.log(aboveViewPort)
+
+}

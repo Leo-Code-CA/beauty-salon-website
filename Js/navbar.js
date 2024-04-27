@@ -244,5 +244,7 @@ window.addEventListener('load', async () => {
         handleQueryParamsParsing();
         // handle inactive links on every page - dev purpose only - remove for production
         handleInactiveLinks();
+        // once everything is setup, make the page content visible
+        document.body.style.visibility = 'visible';
     }
 });

@@ -2,4 +2,5 @@
 
 import './../footer.js';
 import './../navbar.js';
+import './../backToTop.js';
 import './massages.js';

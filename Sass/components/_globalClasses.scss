@@ -8,9 +8,8 @@
 @include mixins.pulseAnimation('pulse', functions.toRem(30), custom.$primary);
 
 .scrollTop {
-    top: 99%;
-    left: 97%;
-    transform: translate(-97%, -99%);
+    bottom: functions.toRem(10);
+    right: functions.toRem(10);
     z-index: 10;
     height: functions.toRem(40);
     width: functions.toRem(40);
@@ -27,24 +26,27 @@
     }
 }
 
+.slideInElement {
+    opacity: 0;
+}
+
 .slideAnimation {
-    // not sure about that
-    // perspective: 1000;
-    // backface-visibility: hidden;
-    // -webkit-perspective: 1000;
-    // -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
     
 
     &--bottom {
-        animation: slideInBottom 1.5s ease-out forwards !important;
+        animation: slideInBottom 1.5s ease-out 0s both !important;
     }
 
     &--left {
-        animation: slideInLeft 1.5s ease-out forwards !important;
+        animation: slideInLeft 1.5s ease-out 0s both !important;
     }
 
     &--right {
-        animation: slideInRight 1.5s ease-out forwards !important;
+        animation: slideInRight 1.5s ease-out 0s both !important;
     }
 }
 

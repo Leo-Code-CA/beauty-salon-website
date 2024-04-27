@@ -2,5 +2,6 @@
 
 import './../footer.js';
 import './../navbar.js';
+import './../backToTop.js';
 import './formDisplay.js';
 import './suggestions.js';

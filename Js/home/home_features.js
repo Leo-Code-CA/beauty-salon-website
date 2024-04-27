@@ -1,7 +1,7 @@
 //////////////////////////// FEATURES SECTION OF THE HOME PAGE ////////////////////////////
 
 // Imports
-import slideInObserver from "./../utils/slideInObserver.js";
+import { setUpSlideInAnimation } from "./../utils/slideInObserver.js";
 // HTML Elements
 const table = document.querySelector('.features__table');
 const accordion = document.querySelector('.features__accordion');
@@ -35,7 +35,7 @@ function handleTableHeight() {
 // Handle table and accordion slide in animation
 function handleSlideInAnimation() {
     [table, accordion].map(elem => {
-        if (elem) slideInObserver(elem, 'slideAnimation--bottom');
+        if (elem) setUpSlideInAnimation(elem, 'translateY(200%)', 'translateY(0)');
     })
 }
 

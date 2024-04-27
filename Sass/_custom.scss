@@ -71,6 +71,8 @@ body {
     font-size: $body-fs !important;
     scroll-behavior: smooth;
     font-family: $main-ff;
+    overflow-x: hidden;
+    visibility: hidden;
 
     @media (orientation: landscape) {
         font-size: $body-landscape-fs !important;
