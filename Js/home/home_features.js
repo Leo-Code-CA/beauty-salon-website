@@ -35,7 +35,7 @@ function handleTableHeight() {
 // Handle table and accordion slide in animation
 function handleSlideInAnimation() {
     [table, accordion].map(elem => {
-        if (elem) setUpSlideInAnimation(elem, 'translateY(200%)', 'translateY(0)');
+        if (elem) setUpSlideInAnimation(elem, 'bottom');
     })
 }
 

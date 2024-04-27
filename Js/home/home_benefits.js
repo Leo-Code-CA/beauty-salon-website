@@ -16,7 +16,7 @@ const images = document.querySelectorAll('.benefit__img');
 
 function handleBenefitsSlideInImages() {
     images && images.length > 0 ? images.forEach((img, i) => {
-        setUpSlideInAnimation(img, i % 2 === 0 ? 'translateX(100%)' : 'translateX(-100%)', 'translateX(0)');
+        setUpSlideInAnimation(img, i % 2 === 0 ? 'right' : 'left');
     }) : null;
 }
 

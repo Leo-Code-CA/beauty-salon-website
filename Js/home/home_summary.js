@@ -333,9 +333,9 @@ function handleSummaryHover() {
 
 // Handle slide in animation of the summary box
 function handleSummarySlideInAnimation() {
-    setUpSlideInAnimation(summaryBoxOne, 'translateX(-100%)', 'translateX(0)');
-    setUpSlideInAnimation(summaryBoxTwo, 'translateY(200%)', 'translateY(0)');
-    setUpSlideInAnimation(summaryBoxThree, 'translateX(100%)', 'translateX(0)');
+    setUpSlideInAnimation(summaryBoxOne, 'left');
+    setUpSlideInAnimation(summaryBoxTwo, 'bottom');
+    setUpSlideInAnimation(summaryBoxThree, 'right');
 }
 
 //////////////////////////// GLOBAL FUNCTIONS CALL ////////////////////////////

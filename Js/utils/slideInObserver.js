@@ -1,34 +1,69 @@
 // Handle slide in animation
 
-const slideInOptions = {
-    duration: 1500,
-    fill: "forwards",
-    easing: 'ease-in-out',
-}
-
-const observer = new IntersectionObserver(handleIntersect);
-
-function handleIntersect(entries) {
+function handleLeftIntersect(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
-            const elemAnimation = entry.target.getAnimations()[0];
-            console.log(elemAnimation)
-            elemAnimation.play();
+            animateElem(entry.target, 'translateX(-100%)', 'translateX(0)');
         }
     });
 };
 
-export function setUpSlideInAnimation(targetElem, translateStarts, translateEnds) {
-    // animate the target
-    const slideIn = {
-        transform: [translateStarts, translateEnds],
-        opacity: [0, 1]
-    };
-    const animateElem = targetElem.animate(slideIn, slideInOptions);
-    animateElem.pause();
+function handleRightIntersect(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            animateElem(entry.target, 'translateX(100%)', 'translateX(0)');
+        }
+    });
+};
 
+function handleBottomIntersect(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            animateElem(entry.target, 'translateY(200%)', 'translateY(0)');
+        }
+    });
+};
+
+async function animateElem(elem, translateStarts, translateEnds) {
+
+    let elemAnimation = elem.getAnimations()[0];
+
+    if (!elemAnimation) {
+        const slideInKeyframes = new KeyframeEffect(
+            elem, 
+            [
+                { transform: translateStarts, opacity: 0 },
+                { transform: translateEnds, opacity: 1 },
+            ],
+            { duration: 1500, fill: "forwards", easing: 'ease-in-out' },
+        );
+        elemAnimation = new Animation(slideInKeyframes, document.timeline);
+    }
+    // Play the animation
+    elemAnimation.play();
+    // Wait for the animation to finish
+    // await elemAnimation.finished;
+    // // Commit animation state to style attribute
+    // elemAnimation.commitStyles();
+    // // Cancel the animation
+    // elemAnimation.cancel();
+};
+
+const leftObserver = new IntersectionObserver(handleLeftIntersect);
+const rightObserver = new IntersectionObserver(handleRightIntersect);
+const bottomObserver = new IntersectionObserver(handleBottomIntersect);
+
+export function setUpSlideInAnimation(targetElem, direction) {
     // observe the target
-    observer.observe(targetElem);
+    if (direction === 'left') {
+        leftObserver.observe(targetElem);
+    } else if (direction === 'right') {
+        rightObserver.observe(targetElem);
+    } else if (direction === 'bottom') {
+        bottomObserver.observe(targetElem);
+    } else {
+        console.log('invalid slide in direction');
+    }
 }
 
 
