@@ -8,12 +8,6 @@ const images = document.querySelectorAll('.benefit__img');
 ///////// START OF THE JS ////////
 
 // Handle slide in animation
-// function handleBenefitsSlideInImages() {
-//     images && images.length > 0 ? images.forEach((img, i) => {
-//         slideInObserver(img, i % 2 === 0 ? 'slideAnimation--right' : 'slideAnimation--left');
-//     }) : null;
-// }
-
 function handleBenefitsSlideInImages() {
     images && images.length > 0 ? images.forEach((img, i) => {
         setUpSlideInAnimation(img, i % 2 === 0 ? 'right' : 'left');

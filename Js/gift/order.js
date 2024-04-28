@@ -1,7 +1,7 @@
 //////////////////////////// STEPS OF GIFT CARD PURCHASE  ////////////////////////////
 
 // Imports
-import slideInObserver from './../utils/slideInObserver.js';
+import { setUpSlideInAnimation } from './../utils/slideInObserver.js';
 // HTML Elements
 const purchaseSection = document.querySelector('.giftpage__purchase');
 const closeBtn = document.querySelector('.giftpage__closeConditions');
@@ -47,5 +47,5 @@ window.addEventListener('load', () => {
     // handle redirect to the third party for the payment
     confirmBtn ? confirmBtn.addEventListener('click', handlePurchaseStepTwo) : null;
     // handle slide in animation
-    purchaseSection ? slideInObserver(purchaseSection, 'slideAnimation--bottom') : null;
+    purchaseSection ? setUpSlideInAnimation(purchaseSection, 'bottom') : null;
   })

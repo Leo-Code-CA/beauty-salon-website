@@ -2,7 +2,7 @@
 
 // Imports
 import { images } from './data.js';
-import slideInObserver from './../utils/slideInObserver.js';
+import { setUpSlideInAnimation } from './../utils/slideInObserver.js';
 // HTML Elements
 const imgContainer = document.querySelector('.gallery__imgContainer');
 const filterBtn = document.querySelectorAll('.gallery__filter');
@@ -112,7 +112,7 @@ window.addEventListener("load", () => {
     // handle image filtering
     filterBtn.forEach(btn => btn.addEventListener('click', (e) => handleGalleryFilter(e.target.id)));
     // handle slide in animation
-    slideInObserver(gallery, 'slideAnimation--bottom');
+    setUpSlideInAnimation(gallery, 'bottom');
 })
 
 

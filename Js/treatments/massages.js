@@ -2,7 +2,7 @@
 
 // Imports
 import scrollToElem from "./../utils/scrollToElem.js";
-import slideInObserver from "./../utils/slideInObserver.js";
+import { setUpSlideInAnimation } from "./../utils/slideInObserver.js";
 // Media Queries
 const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 767px)");
 // HTML Elements
@@ -11,9 +11,7 @@ const overview = document.querySelectorAll('.overview__card');
 const overviewBtn = document.querySelectorAll('.overview__card .overview__massageBtn');
 const doorIllustration = document.querySelector('.californien__infoIllustration');
 const allMassagesDescription = document.querySelectorAll('.massages__massage');
-// Variables
-let overviewCardTwoObserver;
-let overviewCardThreeObserver;
+const firstOverviewCard = document.querySelector('.overview__card:nth-child(1)');
 
 ///////// START OF THE JS ////////
 
@@ -52,7 +50,7 @@ function handleToggleOverview(selectedMassage, notSelectedMassages, activeInfo) 
     // Toggle class of one of the selected element child to show or hide its content
     activeInfo.classList.toggle("d-none");
     // Toggle the pulse animation on the first massage element
-    document.querySelector('.overview__card:nth-child(1)').classList.toggle('pulseAnimation');
+    firstOverviewCard.classList.toggle('pulseAnimation');
 }
 
 // Handle scroll to elem on click
@@ -86,16 +84,10 @@ function handleDoorReveal() {
 // Handle overview cards slide in animation
 function handleOverviewCardsAnimation() {
     overview && overview.length > 0 ? overview.forEach((summary, i) => {
-        if (i === 0) slideInObserver(summary, 'slideAnimation--left');
-        if (i === 1) {
-            if (overviewCardTwoObserver) overviewCardTwoObserver.unobserve(summary);
-            overviewCardTwoObserver = slideInObserver(summary, mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--left');
-        }
-        if (i === 2) {
-            if (overviewCardThreeObserver) overviewCardThreeObserver.unobserve(summary);
-            overviewCardThreeObserver = slideInObserver(summary, mediaQuery.matches ? 'slideAnimation--left' : 'slideAnimation--right');
-        }
-        if (i === 3) slideInObserver(summary, 'slideAnimation--right');
+        if (i === 0) setUpSlideInAnimation(summary, 'left');
+        if (i === 1) setUpSlideInAnimation(summary, mediaQuery.matches ? 'right' : 'left');
+        if (i === 2) setUpSlideInAnimation(summary, mediaQuery.matches ? 'left' : 'right');
+        if (i === 3) setUpSlideInAnimation(summary, 'right');
     }) : null
 };
 
@@ -108,7 +100,9 @@ window.addEventListener("load", () => {
     // Handle "door reveal" animation 
     doorIllustration ? doorIllustration.addEventListener('click', handleDoorReveal) : null;
     // Handle massages description slide in animation
-    allMassagesDescription && allMassagesDescription.length > 0 ? allMassagesDescription.forEach(massageElem => slideInObserver(massageElem, 'slideAnimation--bottom')) : null;
+    allMassagesDescription && allMassagesDescription.length > 0 ? allMassagesDescription.forEach(massageElem => setUpSlideInAnimation(massageElem, 'bottom')) : null;
     // Handle massages summary / overview slide in animation
     handleOverviewCardsAnimation();
+    // After the slide in animation of the overview boxes, play the pulse animation
+    setTimeout(() => firstOverviewCard.classList.add('pulseAnimation'), 1500);
 });

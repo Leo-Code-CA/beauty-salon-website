@@ -3,7 +3,7 @@
 // Imports
 import { services_data } from './../data/servicesData.js';
 import handleCarouselLazyLoading from './../utils/lazyCarousel.js';
-import slideInObserver from './../utils/slideInObserver.js';
+import { setUpSlideInAnimation } from './../utils/slideInObserver.js';
 // Media Queries
 const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 576px)");
 // HTML Elements
@@ -199,9 +199,8 @@ function handleGiftsDisplay(simulationOutput, amount) {
   if (simulationOutput && simulationOutput?.best) {
     const { best } = simulationOutput;
     simulatorResultBest.classList.remove('d-none');
-    // unobserve the element if it was observed and add the slide in animation with the appropriate class
-    if (bestResultObserver) bestResultObserver.unobserve(simulatorResultBest);
-    bestResultObserver = slideInObserver(simulatorResultBest, mediaQuery.matches ? 'slideAnimation--left' : 'slideAnimation--bottom');
+    // add the slide in animation
+    setUpSlideInAnimation(simulatorResultBest, mediaQuery.matches ? 'left' : 'bottom');
     Array.from(simulatorResultBest.children).map(elem => {
       elem.tagName === 'H4' ? elem.innerHTML = `<a href=${best?.path}>${best?.name}</a>`
       : elem.tagName === 'IMG' ? elem.setAttribute('src', best?.img) && elem.setAttribute('alt', best?.alt)
@@ -214,9 +213,8 @@ function handleGiftsDisplay(simulationOutput, amount) {
   if (simulationOutput && simulationOutput?.duo) {
       const { duo } = simulationOutput;
       simulatorResultDuoWrapper.classList.remove('d-none');
-      // unobserve the element if it was observed and add the slide in animation with the appropriate class
-      if (duoResultObserver) duoResultObserver.unobserve(simulatorResultDuoWrapper);
-      duoResultObserver = slideInObserver(simulatorResultDuoWrapper, !simulationOutput?.best && mediaQuery.matches && simulationOutput?.combo && simulationOutput?.combo?.length > 0 ? 'slideAnimation--left' : simulationOutput?.best && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
+      // add the slide in animation
+      setUpSlideInAnimation(simulatorResultDuoWrapper, !simulationOutput?.best && mediaQuery.matches && simulationOutput?.combo && simulationOutput?.combo?.length > 0 ? 'left' : simulationOutput?.best && mediaQuery.matches ? 'right' : 'bottom');
       simulatorResultDuo.forEach((div, i) => {
         const children = div.children;
         return Array.from(children).map(elem => {
@@ -232,8 +230,7 @@ function handleGiftsDisplay(simulationOutput, amount) {
   if (simulationOutput && simulationOutput?.combo) {
       simulationResultCombo.classList.remove('d-none');
       // unobserve the element if it was observed and add the slide in animation with the appropriate class
-      if (comboResultObserver) comboResultObserver.unobserve(simulationResultCombo);
-      comboResultObserver = slideInObserver(simulationResultCombo, simulationOutput?.duo && simulationOutput?.duo?.length > 0 && mediaQuery.matches ? 'slideAnimation--right' : 'slideAnimation--bottom');
+      setUpSlideInAnimation(simulationResultCombo, simulationOutput?.duo && simulationOutput?.duo?.length > 0 && mediaQuery.matches ? 'right' : 'bottom');
       simulationOutput.combo.map((combo, i) => {
         const carouselWrapper = document.querySelector(`.giftpage__combo:nth-child(${i + 1})`);
         const carousel = document.querySelector(`.giftpage__combo:nth-child(${i + 1}) .carousel`);
@@ -296,5 +293,5 @@ window.addEventListener('load', () => {
   // handle gift simulation form submission
   simulatorForm.addEventListener('submit', (e) => handlegiftSimulatorSubmission(e));
   // handle slide in animation of the simulator container
-  slideInObserver(simulatorContainer, 'slideAnimation--bottom');
+  setUpSlideInAnimation(simulatorContainer, 'bottom');
 })

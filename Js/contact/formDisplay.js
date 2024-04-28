@@ -2,7 +2,7 @@
 
 // Imports
 import handlePrefillForm from './../utils/prefillForm.js';
-import slideInObserver from './../utils/slideInObserver.js';
+import { setUpSlideInAnimation } from './../utils/slideInObserver.js';
 // HTML Elements
 const contactSection = document.querySelector('.contact');
 const form = document.querySelector('.contact__form');
@@ -154,6 +154,6 @@ window.addEventListener("load", () => {
 	// handle request to book more than one service
 	addBtn ? addBtn.addEventListener('click', handleBookMoreServices) : null;
 	// handle slide in animation
-	slideInObserver(contactSection, 'slideAnimation--bottom');
+	setUpSlideInAnimation(contactSection, 'bottom');
 })
 

@@ -2,7 +2,7 @@
 
 // Imports
 import handleFetchComponent from './../utils/fetchComponent.js';
-import slideInObserver from './../utils/slideInObserver.js';
+import { setUpSlideInAnimation } from './../utils/slideInObserver.js';
 // HTML Elements
 const faq = document.querySelector('.faq');
 
@@ -13,5 +13,5 @@ window.addEventListener("load", async () => {
     // handle fetch faq component
     await handleFetchComponent('/components/faq.html', faq);
     // handle faq slide in animation
-    slideInObserver(faq, 'slideAnimation--bottom');
+    setUpSlideInAnimation(faq, 'bottom');
 })
