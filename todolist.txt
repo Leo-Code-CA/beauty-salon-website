@@ -1,1 +1,9 @@
 // double check all website on mobile + tablet + desktop and fix what has be to! You're getting closer :D
+
+
+// idea
+try to limit the height of the body to the viewport one when the scroll animation is running so the page doesn't move
+// const bodyHeight = document.querySelector('main').clientHeight + Number(getComputedStyle(main).marginTop.replace(/px/, ''));
+// const footerAnimation = document.querySelector('.footer').clientHeight + visibleBoxHeight;
+// document.body.style.height = '100vh';
+// document.body.style.overflow = 'hidden';

@@ -15,15 +15,13 @@
     &__bubble {
         color: custom.$dark;
 
+        p {
+            margin: 0;
+        }
+
         h3 {
             font-family: custom.$secondary-ff;
             font-weight: 700;
-            font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
-        }
-
-        p {
-            margin: 0;
-            font-size: custom.$body-fs;
         }
     }
 
@@ -36,6 +34,10 @@
     }
      ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
      @media (orientation: portrait) {
+
+        &__btn {
+            font-size: custom.$body-fs !important;
+        }
 
         &__main {
             background: url('../../images/footer/phone_gift_illustration.svg');
@@ -138,13 +140,24 @@
             margin: functions.toRem(16) 0 0 functions.toRem(16) !important;
         }
 
-        &__btn {
-            letter-spacing: functions.toRem(2);
-        }
     }
     ///////////// MOBILE AND TABLET - LANDSCAPE ORIENTATION (height < width)  ////////////////
     @media (orientation: landscape) {
         background: none;
+
+        &__bubble {
+    
+            h3 {
+                font-family: custom.$secondary-ff;
+                font-weight: 700;
+                // font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
+            }
+    
+            p {
+                margin: 0;
+                // font-size: custom.$body-landscape-fs;
+            }
+        }
 
         &__main {
             margin-bottom: 0 !important;
@@ -185,7 +198,7 @@
         }
 
         &__btn {
-            font-size: custom.$body-landscape-fs;
+            font-size: custom.$body-landscape-fs !important;
             padding: 0.2rem 0rem !important;
         }
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
@@ -204,7 +217,7 @@
                 }
 
                 h4 {
-                    font-size: clamp(functions.toRem(15), calc(functions.toRem(15) + 0.3vw), functions.toRem(21));
+                    font-size: clamp(functions.toRem(14), calc(functions.toRem(14) + 0.3vw), functions.toRem(18));
                 }
             }
 
@@ -236,7 +249,6 @@
             }
 
             &__btn {
-                letter-spacing: functions.toRem(2);
                 padding: 0.4rem 0rem !important;
             }
         }

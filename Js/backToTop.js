@@ -4,6 +4,7 @@
 import { colorContrastPalette } from './data/constants.js';
 // HTML Elements
 const backToTopBtn = document.querySelector('.scrollTop');
+const summary = document.querySelector('.summary__animationBox');
 
 ///////// START OF THE JS ////////
 
@@ -126,6 +127,12 @@ function handleAdjustBgColor(colorSet = undefined) {
 
 // handle scroll back to top
 function handleScrollBackToTop() {
+    if (summary) {
+        summary.scrollTo({
+            top: 0,
+            behavior: 'instant'
+        })
+    }
     window.scrollTo({
         top: 0,
         behavior: 'smooth'

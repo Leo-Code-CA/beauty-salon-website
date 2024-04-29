@@ -285,22 +285,39 @@ function handlePageScrollBehaviour() {
     const scrollY = window.scrollY;
     const scrollDirection = FnScrollDirection(scrollY);
 
+    // document.body.style.height = '100vh';
+    // document.body.style.overflow = 'hidden';
+
     if (scrollDirection === "down") {
 
         if (topElemToDocTop <= scrollY) {
 
-            const lengthFromTop = Math.ceil(visisbleScrollBox.scrollTop);
-                // if the animation is not 100% done disable the page scroll (forwards)
-                if (scrollArea !== lengthFromTop) {
-                    window.scrollTo(0, topElemToDocTop);
-            };
+            // document.body.style.height = '100vh';
+            // document.body.style.overflowY = 'hidden';
+
+            // // Math.ceil(visisbleScrollBox.scrollTop); ?
+            // const lengthFromTop = Math.round(visisbleScrollBox.scrollTop);
+            // console.log(`scroll area is: ${scrollArea}`)
+            // console.log(`length from top is: ${lengthFromTop}`)
+
+            // // if the animation is not 100% done disable the page scroll (forwards)
+
+            // // if (scrollArea !== lengthFromTop) {
+            // //     window.scrollTo(0, topElemToDocTop);
+            // // };
+            // if (scrollArea === lengthFromTop) {
+            //     document.body.style.height = 'auto';
+            //     document.body.style.overflowY = 'scroll';
+            // };
         };
     } 
     
     else if (scrollDirection === "up") {
 
         if (topElemToDocTop >= window.scrollY) {
+
             const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
+
             // if the animation is not 100% done disable the page scroll (backwards)
             if (lengthFromTop !== 0) {
                 window.scrollTo(0, topElemToDocTop);
@@ -368,6 +385,8 @@ function handleMediaQuerySetup() {
         html.style.setProperty('--review-box-top', `${boxTop}px`);
         // Handle page behaviour
         window.addEventListener('scroll', handlePageScrollBehaviour);
+        // TEST
+        visisbleScrollBox.addEventListener('scroll', handlePageScrollBehaviour);
         // Handle scroll bound animation
         visisbleScrollBox.addEventListener('scroll', handleScrollBoundAnimation);
     }
@@ -378,4 +397,75 @@ window.addEventListener('load', () => {
     // check media query and decide if the animation should run - on page load and on resize
     handleMediaQuerySetup();
     window.addEventListener('resize', handleMediaQuerySetup);
+    observerTest();
 });
+
+
+
+function observerTest() {
+
+    const observer = new IntersectionObserver(handleTest, { threshold: [0, 0.8] })
+    observer.observe(visisbleScrollBox);
+
+}
+
+function handleTest(entries) {
+
+    const scrollDirection = FnScrollDirection(scrollY);
+    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
+
+    entries.forEach(entry => {
+        if (scrollDirection === "down") {
+            if (entry.intersectionRatio > 0 && entry.intersectionRatio < 0.5) {
+                window.scrollTo(0, topElemToDocTop);
+                // entry.target.scrollIntoView(false);
+            } else if (entry.intersectionRatio > 0.5) {
+                console.log(entry)
+            }
+        }
+    })
+
+    // const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
+    // const scrollY = window.scrollY;
+    // const scrollDirection = FnScrollDirection(scrollY);
+
+    // // document.body.style.height = '100vh';
+    // // document.body.style.overflow = 'hidden';
+
+    // if (scrollDirection === "down") {
+
+    //     if (topElemToDocTop <= scrollY) {
+
+    //         document.body.style.height = '100vh';
+    //         document.body.style.overflowY = 'hidden';
+
+    //         // Math.ceil(visisbleScrollBox.scrollTop); ?
+    //         const lengthFromTop = Math.round(visisbleScrollBox.scrollTop);
+    //         console.log(`scroll area is: ${scrollArea}`)
+    //         console.log(`length from top is: ${lengthFromTop}`)
+
+    //         // if the animation is not 100% done disable the page scroll (forwards)
+
+    //         // if (scrollArea !== lengthFromTop) {
+    //         //     window.scrollTo(0, topElemToDocTop);
+    //         // };
+    //         if (scrollArea === lengthFromTop) {
+    //             document.body.style.height = 'auto';
+    //             document.body.style.overflowY = 'scroll';
+    //         };
+    //     };
+    // } 
+    
+    // else if (scrollDirection === "up") {
+
+    //     if (topElemToDocTop >= window.scrollY) {
+
+    //         const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
+
+    //         // if the animation is not 100% done disable the page scroll (backwards)
+    //         if (lengthFromTop !== 0) {
+    //             window.scrollTo(0, topElemToDocTop);
+    //         }
+    //     }
+    // }
+}

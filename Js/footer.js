@@ -63,6 +63,7 @@ async function handleFetchMap() {
         addressLineTwo.textContent = "13150 Tarascon";
         addressLineThree.textContent = "France"
         content.classList.add('footer__bubble');
+        title.classList.add('heading-4');
 
         if (Map && Marker && InfoWindow) {
             infowindow = new InfoWindow({
