@@ -6,6 +6,7 @@ import { setUpSlideInAnimation } from "./../utils/slideInObserver.js";
 const table = document.querySelector('.features__table');
 const accordion = document.querySelector('.features__accordion');
 const toggler = document.querySelectorAll('.features__toggle');
+const accordionCollapse = document.querySelectorAll('.accordion-collapse');
 const tr = document.querySelector('#tr');
 const innerTd = document.querySelectorAll('.features__td');
 
@@ -21,6 +22,16 @@ function handleToggleArrow() {
             })
         );
     }
+}
+
+// Handle accordion header outline
+function handleOutline() {
+    accordionCollapse.forEach(arrow => arrow.addEventListener('hidden.bs.collapse', () => {
+        arrow.previousElementSibling.classList.remove('features__accordionHeader--outline');
+    }))
+    accordionCollapse.forEach(arrow => arrow.addEventListener('show.bs.collapse', () => {
+        arrow.previousElementSibling.classList.add('features__accordionHeader--outline');
+    }))
 }
 
 // Handle table sizing
@@ -48,4 +59,6 @@ window.addEventListener("load", () => {
     handleToggleArrow();
     // handle slide in animation
     handleSlideInAnimation();
+    // handle accordion header outline
+    handleOutline();
 });

@@ -7,6 +7,14 @@
     color: custom.$white;
     background-repeat: no-repeat;
 
+    hr {
+        margin: functions.toRem(5) 0 0 0;
+    }
+
+    &__title {
+        width: min-content;
+    }
+
     &__map {
         width: 100%;
         aspect-ratio: 4.8 / 3;

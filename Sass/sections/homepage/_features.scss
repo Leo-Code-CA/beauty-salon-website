@@ -1,5 +1,6 @@
 @use '../../custom';
 @use '../../components/functions';
+@use '../../components/mixins';
 
 .features {
 
@@ -10,12 +11,22 @@
             display: block;
         }
 
+        &__accordionHeader {
+
+            &--outline {
+                @include mixins.focus;
+            }
+        }
+
         &__table {
             display: none;
         }
 
         &__toggle {
-            background-color: none !important;
+            background-color: transparent !important;
+            width: auto !important;
+            padding: 0 !important;
+            box-shadow: none !important;
             
             &::after {
                 content: none !important;

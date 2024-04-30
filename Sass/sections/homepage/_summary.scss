@@ -34,6 +34,7 @@
             &__btnBox {
                 position: relative;
                 min-height: 2.5rem;
+                margin: 0 functions.toRem(10);
             }
 
             &__svg {
@@ -80,9 +81,12 @@
                 }
 
                 figcaption {
-                    padding: 0 functions.toRem(24) functions.toRem(8) functions.toRem(24);
-                    font-weight: 400 !important;
-                    font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.2vh), functions.toRem(25));
+
+                    p {
+                        padding: 0 functions.toRem(24) functions.toRem(8) functions.toRem(24);
+                        font-weight: 400 !important;
+                        font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.2vh), functions.toRem(25));
+                    }
                 }
             }
 

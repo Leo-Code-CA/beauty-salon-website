@@ -4,6 +4,7 @@
 import FnScrollDirection from "./../utils/scrollDirection.js";
 import { setUpSlideInAnimation } from "../utils/slideInObserver.js";
 import { purpleIshPalette, blackNWhitePalette, filters } from "./../data/constants.js";
+import handleFetchComponent from "../utils/fetchComponent.js";
 // Media Queries
 const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 767px)");
 // HTML Elements
@@ -35,6 +36,11 @@ const width = elemOne?.offsetWidth;
 const windowWidth = window.innerWidth;
 const elemSpacing = (windowWidth - width) / 2;
 const elemSpacingPercentage = windowWidth / elemSpacing;
+
+
+const navbarWrapper = document.querySelector('#nav');
+const footerWrapper = document.querySelector('#footer');
+let elementPosition;
 
 ///////// START OF THE JS ////////
 
@@ -281,6 +287,8 @@ function handleScrollBoundAnimation() {
 // Handle page behavior when the animation runs
 function handlePageScrollBehaviour() {
 
+    console.log('page scroll is called')
+
     const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
     const scrollY = window.scrollY;
     const scrollDirection = FnScrollDirection(scrollY);
@@ -384,19 +392,25 @@ function handleMediaQuerySetup() {
         // set the top property depending on the screen height 
         html.style.setProperty('--review-box-top', `${boxTop}px`);
         // Handle page behaviour
-        window.addEventListener('scroll', handlePageScrollBehaviour);
-        // TEST
-        visisbleScrollBox.addEventListener('scroll', handlePageScrollBehaviour);
+        // window.addEventListener('scroll', handlePageScrollBehaviour);
         // Handle scroll bound animation
         visisbleScrollBox.addEventListener('scroll', handleScrollBoundAnimation);
     }
 }
 
 // Call the function and add the event handlers on load of the page
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     // check media query and decide if the animation should run - on page load and on resize
     handleMediaQuerySetup();
     window.addEventListener('resize', handleMediaQuerySetup);
+
+
+    await Promise.all([
+        handleFetchComponent('/components/navbar.html', navbarWrapper),
+        handleFetchComponent('/components/footer.html', footerWrapper)
+    ]);
+
+    elementPosition = visisbleScrollBox.offsetTop - navBarHeight;
     observerTest();
 });
 
@@ -404,7 +418,7 @@ window.addEventListener('load', () => {
 
 function observerTest() {
 
-    const observer = new IntersectionObserver(handleTest, { threshold: [0, 0.8] })
+    const observer = new IntersectionObserver(handleTest, { threshold: [0] })
     observer.observe(visisbleScrollBox);
 
 }
@@ -412,17 +426,45 @@ function observerTest() {
 function handleTest(entries) {
 
     const scrollDirection = FnScrollDirection(scrollY);
-    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
+    // const elementTopToTopDoc = visisbleScrollBox.offsetTop - navBarHeight;
+    // let elementTopToTopDoc =  visisbleScrollBox.offsetTop - navBarHeight;
+
+    console.log(elementPosition)
+
+    // setTimeout(() => {
+    //     elementTopToTopDoc = visisbleScrollBox.offsetTop - navBarHeight;
+    //     console.log(elementTopToTopDoc)
+    // }, 1000)
+
+    // const elementTopToTopDoc = async () => {
+    //     await Promise.all([
+    //         handleFetchComponent('/components/navbar.html', navbarWrapper),
+    //         handleFetchComponent('/components/footer.html', footerWrapper)
+    //     ]);
+
+    // }
+
+
 
     entries.forEach(entry => {
-        if (scrollDirection === "down") {
-            if (entry.intersectionRatio > 0 && entry.intersectionRatio < 0.5) {
-                window.scrollTo(0, topElemToDocTop);
-                // entry.target.scrollIntoView(false);
-            } else if (entry.intersectionRatio > 0.5) {
-                console.log(entry)
-            }
+
+        if (entry.intersectionRatio > 0) {
+            window.scrollTo(0, elementPosition);
         }
+
+
+        // if (scrollDirection === "down") {
+        //     if (Math.round(entry.intersectionRatio) === 0 && entry.isIntersecting) {
+        //         window.scrollTo(0, elementPosition);
+                
+        //     } else if (Math.round(entry.intersectionRatio) === 1) {
+        //         console.log(entry.intersectionRatio)
+        //     }
+        // } else if (scrollDirection === "up") {
+        //     if (Math.round(entry.intersectionRatio) === 0 && entry.isIntersecting) {
+        //         window.scrollTo(0, elementPosition);
+        //     }
+        // }
     })
 
     // const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
