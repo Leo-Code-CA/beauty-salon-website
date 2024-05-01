@@ -57,13 +57,12 @@ function handleValidForm(e) {
 		formTime.textContent += submittedMessageDate;
 		formMessage.textContent = `"${submittedMessageContent}"`;
 
-		// window.scrollTo({
-		// 	top: 0,
-		// 	left: 0,
-		// 	behavior: 'smooth'
-		// })
-		// fix that
-		formSummary.scrollIntoView(true);
+		// scroll to the top of the page
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		})
 	}
 }
 

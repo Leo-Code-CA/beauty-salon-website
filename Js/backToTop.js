@@ -2,6 +2,7 @@
 
 // Imports
 import { colorContrastPalette } from './data/constants.js';
+import { animationObserver } from './home/home_summary.js';
 // HTML Elements
 const backToTopBtn = document.querySelector('.scrollTop');
 const summary = document.querySelector('.summary__animationBox');
@@ -83,8 +84,8 @@ function handleAdjustBgColor(colorSet = undefined) {
     const contrastRatio = btnBgColorLum !== null && bgElemBgColorLum !== null ? handleCheckContrastRatio(btnBgColorLum, bgElemBgColorLum) : null;
     // if the contrast ratio is null, return
     if (!contrastRatio) return;
-    // if the contrast isn't high enough (<7), check if the btn bg color has too be lighter or darker
-    if (contrastRatio < 7) {
+    // if the contrast isn't high enough (<5), check if the btn bg color has too be lighter or darker
+    if (contrastRatio < 5) {
 
         let findBtnColorIndex = colorContrastPalette.findIndex(color => color[0] == btnBgColor[0] && color[1] == btnBgColor[1] && color[2] == btnBgColor[2]);
         // if the exact color is not found in the palette, find the closest one
@@ -127,12 +128,21 @@ function handleAdjustBgColor(colorSet = undefined) {
 
 // handle scroll back to top
 function handleScrollBackToTop() {
+
+    function cleanup() {
+        animationObserver.observe(summary);
+        window.removeEventListener('scrollend', cleanup);
+    }
+
     if (summary) {
+        window.addEventListener('scrollend', cleanup);
+        animationObserver.unobserve(summary);
         summary.scrollTo({
             top: 0,
             behavior: 'instant'
         })
     }
+    
     window.scrollTo({
         top: 0,
         behavior: 'smooth'

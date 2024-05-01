@@ -99,7 +99,6 @@ function handleLinkClick(link, e) {
             .slice(0, -4)
             .replace(/\W*/g, '');
 
-        console.log(`path is: ${path}`);
         // the data-redirect attribute is set to 'null' it means that there is no specific target (just a page)
         // the user is already on the page he requested so just scroll to the top of that one
         if (link?.dataset?.redirect === 'null' && window?.location?.href?.includes(path)) {
@@ -128,7 +127,6 @@ function handleSearchBar(e) {
 
     const userInput = e?.target?.value;
     const sanitizedInput = userInput ? encodeURIComponent(userInput.trim().toLowerCase()) : null;
-    console.log(sanitizedInput);
     const dropdownList = document.querySelector('.navbar__search-dropdown ul');
 
     // if there is no search parameter ...

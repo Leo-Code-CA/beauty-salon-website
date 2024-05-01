@@ -35,8 +35,6 @@ async function getPlaceDetails() {
         // Map through the reviews and display them in the carousel
         reviews.map((review, i) => {
 
-            console.log(review)
-
             const revText = review?.Gg;
             const name = review?.Hg?.Fg;
             const stars = review?.Jg;

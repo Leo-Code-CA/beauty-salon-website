@@ -1,2 +1,0 @@
-// fix the form summary scroll to top on mobile which does not work :(
-// take care of the inactive links
