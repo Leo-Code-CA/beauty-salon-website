@@ -1,6 +1,17 @@
 @use '../../custom';
 @use '../../components/functions';
 
+.carouselAndSummary__section {
+
+    @include custom.media-breakpoint-up(lg) {
+        margin-bottom: functions.toRem(32) !important;
+    }
+
+    @media screen and (orientation: landscape) {
+        margin-bottom: functions.toRem(48) !important;
+    }
+}
+
 .carousel {
 
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
@@ -136,10 +147,6 @@
 
         @include custom.media-breakpoint-up(lg) {
 
-            &__section {
-                margin-bottom: functions.toRem(32) !important; // if you have a problem with the spacing beween the carousel and the summary look here!! (section is actually carousel parent)
-            }
-
             &__review-holder {
                 figure {
                     justify-content: space-evenly !important;
@@ -162,10 +169,6 @@
     @media (orientation: landscape) {
 
         max-height: 100vh;
-
-        &__section {
-            margin-bottom: functions.toRem(48) !important;
-        }
 
         &__inner {
             height: 100%;

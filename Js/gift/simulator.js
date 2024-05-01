@@ -20,10 +20,6 @@ const simulatorResultDuo = document.querySelectorAll('.giftpage__simulatorResult
 const simulationResultCombo = document.querySelector('.giftpage__simulatorResultsCombo');
 const quote = document.querySelector('.giftpage__quote');
 const sticky = document.querySelector('.giftpage__sticky');
-// Variables
-let bestResultObserver;
-let duoResultObserver;
-let comboResultObserver;
 
 ///////// START OF THE JS ///////
 
@@ -229,7 +225,7 @@ function handleGiftsDisplay(simulationOutput, amount) {
   // Fill the combo carousel
   if (simulationOutput && simulationOutput?.combo) {
       simulationResultCombo.classList.remove('d-none');
-      // unobserve the element if it was observed and add the slide in animation with the appropriate class
+      // add the slide in animation
       setUpSlideInAnimation(simulationResultCombo, simulationOutput?.duo && simulationOutput?.duo?.length > 0 && mediaQuery.matches ? 'right' : 'bottom');
       simulationOutput.combo.map((combo, i) => {
         const carouselWrapper = document.querySelector(`.giftpage__combo:nth-child(${i + 1})`);

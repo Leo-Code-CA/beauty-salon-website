@@ -1,4 +1,4 @@
-export const images = [
+export const salonImages = [
     {
         src: 'images/about/lobby_salon_decor_image.jpeg',
         alt: 'salon decor image',
@@ -75,8 +75,3 @@ export const images = [
         type: 'products'
     }
 ];
-
-// products = 4
-// massage = 5
-// lobby = 6
-// total = 15

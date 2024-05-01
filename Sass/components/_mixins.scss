@@ -10,22 +10,6 @@
 
 // ANIMATIONS
 
-// SLIDE IN ELEMENTS ANIMATION
-@mixin slideInAnimation($name, $translate) {
-
-    @keyframes #{$name} {
-        0% {
-            opacity: 0;
-            transform: $translate;
-        }
-    
-        100% {
-            opacity: 1;
-            transform: translate(0);
-        } 
-    }
-}
-
 // DOOR SHAPE MASSAGES PAGE ANIMATION
 @mixin doorAnimation($name, $startZIndex, $endZIndex) {
 
@@ -47,7 +31,6 @@
 }
 
 // PULSE CLICK ME ANIMATION
-
 @mixin pulseAnimation($name, $size, $color) {
 
     @keyframes #{$name} {

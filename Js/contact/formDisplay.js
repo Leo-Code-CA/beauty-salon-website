@@ -14,7 +14,6 @@ const formSummary = document.querySelector('.contact__formSummary');
 const formTopic = document.querySelector('.contact__formTopic');
 const formMessage = document.querySelector('.contact__formMessage');
 const formServices = document.querySelector('.contact__formServices');
-const formSuggestions = document.querySelector('.contact__formSuggestions');
 const formTime = document.querySelector('.contact__formTime');
 const addBtn = document.querySelector('.contact__addBtn');
 
@@ -22,6 +21,7 @@ const addBtn = document.querySelector('.contact__addBtn');
 
 // Handle page display after valid form submission
 function handleValidForm(e) {
+
 	e.preventDefault();
 
 	if (form && formSummary) {
@@ -56,6 +56,14 @@ function handleValidForm(e) {
 		formTopic.textContent += submittedMessageTopic;
 		formTime.textContent += submittedMessageDate;
 		formMessage.textContent = `"${submittedMessageContent}"`;
+
+		// window.scrollTo({
+		// 	top: 0,
+		// 	left: 0,
+		// 	behavior: 'smooth'
+		// })
+		// fix that
+		formSummary.scrollIntoView(true);
 	}
 }
 
@@ -68,9 +76,14 @@ function handleInvalidForm(e) {
 // Handle form display depending on the user selection // CHANGE OR IMPROVE THIS ONE
 function handleApptFormDisplay() {
 	const currentSelection = select?.selectedOptions[0]?.value;
-	console.log(select?.selectedOptions[0]);
 	if (currentSelection && apptFormHidden) {
-		currentSelection === 'appt' ? apptFormHidden.classList.remove('d-none') : apptFormHidden.classList.add('d-none');
+		if (currentSelection === 'appt') {
+			apptFormHidden.classList.remove('d-none');
+			apptFormHidden.setAttribute('required', '');
+		} else {
+			apptFormHidden.classList.add('d-none');
+			apptFormHidden.removeAttribute('required', '');
+		}
 	}
 }
 

@@ -48,7 +48,6 @@
 
 	&__search-dropdown {
 		@include mixins.focus;
-		// overflow-y: auto !important;
 
 		ul {
 			list-style-type: none;
@@ -70,22 +69,8 @@
 		}
 	}
 
-	// &__menu {
-	// 	overflow-y: auto !important;
-	// }
-
     ///////////// MOBILE AND TABLET - PORTRAIT ORIENTATION (height >= width)  ////////////////
     @media (orientation: portrait) {
-
-		// &__menu {
-		// 	max-height: 60vh;
-		// 	overflow-y: auto !important;
-		// }
-
-		// &__search-dropdown {
-		// 	max-height: 80vh;
-		// 	overflow-y: auto !important;
-		// }
 
 		&__logo {
 			max-width: 50%;
@@ -107,7 +92,7 @@
 			}
 
 			&__menu {
-				display: flex !important; // block ?
+				display: flex !important;
 				flex-basis: auto !important;
 			}
 
@@ -122,23 +107,11 @@
 	
    	@media (orientation: landscape) {
 
-		// &__search-dropdown {
-		// 	max-height: 50vh;
-		// 	overflow-y: auto !important;
-		// }
-
-		// &__menu {
-		// 	max-height: 60vh;
-		// 	overflow-y: auto !important;
-		// }
-
 		&__logo {
 			max-width: 20%;
 		}
 
 		@include custom.media-breakpoint-up(md) {
-			// max-height: initial;
-			// overflow-y: initial !important;
 
 			&__toggler {
 		
@@ -148,7 +121,7 @@
 			}
 
 			&__menu {
-				display: flex !important; // block ?
+				display: flex !important;
 				flex-basis: auto !important;
 			}
 

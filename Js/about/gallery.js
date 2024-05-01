@@ -1,12 +1,13 @@
 //////////////////////////// IMAGE GALLERY SECTION OF THE ABOUT PAGE ////////////////////////////
 
 // Imports
-import { images } from './data.js';
+import { salonImages } from '../data/salonImages.js';
 import { setUpSlideInAnimation } from './../utils/slideInObserver.js';
 // HTML Elements
 const imgContainer = document.querySelector('.gallery__imgContainer');
 const filterBtn = document.querySelectorAll('.gallery__filter');
 const gallery = document.querySelector('.gallery');
+const backToTopBtn = document.querySelector('.scrollTop');
 
 ///////// START OF THE JS ////////
 
@@ -70,16 +71,16 @@ function handleWindowSize(imgCollection) {
 function handleGalleryFilter(filter) {
     switch (filter) {
         case "all":
-            handleWindowSize(images);
+            handleWindowSize(salonImages);
             break;
         case "lobby":
-            handleWindowSize(images.filter(img => img.type === "lobby"));
+            handleWindowSize(salonImages.filter(img => img.type === "lobby"));
             break;
         case "massage":
-            handleWindowSize(images.filter(img => img.type === "massage"));
+            handleWindowSize(salonImages.filter(img => img.type === "massage"));
             break;
         case "products":
-            handleWindowSize(images.filter(img => img.type === "products"));
+            handleWindowSize(salonImages.filter(img => img.type === "products"));
             break;
         default:
             throw new Error('filter not reconized!')
@@ -92,11 +93,13 @@ function handleImgZoom(e) {
     const selectedImgBox = selectedImg ? selectedImg?.parentElement : null;
 
     if (selectedImg && selectedImgBox) {
+        backToTopBtn.classList.add('d-none');
         selectedImg.classList.add('gallery--imgPopup');
         selectedImgBox.classList.add('gallery--bgPopup');
         selectedImgBox.addEventListener('click', (e) => {
     
             if (e.target === selectedImgBox) {
+                backToTopBtn.classList.add('d-flex');
                 selectedImg.classList.remove('gallery--imgPopup');
                 selectedImgBox.classList.remove('gallery--bgPopup');
             }
@@ -107,8 +110,8 @@ function handleImgZoom(e) {
 // Call the functions and add the event handlers on load of the page
 window.addEventListener("load", () => {
     // handle gallery photo creation on load and resize
-    handleWindowSize(images);
-    window.addEventListener('resize', () => handleWindowSize(images));
+    handleWindowSize(salonImages);
+    window.addEventListener('resize', () => handleWindowSize(salonImages));
     // handle image filtering
     filterBtn.forEach(btn => btn.addEventListener('click', (e) => handleGalleryFilter(e.target.id)));
     // handle slide in animation

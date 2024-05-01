@@ -4,7 +4,6 @@
 import FnScrollDirection from "./../utils/scrollDirection.js";
 import { setUpSlideInAnimation } from "../utils/slideInObserver.js";
 import { purpleIshPalette, blackNWhitePalette, filters } from "./../data/constants.js";
-import handleFetchComponent from "../utils/fetchComponent.js";
 // Media Queries
 const mediaQuery = window.matchMedia("(orientation: portrait) and (max-width: 767px)");
 // HTML Elements
@@ -37,11 +36,6 @@ const windowWidth = window.innerWidth;
 const elemSpacing = (windowWidth - width) / 2;
 const elemSpacingPercentage = windowWidth / elemSpacing;
 
-
-const navbarWrapper = document.querySelector('#nav');
-const footerWrapper = document.querySelector('#footer');
-let elementPosition;
-
 ///////// START OF THE JS ////////
 
 ////////////////////////// MOBILE ONLY ANIMATION /////////////////////////////
@@ -61,15 +55,6 @@ function handleInactiveElem(elem) {
         elem.style.opacity = 0;
     }
 }
-
-// Handle automatic  page scroll when the animation has started
-function handleAutoScroll() {
-    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
-    const lengthFromTop = visisbleScrollBox.scrollTop;
-    if (lengthFromTop !== 0 && lengthFromTop !== scrollArea) {
-        window.scrollTo(0, topElemToDocTop);
-    };
-};
 
 // Handle height update
 function handleHeightUpdate(initialHeight, translatePercentage, staticPhasePercentage, elem) {
@@ -143,8 +128,6 @@ function handleScrollBoundAnimation() {
     const lengthFromTop = visisbleScrollBox.scrollTop;
     const scrollPercentage = Math.ceil(lengthFromTop) / scrollArea * 100;
     const translateUpdateRate = 33 / (translateBreakPeriod + totalTranslate);
-
-    handleAutoScroll();
 
     // ANIMATE FIRST BOX
     if (lengthFromTop <= (scrollArea / 3)) {
@@ -284,53 +267,51 @@ function handleScrollBoundAnimation() {
     }
 };
 
+// Handle automatic page scroll when the animation element is in the viewport
+function handleAutoScroll() {
+
+    const observer = new IntersectionObserver(elemIntoViewport, { threshold: 0 })
+    observer.observe(visisbleScrollBox);
+
+    function elemIntoViewport(entries) {
+
+        const elementPosition = visisbleScrollBox.offsetTop - navBarHeight;
+
+        entries.forEach(entry => {
+
+            if (entry.intersectionRatio > 0) {
+
+                window.scrollTo({
+                    top: elementPosition,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            }
+        })
+    }
+};
+
 // Handle page behavior when the animation runs
 function handlePageScrollBehaviour() {
 
-    console.log('page scroll is called')
-
-    const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
-    const scrollY = window.scrollY;
     const scrollDirection = FnScrollDirection(scrollY);
+    const scrollToBottom = Math.round(visisbleScrollBox.scrollHeight - visisbleScrollBox.scrollTop) === visisbleScrollBox.clientHeight;
+    const scrollToTop = Math.round(visisbleScrollBox.scrollTop) === 0;
 
-    // document.body.style.height = '100vh';
-    // document.body.style.overflow = 'hidden';
+    const elementPosition = visisbleScrollBox.offsetTop - navBarHeight;
 
-    if (scrollDirection === "down") {
-
-        if (topElemToDocTop <= scrollY) {
-
-            // document.body.style.height = '100vh';
-            // document.body.style.overflowY = 'hidden';
-
-            // // Math.ceil(visisbleScrollBox.scrollTop); ?
-            // const lengthFromTop = Math.round(visisbleScrollBox.scrollTop);
-            // console.log(`scroll area is: ${scrollArea}`)
-            // console.log(`length from top is: ${lengthFromTop}`)
-
-            // // if the animation is not 100% done disable the page scroll (forwards)
-
-            // // if (scrollArea !== lengthFromTop) {
-            // //     window.scrollTo(0, topElemToDocTop);
-            // // };
-            // if (scrollArea === lengthFromTop) {
-            //     document.body.style.height = 'auto';
-            //     document.body.style.overflowY = 'scroll';
-            // };
-        };
-    } 
-    
-    else if (scrollDirection === "up") {
-
-        if (topElemToDocTop >= window.scrollY) {
-
-            const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
-
-            // if the animation is not 100% done disable the page scroll (backwards)
-            if (lengthFromTop !== 0) {
-                window.scrollTo(0, topElemToDocTop);
-            }
-        }
+    if (scrollDirection === "down" && scrollY > elementPosition && !scrollToBottom) {
+        window.scrollTo({
+            top: elementPosition,
+            left: 0,
+            behavior: "instant",
+        });
+    } else if (scrollDirection === "up" && scrollY < elementPosition && !scrollToTop) {
+        window.scrollTo({
+            top: elementPosition,
+            left: 0,
+            behavior: "instant",
+        });
     }
 };
 
@@ -392,122 +373,16 @@ function handleMediaQuerySetup() {
         // set the top property depending on the screen height 
         html.style.setProperty('--review-box-top', `${boxTop}px`);
         // Handle page behaviour
-        // window.addEventListener('scroll', handlePageScrollBehaviour);
+        handleAutoScroll();
+        window.addEventListener("scroll", handlePageScrollBehaviour)
         // Handle scroll bound animation
         visisbleScrollBox.addEventListener('scroll', handleScrollBoundAnimation);
     }
 }
 
 // Call the function and add the event handlers on load of the page
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
     // check media query and decide if the animation should run - on page load and on resize
     handleMediaQuerySetup();
     window.addEventListener('resize', handleMediaQuerySetup);
-
-
-    await Promise.all([
-        handleFetchComponent('/components/navbar.html', navbarWrapper),
-        handleFetchComponent('/components/footer.html', footerWrapper)
-    ]);
-
-    elementPosition = visisbleScrollBox.offsetTop - navBarHeight;
-    observerTest();
 });
-
-
-
-function observerTest() {
-
-    const observer = new IntersectionObserver(handleTest, { threshold: [0] })
-    observer.observe(visisbleScrollBox);
-
-}
-
-function handleTest(entries) {
-
-    const scrollDirection = FnScrollDirection(scrollY);
-    // const elementTopToTopDoc = visisbleScrollBox.offsetTop - navBarHeight;
-    // let elementTopToTopDoc =  visisbleScrollBox.offsetTop - navBarHeight;
-
-    console.log(elementPosition)
-
-    // setTimeout(() => {
-    //     elementTopToTopDoc = visisbleScrollBox.offsetTop - navBarHeight;
-    //     console.log(elementTopToTopDoc)
-    // }, 1000)
-
-    // const elementTopToTopDoc = async () => {
-    //     await Promise.all([
-    //         handleFetchComponent('/components/navbar.html', navbarWrapper),
-    //         handleFetchComponent('/components/footer.html', footerWrapper)
-    //     ]);
-
-    // }
-
-
-
-    entries.forEach(entry => {
-
-        if (entry.intersectionRatio > 0) {
-            window.scrollTo(0, elementPosition);
-        }
-
-
-        // if (scrollDirection === "down") {
-        //     if (Math.round(entry.intersectionRatio) === 0 && entry.isIntersecting) {
-        //         window.scrollTo(0, elementPosition);
-                
-        //     } else if (Math.round(entry.intersectionRatio) === 1) {
-        //         console.log(entry.intersectionRatio)
-        //     }
-        // } else if (scrollDirection === "up") {
-        //     if (Math.round(entry.intersectionRatio) === 0 && entry.isIntersecting) {
-        //         window.scrollTo(0, elementPosition);
-        //     }
-        // }
-    })
-
-    // const topElemToDocTop = window.scrollY + visisbleScrollBox.getBoundingClientRect().top - navBarHeight;
-    // const scrollY = window.scrollY;
-    // const scrollDirection = FnScrollDirection(scrollY);
-
-    // // document.body.style.height = '100vh';
-    // // document.body.style.overflow = 'hidden';
-
-    // if (scrollDirection === "down") {
-
-    //     if (topElemToDocTop <= scrollY) {
-
-    //         document.body.style.height = '100vh';
-    //         document.body.style.overflowY = 'hidden';
-
-    //         // Math.ceil(visisbleScrollBox.scrollTop); ?
-    //         const lengthFromTop = Math.round(visisbleScrollBox.scrollTop);
-    //         console.log(`scroll area is: ${scrollArea}`)
-    //         console.log(`length from top is: ${lengthFromTop}`)
-
-    //         // if the animation is not 100% done disable the page scroll (forwards)
-
-    //         // if (scrollArea !== lengthFromTop) {
-    //         //     window.scrollTo(0, topElemToDocTop);
-    //         // };
-    //         if (scrollArea === lengthFromTop) {
-    //             document.body.style.height = 'auto';
-    //             document.body.style.overflowY = 'scroll';
-    //         };
-    //     };
-    // } 
-    
-    // else if (scrollDirection === "up") {
-
-    //     if (topElemToDocTop >= window.scrollY) {
-
-    //         const lengthFromTop = Math.floor(visisbleScrollBox.scrollTop);
-
-    //         // if the animation is not 100% done disable the page scroll (backwards)
-    //         if (lengthFromTop !== 0) {
-    //             window.scrollTo(0, topElemToDocTop);
-    //         }
-    //     }
-    // }
-}

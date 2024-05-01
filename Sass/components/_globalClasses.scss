@@ -2,9 +2,6 @@
 @use 'functions';
 @use '../custom';
 
-@include mixins.slideInAnimation('slideInBottom', translateY(200%));
-@include mixins.slideInAnimation('slideInLeft', translateX(-100%));
-@include mixins.slideInAnimation('slideInRight', translateX(100%));
 @include mixins.pulseAnimation('pulse', functions.toRem(30), custom.$primary);
 
 .scrollTop {
@@ -28,26 +25,6 @@
 
 .slideInElement {
     opacity: 0;
-}
-
-.slideAnimation {
-    perspective: 1000;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    -webkit-backface-visibility: hidden;
-    
-
-    &--bottom {
-        animation: slideInBottom 1.5s ease-out 0s both !important;
-    }
-
-    &--left {
-        animation: slideInLeft 1.5s ease-out 0s both !important;
-    }
-
-    &--right {
-        animation: slideInRight 1.5s ease-out 0s both !important;
-    }
 }
 
 .pulseAnimation {

@@ -8,6 +8,14 @@
 	// ALL BREAKPOINTS
 	padding: functions.toRem(16) 0;
 
+	&__sticky {
+		transition: all 0.5s ease-out;
+		
+		&--fullHeight {
+			transition: all 0.5s ease-out;
+		}
+	}
+
 	&__simulatorResultsWrapper {
 
 		a {
@@ -21,9 +29,7 @@
 	}
 
 	&__closeConditions {
-		width: functions.toRem(5) !important;
-		height: functions.toRem(5) !important;
-		margin: functions.toRem(-7) functions.toRem(-7) functions.toRem(-13) 0;
+		margin-bottom: functions.toRem(-30);
 	}
 
 	h4 {
@@ -266,6 +272,14 @@
 		@include custom.media-breakpoint-up(xl) {
 
 			padding: functions.toRem(20);
+
+			&__sticky {
+				
+				img {
+					max-width: 80% !important;
+					align-self: center;
+				}
+			}
 
 			&__wrapper {
 				gap: functions.toRem(20) !important;

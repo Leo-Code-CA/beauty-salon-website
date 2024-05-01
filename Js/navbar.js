@@ -149,7 +149,7 @@ function handleSearchBar(e) {
         // clear the dropdown
         dropdownList.innerHTML = '';
         
-        // 
+        // create the dropdown content
         suggestions && suggestions.length > 0 && suggestions.map(opt => {
             const dropdownItem = document.createElement('li');
             const dropdownLink = document.createElement('a');

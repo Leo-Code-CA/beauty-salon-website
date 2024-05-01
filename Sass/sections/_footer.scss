@@ -48,7 +48,7 @@
         }
 
         &__main {
-            background: url('../../images/footer/phone_gift_illustration.svg');
+            background: url('/images/footer/phone_gift_illustration.svg');
             background-repeat: no-repeat;
             background-position: 90% 100%;
             background-size: auto 13%;
@@ -75,7 +75,7 @@
      }
 
      @include custom.media-breakpoint-up(md) {
-        background-image: url('../../images/footer/woman_cocktail_illustration.png');
+        background-image: url('/images/footer/woman_cocktail_illustration.png');
         background-size: 60% auto;
         background-position: 120% 15%;
 
@@ -109,7 +109,7 @@
      }
 
      @include custom.media-breakpoint-up(lg) {
-        background-image: url('../../images/footer/woman_cocktail_illustration.png');
+        background-image: url('/images/footer/woman_cocktail_illustration.png');
         background-size: auto 90%;
         background-position: 125% 150%;
 
@@ -158,12 +158,10 @@
             h3 {
                 font-family: custom.$secondary-ff;
                 font-weight: 700;
-                // font-size: clamp(functions.toRem(16), calc(functions.toRem(16) + 0.3vw), functions.toRem(20));
             }
     
             p {
                 margin: 0;
-                // font-size: custom.$body-landscape-fs;
             }
         }
 
@@ -211,7 +209,7 @@
         }
         /////////////////// LAPTOP AND DESKTOP  ///////////////////
         @include custom.media-breakpoint-up(lg) {
-            background-image: url('../../images/footer/woman_cocktail_illustration.png');
+            background-image: url('/images/footer/woman_cocktail_illustration.png');
             background-size: auto 80%;
             background-position: 105% 100%;
             background-repeat: no-repeat;

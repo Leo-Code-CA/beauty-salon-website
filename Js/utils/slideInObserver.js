@@ -73,6 +73,8 @@ async function animateElem(elem, translateStarts, translateEnds) {
     elemAnimation.commitStyles();
     // Cancel the animation
     elemAnimation.cancel();
+
+    if (elem === document.querySelector('.gallery')) elem.style.transform = 'none';
 };
 
 const leftObserver = new IntersectionObserver(handleLeftIntersect, { threshold: [0], rootMargin: '30px', root: null });
@@ -90,23 +92,4 @@ export function setUpSlideInAnimation(targetElem, direction) {
     } else {
         console.log('invalid slide in direction');
     }
-}
-
-
-
-// // Handle slide in animation
-// export default function slideInObserver(elem, className, options = {root: null, threshold: 0}) {
-//     if (elem && className) {
-//         const observer = new IntersectionObserver(handleIntersect, options);
-//         function handleIntersect(entries) {
-//             entries.forEach(entry => {
-//                 if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
-//                     entry.target.classList.add(className);
-//                     setTimeout(() =>  entry.target.classList.remove(className), 2000)
-//                 }
-//             });
-//         };
-//         observer.observe(elem);
-//         return observer;
-//     }
-// };
+};
