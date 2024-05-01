@@ -35,9 +35,11 @@ async function getPlaceDetails() {
         // Map through the reviews and display them in the carousel
         reviews.map((review, i) => {
 
-            const revText = review?.Ig;
-            const name = review?.Jg?.Ig;
-            const stars = review?.Ng;
+            console.log(review)
+
+            const revText = review?.Gg;
+            const name = review?.Hg?.Fg;
+            const stars = review?.Jg;
             
             const slide = document.querySelector(`.carousel-item:nth-child(${i + 1}) .blockquote`);
             const bottomName = document.querySelector(`.carousel-item:nth-child(${i + 1}) .blockquote-footer`);

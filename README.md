@@ -1,4 +1,3 @@
-
 # Full Stack Beauty Salon Website
 This is a full stack beauty salon website. I started this project in October 2023. It is without any doubt the biggest and most complex code project I've ever started so far.
 ## Table of contents
@@ -70,8 +69,8 @@ I also want to emphasize that the design isn't a priority in phase two. The webs
 At this point, most of the front-end content is done and some dozens of lines of code have been accumulated over time. Even if I tried to keep it as tidy and organized as possible, there are definitely some parts of my code that can be cleaned and improved. Phase 3 is the moment dedicated to that task, reviewing everything I've written so far and trying to fix what has to be fixed before moving on to the next phase.
 
 ---
-The project is currently here. The phase 3 is complete and the phase 4 is to come.
-*Last update on May 2024*
+The project is currently at this stage of advancement. The phase 3 is completed and the phase 4 is to come.
+*Last update: May 2024*
 
 ---
 
@@ -88,9 +87,11 @@ In that phase, I'm taking care of the admin side of the website. On the front-en
 During this last phase of the project, I review one more time the code of the whole website, front-end and back-end. I take the time to improve the design and to create the two missing service pages: waxing and treatments. Then, I test the application and finally make it available to the public.
 
 ### Screenshot
-![]()
+![Salon website photo grid one](/images/screenshots/salon_website_grid1.jpg)
+![Salon website photo grid two](/images/screenshots/salon_website_grid2.jpg)
+![Salon website photo grid three](/images/screenshots/salon_website_grid3.jpg)
 ### Links
-- Live Site URL: [Live site URL]()
+- Live Site URL: [Institut For You](https://leo-code-ca.github.io/beauty-salon-website/)
 ## My process
 ### Built with
 - Semantic html
@@ -104,8 +105,8 @@ I learned so many things that it's hard to recall them all but I'll do my best. 
 
 As this project is not finalized at the time I'm writing that readme, the list of things I've learned so far will keep growing over time.
 
-Let's list what I've learnt so far:
-*Last update on May 2024*
+Let's list what I've learned so far:
+*Last update:  May 2024*
 - Scroll bound animations with intersection observer and scroll API
 - Advanced responsiveness
 - Multipage website
@@ -149,7 +150,7 @@ For example, when I worked on the integration of the Google maps API for the fir
 
 I also spent days and days on animations and I definitely regret as well. The mobile only scroll bound animation is not smooth at all and even quite buggy, even after spending lots of time on it. A similar scenario happened to me with the slide in animation. I absolutely wanted to make it work a certain way and even if I tried my best, the result, especially on mobile devices is not great at all. I think I should have done something simpler but cleaner, especially considering the fact that I choose not to use any npm package except Bootstrap. 
 
-5. Responsiveness
+5. Neglecting the responsiveness
 
 I definitely underestimated the difficulty of making a whole website responsive so I kind of neglected it at first. Even if I knew that bootstrap is a mobile first approach framework, I didn't really pay attention to it and built most of the home page desktop version first.
 
@@ -164,7 +165,10 @@ I plan to focus on my job hunt these next few months. Meanwhile, I'll keep learn
 
 ### Useful resources
 
-- []() -
+- [MDN](https://developer.mozilla.org/en-US/) - This website has been a true game changer while working on that project. The depth of the explanations and the examples provided are so helpful. 
+- [Vector Paint](https://vectorpaint.yaks.co.nz/) - A great tool to modify svg online.
+- [Scroll animations](https://www.halo-lab.com/blog/how-to-create-scroll-animations) - This article definitely help me to understand how scroll animations are created. 
+- [Dynamic suggestions](https://leetcode.com/problems/combination-sum/solutions/) - This LeetCode Combinaison Sum challenge and its solutions were exactly what I needed to undertand better recursion and backtracking. It helped me to create the algorithm that dynamicaly suggests services depending on the amount of money the customer wants to put on a gift card.
 
 ## Author
 
